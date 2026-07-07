@@ -1,0 +1,8 @@
+# Dépendances / cruft
+node_modules/
+.DS_Store
+*.log
+
+# Fichier généré par le bundler (régénérable via node tools/bundle.js)
+# décommente si tu ne veux pas le versionner :
+# le-mot-juste-autonome.html

@@ -1,0 +1,3175 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Le Mot Juste</title>
+<meta name="theme-color" content="#8E2C3B">
+<link rel="icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIiB3aWR0aD0iNTEyIiBoZWlnaHQ9IjUxMiI+CiAgPHJlY3QgeD0iMjQiIHk9IjI0IiB3aWR0aD0iNDY0IiBoZWlnaHQ9IjQ2NCIgcng9IjExMiIgZmlsbD0iIzhFMkMzQiIvPgogIDxnIGZpbGw9Im5vbmUiIHN0cm9rZT0iI0ZBRjZFRiIgc3Ryb2tlLXdpZHRoPSIzMCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj4KICAgIDxwYXRoIGQ9Ik0xODYgMTc2IEwxMzYgMjU2IEwxODYgMzM2Ii8+CiAgICA8cGF0aCBkPSJNMjQ2IDE3NiBMMTk2IDI1NiBMMjQ2IDMzNiIvPgogICAgPHBhdGggZD0iTTI2NiAxNzYgTDMxNiAyNTYgTDI2NiAzMzYiLz4KICAgIDxwYXRoIGQ9Ik0zMjYgMTc2IEwzNzYgMjU2IEwzMjYgMzM2Ii8+CiAgPC9nPgo8L3N2Zz4K">
+<style>
+/* =====================================================================
+   Le Mot Juste — Design system
+   Esthétique éditoriale : papier chaud, encre, accent bordeaux.
+   Mobile-first, thème clair + sombre automatique.
+   ===================================================================== */
+
+/* ---------- Tokens ---------- */
+:root {
+  /* Couleurs — clair */
+  --paper:        #FAF6EF;
+  --paper-2:      #F3ECE0;
+  --surface:      #FFFFFF;
+  --surface-2:    #FBF8F2;
+  --ink:          #211C16;
+  --ink-2:        #4A4139;
+  --muted:        #857A6D;
+  --line:         #E6DCCB;
+  --line-strong:  #D8CBB4;
+
+  --accent:       #8E2C3B;   /* bordeaux / encre */
+  --accent-soft:  #F3E2E1;
+  --accent-ink:   #6E1F2C;
+  --gold:         #B4832B;
+  --gold-soft:    #F6ECD6;
+
+  --green:        #2F7D51;
+  --green-soft:   #E2F0E5;
+  --amber:        #B97407;
+  --amber-soft:   #FaEBCF;
+  --red:          #B23A2E;
+  --red-soft:     #F6E0DA;
+
+  /* Typo */
+  --serif: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua",
+           Georgia, "Noto Serif", "Times New Roman", serif;
+  --sans:  -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+           Arial, "Noto Sans", sans-serif;
+  --mono:  "SF Mono", ui-monospace, "Menlo", "Roboto Mono", monospace;
+
+  /* Espacement */
+  --sp-1: 4px;  --sp-2: 8px;  --sp-3: 12px; --sp-4: 16px;
+  --sp-5: 24px; --sp-6: 32px; --sp-7: 48px; --sp-8: 64px;
+
+  --radius:    14px;
+  --radius-sm: 10px;
+  --radius-lg: 22px;
+
+  --shadow-1: 0 1px 2px rgba(33,28,22,.06), 0 2px 8px rgba(33,28,22,.05);
+  --shadow-2: 0 6px 24px rgba(33,28,22,.12);
+
+  --tabbar-h: 66px;
+  --maxw: 720px;
+
+  color-scheme: light dark;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper:        #17140F;
+    --paper-2:      #1F1B15;
+    --surface:      #221E17;
+    --surface-2:    #2A251D;
+    --ink:          #F1E9DB;
+    --ink-2:        #CFC4B2;
+    --muted:        #9A8E7C;
+    --line:         #352E24;
+    --line-strong:  #463D2F;
+
+    --accent:       #E08792;
+    --accent-soft:  #3A2226;
+    --accent-ink:   #F0AEB6;
+    --gold:         #D7AE5E;
+    --gold-soft:    #332B18;
+
+    --green:        #6FC28C;
+    --green-soft:   #1E2E23;
+    --amber:        #E0A94A;
+    --amber-soft:   #322913;
+    --red:          #E28576;
+    --red-soft:     #33211C;
+
+    --shadow-1: 0 1px 2px rgba(0,0,0,.4);
+    --shadow-2: 0 8px 28px rgba(0,0,0,.5);
+  }
+}
+
+/* ---------- Reset & base ---------- */
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  font-family: var(--sans);
+  background: var(--paper);
+  color: var(--ink);
+  line-height: 1.5;
+  font-size: 17px;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overscroll-behavior-y: none;
+}
+h1, h2, h3, h4 { font-family: var(--serif); font-weight: 600; line-height: 1.2; margin: 0; }
+p { margin: 0 0 var(--sp-3); }
+a { color: var(--accent); }
+button { font-family: inherit; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 6px; }
+::selection { background: var(--accent-soft); }
+
+/* ---------- Layout applicatif ---------- */
+#app {
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+}
+.app-header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: color-mix(in srgb, var(--paper) 88%, transparent);
+  backdrop-filter: saturate(140%) blur(10px);
+  -webkit-backdrop-filter: saturate(140%) blur(10px);
+  border-bottom: 1px solid var(--line);
+  padding: calc(env(safe-area-inset-top) + var(--sp-3)) var(--sp-4) var(--sp-3);
+}
+.app-header .eyebrow {
+  font-size: 11px; letter-spacing: .16em; text-transform: uppercase;
+  color: var(--accent); font-weight: 700; margin-bottom: 2px;
+}
+.app-header h1 { font-size: 24px; letter-spacing: -.01em; }
+.app-header .sub { color: var(--muted); font-size: 13.5px; margin-top: 2px; }
+
+.view {
+  flex: 1;
+  width: 100%;
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: var(--sp-4) var(--sp-4) calc(var(--tabbar-h) + var(--sp-6) + env(safe-area-inset-bottom));
+  animation: fade .28s ease both;
+}
+@keyframes fade { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+
+/* ---------- Barre d'onglets ---------- */
+.tabbar {
+  position: fixed;
+  bottom: 0; left: 0; right: 0;
+  z-index: 30;
+  display: flex;
+  background: color-mix(in srgb, var(--surface) 92%, transparent);
+  backdrop-filter: saturate(150%) blur(14px);
+  -webkit-backdrop-filter: saturate(150%) blur(14px);
+  border-top: 1px solid var(--line);
+  padding-bottom: env(safe-area-inset-bottom);
+}
+.tabbar button {
+  flex: 1;
+  border: 0; background: none; cursor: pointer;
+  display: flex; flex-direction: column; align-items: center; gap: 3px;
+  padding: 10px 4px 8px;
+  color: var(--muted);
+  font-size: 11px; font-weight: 600; letter-spacing: .01em;
+  transition: color .18s;
+}
+.tabbar button svg { width: 24px; height: 24px; stroke-width: 1.7; }
+.tabbar button.active { color: var(--accent); }
+.tabbar button.active svg { transform: translateY(-1px); }
+
+/* ---------- Composants ---------- */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-1);
+  padding: var(--sp-4);
+}
+.stack > * + * { margin-top: var(--sp-3); }
+.muted { color: var(--muted); }
+.center { text-align: center; }
+
+/* Puce / catégorie */
+.chip {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 5px 11px; border-radius: 999px;
+  background: var(--paper-2); color: var(--ink-2);
+  font-size: 12.5px; font-weight: 600;
+  border: 1px solid var(--line);
+}
+.chip.accent { background: var(--accent-soft); color: var(--accent-ink); border-color: transparent; }
+.chip.gold   { background: var(--gold-soft); color: var(--gold); border-color: transparent; }
+
+/* Boutons */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  padding: 12px 18px; border-radius: 999px;
+  font-size: 15px; font-weight: 650; cursor: pointer;
+  border: 1px solid var(--line-strong); background: var(--surface); color: var(--ink);
+  transition: transform .08s, background .18s, border-color .18s;
+  min-height: 46px;
+}
+.btn:active { transform: scale(.97); }
+.btn.primary { background: var(--accent); color: #fff; border-color: transparent; }
+.btn.primary:disabled { opacity: .5; cursor: default; }
+.btn.ghost { background: transparent; border-color: transparent; color: var(--accent); }
+.btn.block { width: 100%; }
+.btn svg { width: 19px; height: 19px; }
+
+/* Champ de recherche */
+.search {
+  display: flex; align-items: center; gap: 10px;
+  background: var(--surface); border: 1px solid var(--line-strong);
+  border-radius: 999px; padding: 0 16px; height: 48px;
+  box-shadow: var(--shadow-1);
+}
+.search svg { width: 20px; height: 20px; color: var(--muted); flex: none; }
+.search input {
+  flex: 1; border: 0; background: none; outline: none;
+  font-size: 16px; color: var(--ink); font-family: inherit;
+}
+
+/* Grille de catégories */
+.cat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--sp-3); }
+.cat-tile {
+  text-align: left; cursor: pointer;
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: var(--radius); padding: var(--sp-4);
+  box-shadow: var(--shadow-1);
+  transition: transform .1s, box-shadow .2s;
+  display: flex; flex-direction: column; gap: 6px; min-height: 108px;
+}
+.cat-tile:active { transform: scale(.98); }
+.cat-tile .ic {
+  width: 38px; height: 38px; border-radius: 11px;
+  display: grid; place-items: center; margin-bottom: 4px;
+  background: var(--accent-soft); color: var(--accent-ink);
+}
+.cat-tile .ic svg { width: 21px; height: 21px; }
+.cat-tile h3 { font-size: 16.5px; }
+.cat-tile .count { font-size: 12.5px; color: var(--muted); font-weight: 600; }
+
+/* Accordéon de règle */
+.rule {
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow-1);
+}
+.rule + .rule { margin-top: var(--sp-3); }
+.rule > summary {
+  list-style: none; cursor: pointer; padding: var(--sp-4);
+  display: flex; align-items: flex-start; gap: 12px;
+  font-family: var(--serif); font-size: 17px; font-weight: 600;
+}
+.rule > summary::-webkit-details-marker { display: none; }
+.rule > summary .marker {
+  flex: none; margin-top: 3px; color: var(--accent);
+  transition: transform .2s;
+}
+.rule[open] > summary .marker { transform: rotate(90deg); }
+.rule .body { padding: 0 var(--sp-4) var(--sp-4); }
+.rule .body p:last-child { margin-bottom: 0; }
+
+/* Exemples correct / incorrect */
+.ex { display: flex; gap: 10px; align-items: baseline; padding: 7px 0; }
+.ex + .ex { border-top: 1px dashed var(--line); }
+.ex .mark { flex: none; font-weight: 700; width: 20px; }
+.ex.ok  .mark { color: var(--green); }
+.ex.no  .mark { color: var(--red); }
+.ex.no  .txt  { text-decoration: line-through; text-decoration-color: var(--red); color: var(--ink-2); }
+.ex .txt em { font-style: normal; background: var(--gold-soft); padding: 0 3px; border-radius: 4px; }
+
+.note {
+  background: var(--surface-2); border-left: 3px solid var(--gold);
+  padding: 10px 14px; border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  font-size: 15px; color: var(--ink-2);
+}
+.note.astuce { border-color: var(--accent); }
+
+/* Section titre */
+.section-head { display: flex; align-items: center; justify-content: space-between; margin: var(--sp-5) 0 var(--sp-3); }
+.section-head h2 { font-size: 20px; }
+.back {
+  display: inline-flex; align-items: center; gap: 6px; cursor: pointer;
+  background: none; border: 0; color: var(--accent); font-weight: 650; font-size: 15px;
+  padding: 8px 0;
+}
+.back svg { width: 18px; height: 18px; }
+
+/* Comparaison de mots (nuances) */
+.nuance-pair { display: grid; gap: var(--sp-3); }
+.nuance-word { border: 1px solid var(--line); border-radius: var(--radius-sm); padding: var(--sp-3) var(--sp-4); background: var(--surface-2); }
+.nuance-word .w { font-family: var(--serif); font-size: 18px; font-weight: 600; color: var(--accent-ink); }
+.nuance-word .d { font-size: 15px; color: var(--ink-2); margin-top: 2px; }
+.nuance-word .e { font-size: 14.5px; color: var(--muted); font-style: italic; margin-top: 6px; }
+
+/* ---------- Mot du jour ---------- */
+.mdj-card {
+  background: linear-gradient(160deg, var(--surface), var(--surface-2));
+  border: 1px solid var(--line); border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-2); padding: var(--sp-6) var(--sp-5) var(--sp-5);
+  position: relative; overflow: hidden;
+}
+.mdj-card::before {
+  content: "«»"; position: absolute; top: -18px; right: 8px;
+  font-family: var(--serif); font-size: 120px; color: var(--accent);
+  opacity: .06; pointer-events: none;
+}
+.mdj-date { font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); font-weight: 700; }
+.mdj-word { font-family: var(--serif); font-size: 40px; font-weight: 600; letter-spacing: -.01em; margin: 6px 0 2px; color: var(--accent-ink); line-height: 1.05; }
+.mdj-meta { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin: 4px 0 var(--sp-3); }
+.mdj-pron { color: var(--muted); font-style: italic; }
+.mdj-def { font-size: 18px; line-height: 1.5; }
+.mdj-block { margin-top: var(--sp-4); }
+.mdj-block .lbl { font-size: 12px; letter-spacing: .1em; text-transform: uppercase; color: var(--accent); font-weight: 700; margin-bottom: 6px; }
+.mdj-ex { font-family: var(--serif); font-size: 16.5px; font-style: italic; color: var(--ink-2); padding-left: 14px; border-left: 2px solid var(--line-strong); }
+.mdj-ex + .mdj-ex { margin-top: 10px; }
+.syn-list { display: flex; flex-wrap: wrap; gap: 7px; }
+.mdj-actions { display: flex; gap: 10px; margin-top: var(--sp-5); }
+
+.hist-item {
+  display: flex; align-items: center; gap: 12px; padding: var(--sp-3) 0;
+  cursor: pointer; border-bottom: 1px solid var(--line);
+}
+.hist-item .w { font-family: var(--serif); font-size: 17px; font-weight: 600; }
+.hist-item .dt { margin-left: auto; font-size: 12.5px; color: var(--muted); }
+
+/* ---------- Dictée ---------- */
+.level-list { display: grid; gap: var(--sp-3); }
+.level-card {
+  cursor: pointer; text-align: left; width: 100%;
+  border: 1px solid var(--line); border-radius: var(--radius);
+  background: var(--surface); padding: var(--sp-4); box-shadow: var(--shadow-1);
+  display: flex; align-items: center; gap: var(--sp-4);
+  transition: transform .1s;
+}
+.level-card:active { transform: scale(.98); }
+.level-dot { width: 12px; height: 12px; border-radius: 50%; flex: none; }
+.level-facile       .level-dot { background: var(--green); }
+.level-intermediaire .level-dot { background: var(--amber); }
+.level-expert       .level-dot { background: var(--red); }
+.level-card h3 { font-size: 17px; }
+.level-card .meta { font-size: 13px; color: var(--muted); }
+.level-badge { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; padding: 4px 9px; border-radius: 999px; }
+.level-facile .level-badge        { background: var(--green-soft); color: var(--green); }
+.level-intermediaire .level-badge { background: var(--amber-soft); color: var(--amber); }
+.level-expert .level-badge        { background: var(--red-soft); color: var(--red); }
+
+.player {
+  display: flex; align-items: center; justify-content: center; gap: var(--sp-4);
+  padding: var(--sp-4); background: var(--surface-2);
+  border: 1px solid var(--line); border-radius: var(--radius); margin-bottom: var(--sp-4);
+}
+.play-btn {
+  width: 64px; height: 64px; border-radius: 50%; border: 0; cursor: pointer;
+  background: var(--accent); color: #fff; display: grid; place-items: center;
+  box-shadow: var(--shadow-2); transition: transform .1s;
+}
+.play-btn:active { transform: scale(.94); }
+.play-btn svg { width: 28px; height: 28px; }
+.speed-ctl { display: flex; flex-direction: column; align-items: center; gap: 4px; font-size: 12px; color: var(--muted); }
+.speed-ctl input { width: 110px; }
+
+.dictee-input {
+  width: 100%; min-height: 180px; resize: vertical;
+  font-family: var(--serif); font-size: 17px; line-height: 1.7;
+  padding: var(--sp-4); border: 1px solid var(--line-strong);
+  border-radius: var(--radius); background: var(--surface); color: var(--ink);
+  outline: none;
+}
+.dictee-input:focus { border-color: var(--accent); }
+
+/* Résultat de dictée */
+.score-ring { display: flex; align-items: center; gap: var(--sp-4); }
+.score-num { font-family: var(--serif); font-size: 46px; font-weight: 600; }
+.score-num small { font-size: 20px; color: var(--muted); }
+.diff { font-family: var(--serif); font-size: 17px; line-height: 1.9; word-spacing: .04em; }
+.diff .ok  { }
+.diff .bad { background: var(--red-soft); color: var(--red); border-radius: 4px; padding: 0 3px; text-decoration: line-through; text-decoration-color: var(--red); }
+.diff .miss{ background: var(--green-soft); color: var(--green); border-radius: 4px; padding: 0 3px; }
+.diff .ins { background: var(--amber-soft); color: var(--amber); border-radius: 4px; padding: 0 3px; }
+.legend { display: flex; flex-wrap: wrap; gap: 14px; font-size: 13px; color: var(--muted); margin-top: var(--sp-3); }
+.legend span { display: inline-flex; align-items: center; gap: 6px; }
+.legend i { width: 12px; height: 12px; border-radius: 3px; display: inline-block; }
+
+/* Divers */
+.empty { text-align: center; color: var(--muted); padding: var(--sp-7) var(--sp-4); }
+.empty svg { width: 46px; height: 46px; opacity: .4; margin-bottom: var(--sp-3); }
+.spacer { height: var(--sp-4); }
+.hidden { display: none !important; }
+
+@media (min-width: 560px) {
+  .cat-grid { grid-template-columns: 1fr 1fr 1fr; }
+}
+
+</style>
+</head>
+<body>
+<div id="app">
+  <header class="app-header" id="app-header"></header>
+  <main class="view" id="view" role="main"></main>
+  <nav class="tabbar" id="tabbar" role="tablist"></nav>
+</div>
+<script>
+/* ===== js/core.js ===== */
+/* =====================================================================
+   Le Mot Juste — noyau partagé
+   Namespace global, utilitaires DOM, helpers de stockage local.
+   Chargé en premier : tous les autres scripts en dépendent.
+   ===================================================================== */
+(function () {
+  "use strict";
+
+  const G = typeof window !== "undefined" ? window : globalThis;
+  const LMJ = (G.LMJ = G.LMJ || {});
+  LMJ.data = LMJ.data || {};
+  LMJ.views = LMJ.views || {};
+
+  /* ---------- Utilitaires DOM ---------- */
+  const util = {
+    /** Sélecteur simple */
+    $(sel, root) {
+      return (root || document).querySelector(sel);
+    },
+    $$(sel, root) {
+      return Array.from((root || document).querySelectorAll(sel));
+    },
+    /**
+     * Crée un élément. props : {class, text, html, on:{event:fn}, dataset:{}, ...attrs}
+     * children : Node | string | Array
+     */
+    el(tag, props, children) {
+      const node = document.createElement(tag);
+      if (props) {
+        for (const [k, v] of Object.entries(props)) {
+          if (v == null) continue;
+          if (k === "class") node.className = v;
+          else if (k === "text") node.textContent = v;
+          else if (k === "html") node.innerHTML = v;
+          else if (k === "on") {
+            for (const [ev, fn] of Object.entries(v)) node.addEventListener(ev, fn);
+          } else if (k === "dataset") {
+            for (const [dk, dv] of Object.entries(v)) node.dataset[dk] = dv;
+          } else if (k === "style" && typeof v === "object") {
+            Object.assign(node.style, v);
+          } else {
+            node.setAttribute(k, v);
+          }
+        }
+      }
+      if (children != null) util.append(node, children);
+      return node;
+    },
+    append(node, children) {
+      if (Array.isArray(children)) {
+        children.forEach((c) => c != null && util.append(node, c));
+      } else if (children instanceof Node) {
+        node.appendChild(children);
+      } else {
+        node.appendChild(document.createTextNode(String(children)));
+      }
+      return node;
+    },
+    clear(node) {
+      while (node.firstChild) node.removeChild(node.firstChild);
+      return node;
+    },
+    escape(str) {
+      const d = document.createElement("div");
+      d.textContent = str == null ? "" : String(str);
+      return d.innerHTML;
+    },
+
+    /* ---------- Texte / normalisation ---------- */
+    /** minuscule + suppression des accents (pour recherche & comparaison) */
+    deburr(str) {
+      return (str || "")
+        .toLowerCase()
+        .normalize("NFD")
+        .replace(/[̀-ͯ]/g, "");
+    },
+    /** normalise pour la recherche : deburr + trim des espaces multiples */
+    normSearch(str) {
+      return util.deburr(str).replace(/\s+/g, " ").trim();
+    },
+
+    /* ---------- Dates ---------- */
+    /** Clé du jour AAAA-MM-JJ en heure locale */
+    todayKey(d) {
+      const date = d || new Date();
+      const y = date.getFullYear();
+      const m = String(date.getMonth() + 1).padStart(2, "0");
+      const j = String(date.getDate()).padStart(2, "0");
+      return `${y}-${m}-${j}`;
+    },
+    /** Nombre de jours depuis une époque fixe (2024-01-01) */
+    dayNumber(d) {
+      const date = d || new Date();
+      const epoch = Date.UTC(2024, 0, 1);
+      const today = Date.UTC(date.getFullYear(), date.getMonth(), date.getDate());
+      return Math.floor((today - epoch) / 86400000);
+    },
+    frDate(d) {
+      const date = d || new Date();
+      return date.toLocaleDateString("fr-FR", {
+        weekday: "long",
+        day: "numeric",
+        month: "long",
+        year: "numeric",
+      });
+    },
+
+    /* ---------- Divers ---------- */
+    /** hash entier stable d'une chaîne */
+    hash(str) {
+      let h = 2166136261;
+      for (let i = 0; i < str.length; i++) {
+        h ^= str.charCodeAt(i);
+        h = Math.imul(h, 16777619);
+      }
+      return h >>> 0;
+    },
+  };
+
+  /* ---------- Stockage local (progrès, historique, favoris) ---------- */
+  const PREFIX = "lmj.";
+  const store = {
+    get(key, fallback) {
+      try {
+        const raw = localStorage.getItem(PREFIX + key);
+        return raw == null ? fallback : JSON.parse(raw);
+      } catch (e) {
+        return fallback;
+      }
+    },
+    set(key, value) {
+      try {
+        localStorage.setItem(PREFIX + key, JSON.stringify(value));
+        return true;
+      } catch (e) {
+        return false;
+      }
+    },
+    remove(key) {
+      try {
+        localStorage.removeItem(PREFIX + key);
+      } catch (e) {}
+    },
+  };
+
+  /* ---------- Synthèse vocale (Web Speech API) — hors-ligne via voix système ---------- */
+  const tts = {
+    supported: typeof window !== "undefined" && "speechSynthesis" in window,
+    voices: [],
+    frVoice: null,
+    _ready: false,
+
+    refresh() {
+      if (!tts.supported) return;
+      tts.voices = window.speechSynthesis.getVoices() || [];
+      const fr = tts.voices.filter((v) => /^fr/i.test(v.lang));
+      // Préférer une voix locale (fonctionne hors-ligne)
+      tts.frVoice =
+        fr.find((v) => v.localService) ||
+        fr.find((v) => /fr[-_]FR/i.test(v.lang)) ||
+        fr[0] ||
+        null;
+      tts._ready = true;
+    },
+    init() {
+      if (!tts.supported || tts._ready) return;
+      tts.refresh();
+      window.speechSynthesis.addEventListener("voiceschanged", tts.refresh);
+    },
+    /** Parle un texte. opts : {rate, pitch, onstart, onend, onboundary} */
+    speak(text, opts) {
+      opts = opts || {};
+      if (!tts.supported) { opts.onend && opts.onend(); return null; }
+      window.speechSynthesis.cancel();
+      const u = new SpeechSynthesisUtterance(text);
+      u.lang = "fr-FR";
+      if (tts.frVoice) u.voice = tts.frVoice;
+      u.rate = opts.rate != null ? opts.rate : 1;
+      u.pitch = opts.pitch != null ? opts.pitch : 1;
+      if (opts.onstart) u.onstart = opts.onstart;
+      if (opts.onend) u.onend = opts.onend;
+      if (opts.onboundary) u.onboundary = opts.onboundary;
+      window.speechSynthesis.speak(u);
+      return u;
+    },
+    cancel() { if (tts.supported) window.speechSynthesis.cancel(); },
+    pause() { if (tts.supported) window.speechSynthesis.pause(); },
+    resume() { if (tts.supported) window.speechSynthesis.resume(); },
+  };
+
+  LMJ.util = util;
+  LMJ.store = store;
+  LMJ.tts = tts;
+})();
+
+
+/* ===== data/regles.js ===== */
+/* =====================================================================
+   Le Mot Juste — Règles : Accords & Conjugaison
+   Schéma d'une règle :
+     { id, titre, resume, explication(HTML), exemples:[{ok,texte,correction?}], astuce }
+   ===================================================================== */
+(function () {
+  "use strict";
+  const G = typeof window !== "undefined" ? window : globalThis;
+  const LMJ = (G.LMJ = G.LMJ || {});
+  LMJ.data = LMJ.data || {};
+
+  LMJ.data.accords = [
+    {
+      id: "acc-adjectif",
+      titre: "Accord de l'adjectif qualificatif",
+      resume: "L'adjectif s'accorde en genre et en nombre avec le nom.",
+      explication:
+        "<p>L'adjectif qualificatif prend le <strong>genre</strong> (masculin/féminin) et le <strong>nombre</strong> (singulier/pluriel) du nom auquel il se rapporte.</p><p>Avec plusieurs noms de genres différents, l'accord se fait au <strong>masculin pluriel</strong>.</p>",
+      exemples: [
+        { ok: true, texte: "une robe <em>verte</em>, des murs <em>blancs</em>" },
+        { ok: true, texte: "un homme et une femme <em>courageux</em>" },
+        { ok: false, texte: "des chemises <em>blanc</em>", correction: "des chemises blanches" },
+      ],
+      astuce: "Cherchez le nom-chef : c'est lui qui commande le genre et le nombre.",
+    },
+    {
+      id: "acc-pp-etre",
+      titre: "Participe passé employé avec « être »",
+      resume: "Il s'accorde avec le sujet.",
+      explication:
+        "<p>Avec l'auxiliaire <strong>être</strong>, le participe passé s'accorde <strong>en genre et en nombre avec le sujet</strong>.</p><p>Cela concerne les verbes de mouvement/état (aller, venir, partir, rester…) et la voix passive.</p>",
+      exemples: [
+        { ok: true, texte: "Elle est <em>partie</em>. Ils sont <em>venus</em>." },
+        { ok: true, texte: "Les fleurs sont <em>fanées</em>." },
+        { ok: false, texte: "Elles sont <em>arrivé</em>", correction: "Elles sont arrivées" },
+      ],
+      astuce: "Auxiliaire être → je regarde le sujet.",
+    },
+    {
+      id: "acc-pp-avoir",
+      titre: "Participe passé employé avec « avoir »",
+      resume: "Il s'accorde avec le COD, seulement s'il est placé avant le verbe.",
+      explication:
+        "<p>Avec <strong>avoir</strong>, le participe passé <strong>ne s'accorde jamais avec le sujet</strong>. Il s'accorde avec le <strong>complément d'objet direct (COD)</strong> uniquement lorsque celui-ci est placé <strong>avant</strong> le verbe.</p><p>Si le COD est placé après (ou absent), pas d'accord.</p>",
+      exemples: [
+        { ok: true, texte: "J'ai <em>mangé</em> les pommes. (COD après → invariable)" },
+        { ok: true, texte: "Les pommes que j'ai <em>mangées</em>. (COD « que » avant → accord)" },
+        { ok: false, texte: "La lettre que j'ai <em>écrit</em>", correction: "La lettre que j'ai écrite" },
+      ],
+      astuce: "Posez la question « quoi ? » après le verbe. Si la réponse est déjà passée avant, on accorde.",
+    },
+    {
+      id: "acc-pp-pronominaux",
+      titre: "Participe passé des verbes pronominaux",
+      resume: "Cas délicat : accord avec le COD, pas toujours avec le sujet.",
+      explication:
+        "<p>Les verbes pronominaux se conjuguent avec <strong>être</strong>, mais l'accord suit en réalité la règle du <strong>COD placé avant</strong>.</p><p>On accorde avec le sujet quand le pronom réfléchi est COD ; on n'accorde pas quand il est COI ou quand un autre COD suit.</p>",
+      exemples: [
+        { ok: true, texte: "Elle s'est <em>lavée</em>. (se = COD)" },
+        { ok: true, texte: "Elle s'est <em>lavé</em> les mains. (COD « les mains » après)" },
+        { ok: true, texte: "Ils se sont <em>parlé</em>. (se = COI : parler à quelqu'un)" },
+      ],
+      astuce: "« se laver les mains » : le vrai COD est « les mains », placé après → pas d'accord.",
+    },
+    {
+      id: "acc-tout",
+      titre: "L'accord de « tout »",
+      resume: "Variable comme adjectif/pronom, invariable comme adverbe.",
+      explication:
+        "<p><strong>Adjectif</strong> (devant un nom) : <em>tout, toute, tous, toutes</em> — il s'accorde.</p><p><strong>Adverbe</strong> (= entièrement, devant un adjectif) : <em>tout</em> reste invariable… sauf devant un adjectif féminin commençant par une consonne ou un h aspiré (euphonie).</p>",
+      exemples: [
+        { ok: true, texte: "<em>Tous</em> les élèves, <em>toutes</em> les classes." },
+        { ok: true, texte: "Elles sont <em>tout</em> étonnées. (adverbe, devant voyelle)" },
+        { ok: true, texte: "Elles sont <em>toutes</em> honteuses. (h aspiré → accord)" },
+      ],
+      astuce: "Remplacez par « entièrement » : si ça marche, c'est l'adverbe (souvent invariable).",
+    },
+    {
+      id: "acc-leur",
+      titre: "« leur » : pronom invariable ou déterminant variable",
+      resume: "Devant un verbe → invariable. Devant un nom → s'accorde.",
+      explication:
+        "<p><strong>Pronom personnel</strong> (= à eux, devant un verbe) : <em>leur</em> est toujours <strong>invariable</strong>.</p><p><strong>Déterminant possessif</strong> (devant un nom) : <em>leur / leurs</em> s'accorde avec le nom possédé.</p>",
+      exemples: [
+        { ok: true, texte: "Je <em>leur</em> parle. (pronom → invariable)" },
+        { ok: true, texte: "<em>Leurs</em> enfants, <em>leur</em> maison. (déterminant → accord)" },
+        { ok: false, texte: "Je <em>leurs</em> ai dit", correction: "Je leur ai dit" },
+      ],
+      astuce: "Si « leur » est juste devant un verbe, il ne prend jamais de s.",
+    },
+    {
+      id: "acc-couleurs",
+      titre: "L'accord des adjectifs de couleur",
+      resume: "Accord simple, sauf noms employés comme couleurs et couleurs composées.",
+      explication:
+        "<p>Un adjectif de couleur simple <strong>s'accorde</strong>.</p><p>Restent <strong>invariables</strong> : les noms employés comme adjectifs de couleur (orange, marron, or…) et les couleurs <strong>composées</strong> (bleu clair, vert pomme).</p>",
+      exemples: [
+        { ok: true, texte: "des yeux <em>bleus</em>, des robes <em>vertes</em>" },
+        { ok: true, texte: "des chaussures <em>marron</em>, des rideaux <em>orange</em>" },
+        { ok: true, texte: "des yeux <em>bleu clair</em>, des tissus <em>vert pomme</em>" },
+      ],
+      astuce: "Exceptions qui s'accordent quand même : rose, mauve, pourpre, fauve, écarlate.",
+    },
+    {
+      id: "acc-demi",
+      titre: "« demi », « nu », « ci-joint »",
+      resume: "Invariables placés avant le nom (trait d'union).",
+      explication:
+        "<p><em>Demi</em> et <em>nu</em> placés <strong>avant</strong> le nom sont invariables et liés par un trait d'union. Placés <strong>après</strong>, ils s'accordent (demi en genre seulement).</p>",
+      exemples: [
+        { ok: true, texte: "une <em>demi</em>-heure ; aller <em>nu</em>-pieds" },
+        { ok: true, texte: "deux heures et <em>demie</em> ; les pieds <em>nus</em>" },
+        { ok: false, texte: "une <em>demie</em>-journée", correction: "une demi-journée" },
+      ],
+      astuce: "Avant le nom = figé et invariable ; après le nom = ça s'accorde.",
+    },
+    {
+      id: "acc-verbe-sujet",
+      titre: "Accord du verbe avec le sujet",
+      resume: "Attention aux sujets collectifs et aux écrans entre sujet et verbe.",
+      explication:
+        "<p>Le verbe s'accorde avec son sujet. Avec un <strong>nom collectif + complément</strong> (« la plupart des », « une foule de »), l'accord se fait souvent avec le complément (le sens).</p><p>Ne vous laissez pas piéger par un mot inséré entre le sujet et le verbe.</p>",
+      exemples: [
+        { ok: true, texte: "La plupart des gens <em>pensent</em>…" },
+        { ok: true, texte: "Le panier de fruits <em>était</em> renversé. (sujet = panier)" },
+        { ok: false, texte: "Les enfants, hier, <em>est</em> parti", correction: "Les enfants… sont partis" },
+      ],
+      astuce: "Isolez le vrai sujet en posant « qui est-ce qui ? » devant le verbe.",
+    },
+    {
+      id: "acc-vingt-cent",
+      titre: "« vingt », « cent » et « mille »",
+      resume: "vingt et cent prennent un s multipliés et non suivis ; mille est invariable.",
+      explication:
+        "<p><em>Vingt</em> et <em>cent</em> prennent un <strong>s</strong> quand ils sont <strong>multipliés</strong> et <strong>terminent</strong> le nombre. <em>Mille</em> (adjectif numéral) est toujours <strong>invariable</strong>.</p>",
+      exemples: [
+        { ok: true, texte: "quatre-<em>vingts</em> ; trois <em>cents</em>" },
+        { ok: true, texte: "quatre-<em>vingt</em>-deux ; trois <em>cent</em> six (suivis → pas de s)" },
+        { ok: true, texte: "deux <em>mille</em> ans (mille invariable)" },
+      ],
+      astuce: "Multiplié ET en fin de nombre → s. Sinon, pas de s.",
+    },
+  ];
+
+  LMJ.data.conjugaisonRegles = [
+    {
+      id: "conj-er-ou-e",
+      titre: "-er ou -é ? (infinitif ou participe passé)",
+      resume: "Remplacez le verbe par « mordre / mordu ».",
+      explication:
+        "<p>Les terminaisons <em>-er</em> (infinitif) et <em>-é</em> (participe passé) se prononcent pareil. Pour choisir, remplacez le verbe du 1er groupe par un verbe du 3e groupe comme <strong>mordre</strong> :</p><p>Si « <strong>mordre</strong> » convient → infinitif <em>-er</em>. Si « <strong>mordu</strong> » convient → participe passé <em>-é</em>.</p>",
+      exemples: [
+        { ok: true, texte: "Je vais <em>manger</em>. (→ je vais mordre)" },
+        { ok: true, texte: "J'ai <em>mangé</em>. (→ j'ai mordu)" },
+        { ok: false, texte: "Il a <em>manger</em>", correction: "Il a mangé (→ il a mordu)" },
+      ],
+      astuce: "Après une préposition (à, de, pour, sans…), c'est toujours l'infinitif -er.",
+    },
+    {
+      id: "conj-rai-rais",
+      titre: "Futur (-rai) ou conditionnel (-rais) ?",
+      resume: "Passez à une autre personne pour entendre la différence.",
+      explication:
+        "<p>À la 1re personne, <em>-rai</em> (futur) et <em>-rais</em> (conditionnel) se ressemblent. Astuce : remplacez « je » par « <strong>il</strong> ».</p><p>Si l'on obtient <em>-ra</em> → <strong>futur</strong> (je -rai). Si l'on obtient <em>-rait</em> → <strong>conditionnel</strong> (je -rais).</p>",
+      exemples: [
+        { ok: true, texte: "Demain, je <em>partirai</em>. (il partira → futur)" },
+        { ok: true, texte: "Je <em>partirais</em> si je pouvais. (il partirait → conditionnel)" },
+      ],
+      astuce: "Certitude à venir = futur. Hypothèse, politesse = conditionnel.",
+    },
+    {
+      id: "conj-imperatif-s",
+      titre: "Impératif : le piège du « s »",
+      resume: "Pas de s à la 2e personne des verbes en -er… sauf devant en/y.",
+      explication:
+        "<p>À l'impératif, les verbes du 1er groupe (et « aller ») ne prennent <strong>pas de s</strong> à la 2e personne du singulier.</p><p>On rajoute un <strong>s</strong> (euphonique) uniquement devant les pronoms <em>en</em> et <em>y</em>, pour la liaison.</p>",
+      exemples: [
+        { ok: true, texte: "<em>Mange</em> ta soupe ! <em>Va</em> jouer !" },
+        { ok: true, texte: "<em>Manges-en</em> ! <em>Vas-y</em> !" },
+        { ok: false, texte: "<em>Manges</em> ta soupe", correction: "Mange ta soupe" },
+      ],
+      astuce: "Les verbes des 2e/3e groupes gardent le s : finis, prends, viens.",
+    },
+    {
+      id: "conj-present-er",
+      titre: "Présent des verbes en -er : les terminaisons",
+      resume: "-e, -es, -e, -ons, -ez, -ent.",
+      explication:
+        "<p>Au présent, les verbes du 1er groupe se terminent par <strong>-e, -es, -e, -ons, -ez, -ent</strong>. Attention : le <em>-ent</em> de la 3e personne du pluriel ne se prononce pas.</p>",
+      exemples: [
+        { ok: true, texte: "je parl<em>e</em>, tu parl<em>es</em>, ils parl<em>ent</em>" },
+        { ok: false, texte: "ils <em>mangent</em> se prononce comme… « ils mange »", correction: "orthographe : mangent" },
+      ],
+      astuce: "Ne confondez pas « il mange » (présent) et « ils mangent » : écoutez le sujet.",
+    },
+    {
+      id: "conj-imparfait-passe-simple",
+      titre: "Imparfait ou passé simple ?",
+      resume: "Décor et durée = imparfait ; action ponctuelle = passé simple.",
+      explication:
+        "<p>L'<strong>imparfait</strong> pose le décor, l'habitude, la description, l'action qui dure. Le <strong>passé simple</strong> (récit littéraire) exprime une action <strong>ponctuelle</strong>, achevée, qui fait avancer l'histoire.</p>",
+      exemples: [
+        { ok: true, texte: "Il <em>faisait</em> nuit (décor) quand l'orage <em>éclata</em> (action)." },
+        { ok: true, texte: "Chaque été, nous <em>allions</em> à la mer. (habitude → imparfait)" },
+      ],
+      astuce: "À l'oral et dans un texte courant, le passé simple est remplacé par le passé composé.",
+    },
+    {
+      id: "conj-subjonctif",
+      titre: "Quand employer le subjonctif ?",
+      resume: "Après l'expression d'un souhait, d'un doute, d'une nécessité.",
+      explication:
+        "<p>Le subjonctif exprime une action <strong>envisagée</strong> (non réalisée) : volonté, souhait, doute, obligation, émotion. Il suit souvent « <em>que</em> » après des verbes comme <em>vouloir que, falloir que, douter que, avoir peur que</em>.</p>",
+      exemples: [
+        { ok: true, texte: "Il faut que tu <em>viennes</em>." },
+        { ok: true, texte: "Je veux qu'il <em>fasse</em> beau." },
+        { ok: false, texte: "Il faut que tu <em>viens</em>", correction: "Il faut que tu viennes" },
+      ],
+      astuce: "« Bien que », « pour que », « jusqu'à ce que », « à moins que » → subjonctif.",
+    },
+  ];
+})();
+
+
+/* ===== data/confusions.js ===== */
+/* =====================================================================
+   Le Mot Juste — Confusions fréquentes (homophones grammaticaux)
+   Schéma : { id, titre, entrees:[{mot, nature, sens, exemple}], astuce }
+   ===================================================================== */
+(function () {
+  "use strict";
+  const G = typeof window !== "undefined" ? window : globalThis;
+  const LMJ = (G.LMJ = G.LMJ || {});
+  LMJ.data = LMJ.data || {};
+
+  LMJ.data.confusions = [
+    {
+      id: "conf-a-a",
+      titre: "a / à",
+      entrees: [
+        { mot: "a", nature: "verbe avoir", sens: "3e pers. du présent de « avoir »", exemple: "Il a faim." },
+        { mot: "à", nature: "préposition", sens: "indique lieu, temps, appartenance…", exemple: "Il va à Paris." },
+      ],
+      astuce: "Remplacez par « avait » : si la phrase tient, c'est « a » (verbe). Sinon, « à ».",
+    },
+    {
+      id: "conf-ou-ou",
+      titre: "ou / où",
+      entrees: [
+        { mot: "ou", nature: "conjonction", sens: "exprime un choix (= ou bien)", exemple: "Thé ou café ?" },
+        { mot: "où", nature: "adverbe / pronom", sens: "indique le lieu ou le temps", exemple: "Où vas-tu ?" },
+      ],
+      astuce: "Remplaçable par « ou bien » → « ou » sans accent.",
+    },
+    {
+      id: "conf-ce-se",
+      titre: "ce / se",
+      entrees: [
+        { mot: "ce", nature: "déterminant / pronom", sens: "montre (ce livre) ou annonce (c'est)", exemple: "Ce matin, ce sera prêt." },
+        { mot: "se", nature: "pronom réfléchi", sens: "accompagne un verbe pronominal", exemple: "Il se lave." },
+      ],
+      astuce: "« se » se place devant un verbe ; remplacez par « me/te » : « je me lave ».",
+    },
+    {
+      id: "conf-ces-ses",
+      titre: "ces / ses / c'est / s'est / sais / sait",
+      entrees: [
+        { mot: "ces", nature: "déterminant démonstratif pluriel", sens: "= ces choses-là", exemple: "Ces livres sont à moi." },
+        { mot: "ses", nature: "déterminant possessif pluriel", sens: "= les siens", exemple: "Il range ses affaires." },
+        { mot: "c'est", nature: "cela est", sens: "présentatif", exemple: "C'est vrai." },
+        { mot: "s'est", nature: "se + est", sens: "verbe pronominal", exemple: "Il s'est trompé." },
+        { mot: "sais / sait", nature: "verbe savoir", sens: "présent de « savoir »", exemple: "Je sais, il sait." },
+      ],
+      astuce: "« ces » → « ces …-là ». « ses » → « les siens ». « c'est » → « cela est ». « s'est » → « il s'est ».",
+    },
+    {
+      id: "conf-son-sont",
+      titre: "son / sont",
+      entrees: [
+        { mot: "son", nature: "déterminant possessif", sens: "= le sien", exemple: "Son chien dort." },
+        { mot: "sont", nature: "verbe être", sens: "3e pers. pluriel du présent", exemple: "Ils sont là." },
+      ],
+      astuce: "Remplacez par « étaient » : si ça marche, c'est « sont ».",
+    },
+    {
+      id: "conf-on-ont",
+      titre: "on / ont",
+      entrees: [
+        { mot: "on", nature: "pronom personnel sujet", sens: "= quelqu'un, nous", exemple: "On part demain." },
+        { mot: "ont", nature: "verbe avoir", sens: "3e pers. pluriel du présent", exemple: "Ils ont gagné." },
+      ],
+      astuce: "Remplacez par « avaient » → c'est « ont ». Par « il » → c'est « on ».",
+    },
+    {
+      id: "conf-et-est",
+      titre: "et / est",
+      entrees: [
+        { mot: "et", nature: "conjonction", sens: "addition (= et puis)", exemple: "Toi et moi." },
+        { mot: "est", nature: "verbe être", sens: "3e pers. du présent", exemple: "Elle est prête." },
+      ],
+      astuce: "Remplacez par « était » : si ça tient, c'est « est ».",
+    },
+    {
+      id: "conf-la-la",
+      titre: "la / là / l'a",
+      entrees: [
+        { mot: "la", nature: "article / pronom", sens: "détermine ou remplace un féminin", exemple: "La porte, je la ferme." },
+        { mot: "là", nature: "adverbe de lieu", sens: "indique l'endroit", exemple: "Reste là." },
+        { mot: "l'a", nature: "le/la + a (avoir)", sens: "il l'a fait", exemple: "Il l'a vue." },
+      ],
+      astuce: "« là » (accent) = lieu. « l'a » = « l'avait ».",
+    },
+    {
+      id: "conf-quel-quelle",
+      titre: "quel / quelle / qu'elle",
+      entrees: [
+        { mot: "quel(s) / quelle(s)", nature: "déterminant interrogatif/exclamatif", sens: "s'accorde avec le nom", exemple: "Quelle heure ? Quel dommage !" },
+        { mot: "qu'elle(s)", nature: "que + elle", sens: "conjonction + pronom", exemple: "Je crois qu'elle viendra." },
+      ],
+      astuce: "Remplacez par « qu'il » : si ça marche, écrivez « qu'elle ».",
+    },
+    {
+      id: "conf-peu-peut",
+      titre: "peu / peut / peux",
+      entrees: [
+        { mot: "peu", nature: "adverbe de quantité", sens: "= pas beaucoup", exemple: "Il mange peu." },
+        { mot: "peut", nature: "verbe pouvoir (il)", sens: "3e pers. du présent", exemple: "Il peut venir." },
+        { mot: "peux", nature: "verbe pouvoir (je/tu)", sens: "1re/2e pers.", exemple: "Je peux, tu peux." },
+      ],
+      astuce: "Remplacez par « pouvait » → verbe (peut/peux). Par « très » → adverbe (peu).",
+    },
+    {
+      id: "conf-pres-pret",
+      titre: "près / prêt",
+      entrees: [
+        { mot: "près", nature: "adverbe/préposition", sens: "à faible distance (près de)", exemple: "Il habite près d'ici." },
+        { mot: "prêt", nature: "adjectif", sens: "= préparé (s'accorde)", exemple: "Il est prêt, elle est prête." },
+      ],
+      astuce: "« prêt » s'accorde et se dit « prêt à ». « près » ne s'accorde jamais et se dit « près de ».",
+    },
+    {
+      id: "conf-quand-quant",
+      titre: "quand / quant / qu'en",
+      entrees: [
+        { mot: "quand", nature: "conjonction/adverbe de temps", sens: "= lorsque, à quel moment", exemple: "Quand pars-tu ?" },
+        { mot: "quant", nature: "locution (quant à)", sens: "= en ce qui concerne", exemple: "Quant à moi, je reste." },
+        { mot: "qu'en", nature: "que + en", sens: "interrogation/restriction", exemple: "Qu'en penses-tu ?" },
+      ],
+      astuce: "« quant » n'existe que dans « quant à / au / aux ».",
+    },
+    {
+      id: "conf-plutot",
+      titre: "plutôt / plus tôt",
+      entrees: [
+        { mot: "plutôt", nature: "adverbe", sens: "= de préférence, assez", exemple: "Il est plutôt gentil." },
+        { mot: "plus tôt", nature: "comparatif de « tôt »", sens: "contraire de « plus tard »", exemple: "Lève-toi plus tôt." },
+      ],
+      astuce: "Si l'on peut opposer « plus tard », écrivez « plus tôt » en deux mots.",
+    },
+    {
+      id: "conf-quoique",
+      titre: "quoique / quoi que",
+      entrees: [
+        { mot: "quoique", nature: "conjonction", sens: "= bien que, malgré que", exemple: "Quoiqu'il soit tard, je reste." },
+        { mot: "quoi que", nature: "locution", sens: "= quelle que soit la chose que", exemple: "Quoi que tu fasses, je te soutiens." },
+      ],
+      astuce: "Remplaçable par « bien que » → « quoique » en un mot.",
+    },
+    {
+      id: "conf-davantage",
+      titre: "davantage / d'avantage(s)",
+      entrees: [
+        { mot: "davantage", nature: "adverbe", sens: "= plus, plus longtemps", exemple: "Travaille davantage." },
+        { mot: "d'avantage(s)", nature: "de + nom « avantage »", sens: "un profit, un bénéfice", exemple: "Il n'y a pas d'avantage à cela." },
+      ],
+      astuce: "Remplaçable par « plus » → « davantage » en un mot.",
+    },
+  ];
+})();
+
+
+/* ===== data/mauvais-usages.js ===== */
+/* =====================================================================
+   Le Mot Juste — Mauvais usages (fautes, pléonasmes, barbarismes)
+   Schéma identique aux règles : { id, titre, resume, explication, exemples, astuce }
+   ===================================================================== */
+(function () {
+  "use strict";
+  const G = typeof window !== "undefined" ? window : globalThis;
+  const LMJ = (G.LMJ = G.LMJ || {});
+  LMJ.data = LMJ.data || {};
+
+  LMJ.data.mauvaisUsages = [
+    {
+      id: "mu-aujourdhui",
+      titre: "« au jour d'aujourd'hui »",
+      resume: "Triple pléonasme à bannir.",
+      explication:
+        "<p>« Aujourd'hui » contient déjà l'idée de « au jour de ce jour » (hui = ce jour). Ajouter « au jour de » est un pléonasme.</p>",
+      exemples: [
+        { ok: false, texte: "Au jour d'aujourd'hui, tout va bien.", correction: "Aujourd'hui, tout va bien." },
+      ],
+      astuce: "Dites simplement « aujourd'hui » ou « à ce jour ».",
+    },
+    {
+      id: "mu-malgre-que",
+      titre: "« malgré que »",
+      resume: "À éviter au sens de « bien que ».",
+      explication:
+        "<p>« Malgré que » n'est admis qu'avec le verbe « avoir » (malgré qu'il en ait = quoi qu'il en ait). Au sens concessif, préférez <strong>bien que</strong> (+ subjonctif) ou <strong>malgré</strong> (+ nom).</p>",
+      exemples: [
+        { ok: false, texte: "Malgré qu'il pleuve, je sors.", correction: "Bien qu'il pleuve, je sors." },
+        { ok: true, texte: "Malgré la pluie, je sors." },
+      ],
+      astuce: "« bien que » + subjonctif, ou « malgré » + nom.",
+    },
+    {
+      id: "mu-pallier",
+      titre: "« pallier à » un problème",
+      resume: "« pallier » est transitif direct : pas de « à ».",
+      explication:
+        "<p>On <strong>pallie quelque chose</strong> (sans préposition), on ne « pallie pas à » quelque chose.</p>",
+      exemples: [
+        { ok: false, texte: "Pallier au manque de personnel.", correction: "Pallier le manque de personnel." },
+        { ok: true, texte: "Cette mesure pallie les difficultés." },
+      ],
+      astuce: "Comme « remédier » demande « à », mais « pallier » se construit directement.",
+    },
+    {
+      id: "mu-se-rappeler",
+      titre: "« se rappeler de » quelque chose",
+      resume: "On se rappelle quelque chose ; on se souvient DE quelque chose.",
+      explication:
+        "<p><strong>Se rappeler</strong> est transitif direct (se rappeler quelque chose). <strong>Se souvenir</strong> demande « de ». La confusion des deux constructions est fautive.</p>",
+      exemples: [
+        { ok: false, texte: "Je me rappelle de cette histoire.", correction: "Je me rappelle cette histoire." },
+        { ok: true, texte: "Je me souviens de cette histoire." },
+      ],
+      astuce: "Avec un pronom : « je me le rappelle » (et non « je m'en rappelle »).",
+    },
+    {
+      id: "mu-chez-coiffeur",
+      titre: "« aller au coiffeur / au docteur »",
+      resume: "Devant une personne, on va « chez ».",
+      explication:
+        "<p>Devant un nom de personne (métier), on emploie <strong>chez</strong> et non « au ».</p>",
+      exemples: [
+        { ok: false, texte: "Je vais au coiffeur.", correction: "Je vais chez le coiffeur." },
+        { ok: true, texte: "Je vais chez le médecin." },
+      ],
+      astuce: "« au » pour un lieu (au salon, au cabinet) ; « chez » pour une personne.",
+    },
+    {
+      id: "mu-comme-meme",
+      titre: "« comme même »",
+      resume: "L'expression correcte est « quand même ».",
+      explication:
+        "<p>« Comme même » n'existe pas. La locution qui signifie « malgré tout » est <strong>quand même</strong> (ou « tout de même »).</p>",
+      exemples: [
+        { ok: false, texte: "C'est comme même incroyable.", correction: "C'est quand même incroyable." },
+      ],
+      astuce: "Toujours « quand même » (avec un d).",
+    },
+    {
+      id: "mu-voire-meme",
+      titre: "« voire même »",
+      resume: "Pléonasme : « voire » suffit.",
+      explication:
+        "<p>« Voire » signifie déjà « et même ». Le doubler avec « même » est redondant.</p>",
+      exemples: [
+        { ok: false, texte: "C'est difficile, voire même impossible.", correction: "C'est difficile, voire impossible." },
+      ],
+      astuce: "Choisissez « voire » ou « et même », mais pas les deux.",
+    },
+    {
+      id: "mu-apres-que",
+      titre: "« après que » + subjonctif",
+      resume: "« après que » se construit avec l'indicatif.",
+      explication:
+        "<p>L'action introduite par <strong>après que</strong> a réellement eu lieu : on emploie donc l'<strong>indicatif</strong>. (À l'inverse, « avant que » demande le subjonctif.)</p>",
+      exemples: [
+        { ok: false, texte: "Après qu'il soit parti…", correction: "Après qu'il est parti…" },
+        { ok: true, texte: "Avant qu'il ne parte…" },
+      ],
+      astuce: "après que → indicatif ; avant que → subjonctif.",
+    },
+    {
+      id: "mu-monter-en-haut",
+      titre: "« monter en haut », « descendre en bas »",
+      resume: "Pléonasmes.",
+      explication:
+        "<p>On ne peut monter que vers le haut et descendre que vers le bas : ces précisions sont superflues. Idem pour « sortir dehors », « prévoir à l'avance ».</p>",
+      exemples: [
+        { ok: false, texte: "Il est monté en haut.", correction: "Il est monté." },
+        { ok: false, texte: "Prévoir à l'avance.", correction: "Prévoir." },
+      ],
+      astuce: "Méfiez-vous des précisions déjà contenues dans le verbe.",
+    },
+    {
+      id: "mu-si-jaurais",
+      titre: "« si j'aurais »",
+      resume: "Après « si » de condition, jamais de conditionnel.",
+      explication:
+        "<p>Dans une subordonnée de condition, « si » est suivi de l'<strong>imparfait</strong> (ou du présent), <strong>jamais du conditionnel</strong>.</p>",
+      exemples: [
+        { ok: false, texte: "Si j'aurais su, je serais venu.", correction: "Si j'avais su, je serais venu." },
+        { ok: true, texte: "Si je pouvais, je viendrais." },
+      ],
+      astuce: "« Les si n'aiment pas les rais » : pas de -rais après « si ».",
+    },
+    {
+      id: "mu-espece",
+      titre: "« un espèce de »",
+      resume: "« espèce » est féminin.",
+      explication:
+        "<p>Le nom <strong>espèce</strong> est féminin, quel que soit le genre du mot qui suit : on dit toujours <strong>une</strong> espèce de.</p>",
+      exemples: [
+        { ok: false, texte: "Un espèce de génie.", correction: "Une espèce de génie." },
+      ],
+      astuce: "Toujours « une espèce de », même devant un nom masculin.",
+    },
+    {
+      id: "mu-dont-en",
+      titre: "« dont… en » (double emploi)",
+      resume: "« dont » contient déjà « de » : pas de « en » en plus.",
+      explication:
+        "<p>Le pronom <strong>dont</strong> équivaut à « de qui / de quoi ». Ajouter « en » (qui signifie aussi « de cela ») fait double emploi.</p>",
+      exemples: [
+        { ok: false, texte: "C'est le livre dont je t'en ai parlé.", correction: "C'est le livre dont je t'ai parlé." },
+      ],
+      astuce: "Si vous employez « dont », supprimez « en ».",
+    },
+  ];
+})();
+
+
+/* ===== data/nuances.js ===== */
+/* =====================================================================
+   Le Mot Juste — Vocabulaire : nuances entre mots proches
+   Schéma : { id, titre, cle (la clé pour choisir), entrees:[{mot, sens, exemple}] }
+   ===================================================================== */
+(function () {
+  "use strict";
+  const G = typeof window !== "undefined" ? window : globalThis;
+  const LMJ = (G.LMJ = G.LMJ || {});
+  LMJ.data = LMJ.data || {};
+
+  LMJ.data.nuances = [
+    {
+      id: "nu-amener",
+      titre: "Amener · Apporter · Emmener · Emporter",
+      cle: "amener/emmener → êtres animés ; apporter/emporter → choses. am-/ap- → vers ici ; em- → au loin.",
+      entrees: [
+        { mot: "amener", sens: "conduire une personne (ou un animal) vers un lieu", exemple: "Amène ton frère à la fête." },
+        { mot: "emmener", sens: "conduire une personne avec soi en partant", exemple: "Je t'emmène au cinéma." },
+        { mot: "apporter", sens: "porter une chose vers un lieu", exemple: "Apporte le dessert." },
+        { mot: "emporter", sens: "prendre une chose avec soi en partant", exemple: "N'oublie pas d'emporter ton parapluie." },
+      ],
+    },
+    {
+      id: "nu-an-annee",
+      titre: "An · Année (et jour/journée, soir/soirée)",
+      cle: "La forme courte compte l'unité ; la forme longue insiste sur la durée vécue, remplie.",
+      entrees: [
+        { mot: "an", sens: "l'unité de temps, le point sur le calendrier", exemple: "Il a trente ans." },
+        { mot: "année", sens: "la durée envisagée dans son déroulement", exemple: "Une année riche en événements." },
+        { mot: "jour / journée", sens: "même distinction : le point vs la durée", exemple: "Toute la journée / il y a trois jours." },
+      ],
+    },
+    {
+      id: "nu-second-deuxieme",
+      titre: "Second · Deuxième",
+      cle: "Puriste : « second » quand la série s'arrête à deux ; « deuxième » quand elle continue.",
+      entrees: [
+        { mot: "second", sens: "il n'y a que deux éléments (pas de troisième)", exemple: "La Seconde Guerre mondiale (usage consacré)." },
+        { mot: "deuxième", sens: "la série comporte plus de deux éléments", exemple: "Le deuxième étage sur cinq." },
+      ],
+    },
+    {
+      id: "nu-eminent-imminent",
+      titre: "Éminent · Imminent",
+      cle: "Éminent = remarquable ; imminent = sur le point d'arriver.",
+      entrees: [
+        { mot: "éminent", sens: "qui se distingue par sa valeur, supérieur", exemple: "Un éminent professeur." },
+        { mot: "imminent", sens: "qui va se produire d'un instant à l'autre", exemple: "Un danger imminent." },
+      ],
+    },
+    {
+      id: "nu-conjecture",
+      titre: "Conjecture · Conjoncture",
+      cle: "Conjecture = supposition ; conjoncture = situation du moment.",
+      entrees: [
+        { mot: "conjecture", sens: "une hypothèse, une opinion fondée sur des probabilités", exemple: "Se perdre en conjectures." },
+        { mot: "conjoncture", sens: "l'ensemble des circonstances, le contexte", exemple: "La conjoncture économique." },
+      ],
+    },
+    {
+      id: "nu-prodige-prodigue",
+      titre: "Prodige · Prodigue",
+      cle: "Prodige = merveille/génie ; prodigue = qui dépense sans compter.",
+      entrees: [
+        { mot: "prodige", sens: "un fait extraordinaire, ou un talent exceptionnel", exemple: "Un enfant prodige." },
+        { mot: "prodigue", sens: "qui donne ou dépense avec excès", exemple: "Le fils prodigue." },
+      ],
+    },
+    {
+      id: "nu-officiel-officieux",
+      titre: "Officiel · Officieux",
+      cle: "Officiel = confirmé par l'autorité ; officieux = connu mais non confirmé.",
+      entrees: [
+        { mot: "officiel", sens: "émanant d'une autorité, publiquement reconnu", exemple: "Le résultat officiel." },
+        { mot: "officieux", sens: "non officiel, à titre confidentiel", exemple: "Une source officieuse." },
+      ],
+    },
+    {
+      id: "nu-notable-notoire",
+      titre: "Notable · Notoire",
+      cle: "Notable = digne d'être noté (souvent positif) ; notoire = connu de tous (souvent négatif).",
+      entrees: [
+        { mot: "notable", sens: "important, remarquable", exemple: "Une amélioration notable." },
+        { mot: "notoire", sens: "que tout le monde sait, manifeste", exemple: "Un mensonge notoire." },
+      ],
+    },
+    {
+      id: "nu-emigrer-immigrer",
+      titre: "Émigrer · Immigrer",
+      cle: "É-migrer = sortir de son pays ; Im-migrer = entrer dans un pays.",
+      entrees: [
+        { mot: "émigrer", sens: "quitter son pays pour s'installer ailleurs", exemple: "Ils ont émigré vers le Canada." },
+        { mot: "immigrer", sens: "entrer dans un pays pour s'y établir", exemple: "Sa famille a immigré en France." },
+      ],
+    },
+    {
+      id: "nu-partial-partiel",
+      titre: "Partial · Partiel",
+      cle: "Partial = qui manque d'objectivité ; partiel = incomplet.",
+      entrees: [
+        { mot: "partial", sens: "qui prend parti, non impartial", exemple: "Un juge partial." },
+        { mot: "partiel", sens: "qui ne concerne qu'une partie", exemple: "Un remboursement partiel." },
+      ],
+    },
+    {
+      id: "nu-continu-continuel",
+      titre: "Continu · Continuel",
+      cle: "Continu = sans interruption ; continuel = qui se répète très souvent.",
+      entrees: [
+        { mot: "continu", sens: "ininterrompu dans le temps", exemple: "Un courant continu." },
+        { mot: "continuel", sens: "qui revient sans cesse (avec des reprises)", exemple: "Des interruptions continuelles." },
+      ],
+    },
+    {
+      id: "nu-venimeux-veneneux",
+      titre: "Venimeux · Vénéneux",
+      cle: "Venimeux = qui a du venin (animal) ; vénéneux = qui contient du poison (végétal).",
+      entrees: [
+        { mot: "venimeux", sens: "qui inocule un venin", exemple: "Un serpent venimeux." },
+        { mot: "vénéneux", sens: "toxique quand on l'ingère", exemple: "Un champignon vénéneux." },
+      ],
+    },
+    {
+      id: "nu-perpetrer-perpetuer",
+      titre: "Perpétrer · Perpétuer",
+      cle: "Perpétrer = commettre (un crime) ; perpétuer = faire durer.",
+      entrees: [
+        { mot: "perpétrer", sens: "accomplir un acte (généralement répréhensible)", exemple: "Perpétrer un attentat." },
+        { mot: "perpétuer", sens: "faire durer, transmettre", exemple: "Perpétuer une tradition." },
+      ],
+    },
+    {
+      id: "nu-recouvrer-recouvrir",
+      titre: "Recouvrer · Recouvrir",
+      cle: "Recouvrer = retrouver/récupérer ; recouvrir = couvrir de nouveau.",
+      entrees: [
+        { mot: "recouvrer", sens: "rentrer en possession de, retrouver", exemple: "Recouvrer la vue, recouvrer une dette." },
+        { mot: "recouvrir", sens: "couvrir entièrement", exemple: "La neige recouvre les toits." },
+      ],
+    },
+  ];
+})();
+
+
+/* ===== data/grammaire.js ===== */
+/* =====================================================================
+   Le Mot Juste — Notions de grammaire
+   Schéma : { id, titre, resume, explication, exemples, astuce }
+   ===================================================================== */
+(function () {
+  "use strict";
+  const G = typeof window !== "undefined" ? window : globalThis;
+  const LMJ = (G.LMJ = G.LMJ || {});
+  LMJ.data = LMJ.data || {};
+
+  LMJ.data.grammaire = [
+    {
+      id: "gr-nature-fonction",
+      titre: "Nature et fonction d'un mot",
+      resume: "La nature, c'est ce qu'est le mot ; la fonction, c'est le rôle qu'il joue.",
+      explication:
+        "<p>La <strong>nature</strong> (ou classe grammaticale) est fixe : nom, verbe, adjectif, adverbe, préposition… On la trouve dans le dictionnaire.</p><p>La <strong>fonction</strong> dépend de la phrase : sujet, COD, épithète, complément circonstanciel… Un même mot peut changer de fonction.</p>",
+      exemples: [
+        { ok: true, texte: "« rouge » est de nature adjectif ; sa fonction peut être épithète (un mur rouge) ou attribut (le mur est rouge)." },
+      ],
+      astuce: "Nature = carte d'identité du mot ; fonction = son métier dans la phrase.",
+    },
+    {
+      id: "gr-sujet",
+      titre: "Le sujet",
+      resume: "Il commande l'accord du verbe ; on le trouve avec « qui est-ce qui ? ».",
+      explication:
+        "<p>Le sujet indique de qui ou de quoi l'on parle ; il donne au verbe sa personne et son nombre. On le repère en posant « <strong>qui est-ce qui</strong> + verbe ? » (ou « qu'est-ce qui ? »).</p>",
+      exemples: [
+        { ok: true, texte: "« Les oiseaux chantent. » Qui est-ce qui chante ? → les oiseaux (sujet)." },
+        { ok: true, texte: "Le sujet peut être inversé : « Que dit le professeur ? »" },
+      ],
+      astuce: "Le sujet n'est pas toujours en tête de phrase : cherchez toujours par la question.",
+    },
+    {
+      id: "gr-cod-coi",
+      titre: "COD, COI et COS",
+      resume: "Compléments d'objet : direct (sans préposition), indirect (avec préposition).",
+      explication:
+        "<p>Le <strong>COD</strong> répond à « qui ? / quoi ? » après le verbe, sans préposition.</p><p>Le <strong>COI</strong> répond à « à qui ? / de quoi ? » : il est introduit par une préposition.</p><p>Le <strong>COS</strong> (second) est un deuxième complément, souvent le destinataire.</p>",
+      exemples: [
+        { ok: true, texte: "Je mange une pomme. (une pomme = COD)" },
+        { ok: true, texte: "Je parle à Marie. (à Marie = COI)" },
+        { ok: true, texte: "Je donne un livre à Paul. (un livre = COD, à Paul = COS)" },
+      ],
+      astuce: "Direct = collé au verbe ; indirect = relié par « à » ou « de ».",
+    },
+    {
+      id: "gr-cc",
+      titre: "Les compléments circonstanciels",
+      resume: "Ils précisent les circonstances : temps, lieu, manière, cause…",
+      explication:
+        "<p>Les <strong>compléments circonstanciels</strong> (CC) indiquent le temps, le lieu, la manière, la cause, le but, le moyen… Ils sont généralement <strong>déplaçables</strong> et <strong>supprimables</strong>, contrairement au COD.</p>",
+      exemples: [
+        { ok: true, texte: "Hier (CC temps), il a travaillé dans le jardin (CC lieu)." },
+        { ok: true, texte: "Il parle avec calme (CC manière)." },
+      ],
+      astuce: "Si vous pouvez déplacer ou supprimer le groupe, c'est un complément circonstanciel.",
+    },
+    {
+      id: "gr-epithete-attribut",
+      titre: "Épithète ou attribut du sujet ?",
+      resume: "L'épithète touche le nom ; l'attribut passe par un verbe d'état.",
+      explication:
+        "<p>L'adjectif <strong>épithète</strong> est directement lié au nom. L'adjectif <strong>attribut du sujet</strong> est relié au sujet par un <strong>verbe d'état</strong> (être, paraître, sembler, devenir, rester…).</p>",
+      exemples: [
+        { ok: true, texte: "Une voiture rapide. (épithète)" },
+        { ok: true, texte: "Cette voiture est rapide. (attribut, via « est »)" },
+      ],
+      astuce: "Y a-t-il un verbe d'état ? Alors l'adjectif est attribut.",
+    },
+    {
+      id: "gr-propositions",
+      titre: "Les propositions dans la phrase",
+      resume: "Autant de propositions que de verbes conjugués.",
+      explication:
+        "<p>Une <strong>proposition</strong> s'organise autour d'un verbe conjugué. On distingue : l'<strong>indépendante</strong> (seule), la <strong>principale</strong> (dont dépend une autre) et la <strong>subordonnée</strong> (qui dépend d'une autre).</p>",
+      exemples: [
+        { ok: true, texte: "« Il dort. » → une indépendante." },
+        { ok: true, texte: "« Je pense [principale] qu'il dort [subordonnée]. »" },
+      ],
+      astuce: "Comptez les verbes conjugués : c'est le nombre de propositions.",
+    },
+    {
+      id: "gr-relative",
+      titre: "La proposition subordonnée relative",
+      resume: "Introduite par un pronom relatif (qui, que, dont, où…), elle complète un nom.",
+      explication:
+        "<p>La <strong>subordonnée relative</strong> précise un nom (l'<strong>antécédent</strong>) et commence par un <strong>pronom relatif</strong> : qui, que, quoi, dont, où, lequel…</p>",
+      exemples: [
+        { ok: true, texte: "Le livre [que je lis] est passionnant. (antécédent : livre)" },
+        { ok: true, texte: "La ville [où je suis né]." },
+      ],
+      astuce: "« qui » = sujet ; « que » = COD ; « dont » = complément avec « de ».",
+    },
+    {
+      id: "gr-voix-passive",
+      titre: "Voix active et voix passive",
+      resume: "Au passif, le COD devient sujet et le sujet devient complément d'agent.",
+      explication:
+        "<p>À la <strong>voix active</strong>, le sujet fait l'action. À la <strong>voix passive</strong>, le sujet la subit ; l'auteur de l'action devient le <strong>complément d'agent</strong> (introduit par « par »).</p>",
+      exemples: [
+        { ok: true, texte: "Actif : Le chat mange la souris." },
+        { ok: true, texte: "Passif : La souris est mangée par le chat." },
+      ],
+      astuce: "Seuls les verbes ayant un COD peuvent se mettre au passif.",
+    },
+    {
+      id: "gr-determinants",
+      titre: "Les déterminants",
+      resume: "Ils précèdent le nom et s'accordent avec lui.",
+      explication:
+        "<p>Le <strong>déterminant</strong> introduit le nom : articles (le, un, du), possessifs (mon, ta), démonstratifs (ce, cette), indéfinis (chaque, plusieurs), numéraux (deux, trois)…</p>",
+      exemples: [
+        { ok: true, texte: "le, la, les, un, des (articles)" },
+        { ok: true, texte: "mon, ton, son, notre (possessifs) ; ce, cet, cette (démonstratifs)" },
+      ],
+      astuce: "Un nom commun est presque toujours accompagné d'un déterminant.",
+    },
+  ];
+})();
+
+
+/* ===== data/mots.js ===== */
+/* =====================================================================
+   Le Mot Juste — Corpus de vocabulaire rare & soutenu
+   Mots choisis pour enrichir l'éloquence (rien de « lambda »).
+   Schéma :
+     { mot, nature, registre, domaine?, definition, etymologie?,
+       exemples:[…], synonymes:[…], antonymes?:[…] }
+   ===================================================================== */
+(function () {
+  "use strict";
+  const G = typeof window !== "undefined" ? window : globalThis;
+  const LMJ = (G.LMJ = G.LMJ || {});
+  LMJ.data = LMJ.data || {};
+
+  LMJ.data.mots = [
+    { mot: "abscons", nature: "adjectif", registre: "littéraire", definition: "Difficile à comprendre, obscur, hermétique.", etymologie: "du latin absconsus, « caché ».", exemples: ["Un raisonnement abscons qui décourage le lecteur.", "Son style abscons masquait la pauvreté de la pensée."], synonymes: ["obscur", "hermétique", "abstrus"], antonymes: ["limpide", "clair"] },
+    { mot: "acariâtre", nature: "adjectif", registre: "courant soutenu", definition: "D'un caractère désagréable, hargneux, revêche.", exemples: ["Une vieille voisine acariâtre.", "Il devint acariâtre avec l'âge."], synonymes: ["revêche", "hargneux", "grincheux"], antonymes: ["affable", "avenant"] },
+    { mot: "acrimonie", nature: "nom féminin", registre: "soutenu", definition: "Aigreur, mauvaise humeur qui se manifeste dans les propos.", etymologie: "du latin acrimonia, « âpreté ».", exemples: ["Répondre sans acrimonie.", "L'acrimonie de ses reproches surprit l'assemblée."], synonymes: ["aigreur", "âpreté", "hargne"], antonymes: ["aménité", "douceur"] },
+    { mot: "affable", nature: "adjectif", registre: "soutenu", definition: "D'une politesse accueillante et bienveillante.", etymologie: "du latin affabilis, « à qui l'on peut parler ».", exemples: ["Un hôte affable et souriant.", "Il se montra affable envers les nouveaux venus."], synonymes: ["avenant", "aimable", "courtois"], antonymes: ["revêche", "bourru"] },
+    { mot: "amphigourique", nature: "adjectif", registre: "littéraire", definition: "Embrouillé et incompréhensible, d'un galimatias prétentieux.", exemples: ["Un discours amphigourique dont nul ne saisit le sens."], synonymes: ["confus", "abscons", "entortillé"], antonymes: ["clair", "intelligible"] },
+    { mot: "atermoiement", nature: "nom masculin", registre: "soutenu", definition: "Fait de remettre à plus tard, tergiversation.", etymologie: "de atermoyer, « remettre à un autre terme ».", exemples: ["Après bien des atermoiements, il se décida.", "Les atermoiements du gouvernement irritaient l'opinion."], synonymes: ["tergiversation", "hésitation", "délai"], antonymes: ["décision", "promptitude"] },
+    { mot: "badin", nature: "adjectif", registre: "littéraire", definition: "Qui plaisante avec légèreté et enjouement.", exemples: ["Un ton badin qui détendit l'atmosphère.", "Une conversation badine."], synonymes: ["enjoué", "léger", "folâtre"], antonymes: ["grave", "sérieux"] },
+    { mot: "cauteleux", nature: "adjectif", registre: "littéraire", definition: "Rusé et hypocrite sous des dehors prudents.", etymologie: "du latin cautela, « précaution ».", exemples: ["Un personnage cauteleux, tout en flatteries."], synonymes: ["sournois", "hypocrite", "matois"], antonymes: ["franc", "droit"] },
+    { mot: "chafouin", nature: "adjectif", registre: "littéraire", definition: "À l'air rusé, sournois et déplaisant.", exemples: ["Une mine chafouine.", "Un sourire chafouin trahissait ses intentions."], synonymes: ["sournois", "rusé", "matois"], antonymes: ["franc", "avenant"] },
+    { mot: "circonspect", nature: "adjectif", registre: "soutenu", definition: "Qui agit avec prudence, attentif aux conséquences.", etymologie: "du latin circumspectus, « qui regarde autour ».", exemples: ["Un diplomate circonspect.", "Rester circonspect avant de s'engager."], synonymes: ["prudent", "avisé", "réservé"], antonymes: ["imprudent", "téméraire"] },
+    { mot: "concupiscence", nature: "nom féminin", registre: "littéraire", definition: "Vif penchant pour les plaisirs des sens.", etymologie: "du latin concupiscere, « désirer ardemment ».", exemples: ["Un regard chargé de concupiscence."], synonymes: ["convoitise", "sensualité", "appétit"], antonymes: ["chasteté", "tempérance"] },
+    { mot: "contrition", nature: "nom féminin", registre: "soutenu", definition: "Regret sincère et profond d'une faute commise.", etymologie: "du latin contritio, « broiement ».", exemples: ["Il exprima sa contrition avec sincérité."], synonymes: ["repentir", "remords", "componction"], antonymes: ["impénitence"] },
+    { mot: "cynégétique", nature: "adjectif", registre: "technique", domaine: "chasse", definition: "Qui concerne la chasse.", etymologie: "du grec kunêgetikos, « relatif à la chasse ».", exemples: ["L'art cynégétique de la vénerie.", "Une revue cynégétique."], synonymes: ["venatique"], antonymes: [] },
+    { mot: "délétère", nature: "adjectif", registre: "soutenu", definition: "Nuisible, néfaste ; qui corrompt (atmosphère, influence).", etymologie: "du grec dêlêtêrios, « nuisible ».", exemples: ["Un climat délétère régnait dans l'équipe.", "Des gaz délétères."], synonymes: ["nocif", "nuisible", "pernicieux"], antonymes: ["salutaire", "bénéfique"] },
+    { mot: "déliquescence", nature: "nom féminin", registre: "littéraire", definition: "Décadence, dégradation progressive ; perte de force et de cohésion.", exemples: ["La déliquescence d'un empire.", "Une institution en pleine déliquescence."], synonymes: ["décadence", "délabrement", "décrépitude"], antonymes: ["essor", "apogée"] },
+    { mot: "désuet", nature: "adjectif", registre: "soutenu", definition: "Qui n'est plus en usage, tombé en désuétude ; suranné.", etymologie: "du latin desuetus, « déshabitué ».", exemples: ["Un charme désuet.", "Des usages désuets."], synonymes: ["suranné", "démodé", "obsolète"], antonymes: ["moderne", "actuel"] },
+    { mot: "diaphane", nature: "adjectif", registre: "littéraire", definition: "Qui laisse passer la lumière sans être transparent ; d'une pâleur délicate.", etymologie: "du grec diaphanês, « qui paraît à travers ».", exemples: ["Une porcelaine diaphane.", "Un teint diaphane."], synonymes: ["translucide", "transparent"], antonymes: ["opaque"] },
+    { mot: "dithyrambique", nature: "adjectif", registre: "soutenu", definition: "D'un éloge très enthousiaste, voire excessif.", etymologie: "du grec dithurambos, chant en l'honneur de Dionysos.", exemples: ["Une critique dithyrambique.", "Des louanges dithyrambiques."], synonymes: ["élogieux", "louangeur", "laudatif"], antonymes: ["critique", "acerbe"] },
+    { mot: "édulcorer", nature: "verbe", registre: "soutenu", definition: "Adoucir, atténuer (des propos, une réalité) pour la rendre plus acceptable.", etymologie: "du latin dulcor, « douceur ».", exemples: ["Édulcorer la vérité.", "Un rapport édulcoré."], synonymes: ["atténuer", "adoucir", "tempérer"], antonymes: ["aggraver", "durcir"] },
+    { mot: "emphase", nature: "nom féminin", registre: "soutenu", definition: "Exagération pompeuse dans le ton ou l'expression.", etymologie: "du grec emphasis, « apparence ».", exemples: ["Parler avec emphase.", "Une emphase déclamatoire."], synonymes: ["grandiloquence", "pompe", "enflure"], antonymes: ["sobriété", "simplicité"] },
+    { mot: "épithète", nature: "nom féminin", registre: "technique", domaine: "grammaire", definition: "Adjectif qualifiant directement un nom ; qualificatif attribué à quelqu'un.", exemples: ["Une épithète homérique.", "Il le gratifia d'une épithète peu flatteuse."], synonymes: ["qualificatif"], antonymes: [] },
+    { mot: "éthéré", nature: "adjectif", registre: "littéraire", definition: "D'une légèreté et d'une pureté quasi immatérielles ; sublime.", etymologie: "du grec aithêr, « air supérieur ».", exemples: ["Une beauté éthérée.", "Des accents éthérés."], synonymes: ["aérien", "immatériel", "sublime"], antonymes: ["matériel", "grossier"] },
+    { mot: "fallacieux", nature: "adjectif", registre: "soutenu", definition: "Trompeur, destiné à induire en erreur.", etymologie: "du latin fallacia, « tromperie ».", exemples: ["Un argument fallacieux.", "Des promesses fallacieuses."], synonymes: ["trompeur", "spécieux", "mensonger"], antonymes: ["sincère", "véridique"] },
+    { mot: "fatuité", nature: "nom féminin", registre: "littéraire", definition: "Satisfaction de soi sotte et prétentieuse.", etymologie: "du latin fatuus, « sot ».", exemples: ["La fatuité de ses discours.", "Il étalait sa réussite avec fatuité."], synonymes: ["suffisance", "vanité", "présomption"], antonymes: ["modestie", "humilité"] },
+    { mot: "fébrile", nature: "adjectif", registre: "courant soutenu", definition: "Agité d'une excitation nerveuse et impatiente.", etymologie: "du latin febris, « fièvre ».", exemples: ["Une attente fébrile.", "Des mains fébriles."], synonymes: ["nerveux", "agité", "impatient"], antonymes: ["serein", "placide"] },
+    { mot: "flegme", nature: "nom masculin", registre: "soutenu", definition: "Sang-froid imperturbable, maîtrise de soi.", etymologie: "du grec phlegma, une des humeurs.", exemples: ["Garder son flegme en toute circonstance.", "Un flegme tout britannique."], synonymes: ["sang-froid", "impassibilité", "placidité"], antonymes: ["fougue", "emportement"] },
+    { mot: "fortuit", nature: "adjectif", registre: "soutenu", definition: "Qui arrive par hasard, imprévu.", etymologie: "du latin fortuitus, « dû au hasard ».", exemples: ["Une rencontre fortuite.", "Un événement fortuit."], synonymes: ["accidentel", "inopiné", "casuel"], antonymes: ["prémédité", "prévu"] },
+    { mot: "fustiger", nature: "verbe", registre: "soutenu", definition: "Critiquer, blâmer avec véhémence.", etymologie: "du latin fustigare, « battre à coups de bâton ».", exemples: ["Fustiger les abus.", "L'orateur fustigea l'hypocrisie ambiante."], synonymes: ["blâmer", "vilipender", "stigmatiser"], antonymes: ["louer", "encenser"] },
+    { mot: "gabegie", nature: "nom féminin", registre: "soutenu", definition: "Désordre, gaspillage résultant d'une mauvaise gestion.", exemples: ["Dénoncer la gabegie des fonds publics."], synonymes: ["gaspillage", "gâchis", "désordre"], antonymes: ["gestion", "économie"] },
+    { mot: "hagard", nature: "adjectif", registre: "littéraire", definition: "Qui a l'air égaré, bouleversé (regard, visage).", exemples: ["Un regard hagard.", "Elle errait, hagarde, dans les couloirs."], synonymes: ["égaré", "effaré", "halluciné"], antonymes: ["serein", "posé"] },
+    { mot: "idoine", nature: "adjectif", registre: "littéraire", definition: "Parfaitement approprié à un usage, adéquat.", etymologie: "du latin idoneus, « propre à ».", exemples: ["Trouver le mot idoine.", "La personne idoine pour ce poste."], synonymes: ["approprié", "adéquat", "convenable"], antonymes: ["inadéquat", "impropre"] },
+    { mot: "impavide", nature: "adjectif", registre: "littéraire", definition: "Qui ne se laisse gagner par aucune peur ; imperturbable.", etymologie: "du latin impavidus, « sans peur ».", exemples: ["Impavide devant le danger."], synonymes: ["intrépide", "imperturbable", "impassible"], antonymes: ["craintif", "apeuré"] },
+    { mot: "incurie", nature: "nom féminin", registre: "soutenu", definition: "Manque total de soin, négligence grave.", etymologie: "du latin incuria, « absence de soin ».", exemples: ["L'incurie des autorités aggrava la crise."], synonymes: ["négligence", "laisser-aller", "impéritie"], antonymes: ["soin", "diligence"] },
+    { mot: "ineffable", nature: "adjectif", registre: "littéraire", definition: "Qui ne peut être exprimé par des mots, tant il est grand.", etymologie: "du latin ineffabilis, « qui ne peut être dit ».", exemples: ["Une joie ineffable.", "Un bonheur ineffable l'envahit."], synonymes: ["indicible", "inexprimable", "indescriptible"], antonymes: ["banal", "ordinaire"] },
+    { mot: "inénarrable", nature: "adjectif", registre: "soutenu", definition: "Si extraordinaire (souvent comique) qu'on ne peut le raconter.", exemples: ["Une soirée inénarrable.", "Ses mésaventures inénarrables."], synonymes: ["incroyable", "cocasse", "impayable"], antonymes: ["banal"] },
+    { mot: "insidieux", nature: "adjectif", registre: "soutenu", definition: "Qui progresse de façon sournoise et trompeuse.", etymologie: "du latin insidiae, « embûche ».", exemples: ["Un mal insidieux.", "Une question insidieuse."], synonymes: ["sournois", "pernicieux", "perfide"], antonymes: ["franc", "manifeste"] },
+    { mot: "intangible", nature: "adjectif", registre: "soutenu", definition: "À quoi l'on ne doit pas toucher ; inviolable, sacré.", exemples: ["Un principe intangible.", "Des droits intangibles."], synonymes: ["inviolable", "sacré", "immuable"], antonymes: ["modifiable", "révocable"] },
+    { mot: "irascible", nature: "adjectif", registre: "soutenu", definition: "Qui se met facilement en colère.", etymologie: "du latin irasci, « se mettre en colère ».", exemples: ["Un tempérament irascible."], synonymes: ["coléreux", "irritable", "emporté"], antonymes: ["placide", "patient"] },
+    { mot: "jubilatoire", nature: "adjectif", registre: "soutenu", definition: "Qui provoque une joie intense et réjouissante.", exemples: ["Une satire jubilatoire.", "Un spectacle jubilatoire."], synonymes: ["réjouissant", "exultant"], antonymes: ["morose", "affligeant"] },
+    { mot: "laconique", nature: "adjectif", registre: "soutenu", definition: "Qui s'exprime en peu de mots, concis jusqu'à la sécheresse.", etymologie: "de Laconie, région de Sparte réputée pour sa concision.", exemples: ["Une réponse laconique.", "Il resta laconique sur ses projets."], synonymes: ["concis", "bref", "succinct"], antonymes: ["prolixe", "verbeux"] },
+    { mot: "lénifiant", nature: "adjectif", registre: "littéraire", definition: "Qui apaise, adoucit (parfois de façon trompeuse).", etymologie: "du latin lenis, « doux ».", exemples: ["Des propos lénifiants.", "Un discours lénifiant destiné à rassurer."], synonymes: ["apaisant", "calmant", "rassurant"], antonymes: ["irritant", "alarmant"] },
+    { mot: "limpide", nature: "adjectif", registre: "courant soutenu", definition: "D'une clarté parfaite ; aisément compréhensible.", etymologie: "du latin limpidus, « clair ».", exemples: ["Une eau limpide.", "Une démonstration limpide."], synonymes: ["clair", "transparent", "lumineux"], antonymes: ["trouble", "abscons"] },
+    { mot: "loquace", nature: "adjectif", registre: "soutenu", definition: "Qui parle beaucoup, volontiers.", etymologie: "du latin loquax, « bavard ».", exemples: ["Peu loquace ce matin.", "Un guide loquace."], synonymes: ["bavard", "volubile", "prolixe"], antonymes: ["taciturne", "silencieux"] },
+    { mot: "lugubre", nature: "adjectif", registre: "courant soutenu", definition: "Qui inspire une tristesse funèbre.", etymologie: "du latin lugubris, « de deuil ».", exemples: ["Une atmosphère lugubre.", "Un chant lugubre."], synonymes: ["sinistre", "funèbre", "sépulcral"], antonymes: ["gai", "riant"] },
+    { mot: "magnanime", nature: "adjectif", registre: "soutenu", definition: "Dont la grandeur d'âme porte à pardonner et à agir avec générosité.", etymologie: "du latin magnanimus, « grand d'âme ».", exemples: ["Un vainqueur magnanime.", "Se montrer magnanime envers ses adversaires."], synonymes: ["généreux", "clément", "noble"], antonymes: ["mesquin", "rancunier"] },
+    { mot: "mansuétude", nature: "nom féminin", registre: "littéraire", definition: "Douceur bienveillante, disposition à pardonner.", etymologie: "du latin mansuetudo, « douceur ».", exemples: ["Juger avec mansuétude.", "Il traita l'erreur avec mansuétude."], synonymes: ["indulgence", "clémence", "bienveillance"], antonymes: ["sévérité", "rigueur"] },
+    { mot: "matois", nature: "adjectif", registre: "littéraire", definition: "Rusé sous un air bonhomme.", exemples: ["Un paysan matois.", "Un sourire matois."], synonymes: ["rusé", "finaud", "madré"], antonymes: ["naïf", "candide"] },
+    { mot: "mièvre", nature: "adjectif", registre: "soutenu", definition: "D'une gentillesse ou d'une grâce fades et affectées.", exemples: ["Une chanson mièvre.", "Un romantisme mièvre."], synonymes: ["fade", "édulcoré", "gnangnan"], antonymes: ["vigoureux", "énergique"] },
+    { mot: "misanthrope", nature: "nom / adjectif", registre: "soutenu", definition: "Qui déteste le genre humain et fuit la société.", etymologie: "du grec misanthrôpos, « qui hait les hommes ».", exemples: ["Vieillir en misanthrope.", "Un caractère misanthrope."], synonymes: ["insociable", "ours", "sauvage"], antonymes: ["philanthrope", "sociable"] },
+    { mot: "morigéner", nature: "verbe", registre: "littéraire", definition: "Réprimander, sermonner avec autorité.", etymologie: "du latin mores, « mœurs ».", exemples: ["Morigéner un enfant turbulent."], synonymes: ["réprimander", "sermonner", "gronder"], antonymes: ["féliciter", "complimenter"] },
+    { mot: "nébuleux", nature: "adjectif", registre: "soutenu", definition: "Vague, confus, difficile à saisir.", etymologie: "du latin nebula, « nuage ».", exemples: ["Un projet nébuleux.", "Des explications nébuleuses."], synonymes: ["flou", "vague", "confus"], antonymes: ["net", "précis"] },
+    { mot: "obséquieux", nature: "adjectif", registre: "soutenu", definition: "D'une politesse excessive et servile.", etymologie: "du latin obsequium, « complaisance ».", exemples: ["Un serviteur obséquieux.", "Des courbettes obséquieuses."], synonymes: ["servile", "flagorneur", "complaisant"], antonymes: ["digne", "hautain"] },
+    { mot: "obérer", nature: "verbe", registre: "soutenu", definition: "Grever de dettes ; compromettre lourdement (les finances, l'avenir).", etymologie: "du latin obaerare, « endetter ».", exemples: ["Ces dépenses obèrent le budget.", "Une dette qui obère l'avenir."], synonymes: ["grever", "accabler", "compromettre"], antonymes: ["alléger", "assainir"] },
+    { mot: "ostracisme", nature: "nom masculin", registre: "soutenu", definition: "Mise à l'écart d'une personne par un groupe.", etymologie: "du grec ostrakon, « tesson » servant au vote d'exil.", exemples: ["Être victime d'ostracisme.", "L'ostracisme de la profession."], synonymes: ["exclusion", "bannissement", "mise au ban"], antonymes: ["accueil", "intégration"] },
+    { mot: "palinodie", nature: "nom féminin", registre: "littéraire", definition: "Changement complet d'opinion, revirement (souvent au pluriel).", etymologie: "du grec palinôidia, « chant répété ».", exemples: ["Les palinodies d'un homme politique."], synonymes: ["revirement", "volte-face", "reniement"], antonymes: ["constance", "fermeté"] },
+    { mot: "parangon", nature: "nom masculin", registre: "littéraire", definition: "Modèle parfait, type accompli d'une qualité.", etymologie: "de l'italien paragone, « pierre de touche ».", exemples: ["Un parangon de vertu.", "Le parangon du bon goût."], synonymes: ["modèle", "archétype", "idéal"], antonymes: ["contre-exemple"] },
+    { mot: "pérorer", nature: "verbe", registre: "soutenu", definition: "Discourir avec emphase et prétention.", etymologie: "du latin perorare, « conclure un discours ».", exemples: ["Il pérore devant un auditoire conquis."], synonymes: ["pontifier", "disserter", "discourir"], antonymes: ["se taire"] },
+    { mot: "pléthore", nature: "nom féminin", registre: "soutenu", definition: "Surabondance, excès de quantité.", etymologie: "du grec plêthôrê, « plénitude ».", exemples: ["Une pléthore de candidats.", "La pléthore d'informations noie l'essentiel."], synonymes: ["surabondance", "profusion", "excès"], antonymes: ["pénurie", "rareté"] },
+    { mot: "poltron", nature: "adjectif / nom", registre: "littéraire", definition: "Qui manque de courage, peureux.", etymologie: "de l'italien poltrone, « paresseux, lâche ».", exemples: ["Un poltron qui fuit le danger."], synonymes: ["couard", "pusillanime", "peureux"], antonymes: ["courageux", "brave"] },
+    { mot: "probité", nature: "nom féminin", registre: "soutenu", definition: "Honnêteté scrupuleuse dans la conduite.", etymologie: "du latin probitas, « honnêteté ».", exemples: ["Une probité irréprochable.", "Agir avec probité."], synonymes: ["intégrité", "honnêteté", "droiture"], antonymes: ["malhonnêteté", "corruption"] },
+    { mot: "prolixe", nature: "adjectif", registre: "soutenu", definition: "Qui s'exprime avec trop d'abondance ; trop long.", etymologie: "du latin prolixus, « étendu ».", exemples: ["Un auteur prolixe.", "Des explications prolixes."], synonymes: ["verbeux", "bavard", "diffus"], antonymes: ["concis", "laconique"] },
+    { mot: "protéiforme", nature: "adjectif", registre: "soutenu", definition: "Qui change sans cesse de forme, aux aspects multiples.", etymologie: "de Protée, dieu grec capable de se métamorphoser.", exemples: ["Un talent protéiforme.", "Une menace protéiforme."], synonymes: ["polymorphe", "changeant", "multiforme"], antonymes: ["uniforme", "figé"] },
+    { mot: "pusillanime", nature: "adjectif", registre: "littéraire", definition: "Qui manque de courage et de hardiesse ; craintif.", etymologie: "du latin pusillanimis, « qui a l'âme petite ».", exemples: ["Une attitude pusillanime.", "Trop pusillanime pour trancher."], synonymes: ["timoré", "craintif", "lâche"], antonymes: ["hardi", "audacieux"] },
+    { mot: "quintessence", nature: "nom féminin", registre: "littéraire", definition: "Ce qu'il y a de plus pur et de plus raffiné dans une chose.", etymologie: "du latin quinta essentia, « cinquième essence ».", exemples: ["La quintessence de l'art classique."], synonymes: ["essence", "substance", "fine fleur"], antonymes: ["scorie", "rebut"] },
+    { mot: "rébarbatif", nature: "adjectif", registre: "soutenu", definition: "Rebutant, peu engageant, ennuyeux.", exemples: ["Un texte rébarbatif.", "Un accueil rébarbatif."], synonymes: ["rebutant", "ingrat", "revêche"], antonymes: ["attrayant", "engageant"] },
+    { mot: "récalcitrant", nature: "adjectif", registre: "courant soutenu", definition: "Qui résiste avec obstination.", etymologie: "du latin recalcitrare, « ruer, regimber ».", exemples: ["Un élève récalcitrant.", "Une serrure récalcitrante."], synonymes: ["rétif", "réfractaire", "indocile"], antonymes: ["docile", "obéissant"] },
+    { mot: "sagace", nature: "adjectif", registre: "soutenu", definition: "Doué d'une perspicacité vive, capable de deviner.", etymologie: "du latin sagax, « qui a l'odorat fin ».", exemples: ["Un esprit sagace.", "Une remarque sagace."], synonymes: ["perspicace", "pénétrant", "avisé"], antonymes: ["obtus", "borné"] },
+    { mot: "sardonique", nature: "adjectif", registre: "littéraire", definition: "D'une ironie amère et méprisante (rire, sourire).", etymologie: "du grec sardonios, rire causé par une herbe de Sardaigne.", exemples: ["Un rire sardonique.", "Un commentaire sardonique."], synonymes: ["sarcastique", "caustique", "railleur"], antonymes: ["bienveillant"] },
+    { mot: "saugrenu", nature: "adjectif", registre: "soutenu", definition: "Absurde et inattendu, d'une bizarrerie ridicule.", exemples: ["Une idée saugrenue.", "Une question saugrenue."], synonymes: ["absurde", "farfelu", "extravagant"], antonymes: ["sensé", "raisonnable"] },
+    { mot: "sempiternel", nature: "adjectif", registre: "soutenu", definition: "Qui revient sans cesse, au point de lasser.", etymologie: "du latin sempiternus, « éternel ».", exemples: ["Ses sempiternelles récriminations."], synonymes: ["perpétuel", "continuel", "éternel"], antonymes: ["éphémère", "occasionnel"] },
+    { mot: "spécieux", nature: "adjectif", registre: "littéraire", definition: "Qui n'a que l'apparence de la vérité ; trompeur.", etymologie: "du latin speciosus, « qui a bel aspect ».", exemples: ["Un argument spécieux.", "Un raisonnement spécieux."], synonymes: ["trompeur", "fallacieux", "captieux"], antonymes: ["fondé", "solide"] },
+    { mot: "stoïque", nature: "adjectif", registre: "soutenu", definition: "Qui supporte la douleur ou l'adversité avec un courage impassible.", etymologie: "de l'école philosophique des stoïciens.", exemples: ["Rester stoïque sous les critiques."], synonymes: ["impassible", "imperturbable", "ferme"], antonymes: ["pusillanime", "geignard"] },
+    { mot: "subreptice", nature: "adjectif", registre: "littéraire", definition: "Qui se fait de façon furtive et discrète, à l'insu d'autrui.", etymologie: "du latin subreptus, « dérobé ».", exemples: ["Un regard subreptice.", "Une manœuvre subreptice."], synonymes: ["furtif", "clandestin", "sournois"], antonymes: ["ostensible", "manifeste"] },
+    { mot: "succinct", nature: "adjectif", registre: "soutenu", definition: "Dit ou écrit en peu de mots ; bref.", etymologie: "du latin succinctus, « ramassé ».", exemples: ["Un exposé succinct.", "Soyez succinct."], synonymes: ["bref", "concis", "sommaire"], antonymes: ["détaillé", "prolixe"] },
+    { mot: "taciturne", nature: "adjectif", registre: "soutenu", definition: "Qui parle peu, d'humeur silencieuse.", etymologie: "du latin taciturnus, « silencieux ».", exemples: ["Un homme taciturne.", "Il devint taciturne après l'épreuve."], synonymes: ["silencieux", "renfermé", "réservé"], antonymes: ["loquace", "expansif"] },
+    { mot: "thuriféraire", nature: "nom masculin", registre: "littéraire", definition: "Flatteur, admirateur servile (à l'origine, porteur d'encensoir).", etymologie: "du latin thus, « encens ».", exemples: ["Entouré de ses thuriféraires."], synonymes: ["flagorneur", "courtisan", "louangeur"], antonymes: ["détracteur", "contempteur"] },
+    { mot: "truculent", nature: "adjectif", registre: "soutenu", definition: "Haut en couleur, pittoresque et savoureux (personnage, langage).", etymologie: "du latin truculentus, « farouche ».", exemples: ["Un personnage truculent.", "Un récit truculent."], synonymes: ["savoureux", "pittoresque", "haut en couleur"], antonymes: ["terne", "fade"] },
+    { mot: "vélléité", nature: "nom féminin", registre: "littéraire", definition: "Intention faible, non suivie d'effet ; désir sans volonté d'agir.", etymologie: "du latin velle, « vouloir ».", exemples: ["Des velléités de réforme.", "Il n'a que des velléités."], synonymes: ["intention", "ébauche", "esquisse"], antonymes: ["détermination", "résolution"] },
+    { mot: "véhément", nature: "adjectif", registre: "soutenu", definition: "Qui s'exprime avec une force passionnée et emportée.", etymologie: "du latin vehemens, « impétueux ».", exemples: ["Un plaidoyer véhément.", "Une protestation véhémente."], synonymes: ["fougueux", "impétueux", "ardent"], antonymes: ["mesuré", "posé"] },
+    { mot: "vénal", nature: "adjectif", registre: "soutenu", definition: "Qui se laisse acheter, corruptible ; qui n'agit que pour l'argent.", etymologie: "du latin venalis, « à vendre ».", exemples: ["Un juge vénal.", "Un amour vénal."], synonymes: ["corruptible", "intéressé", "mercenaire"], antonymes: ["intègre", "désintéressé"] },
+    { mot: "vilipender", nature: "verbe", registre: "littéraire", definition: "Traiter avec mépris, dénigrer publiquement.", etymologie: "du latin vilis pendere, « estimer de peu de valeur ».", exemples: ["Vilipender ses adversaires."], synonymes: ["dénigrer", "honnir", "fustiger"], antonymes: ["louer", "encenser"] },
+    { mot: "volubile", nature: "adjectif", registre: "soutenu", definition: "Qui parle avec abondance et rapidité.", etymologie: "du latin volubilis, « qui roule ».", exemples: ["Un orateur volubile.", "Volubile et enjoué."], synonymes: ["loquace", "bavard", "disert"], antonymes: ["taciturne", "avare de mots"] },
+    { mot: "abscisse", nature: "nom féminin", registre: "technique", domaine: "mathématiques", definition: "Coordonnée horizontale d'un point dans un repère.", etymologie: "du latin abscissa, « coupée ».", exemples: ["Reporter l'abscisse sur l'axe."], synonymes: [], antonymes: ["ordonnée"] },
+    { mot: "cacophonie", nature: "nom féminin", registre: "soutenu", definition: "Rencontre discordante et désagréable de sons.", etymologie: "du grec kakophônia, « mauvais son ».", exemples: ["La cacophonie des klaxons.", "Une cacophonie de revendications."], synonymes: ["dissonance", "charivari", "tintamarre"], antonymes: ["harmonie", "euphonie"] },
+    { mot: "dilettante", nature: "nom", registre: "soutenu", definition: "Qui s'adonne à une activité par plaisir, sans rigueur professionnelle.", etymologie: "de l'italien dilettante, « qui prend plaisir ».", exemples: ["Peindre en dilettante.", "Travailler en dilettante."], synonymes: ["amateur", "fantaisiste"], antonymes: ["professionnel", "spécialiste"] },
+    { mot: "sybarite", nature: "nom / adjectif", registre: "littéraire", definition: "Personne qui recherche les plaisirs et la vie voluptueuse.", etymologie: "de Sybaris, cité grecque réputée pour son luxe.", exemples: ["Vivre en sybarite."], synonymes: ["jouisseur", "épicurien", "voluptueux"], antonymes: ["ascète", "stoïcien"] },
+  ];
+})();
+
+
+/* ===== data/verbes.js ===== */
+/* =====================================================================
+   Le Mot Juste — Base des verbes irréguliers
+   Chaque verbe est décrit par ses « parties principales » ; le moteur
+   (conjugueur.js) en dérive tous les temps et modes.
+
+   Schéma :
+     g          groupe (3 pour les irréguliers)
+     aux        "avoir" | "etre"
+     pres       [je, tu, il, nous, vous, ils]  (formes nues, sans pronom)
+     imp        imparfait [6]  (optionnel ; sinon dérivé du « nous » présent)
+     futStem    radical du futur/conditionnel (ex. "ser" → serai / serais)
+     ps         [radical, type]  type = 'a' | 'i' | 'u' | 'in'  (passé simple)
+     subj       [radical sing/3e pl, radical nous/vous]  (subjonctif présent)
+     subjForms  [6]  override complet du subjonctif présent (optionnel)
+     ppr        participe présent
+     pp         participe passé (masc. sing.)
+     imper      [tu, nous, vous]  (optionnel ; sinon dérivé ; false = aucun)
+     impersonnel  true → seul « il » existe (falloir, pleuvoir)
+   ===================================================================== */
+(function () {
+  "use strict";
+  const G = typeof window !== "undefined" ? window : globalThis;
+  const LMJ = (G.LMJ = G.LMJ || {});
+  LMJ.data = LMJ.data || {};
+
+  LMJ.data.verbes = {
+    être: {
+      g: 3, aux: "avoir",
+      pres: ["suis", "es", "est", "sommes", "êtes", "sont"],
+      imp: ["étais", "étais", "était", "étions", "étiez", "étaient"],
+      futStem: "ser", ps: ["f", "u"],
+      subjForms: ["sois", "sois", "soit", "soyons", "soyez", "soient"],
+      imper: ["sois", "soyons", "soyez"], ppr: "étant", pp: "été",
+    },
+    avoir: {
+      g: 3, aux: "avoir",
+      pres: ["ai", "as", "a", "avons", "avez", "ont"],
+      futStem: "aur", ps: ["e", "u"],
+      subjForms: ["aie", "aies", "ait", "ayons", "ayez", "aient"],
+      imper: ["aie", "ayons", "ayez"], ppr: "ayant", pp: "eu",
+    },
+    aller: {
+      g: 3, aux: "etre",
+      pres: ["vais", "vas", "va", "allons", "allez", "vont"],
+      futStem: "ir", ps: ["all", "a"],
+      subjForms: ["aille", "ailles", "aille", "allions", "alliez", "aillent"],
+      imper: ["va", "allons", "allez"], ppr: "allant", pp: "allé",
+    },
+    faire: {
+      g: 3, aux: "avoir",
+      pres: ["fais", "fais", "fait", "faisons", "faites", "font"],
+      futStem: "fer", ps: ["f", "i"], subj: ["fass", "fass"],
+      ppr: "faisant", pp: "fait",
+    },
+    dire: {
+      g: 3, aux: "avoir",
+      pres: ["dis", "dis", "dit", "disons", "dites", "disent"],
+      futStem: "dir", ps: ["d", "i"], subj: ["dis", "dis"],
+      ppr: "disant", pp: "dit",
+    },
+    pouvoir: {
+      g: 3, aux: "avoir",
+      pres: ["peux", "peux", "peut", "pouvons", "pouvez", "peuvent"],
+      futStem: "pourr", ps: ["p", "u"],
+      subjForms: ["puisse", "puisses", "puisse", "puissions", "puissiez", "puissent"],
+      imper: false, ppr: "pouvant", pp: "pu",
+    },
+    vouloir: {
+      g: 3, aux: "avoir",
+      pres: ["veux", "veux", "veut", "voulons", "voulez", "veulent"],
+      futStem: "voudr", ps: ["voul", "u"],
+      subjForms: ["veuille", "veuilles", "veuille", "voulions", "vouliez", "veuillent"],
+      imper: ["veuille", "veuillons", "veuillez"], ppr: "voulant", pp: "voulu",
+    },
+    devoir: {
+      g: 3, aux: "avoir",
+      pres: ["dois", "dois", "doit", "devons", "devez", "doivent"],
+      futStem: "devr", ps: ["d", "u"],
+      subjForms: ["doive", "doives", "doive", "devions", "deviez", "doivent"],
+      ppr: "devant", pp: "dû",
+    },
+    savoir: {
+      g: 3, aux: "avoir",
+      pres: ["sais", "sais", "sait", "savons", "savez", "savent"],
+      futStem: "saur", ps: ["s", "u"], subj: ["sach", "sach"],
+      imper: ["sache", "sachons", "sachez"], ppr: "sachant", pp: "su",
+    },
+    voir: {
+      g: 3, aux: "avoir",
+      pres: ["vois", "vois", "voit", "voyons", "voyez", "voient"],
+      futStem: "verr", ps: ["v", "i"], subj: ["voi", "voy"],
+      ppr: "voyant", pp: "vu",
+    },
+    venir: {
+      g: 3, aux: "etre",
+      pres: ["viens", "viens", "vient", "venons", "venez", "viennent"],
+      futStem: "viendr", ps: ["v", "in"], subj: ["vienn", "ven"],
+      ppr: "venant", pp: "venu",
+    },
+    tenir: {
+      g: 3, aux: "avoir",
+      pres: ["tiens", "tiens", "tient", "tenons", "tenez", "tiennent"],
+      futStem: "tiendr", ps: ["t", "in"], subj: ["tienn", "ten"],
+      ppr: "tenant", pp: "tenu",
+    },
+    prendre: {
+      g: 3, aux: "avoir",
+      pres: ["prends", "prends", "prend", "prenons", "prenez", "prennent"],
+      futStem: "prendr", ps: ["pr", "i"], subj: ["prenn", "pren"],
+      ppr: "prenant", pp: "pris",
+    },
+    mettre: {
+      g: 3, aux: "avoir",
+      pres: ["mets", "mets", "met", "mettons", "mettez", "mettent"],
+      futStem: "mettr", ps: ["m", "i"], subj: ["mett", "mett"],
+      ppr: "mettant", pp: "mis",
+    },
+    partir: {
+      g: 3, aux: "etre",
+      pres: ["pars", "pars", "part", "partons", "partez", "partent"],
+      futStem: "partir", ps: ["part", "i"], subj: ["part", "part"],
+      ppr: "partant", pp: "parti",
+    },
+    sortir: {
+      g: 3, aux: "etre",
+      pres: ["sors", "sors", "sort", "sortons", "sortez", "sortent"],
+      futStem: "sortir", ps: ["sort", "i"], subj: ["sort", "sort"],
+      ppr: "sortant", pp: "sorti",
+    },
+    dormir: {
+      g: 3, aux: "avoir",
+      pres: ["dors", "dors", "dort", "dormons", "dormez", "dorment"],
+      futStem: "dormir", ps: ["dorm", "i"], subj: ["dorm", "dorm"],
+      ppr: "dormant", pp: "dormi",
+    },
+    servir: {
+      g: 3, aux: "avoir",
+      pres: ["sers", "sers", "sert", "servons", "servez", "servent"],
+      futStem: "servir", ps: ["serv", "i"], subj: ["serv", "serv"],
+      ppr: "servant", pp: "servi",
+    },
+    sentir: {
+      g: 3, aux: "avoir",
+      pres: ["sens", "sens", "sent", "sentons", "sentez", "sentent"],
+      futStem: "sentir", ps: ["sent", "i"], subj: ["sent", "sent"],
+      ppr: "sentant", pp: "senti",
+    },
+    courir: {
+      g: 3, aux: "avoir",
+      pres: ["cours", "cours", "court", "courons", "courez", "courent"],
+      futStem: "courr", ps: ["cour", "u"], subj: ["cour", "cour"],
+      ppr: "courant", pp: "couru",
+    },
+    mourir: {
+      g: 3, aux: "etre",
+      pres: ["meurs", "meurs", "meurt", "mourons", "mourez", "meurent"],
+      futStem: "mourr", ps: ["mour", "u"], subj: ["meur", "mour"],
+      ppr: "mourant", pp: "mort",
+    },
+    ouvrir: {
+      g: 3, aux: "avoir",
+      pres: ["ouvre", "ouvres", "ouvre", "ouvrons", "ouvrez", "ouvrent"],
+      futStem: "ouvrir", ps: ["ouvr", "i"], subj: ["ouvr", "ouvr"],
+      ppr: "ouvrant", pp: "ouvert",
+    },
+    offrir: {
+      g: 3, aux: "avoir",
+      pres: ["offre", "offres", "offre", "offrons", "offrez", "offrent"],
+      futStem: "offrir", ps: ["offr", "i"], subj: ["offr", "offr"],
+      ppr: "offrant", pp: "offert",
+    },
+    couvrir: {
+      g: 3, aux: "avoir",
+      pres: ["couvre", "couvres", "couvre", "couvrons", "couvrez", "couvrent"],
+      futStem: "couvrir", ps: ["couvr", "i"], subj: ["couvr", "couvr"],
+      ppr: "couvrant", pp: "couvert",
+    },
+    souffrir: {
+      g: 3, aux: "avoir",
+      pres: ["souffre", "souffres", "souffre", "souffrons", "souffrez", "souffrent"],
+      futStem: "souffrir", ps: ["souffr", "i"], subj: ["souffr", "souffr"],
+      ppr: "souffrant", pp: "souffert",
+    },
+    cueillir: {
+      g: 3, aux: "avoir",
+      pres: ["cueille", "cueilles", "cueille", "cueillons", "cueillez", "cueillent"],
+      futStem: "cueiller", ps: ["cueill", "i"], subj: ["cueill", "cueill"],
+      ppr: "cueillant", pp: "cueilli",
+    },
+    naître: {
+      g: 3, aux: "etre",
+      pres: ["nais", "nais", "naît", "naissons", "naissez", "naissent"],
+      futStem: "naîtr", ps: ["naqu", "i"], subj: ["naiss", "naiss"],
+      ppr: "naissant", pp: "né",
+    },
+    connaître: {
+      g: 3, aux: "avoir",
+      pres: ["connais", "connais", "connaît", "connaissons", "connaissez", "connaissent"],
+      futStem: "connaîtr", ps: ["conn", "u"], subj: ["connaiss", "connaiss"],
+      ppr: "connaissant", pp: "connu",
+    },
+    paraître: {
+      g: 3, aux: "avoir",
+      pres: ["parais", "parais", "paraît", "paraissons", "paraissez", "paraissent"],
+      futStem: "paraîtr", ps: ["par", "u"], subj: ["paraiss", "paraiss"],
+      ppr: "paraissant", pp: "paru",
+    },
+    croire: {
+      g: 3, aux: "avoir",
+      pres: ["crois", "crois", "croit", "croyons", "croyez", "croient"],
+      futStem: "croir", ps: ["cr", "u"], subj: ["croi", "croy"],
+      ppr: "croyant", pp: "cru",
+    },
+    boire: {
+      g: 3, aux: "avoir",
+      pres: ["bois", "bois", "boit", "buvons", "buvez", "boivent"],
+      futStem: "boir", ps: ["b", "u"], subj: ["boiv", "buv"],
+      ppr: "buvant", pp: "bu",
+    },
+    lire: {
+      g: 3, aux: "avoir",
+      pres: ["lis", "lis", "lit", "lisons", "lisez", "lisent"],
+      futStem: "lir", ps: ["l", "u"], subj: ["lis", "lis"],
+      ppr: "lisant", pp: "lu",
+    },
+    écrire: {
+      g: 3, aux: "avoir",
+      pres: ["écris", "écris", "écrit", "écrivons", "écrivez", "écrivent"],
+      futStem: "écrir", ps: ["écriv", "i"], subj: ["écriv", "écriv"],
+      ppr: "écrivant", pp: "écrit",
+    },
+    vivre: {
+      g: 3, aux: "avoir",
+      pres: ["vis", "vis", "vit", "vivons", "vivez", "vivent"],
+      futStem: "vivr", ps: ["véc", "u"], subj: ["viv", "viv"],
+      ppr: "vivant", pp: "vécu",
+    },
+    suivre: {
+      g: 3, aux: "avoir",
+      pres: ["suis", "suis", "suit", "suivons", "suivez", "suivent"],
+      futStem: "suivr", ps: ["suiv", "i"], subj: ["suiv", "suiv"],
+      ppr: "suivant", pp: "suivi",
+    },
+    rire: {
+      g: 3, aux: "avoir",
+      pres: ["ris", "ris", "rit", "rions", "riez", "rient"],
+      futStem: "rir", ps: ["r", "i"], subj: ["ri", "ri"],
+      ppr: "riant", pp: "ri",
+    },
+    conduire: {
+      g: 3, aux: "avoir",
+      pres: ["conduis", "conduis", "conduit", "conduisons", "conduisez", "conduisent"],
+      futStem: "conduir", ps: ["conduis", "i"], subj: ["conduis", "conduis"],
+      ppr: "conduisant", pp: "conduit",
+    },
+    construire: {
+      g: 3, aux: "avoir",
+      pres: ["construis", "construis", "construit", "construisons", "construisez", "construisent"],
+      futStem: "construir", ps: ["construis", "i"], subj: ["construis", "construis"],
+      ppr: "construisant", pp: "construit",
+    },
+    plaire: {
+      g: 3, aux: "avoir",
+      pres: ["plais", "plais", "plaît", "plaisons", "plaisez", "plaisent"],
+      futStem: "plair", ps: ["pl", "u"], subj: ["plais", "plais"],
+      ppr: "plaisant", pp: "plu",
+    },
+    recevoir: {
+      g: 3, aux: "avoir",
+      pres: ["reçois", "reçois", "reçoit", "recevons", "recevez", "reçoivent"],
+      futStem: "recevr", ps: ["reç", "u"], subj: ["reçoiv", "recev"],
+      ppr: "recevant", pp: "reçu",
+    },
+    valoir: {
+      g: 3, aux: "avoir",
+      pres: ["vaux", "vaux", "vaut", "valons", "valez", "valent"],
+      futStem: "vaudr", ps: ["val", "u"], subj: ["vaill", "val"],
+      ppr: "valant", pp: "valu",
+    },
+    envoyer: {
+      g: 3, aux: "avoir",
+      pres: ["envoie", "envoies", "envoie", "envoyons", "envoyez", "envoient"],
+      futStem: "enverr", ps: ["envoy", "a"], subj: ["envoi", "envoy"],
+      ppr: "envoyant", pp: "envoyé",
+    },
+    acquérir: {
+      g: 3, aux: "avoir",
+      pres: ["acquiers", "acquiers", "acquiert", "acquérons", "acquérez", "acquièrent"],
+      futStem: "acquerr", ps: ["acqu", "i"], subj: ["acquièr", "acquér"],
+      ppr: "acquérant", pp: "acquis",
+    },
+    battre: {
+      g: 3, aux: "avoir",
+      pres: ["bats", "bats", "bat", "battons", "battez", "battent"],
+      futStem: "battr", ps: ["batt", "i"], subj: ["batt", "batt"],
+      ppr: "battant", pp: "battu",
+    },
+    vaincre: {
+      g: 3, aux: "avoir",
+      pres: ["vaincs", "vaincs", "vainc", "vainquons", "vainquez", "vainquent"],
+      futStem: "vaincr", ps: ["vainqu", "i"], subj: ["vainqu", "vainqu"],
+      ppr: "vainquant", pp: "vaincu",
+    },
+    craindre: {
+      g: 3, aux: "avoir",
+      pres: ["crains", "crains", "craint", "craignons", "craignez", "craignent"],
+      futStem: "craindr", ps: ["craign", "i"], subj: ["craign", "craign"],
+      ppr: "craignant", pp: "craint",
+    },
+    peindre: {
+      g: 3, aux: "avoir",
+      pres: ["peins", "peins", "peint", "peignons", "peignez", "peignent"],
+      futStem: "peindr", ps: ["peign", "i"], subj: ["peign", "peign"],
+      ppr: "peignant", pp: "peint",
+    },
+    joindre: {
+      g: 3, aux: "avoir",
+      pres: ["joins", "joins", "joint", "joignons", "joignez", "joignent"],
+      futStem: "joindr", ps: ["joign", "i"], subj: ["joign", "joign"],
+      ppr: "joignant", pp: "joint",
+    },
+    résoudre: {
+      g: 3, aux: "avoir",
+      pres: ["résous", "résous", "résout", "résolvons", "résolvez", "résolvent"],
+      futStem: "résoudr", ps: ["résol", "u"], subj: ["résolv", "résolv"],
+      ppr: "résolvant", pp: "résolu",
+    },
+    fuir: {
+      g: 3, aux: "avoir",
+      pres: ["fuis", "fuis", "fuit", "fuyons", "fuyez", "fuient"],
+      futStem: "fuir", ps: ["fu", "i"], subj: ["fui", "fuy"],
+      ppr: "fuyant", pp: "fui",
+    },
+    vêtir: {
+      g: 3, aux: "avoir",
+      pres: ["vêts", "vêts", "vêt", "vêtons", "vêtez", "vêtent"],
+      futStem: "vêtir", ps: ["vêt", "i"], subj: ["vêt", "vêt"],
+      ppr: "vêtant", pp: "vêtu",
+    },
+    falloir: {
+      g: 3, aux: "avoir", impersonnel: true,
+      pres: [null, null, "faut", null, null, null],
+      imp: [null, null, "fallait", null, null, null],
+      futStem: "faudr", ps: ["fall", "u"],
+      subjForms: [null, null, "faille", null, null, null],
+      imper: false, ppr: null, pp: "fallu",
+    },
+    pleuvoir: {
+      g: 3, aux: "avoir", impersonnel: true,
+      pres: [null, null, "pleut", null, null, null],
+      imp: [null, null, "pleuvait", null, null, null],
+      futStem: "pleuvr", ps: ["pl", "u"],
+      subjForms: [null, null, "pleuve", null, null, null],
+      imper: false, ppr: "pleuvant", pp: "plu",
+    },
+  };
+
+  /* Verbes des 1er/2e groupes qui se conjuguent avec l'auxiliaire ÊTRE. */
+  LMJ.data.verbesEtre = new Set([
+    "aller", "arriver", "entrer", "rentrer", "rester", "tomber", "retomber",
+    "monter", "remonter", "descendre", "redescendre", "retourner", "passer",
+    "naître", "renaître", "mourir", "décéder", "partir", "repartir", "sortir",
+    "ressortir", "venir", "revenir", "devenir", "parvenir", "survenir", "intervenir",
+  ]);
+})();
+
+
+/* ===== data/dictees.js ===== */
+/* =====================================================================
+   Le Mot Juste — Textes de dictée
+   Schéma : { id, niveau: "facile"|"intermediaire"|"expert",
+              titre, texte, source? }
+   ===================================================================== */
+(function () {
+  "use strict";
+  const G = typeof window !== "undefined" ? window : globalThis;
+  const LMJ = (G.LMJ = G.LMJ || {});
+  LMJ.data = LMJ.data || {};
+
+  LMJ.data.dictees = [
+    /* ---------- FACILE ---------- */
+    {
+      id: "f1", niveau: "facile", titre: "Le petit déjeuner",
+      texte: "Chaque matin, je bois un café et je mange deux tartines. Le soleil entre par la fenêtre. Mon chat dort sur le canapé. La journée commence bien.",
+    },
+    {
+      id: "f2", niveau: "facile", titre: "Au parc",
+      texte: "Les enfants jouent dans le parc. Ils courent, ils rient et ils sautent. Une dame promène son chien. Le ciel est bleu et l'air est doux.",
+    },
+    {
+      id: "f3", niveau: "facile", titre: "La cuisine",
+      texte: "Ce soir, nous préparons une soupe de légumes. Je coupe les carottes et les pommes de terre. L'eau bout dans la casserole. Bientôt, toute la maison sent bon.",
+    },
+    {
+      id: "f4", niveau: "facile", titre: "À l'école",
+      texte: "Le matin, les élèves entrent dans la classe. La maîtresse écrit la date au tableau. Nous ouvrons nos cahiers et nous écoutons. La leçon peut commencer.",
+    },
+
+    /* ---------- INTERMÉDIAIRE ---------- */
+    {
+      id: "i1", niveau: "intermediaire", titre: "La promenade",
+      texte: "Hier après-midi, nous sommes allés nous promener en forêt. Les feuilles que le vent avait arrachées formaient un tapis doré. Ma sœur, fatiguée, s'est assise sur un tronc. Nous avons écouté le chant des oiseaux avant de rentrer.",
+    },
+    {
+      id: "i2", niveau: "intermediaire", titre: "La lettre",
+      texte: "La lettre qu'elle m'avait envoyée était pleine de tendresse. Je l'ai lue plusieurs fois, puis je l'ai rangée dans un tiroir. Les mots qu'elle avait choisis me touchaient profondément. Jamais je ne les oublierai.",
+    },
+    {
+      id: "i3", niveau: "intermediaire", titre: "Le marché",
+      texte: "Tous les samedis, ma grand-mère se rendait au marché. Elle achetait des fruits mûrs, des fromages affinés et quelques fleurs. Les marchands, qu'elle connaissait bien, la saluaient chaleureusement. Elle rentrait ensuite, les paniers remplis.",
+    },
+    {
+      id: "i4", niveau: "intermediaire", titre: "L'orage",
+      texte: "Le ciel s'était couvert de nuages menaçants. Soudain, un éclair déchira l'obscurité et le tonnerre gronda. Les passants, surpris, se réfugièrent sous les porches. La pluie, violente, ruisselait sur les pavés.",
+    },
+
+    /* ---------- EXPERT ---------- */
+    {
+      id: "e1", niveau: "expert", titre: "Persévérance",
+      texte: "Quels que soient les obstacles que nous ayons rencontrés, il eût fallu les affronter avec sérénité. Les efforts qu'elle s'était imposés portèrent enfin leurs fruits. Bien qu'il fût tard, nous poursuivîmes notre discussion jusqu'à ce que l'aube parût.",
+    },
+    {
+      id: "e2", niveau: "expert", titre: "Le voyageur",
+      texte: "Le voyageur, exténué par les lieues qu'il avait parcourues, s'assit à l'ombre d'un chêne séculaire. Les souvenirs qu'il avait crus enfouis resurgirent soudain. Il se rappela les promesses qu'il n'avait pu tenir, et une mélancolie diffuse l'envahit.",
+    },
+    {
+      id: "e3", niveau: "expert", titre: "Le Corbeau et le Renard",
+      source: "Jean de La Fontaine",
+      texte: "Maître Corbeau, sur un arbre perché, tenait en son bec un fromage. Maître Renard, par l'odeur alléché, lui tint à peu près ce langage : Hé ! bonjour, Monsieur du Corbeau. Que vous êtes joli ! que vous me semblez beau !",
+    },
+    {
+      id: "e4", niveau: "expert", titre: "Du côté de chez Swann",
+      source: "Marcel Proust",
+      texte: "Longtemps, je me suis couché de bonne heure. Parfois, à peine ma bougie éteinte, mes yeux se fermaient si vite que je n'avais pas le temps de me dire : Je m'endors.",
+    },
+  ];
+
+  LMJ.data.dicteeNiveaux = [
+    { id: "facile", nom: "Facile", desc: "Phrases courtes, vocabulaire courant." },
+    { id: "intermediaire", nom: "Intermédiaire", desc: "Temps du passé, accords, pièges." },
+    { id: "expert", nom: "Expert", desc: "Subjonctif, passé simple, textes littéraires." },
+  ];
+})();
+
+
+/* ===== js/conjugueur.js ===== */
+/* =====================================================================
+   Le Mot Juste — Moteur de conjugaison
+   • 1er groupe (-er) : algorithmique, avec toutes les variantes
+     orthographiques (-cer, -ger, -yer, -eler/-eter, é→è, e muet→è).
+   • 2e groupe (-ir, type finir) : algorithmique.
+   • 3e groupe : dérivé des « parties principales » de data/verbes.js.
+   Temps composés construits automatiquement (auxiliaire conjugué + pp).
+
+   API : LMJ.conjugue("manger") → objet structuré (voir bas de fichier).
+   ===================================================================== */
+(function () {
+  "use strict";
+  const G = typeof window !== "undefined" ? window : globalThis;
+  const LMJ = (G.LMJ = G.LMJ || {});
+  const V = LMJ.data.verbes;
+
+  /* ---------- Terminaisons ---------- */
+  const FUT = ["ai", "as", "a", "ons", "ez", "ont"];
+  const COND = ["ais", "ais", "ait", "ions", "iez", "aient"];
+  const IMPF = ["ais", "ais", "ait", "ions", "iez", "aient"];
+
+  function psEnds(type) {
+    return {
+      a: ["ai", "as", "a", "âmes", "âtes", "èrent"],
+      i: ["is", "is", "it", "îmes", "îtes", "irent"],
+      u: ["us", "us", "ut", "ûmes", "ûtes", "urent"],
+      in: ["ins", "ins", "int", "înmes", "întes", "inrent"],
+    }[type];
+  }
+  function subjImpEnds(type) {
+    return {
+      a: ["asse", "asses", "ât", "assions", "assiez", "assent"],
+      i: ["isse", "isses", "ît", "issions", "issiez", "issent"],
+      u: ["usse", "usses", "ût", "ussions", "ussiez", "ussent"],
+      in: ["insse", "insses", "înt", "inssions", "inssiez", "inssent"],
+    }[type];
+  }
+
+  const map6 = (stem, ends) => ends.map((e) => (e == null ? null : stem + e));
+
+  /* =====================================================================
+     3e groupe — dérivation depuis les parties principales
+     ===================================================================== */
+  function simpleFromParts(parts) {
+    const t = {
+      infinitif: parts.infinitif,
+      participePresent: parts.ppr,
+      participePasse: parts.pp,
+      present: parts.pres.slice(),
+    };
+
+    // Imparfait : fourni, ou dérivé du « nous » présent (…ons → …ais)
+    if (parts.imp) t.imparfait = parts.imp.slice();
+    else {
+      const stem = parts.pres[3].replace(/ons$/, "");
+      t.imparfait = map6(stem, IMPF);
+    }
+
+    t.futurSimple = map6(parts.futStem, FUT);
+    t.conditionnelPresent = map6(parts.futStem, COND);
+
+    const [psStem, psType] = parts.ps;
+    t.passeSimple = map6(psStem, psEnds(psType));
+    t.subjonctifImparfait = map6(psStem, subjImpEnds(psType));
+
+    if (parts.subjForms) t.subjonctifPresent = parts.subjForms.slice();
+    else {
+      const [ss, sp] = parts.subj;
+      t.subjonctifPresent = [ss + "e", ss + "es", ss + "e", sp + "ions", sp + "iez", ss + "ent"];
+    }
+
+    if (parts.imper === false) t.imperatifPresent = null;
+    else if (Array.isArray(parts.imper)) t.imperatifPresent = parts.imper.slice();
+    else {
+      let tu = parts.pres[1];
+      if (/es$/.test(tu)) tu = tu.slice(0, -1);
+      t.imperatifPresent = [tu, parts.pres[3], parts.pres[4]];
+    }
+    return t;
+  }
+
+  /* Auxiliaires pré-conjugués (pour les temps composés) */
+  const AUX = {
+    avoir: simpleFromParts(Object.assign({ infinitif: "avoir" }, V["avoir"])),
+    etre: simpleFromParts(Object.assign({ infinitif: "être" }, V["être"])),
+  };
+
+  function compound(auxKey, pp) {
+    const a = AUX[auxKey];
+    const j = (arr) => arr.map((f) => (f == null ? null : f + " " + pp));
+    return {
+      passeCompose: j(a.present),
+      plusQueParfait: j(a.imparfait),
+      passeAnterieur: j(a.passeSimple),
+      futurAnterieur: j(a.futurSimple),
+      conditionnelPasse: j(a.conditionnelPresent),
+      subjonctifPasse: j(a.subjonctifPresent),
+      subjonctifPlusQueParfait: j(a.subjonctifImparfait),
+      imperatifPasse: a.imperatifPresent ? a.imperatifPresent.map((f) => f + " " + pp) : null,
+    };
+  }
+
+  /* =====================================================================
+     1er groupe — algorithmique
+     ===================================================================== */
+  const DOUBLE = new Set([
+    "appeler", "rappeler", "interpeler", "jeter", "rejeter", "projeter", "interjeter",
+    "feuilleter", "épeler", "renouveler", "atteler", "dételer", "étinceler", "ruisseler",
+    "amonceler", "ensorceler", "chanceler", "morceler", "cacheter", "empaqueter",
+    "étiqueter", "hoqueter", "voleter", "cliqueter", "breveter",
+  ]);
+
+  function graveLastE(stem) {
+    // remplace le dernier « e » (avant consonnes finales) par « è »
+    return stem.replace(/e([^e]*)$/, "è$1");
+  }
+
+  function group1Simple(inf) {
+    const stem = inf.slice(0, -2); // sans « er »
+    const endsCer = /cer$/.test(inf);
+    const endsGer = /ger$/.test(inf);
+
+    // Adoucissement c→ç / g→ge devant a, o, â
+    function soft(s, ending) {
+      const c = ending.charAt(0);
+      const aoo = c === "a" || c === "o" || c === "â";
+      if (endsCer && aoo) return s.slice(0, -1) + "ç" + ending;
+      if (endsGer && aoo) return s + "e" + ending;
+      return s + ending;
+    }
+
+    // Radical modifié pour les terminaisons « e muet » (+ futur selon le cas)
+    let modStem = stem;
+    let futUsesMod = false;
+    if (/yer$/.test(inf)) {
+      modStem = stem.slice(0, -1) + "i";
+      futUsesMod = true;
+    } else if (/(eler|eter)$/.test(inf)) {
+      if (DOUBLE.has(inf)) { modStem = stem + stem.slice(-1); }
+      else { modStem = graveLastE(stem); }
+      futUsesMod = true;
+    } else if (/é[bcdfghjklmnpqrstvwxzç]+$/.test(stem)) {
+      modStem = stem.replace(/é([^é]*)$/, "è$1"); // é→è, mais futur garde é
+      futUsesMod = false;
+    } else if (/e[bcdfghjklmnpqrstvwxzç]+$/.test(stem)) {
+      modStem = graveLastE(stem); // e muet → è
+      futUsesMod = true;
+    }
+
+    const silent = (i) => i === 0 || i === 1 || i === 2 || i === 5; // je,tu,il,ils
+
+    const present = ["e", "es", "e", "ons", "ez", "ent"].map((e, i) =>
+      soft(silent(i) ? modStem : stem, e)
+    );
+    const subjPres = ["e", "es", "e", "ions", "iez", "ent"].map((e, i) =>
+      soft(silent(i) ? modStem : stem, e)
+    );
+    const imparfait = IMPF.map((e) => soft(stem, e));
+    const futStem = futUsesMod ? modStem + "er" : inf;
+    const passeSimple = psEnds("a").map((e) => soft(stem, e));
+    const subjImp = subjImpEnds("a").map((e) => soft(stem, e));
+
+    return {
+      infinitif: inf,
+      participePresent: soft(stem, "ant"),
+      participePasse: stem + "é",
+      present,
+      imparfait,
+      futurSimple: map6(futStem, FUT),
+      conditionnelPresent: map6(futStem, COND),
+      passeSimple,
+      subjonctifPresent: subjPres,
+      subjonctifImparfait: subjImp,
+      imperatifPresent: [present[0], present[3], present[4]],
+    };
+  }
+
+  /* =====================================================================
+     2e groupe — algorithmique (type finir)
+     ===================================================================== */
+  function group2Simple(inf) {
+    const stem = inf.slice(0, -2); // sans « ir »
+    return {
+      infinitif: inf,
+      participePresent: stem + "issant",
+      participePasse: stem + "i",
+      present: [stem + "is", stem + "is", stem + "it", stem + "issons", stem + "issez", stem + "issent"],
+      imparfait: map6(stem + "iss", IMPF),
+      futurSimple: map6(inf, FUT),
+      conditionnelPresent: map6(inf, COND),
+      passeSimple: map6(stem, psEnds("i")),
+      subjonctifPresent: map6(stem + "iss", ["e", "es", "e", "ions", "iez", "ent"]),
+      subjonctifImparfait: map6(stem, subjImpEnds("i")),
+      imperatifPresent: [stem + "is", stem + "issons", stem + "issez"],
+    };
+  }
+
+  /* =====================================================================
+     Assemblage & détection du type
+     ===================================================================== */
+  function determineAux(inf, irr) {
+    if (irr && irr.aux) return irr.aux;
+    return LMJ.data.verbesEtre && LMJ.data.verbesEtre.has(inf) ? "etre" : "avoir";
+  }
+
+  function assemble(inf, groupe, irregulier, aux, simple, pp, impersonnel) {
+    const comp = compound(aux, pp);
+    const res = {
+      disponible: true,
+      infinitif: inf,
+      groupe,
+      irregulier,
+      impersonnel: !!impersonnel,
+      aux,
+      participePresent: simple.participePresent,
+      participePasse: pp,
+      indicatif: {
+        present: simple.present,
+        imparfait: simple.imparfait,
+        passeSimple: simple.passeSimple,
+        futurSimple: simple.futurSimple,
+        passeCompose: comp.passeCompose,
+        plusQueParfait: comp.plusQueParfait,
+        passeAnterieur: comp.passeAnterieur,
+        futurAnterieur: comp.futurAnterieur,
+      },
+      conditionnel: { present: simple.conditionnelPresent, passe: comp.conditionnelPasse },
+      subjonctif: {
+        present: simple.subjonctifPresent,
+        imparfait: simple.subjonctifImparfait,
+        passe: comp.subjonctifPasse,
+        plusQueParfait: comp.subjonctifPlusQueParfait,
+      },
+      imperatif: { present: simple.imperatifPresent, passe: comp.imperatifPasse },
+    };
+
+    if (impersonnel) {
+      // Ne garder que la 3e pers. du singulier (index 2) pour les temps à 6 formes
+      const keepIl = (arr) => (arr ? arr.map((v, i) => (i === 2 ? v : null)) : arr);
+      for (const tps of Object.values(res.indicatif)) void tps;
+      ["indicatif", "conditionnel", "subjonctif"].forEach((mode) => {
+        for (const k of Object.keys(res[mode])) res[mode][k] = keepIl(res[mode][k]);
+      });
+      res.imperatif.present = null;
+      res.imperatif.passe = null;
+    }
+    return res;
+  }
+
+  /* =====================================================================
+     Point d'entrée
+     ===================================================================== */
+  function conjugue(input) {
+    if (!input) return { disponible: false, infinitif: "" };
+    let inf = String(input).trim().toLowerCase();
+
+    // Verbe irrégulier connu (avec ou sans accents saisis)
+    let irr = V[inf];
+    if (!irr) {
+      const deb = LMJ.util ? LMJ.util.deburr(inf) : inf;
+      for (const key of Object.keys(V)) {
+        if ((LMJ.util ? LMJ.util.deburr(key) : key) === deb) { irr = V[key]; inf = key; break; }
+      }
+    }
+    if (irr) {
+      const parts = Object.assign({ infinitif: inf }, irr);
+      const simple = simpleFromParts(parts);
+      return assemble(inf, irr.g || 3, true, irr.aux, simple, irr.pp, irr.impersonnel);
+    }
+
+    // 1er groupe
+    if (/er$/.test(inf) && inf !== "aller") {
+      const simple = group1Simple(inf);
+      return assemble(inf, 1, false, determineAux(inf), simple, simple.participePasse, false);
+    }
+    // 2e groupe (tout -ir non irrégulier, type finir)
+    if (/ir$/.test(inf)) {
+      const simple = group2Simple(inf);
+      return assemble(inf, 2, false, determineAux(inf), simple, simple.participePasse, false);
+    }
+
+    // -re / -oir inconnus : non couverts par le MVP
+    return { disponible: false, infinitif: inf };
+  }
+
+  /* Liste de verbes proposés dans l'UI (irréguliers + exemples réguliers) */
+  LMJ.verbesSuggestions = [
+    "être", "avoir", "aller", "faire", "dire", "pouvoir", "vouloir", "devoir",
+    "savoir", "voir", "venir", "prendre", "mettre", "partir", "finir", "manger",
+    "commencer", "appeler", "acheter", "employer", "payer", "espérer", "lever",
+    "aimer", "parler", "choisir", "recevoir", "boire", "connaître", "écrire",
+  ];
+
+  LMJ.conjugue = conjugue;
+
+  /* Export Node (tests en ligne de commande) */
+  if (typeof module !== "undefined" && module.exports) module.exports = { conjugue, LMJ };
+})();
+
+
+/* ===== js/view-regles.js ===== */
+/* =====================================================================
+   Le Mot Juste — Vue « Les règles »
+   Grille de catégories, recherche transverse, accordéons de règles,
+   comparaisons de vocabulaire, et écran conjugueur.
+   ===================================================================== */
+(function () {
+  "use strict";
+  const G = typeof window !== "undefined" ? window : globalThis;
+  const LMJ = (G.LMJ = G.LMJ || {});
+  const { util } = LMJ;
+  const el = util.el.bind(util);
+
+  /* ---------- Icônes de catégories ---------- */
+  const IC = {
+    accords: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>',
+    conjugaison: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>',
+    confusions: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 0 0-2 2v3m0 8v3a2 2 0 0 0 2 2h3m8 0h3a2 2 0 0 0 2-2v-3m0-8V5a2 2 0 0 0-2-2h-3"/><path d="m7 8 5 5m0-5-5 5"/></svg>',
+    usages: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8v4m0 4h.01"/></svg>',
+    grammaire: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z"/></svg>',
+    nuances: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="m3 21 3-3m0 0 6-6 3 3-6 6H6v-3Zm9-9 3-3 3 3-3 3-3-3Z"/></svg>',
+    search: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>',
+    back: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>',
+    bulb: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7c.6.5 1 1.3 1 2.1V17h6v-.2c0-.8.4-1.6 1-2.1A7 7 0 0 0 12 2Z"/></svg>',
+  };
+
+  function categories() {
+    const d = LMJ.data;
+    return [
+      { id: "accords", nom: "Les accords", desc: "Adjectifs, participes passés, tout, leur…", data: d.accords, type: "rule" },
+      { id: "conjugaison", nom: "Conjugaison", desc: "Conjuguer un verbe + règles de temps", type: "conjugaison", data: d.conjugaisonRegles },
+      { id: "confusions", nom: "Confusions fréquentes", desc: "a/à, ces/ses, quel/qu'elle…", data: d.confusions, type: "confusion" },
+      { id: "usages", nom: "Mauvais usages", desc: "Pléonasmes, barbarismes, fautes", data: d.mauvaisUsages, type: "rule" },
+      { id: "grammaire", nom: "Notions de grammaire", desc: "Nature, fonction, propositions…", data: d.grammaire, type: "rule" },
+      { id: "nuances", nom: "Vocabulaire : nuances", desc: "Mots proches, sens différents", data: d.nuances, type: "nuance" },
+    ];
+  }
+
+  /* =====================================================================
+     Rendu des différents types d'items
+     ===================================================================== */
+  function exemplesNode(exemples) {
+    if (!exemples || !exemples.length) return null;
+    const box = el("div", { class: "stack", style: { marginTop: "12px" } });
+    exemples.forEach((ex) => {
+      if (ex.ok) {
+        box.appendChild(el("div", { class: "ex ok" }, [
+          el("span", { class: "mark", text: "✓" }),
+          el("span", { class: "txt", html: ex.texte }),
+        ]));
+      } else {
+        const row = el("div", { class: "ex no" }, [
+          el("span", { class: "mark", text: "✗" }),
+          el("span", { class: "txt", html: ex.texte }),
+        ]);
+        box.appendChild(row);
+        if (ex.correction) {
+          box.appendChild(el("div", { class: "ex ok" }, [
+            el("span", { class: "mark", text: "→" }),
+            el("span", { class: "txt", html: ex.correction }),
+          ]));
+        }
+      }
+    });
+    return box;
+  }
+
+  function astuceNode(astuce) {
+    if (!astuce) return null;
+    return el("div", { class: "note astuce", style: { marginTop: "12px" } }, [
+      el("strong", { text: "Astuce — " }),
+      document.createTextNode(astuce),
+    ]);
+  }
+
+  function ruleNode(item, open) {
+    const det = el("details", { class: "rule" });
+    if (open) det.open = true;
+    const sum = el("summary", null, [
+      el("span", { class: "marker", html: '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>' }),
+      el("span", null, [
+        el("div", { text: item.titre }),
+        item.resume ? el("div", { class: "muted", style: { fontFamily: "var(--sans)", fontSize: "13.5px", fontWeight: "400", marginTop: "2px" }, text: item.resume }) : null,
+      ]),
+    ]);
+    const body = el("div", { class: "body" });
+    if (item.explication) body.appendChild(el("div", { html: item.explication }));
+    const ex = exemplesNode(item.exemples);
+    if (ex) body.appendChild(ex);
+    const as = astuceNode(item.astuce);
+    if (as) body.appendChild(as);
+    det.append(sum, body);
+    return det;
+  }
+
+  function confusionNode(item) {
+    const card = el("div", { class: "card" });
+    card.appendChild(el("h3", { text: item.titre, style: { fontSize: "19px", marginBottom: "10px", color: "var(--accent-ink)" } }));
+    item.entrees.forEach((e) => {
+      card.appendChild(el("div", { class: "nuance-word", style: { marginBottom: "8px" } }, [
+        el("span", { class: "w", text: e.mot }),
+        el("span", { class: "chip", style: { marginLeft: "8px", verticalAlign: "middle" }, text: e.nature }),
+        el("div", { class: "d", text: e.sens }),
+        e.exemple ? el("div", { class: "e", text: "« " + e.exemple + " »" }) : null,
+      ]));
+    });
+    const as = astuceNode(item.astuce);
+    if (as) card.appendChild(as);
+    return card;
+  }
+
+  function nuanceNode(item) {
+    const card = el("div", { class: "card" });
+    card.appendChild(el("h3", { text: item.titre, style: { fontSize: "19px", marginBottom: "8px", color: "var(--accent-ink)" } }));
+    if (item.cle) {
+      card.appendChild(el("div", { class: "note astuce", style: { marginBottom: "12px" } }, [
+        el("strong", { text: "La clé — " }), document.createTextNode(item.cle),
+      ]));
+    }
+    const grid = el("div", { class: "nuance-pair" });
+    item.entrees.forEach((e) => {
+      grid.appendChild(el("div", { class: "nuance-word" }, [
+        el("div", { class: "w", text: e.mot }),
+        el("div", { class: "d", text: e.sens }),
+        e.exemple ? el("div", { class: "e", text: "« " + e.exemple + " »" }) : null,
+      ]));
+    });
+    card.appendChild(grid);
+    return card;
+  }
+
+  function itemNode(type, item) {
+    if (type === "confusion") return confusionNode(item);
+    if (type === "nuance") return nuanceNode(item);
+    return ruleNode(item);
+  }
+
+  /* =====================================================================
+     Conjugueur
+     ===================================================================== */
+  const PRO_IND = ["je", "tu", "il/elle", "nous", "vous", "ils/elles"];
+  const PRO_SUBJ = ["que je", "que tu", "qu'il/elle", "que nous", "que vous", "qu'ils/elles"];
+  const IMP_LBL = ["(tu)", "(nous)", "(vous)"];
+
+  function elide(pro, form) {
+    const voyelle = /^[aàâeéèêiîïoôu ùûyh]/i.test(form);
+    if (voyelle) {
+      if (pro === "je") return "j'" + form;
+      if (pro === "que je") return "que j'" + form;
+    }
+    return pro + " " + form;
+  }
+
+  function tenseBlock(label, forms, mode) {
+    if (!forms) return null;
+    const box = el("div", { class: "card", style: { padding: "14px 16px" } });
+    box.appendChild(el("div", { class: "lbl", style: { fontSize: "11px", letterSpacing: ".1em", textTransform: "uppercase", color: "var(--accent)", fontWeight: "700", marginBottom: "8px" }, text: label }));
+    const list = el("div", { style: { fontFamily: "var(--serif)", fontSize: "16px", lineHeight: "1.85" } });
+    forms.forEach((f, i) => {
+      if (f == null) return;
+      let txt;
+      if (mode === "imp") txt = f + " ";
+      else txt = elide(mode === "subj" ? PRO_SUBJ[i] : PRO_IND[i], f);
+      const row = el("div", null, [
+        mode === "imp" ? el("span", { class: "muted", style: { fontSize: "12px", marginRight: "6px" }, text: IMP_LBL[i] }) : null,
+        document.createTextNode(txt),
+      ]);
+      list.appendChild(row);
+    });
+    box.appendChild(list);
+    return box;
+  }
+
+  function renderConjugaison(container, verbe) {
+    util.clear(container);
+    const c = LMJ.conjugue(verbe);
+    if (!c.disponible) {
+      container.appendChild(el("div", { class: "empty" }, [
+        el("div", { html: IC.search }),
+        el("p", { html: `Le verbe <strong>« ${util.escape(c.infinitif)} »</strong> n'est pas encore dans la base.` }),
+        el("p", { class: "muted", text: "Le moteur couvre tous les verbes en -er et -ir réguliers, plus une cinquantaine d'irréguliers essentiels. Les verbes en -re/-oir irréguliers seront ajoutés progressivement." }),
+      ]));
+      return;
+    }
+
+    const grpLabel = c.groupe === 1 ? "1er groupe" : c.groupe === 2 ? "2e groupe" : "3e groupe";
+    const head = el("div", { class: "card", style: { marginBottom: "16px", background: "var(--surface-2)" } }, [
+      el("div", { style: { display: "flex", alignItems: "baseline", gap: "10px", flexWrap: "wrap" } }, [
+        el("h2", { text: c.infinitif, style: { fontSize: "28px", color: "var(--accent-ink)" } }),
+        el("span", { class: "chip accent", text: grpLabel }),
+        el("span", { class: "chip", text: "auxiliaire " + (c.aux === "etre" ? "être" : "avoir") }),
+        c.irregulier ? el("span", { class: "chip gold", text: "irrégulier" }) : null,
+      ]),
+      el("div", { class: "muted", style: { marginTop: "8px", fontSize: "14.5px" }, html:
+        `Participe présent : <strong>${util.escape(c.participePresent || "—")}</strong> · Participe passé : <strong>${util.escape(c.participePasse)}</strong> · Gérondif : <strong>en ${util.escape(c.participePresent || "—")}</strong>` }),
+      c.aux === "etre" ? el("div", { class: "note", style: { marginTop: "10px" }, text: "Auxiliaire être : aux temps composés, le participe s'accorde avec le sujet (ex. allé, allée, allés, allées)." }) : null,
+    ]);
+    container.appendChild(head);
+
+    const modes = [
+      { nom: "Indicatif", mode: "ind", temps: [
+        ["Présent", c.indicatif.present], ["Passé composé", c.indicatif.passeCompose],
+        ["Imparfait", c.indicatif.imparfait], ["Plus-que-parfait", c.indicatif.plusQueParfait],
+        ["Passé simple", c.indicatif.passeSimple], ["Passé antérieur", c.indicatif.passeAnterieur],
+        ["Futur simple", c.indicatif.futurSimple], ["Futur antérieur", c.indicatif.futurAnterieur],
+      ] },
+      { nom: "Conditionnel", mode: "ind", temps: [
+        ["Présent", c.conditionnel.present], ["Passé", c.conditionnel.passe],
+      ] },
+      { nom: "Subjonctif", mode: "subj", temps: [
+        ["Présent", c.subjonctif.present], ["Passé", c.subjonctif.passe],
+        ["Imparfait", c.subjonctif.imparfait], ["Plus-que-parfait", c.subjonctif.plusQueParfait],
+      ] },
+      { nom: "Impératif", mode: "imp", temps: [
+        ["Présent", c.imperatif.present], ["Passé", c.imperatif.passe],
+      ] },
+    ];
+
+    modes.forEach((m) => {
+      const anyForm = m.temps.some(([, f]) => f && f.some((x) => x != null));
+      if (!anyForm) return;
+      container.appendChild(el("h3", { text: m.nom, style: { fontSize: "18px", margin: "22px 0 12px" } }));
+      const grid = el("div", { style: { display: "grid", gap: "12px", gridTemplateColumns: "repeat(auto-fill, minmax(200px, 1fr))" } });
+      m.temps.forEach(([label, forms]) => {
+        const b = tenseBlock(label, forms, m.mode);
+        if (b) grid.appendChild(b);
+      });
+      container.appendChild(grid);
+    });
+  }
+
+  function openConjugaison(initialVerb) {
+    LMJ.nav.push((root) => {
+      root.appendChild(backBtn());
+
+      const search = el("div", { class: "search", style: { marginBottom: "12px" } });
+      const input = el("input", { type: "text", placeholder: "Entrez un verbe à l'infinitif…", autocapitalize: "none", autocomplete: "off", spellcheck: "false", enterkeyhint: "search" });
+      search.append(el("span", { html: IC.search }), input);
+      root.appendChild(search);
+
+      const chips = el("div", { style: { display: "flex", flexWrap: "wrap", gap: "7px", marginBottom: "16px" } });
+      LMJ.verbesSuggestions.slice(0, 16).forEach((v) => {
+        chips.appendChild(el("button", { class: "chip", style: { cursor: "pointer" }, text: v, on: { click: () => { input.value = v; go(v); } } }));
+      });
+      root.appendChild(chips);
+
+      const results = el("div");
+      root.appendChild(results);
+
+      function go(v) {
+        const verbe = (v || input.value).trim();
+        if (!verbe) return;
+        renderConjugaison(results, verbe);
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+      input.addEventListener("keydown", (e) => { if (e.key === "Enter") go(); });
+
+      // Règles de conjugaison sous le conjugueur
+      root.appendChild(el("h3", { text: "Règles de conjugaison", style: { fontSize: "18px", margin: "26px 0 12px" } }));
+      (LMJ.data.conjugaisonRegles || []).forEach((r) => root.appendChild(ruleNode(r)));
+
+      const start = (initialVerb || "aimer").trim();
+      input.value = start === "aimer" ? "" : start;
+      go(start);
+    }, { eyebrow: "Conjugaison", title: "Conjugueur", sub: "Tous les temps, tous les modes" });
+  }
+
+  /* =====================================================================
+     Écran d'une catégorie
+     ===================================================================== */
+  function backBtn() {
+    return el("button", { class: "back", on: { click: () => LMJ.nav.back() } }, [
+      el("span", { html: IC.back }), document.createTextNode("Retour"),
+    ]);
+  }
+
+  function openCategory(cat) {
+    if (cat.type === "conjugaison") return openConjugaison();
+    LMJ.nav.push((root) => {
+      root.appendChild(backBtn());
+      root.appendChild(el("div", { class: "spacer" }));
+      const list = el("div", { class: "stack" });
+      (cat.data || []).forEach((item) => list.appendChild(itemNode(cat.type, item)));
+      root.appendChild(list);
+    }, { eyebrow: "Les règles", title: cat.nom, sub: cat.desc });
+  }
+
+  /* =====================================================================
+     Recherche transverse
+     ===================================================================== */
+  function buildIndex() {
+    const idx = [];
+    categories().forEach((cat) => {
+      (cat.data || []).forEach((item) => {
+        let hay = item.titre + " " + (item.resume || "") + " " + (item.cle || "");
+        if (item.explication) hay += " " + item.explication;
+        if (item.entrees) hay += " " + item.entrees.map((e) => (e.mot || "") + " " + (e.sens || "")).join(" ");
+        if (item.astuce) hay += " " + item.astuce;
+        idx.push({ cat, type: cat.type === "conjugaison" ? "rule" : cat.type, item, hay: util.normSearch(hay) });
+      });
+    });
+    return idx;
+  }
+
+  /* =====================================================================
+     Écran racine
+     ===================================================================== */
+  function render(root) {
+    const cats = categories();
+    const idx = buildIndex();
+
+    // Recherche
+    const search = el("div", { class: "search" });
+    const input = el("input", { type: "text", placeholder: "Rechercher une règle, un mot, un verbe…", autocapitalize: "none", autocomplete: "off", spellcheck: "false", enterkeyhint: "search" });
+    search.append(el("span", { html: IC.search }), input);
+    root.appendChild(search);
+
+    const resultsWrap = el("div");
+    const gridWrap = el("div");
+    root.append(resultsWrap, gridWrap);
+
+    // Grille des catégories
+    const grid = el("div", { class: "cat-grid", style: { marginTop: "18px" } });
+    cats.forEach((cat) => {
+      const n = cat.data ? cat.data.length : 0;
+      grid.appendChild(el("button", { class: "cat-tile", on: { click: () => openCategory(cat) } }, [
+        el("div", { class: "ic", html: IC[cat.id] || IC.grammaire }),
+        el("h3", { text: cat.nom }),
+        el("div", { class: "count", text: cat.type === "conjugaison" ? "Conjugueur + " + n + " règles" : n + " fiches" }),
+      ]));
+    });
+    gridWrap.appendChild(grid);
+
+    function runSearch() {
+      const q = util.normSearch(input.value);
+      util.clear(resultsWrap);
+      if (q.length < 2) { gridWrap.style.display = ""; return; }
+      gridWrap.style.display = "none";
+      const hits = idx.filter((r) => r.hay.includes(q)).slice(0, 30);
+
+      resultsWrap.appendChild(el("div", { class: "muted", style: { margin: "14px 2px 6px", fontSize: "13.5px" }, text: hits.length + " résultat(s)" }));
+
+      if (!hits.length) {
+        resultsWrap.appendChild(el("div", { class: "empty" }, [
+          el("p", { text: "Aucune règle trouvée." }),
+          /(er|ir|re|oir)$/.test(q)
+            ? el("button", { class: "btn primary", text: "Conjuguer « " + input.value.trim() + " »", on: { click: () => openConjugaison(input.value.trim()) } })
+            : null,
+        ]));
+        return;
+      }
+      const list = el("div", { class: "stack" });
+      hits.forEach((h) => {
+        const wrap = el("div");
+        wrap.appendChild(el("span", { class: "chip accent", style: { marginBottom: "8px" }, text: h.cat.nom }));
+        wrap.appendChild(itemNode(h.type, h.item));
+        list.appendChild(wrap);
+      });
+      resultsWrap.appendChild(list);
+    }
+
+    let t;
+    input.addEventListener("input", () => { clearTimeout(t); t = setTimeout(runSearch, 120); });
+  }
+
+  LMJ.views.regles = { render };
+})();
+
+
+/* ===== js/view-motdujour.js ===== */
+/* =====================================================================
+   Le Mot Juste — Vue « Mot du jour »
+   Tirage déterministe par date, définition + exemples, prononciation,
+   favoris, historique, exploration aléatoire.
+   ===================================================================== */
+(function () {
+  "use strict";
+  const G = typeof window !== "undefined" ? window : globalThis;
+  const LMJ = (G.LMJ = G.LMJ || {});
+  const { util, store, tts } = LMJ;
+  const el = util.el.bind(util);
+
+  const IC = {
+    speak: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H2v6h4l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M19 5a9 9 0 0 1 0 14"/></svg>',
+    heart: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8l1.1 1L12 21l7.7-7.5 1.1-1a5.5 5.5 0 0 0 0-7.9z"/></svg>',
+    heartFull: '<svg viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8l1.1 1L12 21l7.7-7.5 1.1-1a5.5 5.5 0 0 0 0-7.9z"/></svg>',
+    dice: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.3" fill="currentColor"/><circle cx="15.5" cy="15.5" r="1.3" fill="currentColor"/><circle cx="15.5" cy="8.5" r="1.3" fill="currentColor"/><circle cx="8.5" cy="15.5" r="1.3" fill="currentColor"/></svg>',
+    back: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>',
+  };
+
+  const mots = () => LMJ.data.mots || [];
+  const wordFor = (date) => { const m = mots(); return m.length ? m[((util.dayNumber(date) % m.length) + m.length) % m.length] : null; };
+
+  const getFavs = () => store.get("favoris", []);
+  const isFav = (mot) => getFavs().indexOf(mot) !== -1;
+  function toggleFav(mot) {
+    const f = getFavs();
+    const i = f.indexOf(mot);
+    if (i === -1) f.push(mot); else f.splice(i, 1);
+    store.set("favoris", f);
+    return i === -1;
+  }
+  const findMot = (nom) => mots().find((m) => m.mot === nom);
+
+  /* ---------- Carte d'un mot ---------- */
+  function chips(m) {
+    const box = el("div", { class: "mdj-meta" });
+    box.appendChild(el("span", { class: "chip accent", text: m.nature }));
+    box.appendChild(el("span", { class: "chip", text: m.registre }));
+    if (m.domaine) box.appendChild(el("span", { class: "chip gold", text: m.domaine }));
+    return box;
+  }
+
+  function block(label, node) {
+    return el("div", { class: "mdj-block" }, [el("div", { class: "lbl", text: label }), node]);
+  }
+
+  function synChips(list, cls) {
+    const box = el("div", { class: "syn-list" });
+    list.forEach((s) => box.appendChild(el("span", { class: cls, text: s })));
+    return box;
+  }
+
+  function wordCard(m, dateLabel) {
+    const card = el("div", { class: "mdj-card" });
+    if (dateLabel) card.appendChild(el("div", { class: "mdj-date", text: dateLabel }));
+    card.appendChild(el("div", { class: "mdj-word", text: m.mot }));
+    card.appendChild(chips(m));
+    card.appendChild(el("div", { class: "mdj-def", text: m.definition }));
+
+    if (m.etymologie) card.appendChild(el("div", { class: "mdj-block muted", style: { fontStyle: "italic", fontSize: "15px" }, text: "Étymologie : " + m.etymologie }));
+
+    if (m.exemples && m.exemples.length) {
+      const ex = el("div", null, m.exemples.map((e) => el("div", { class: "mdj-ex", text: "« " + e + " »" })));
+      card.appendChild(block("Exemples", ex));
+    }
+    if (m.synonymes && m.synonymes.length) card.appendChild(block("Synonymes", synChips(m.synonymes, "chip")));
+    if (m.antonymes && m.antonymes.length) card.appendChild(block("Antonymes", synChips(m.antonymes, "chip gold")));
+
+    // Actions
+    const favBtn = el("button", { class: "btn", "aria-label": "Favori" });
+    function paintFav() {
+      const fav = isFav(m.mot);
+      favBtn.innerHTML = (fav ? IC.heartFull : IC.heart) + `<span>${fav ? "Favori" : "Ajouter"}</span>`;
+      favBtn.classList.toggle("primary", fav);
+    }
+    paintFav();
+    favBtn.addEventListener("click", () => { toggleFav(m.mot); paintFav(); });
+
+    const speakBtn = el("button", { class: "btn", html: IC.speak + "<span>Prononcer</span>", on: { click: () => tts && tts.speak(m.mot, { rate: 0.95 }) } });
+
+    card.appendChild(el("div", { class: "mdj-actions" }, [speakBtn, favBtn]));
+    return card;
+  }
+
+  /* ---------- Écran d'un mot (historique / favori / hasard) ---------- */
+  function backBtn() {
+    return el("button", { class: "back", on: { click: () => LMJ.nav.back() } }, [el("span", { html: IC.back }), document.createTextNode("Retour")]);
+  }
+  function openWord(m, header) {
+    LMJ.nav.push((root) => { root.appendChild(backBtn()); root.appendChild(el("div", { class: "spacer" })); root.appendChild(wordCard(m)); }, header);
+  }
+
+  /* ---------- Vue racine ---------- */
+  function render(root) {
+    const m = wordFor();
+    if (!m) { root.appendChild(el("div", { class: "empty", text: "Aucun mot disponible." })); return; }
+
+    root.appendChild(wordCard(m, util.frDate()));
+
+    // Explorer au hasard
+    root.appendChild(el("div", { class: "spacer" }));
+    root.appendChild(el("button", {
+      class: "btn block", html: IC.dice + "<span>Piocher un mot au hasard</span>",
+      on: { click: () => {
+        const list = mots();
+        const rnd = list[Math.floor(Math.random() * list.length)];
+        openWord(rnd, { eyebrow: "Exploration", title: "Au hasard", sub: "Un mot pioché dans le corpus" });
+      } },
+    }));
+
+    // Favoris
+    const favs = getFavs();
+    if (favs.length) {
+      root.appendChild(el("div", { class: "section-head" }, [el("h2", { text: "Mes favoris" })]));
+      const list = el("div");
+      favs.slice().reverse().forEach((nom) => {
+        const mm = findMot(nom);
+        if (!mm) return;
+        list.appendChild(el("div", { class: "hist-item", on: { click: () => openWord(mm, { eyebrow: "Favori", title: mm.mot, sub: mm.nature }) } }, [
+          el("span", { class: "w", text: mm.mot }),
+          el("span", { class: "muted", style: { fontSize: "13px" }, text: mm.registre }),
+        ]));
+      });
+      root.appendChild(list);
+    }
+
+    // Historique des jours précédents
+    root.appendChild(el("div", { class: "section-head" }, [el("h2", { text: "Les jours précédents" })]));
+    const hist = el("div");
+    for (let i = 1; i <= 14; i++) {
+      const d = new Date();
+      d.setDate(d.getDate() - i);
+      const mm = wordFor(d);
+      if (!mm) continue;
+      hist.appendChild(el("div", { class: "hist-item", on: { click: () => openWord(mm, { eyebrow: "Historique", title: mm.mot, sub: util.frDate(d) }) } }, [
+        el("span", { class: "w", text: mm.mot }),
+        el("span", { class: "dt", text: d.toLocaleDateString("fr-FR", { day: "numeric", month: "short" }) }),
+      ]));
+    }
+    root.appendChild(hist);
+  }
+
+  LMJ.views.motdujour = { render };
+})();
+
+
+/* ===== js/view-dictee.js ===== */
+/* =====================================================================
+   Le Mot Juste — Vue « Dictée »
+   Choix du niveau → texte, lecture vocale phrase par phrase,
+   saisie, puis correction (diff mot-à-mot) et score.
+   ===================================================================== */
+(function () {
+  "use strict";
+  const G = typeof window !== "undefined" ? window : globalThis;
+  const LMJ = (G.LMJ = G.LMJ || {});
+  const { util, store, tts } = LMJ;
+  const el = util && util.el ? util.el.bind(util) : null;
+
+  /* =====================================================================
+     Moteur de correction (diff mot-à-mot)
+     ===================================================================== */
+  function tokenize(text) {
+    const re = /[\p{L}\p{N}]+(?:['’\-][\p{L}\p{N}]+)*/gu;
+    return (text.match(re) || []).map((w) => w.replace(/[’]/g, "'"));
+  }
+
+  // Distance d'édition mot-à-mot (Levenshtein) avec substitution de premier rang :
+  // chaque mot faux, oublié ou en trop compte pour exactement une faute.
+  function editDiff(a, b) {
+    const n = a.length, m = b.length;
+    const D = Array.from({ length: n + 1 }, () => new Int32Array(m + 1));
+    for (let i = 0; i <= n; i++) D[i][0] = i;
+    for (let j = 0; j <= m; j++) D[0][j] = j;
+    for (let i = 1; i <= n; i++)
+      for (let j = 1; j <= m; j++) {
+        const cost = a[i - 1] === b[j - 1] ? 0 : 1;
+        D[i][j] = Math.min(D[i - 1][j - 1] + cost, D[i - 1][j] + 1, D[i][j - 1] + 1);
+      }
+
+    const ops = [];
+    let i = n, j = m;
+    while (i > 0 || j > 0) {
+      if (i > 0 && j > 0 && a[i - 1] === b[j - 1] && D[i][j] === D[i - 1][j - 1]) { ops.push({ t: "ok", a: a[i - 1] }); i--; j--; }
+      else if (i > 0 && j > 0 && D[i][j] === D[i - 1][j - 1] + 1) { ops.push({ t: "sub", a: a[i - 1], b: b[j - 1] }); i--; j--; }
+      else if (i > 0 && D[i][j] === D[i - 1][j] + 1) { ops.push({ t: "del", a: a[i - 1] }); i--; }
+      else { ops.push({ t: "ins", b: b[j - 1] }); j--; }
+    }
+    ops.reverse();
+    return ops;
+  }
+
+  function correct(original, user) {
+    const a = tokenize(original), b = tokenize(user);
+    const ops = editDiff(a, b);
+    let fautes = 0;
+    ops.forEach((o) => { if (o.t !== "ok") fautes++; });
+    const total = a.length || 1;
+    const pourcent = Math.max(0, Math.round((1 - fautes / total) * 100));
+    const note = Math.max(0, Math.round((1 - fautes / total) * 20 * 10) / 10);
+    return { ops, fautes, total, pourcent, note };
+  }
+  LMJ.diffDictee = correct; // exposé pour les tests
+
+  if (!el) { // contexte Node (tests) : on s'arrête après l'export du moteur
+    if (typeof module !== "undefined" && module.exports) module.exports = { correct, tokenize };
+    return;
+  }
+
+  /* =====================================================================
+     Icônes
+     ===================================================================== */
+  const IC = {
+    play: '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>',
+    pause: '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg>',
+    prev: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 19 4 12l7-7M20 19l-7-7 7-7"/></svg>',
+    next: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m13 19 7-7-7-7M4 19l7-7-7-7"/></svg>',
+    replay: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/></svg>',
+    back: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>',
+  };
+
+  const splitSentences = (t) => (t.match(/[^.!?…]+[.!?…]*/g) || [t]).map((s) => s.trim()).filter(Boolean);
+
+  const bestScores = () => store.get("dicteeScores", {});
+  function saveScore(id, res) {
+    const s = bestScores();
+    if (!s[id] || res.fautes < s[id].fautes) { s[id] = { fautes: res.fautes, total: res.total, date: util.todayKey() }; store.set("dicteeScores", s); }
+  }
+
+  function backBtn() {
+    return el("button", { class: "back", on: { click: () => LMJ.nav.back() } }, [el("span", { html: IC.back }), document.createTextNode("Retour")]);
+  }
+
+  /* =====================================================================
+     Écran d'une dictée
+     ===================================================================== */
+  function openDictee(d) {
+    LMJ.nav.push((root) => {
+      root.appendChild(backBtn());
+      root.appendChild(el("div", { class: "spacer" }));
+
+      root.appendChild(el("div", { class: "section-head", style: { marginTop: "0" } }, [el("h2", { text: d.titre })]));
+      if (d.source) root.appendChild(el("div", { class: "muted", style: { marginTop: "-8px", marginBottom: "8px", fontStyle: "italic" }, text: "— " + d.source }));
+
+      if (!tts || !tts.supported) {
+        root.appendChild(el("div", { class: "note", style: { marginBottom: "14px" }, text: "La synthèse vocale n'est pas disponible sur cet appareil. Le texte est affiché ci-dessous pour t'entraîner." }));
+        root.appendChild(el("div", { class: "card", style: { marginBottom: "14px" }, text: d.texte }));
+      }
+
+      const sentences = splitSentences(d.texte);
+      let current = 0;
+      let rate = store.get("dicteeRate", 0.9);
+
+      /* ----- Lecteur ----- */
+      const counter = el("div", { class: "muted", style: { fontSize: "13px" }, text: `Phrase 1 / ${sentences.length}` });
+      const playBtn = el("button", { class: "play-btn", html: IC.play, "aria-label": "Écouter" });
+      const prevBtn = el("button", { class: "btn", html: IC.prev, "aria-label": "Phrase précédente" });
+      const nextBtn = el("button", { class: "btn", html: IC.next, "aria-label": "Phrase suivante" });
+
+      let playing = false;
+      function updateCounter() { counter.textContent = `Phrase ${current + 1} / ${sentences.length}`; }
+      function playCurrent() {
+        if (!tts || !tts.supported) return;
+        playing = true; playBtn.innerHTML = IC.pause;
+        tts.speak(sentences[current], {
+          rate,
+          onend: () => { playing = false; playBtn.innerHTML = IC.play; },
+        });
+      }
+      playBtn.addEventListener("click", () => {
+        if (playing) { tts.cancel(); playing = false; playBtn.innerHTML = IC.play; }
+        else playCurrent();
+      });
+      prevBtn.addEventListener("click", () => { if (current > 0) current--; updateCounter(); playCurrent(); });
+      nextBtn.addEventListener("click", () => { if (current < sentences.length - 1) current++; updateCounter(); playCurrent(); });
+
+      const speed = el("input", { type: "range", min: "0.5", max: "1.2", step: "0.05", value: String(rate) });
+      speed.addEventListener("input", () => { rate = parseFloat(speed.value); store.set("dicteeRate", rate); });
+
+      const player = el("div", { class: "player" }, [
+        prevBtn, playBtn, nextBtn,
+        el("div", { class: "speed-ctl" }, [el("span", { text: "Vitesse" }), speed]),
+      ]);
+      root.append(counter, el("div", { class: "spacer", style: { height: "6px" } }), player);
+
+      root.appendChild(el("button", { class: "btn ghost block", html: IC.replay + "<span>Réécouter tout le texte</span>", on: { click: () => tts && tts.speak(d.texte, { rate }) } }));
+
+      /* ----- Saisie ----- */
+      root.appendChild(el("div", { class: "lbl", style: { fontSize: "12px", letterSpacing: ".1em", textTransform: "uppercase", color: "var(--accent)", fontWeight: "700", margin: "20px 0 8px" }, text: "Écris ce que tu entends" }));
+      const textarea = el("textarea", { class: "dictee-input", placeholder: "Tape ton texte ici…", autocapitalize: "sentences", spellcheck: "false" });
+      root.appendChild(textarea);
+
+      const resultBox = el("div");
+      const correctBtn = el("button", { class: "btn primary block", text: "Corriger ma dictée", style: { marginTop: "14px" } });
+      root.append(correctBtn, resultBox);
+
+      correctBtn.addEventListener("click", () => {
+        if (tts) tts.cancel();
+        const res = correct(d.texte, textarea.value);
+        saveScore(d.id, res);
+        renderResult(resultBox, res, d);
+        if (resultBox.scrollIntoView) resultBox.scrollIntoView({ behavior: "smooth", block: "start" });
+      });
+    }, { eyebrow: "Dictée", title: d.titre, sub: "Écoute et recopie" });
+  }
+
+  function renderResult(box, res, d) {
+    util.clear(box);
+
+    const color = res.fautes === 0 ? "var(--green)" : res.fautes <= 3 ? "var(--amber)" : "var(--red)";
+    const card = el("div", { class: "card", style: { marginTop: "16px" } });
+
+    // Score
+    card.appendChild(el("div", { class: "score-ring" }, [
+      el("div", { class: "score-num", style: { color }, html: `${res.fautes}<small> faute${res.fautes > 1 ? "s" : ""}</small>` }),
+      el("div", null, [
+        el("div", { style: { fontSize: "20px", fontWeight: "700" }, text: res.note + " / 20" }),
+        el("div", { class: "muted", style: { fontSize: "13.5px" }, text: `${res.pourcent} % de réussite · ${res.total} mots` }),
+      ]),
+    ]));
+
+    const msg = res.fautes === 0 ? "Sans faute, magnifique !" : res.fautes <= 3 ? "Très bien, presque parfait." : res.fautes <= 8 ? "Bon travail, continue de t'exercer." : "Courage, relis les règles et recommence !";
+    card.appendChild(el("div", { class: "note astuce", style: { marginTop: "14px" }, text: msg }));
+
+    // Diff
+    card.appendChild(el("div", { class: "lbl", style: { fontSize: "12px", letterSpacing: ".1em", textTransform: "uppercase", color: "var(--accent)", fontWeight: "700", margin: "18px 0 8px" }, text: "Correction" }));
+    const diff = el("div", { class: "diff" });
+    res.ops.forEach((o) => {
+      if (o.t === "ok") diff.append(document.createTextNode(o.a + " "));
+      else if (o.t === "sub") { diff.appendChild(el("span", { class: "bad", text: o.b })); diff.append(" "); diff.appendChild(el("span", { class: "miss", text: o.a })); diff.append(" "); }
+      else if (o.t === "del") { diff.appendChild(el("span", { class: "miss", text: o.a })); diff.append(" "); }
+      else if (o.t === "ins") { diff.appendChild(el("span", { class: "ins", text: o.b })); diff.append(" "); }
+    });
+    card.appendChild(diff);
+
+    card.appendChild(el("div", { class: "legend" }, [
+      el("span", null, [el("i", { style: { background: "var(--red-soft)" } }), document.createTextNode("ce que tu as écrit (faux)")]),
+      el("span", null, [el("i", { style: { background: "var(--green-soft)" } }), document.createTextNode("le mot correct / oublié")]),
+      el("span", null, [el("i", { style: { background: "var(--amber-soft)" } }), document.createTextNode("mot en trop")]),
+    ]));
+
+    // Texte original
+    const det = el("details", { class: "rule", style: { marginTop: "14px" } });
+    det.append(
+      el("summary", null, [el("span", { class: "marker", html: '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>' }), document.createTextNode("Voir le texte original")]),
+      el("div", { class: "body" }, [el("p", { style: { fontFamily: "var(--serif)", fontSize: "16.5px", lineHeight: "1.7" }, text: d.texte })])
+    );
+    card.appendChild(det);
+
+    box.appendChild(card);
+    box.appendChild(el("button", { class: "btn block", text: "Recommencer cette dictée", style: { marginTop: "12px" }, on: { click: () => { LMJ.nav.back(); setTimeout(() => openDictee(d), 30); } } }));
+  }
+
+  /* =====================================================================
+     Écran d'un niveau (liste des dictées)
+     ===================================================================== */
+  function openNiveau(niv) {
+    LMJ.nav.push((root) => {
+      root.appendChild(backBtn());
+      root.appendChild(el("div", { class: "spacer" }));
+      const scores = bestScores();
+      const list = el("div", { class: "level-list level-" + niv.id });
+      LMJ.data.dictees.filter((d) => d.niveau === niv.id).forEach((d) => {
+        const best = scores[d.id];
+        list.appendChild(el("button", { class: "level-card", on: { click: () => openDictee(d) } }, [
+          el("span", { class: "level-dot" }),
+          el("div", { style: { flex: "1" } }, [
+            el("h3", { text: d.titre }),
+            el("div", { class: "meta", text: d.source ? "— " + d.source : (d.texte.split(/\s+/).length + " mots") }),
+          ]),
+          best ? el("span", { class: "chip", text: "record : " + best.fautes + " f." }) : null,
+        ]));
+      });
+      root.appendChild(list);
+    }, { eyebrow: "Dictée", title: niv.nom, sub: niv.desc });
+  }
+
+  /* =====================================================================
+     Écran racine : les 3 niveaux
+     ===================================================================== */
+  function render(root) {
+    if (!tts || !tts.supported) {
+      root.appendChild(el("div", { class: "note", style: { marginBottom: "16px" }, text: "Astuce : sur ton téléphone, la voix française du système lira les dictées. Assure-toi qu'une voix française est installée dans les réglages de synthèse vocale." }));
+    }
+    root.appendChild(el("p", { class: "muted", text: "Choisis un niveau. Écoute le texte lu à voix haute, recopie-le, puis lance la correction." }));
+    const list = el("div", { class: "level-list", style: { marginTop: "12px" } });
+    LMJ.data.dicteeNiveaux.forEach((niv) => {
+      const count = LMJ.data.dictees.filter((d) => d.niveau === niv.id).length;
+      list.appendChild(el("button", { class: "level-card level-" + niv.id, on: { click: () => openNiveau(niv) } }, [
+        el("span", { class: "level-dot" }),
+        el("div", { style: { flex: "1" } }, [
+          el("h3", { text: niv.nom }),
+          el("div", { class: "meta", text: niv.desc }),
+        ]),
+        el("span", { class: "level-badge", text: count + " dictées" }),
+      ]));
+    });
+    root.appendChild(list);
+  }
+
+  LMJ.views.dictee = { render };
+})();
+
+
+/* ===== js/app.js ===== */
+/* =====================================================================
+   Le Mot Juste — Amorçage
+   Barre d'onglets, pile de navigation (compatible bouton retour Android),
+   en-tête contextuel, enregistrement du service worker.
+   ===================================================================== */
+(function () {
+  "use strict";
+  const { util, store } = window.LMJ;
+  const view = util.$("#view");
+  const headerEl = util.$("#app-header");
+  const tabbarEl = util.$("#tabbar");
+
+  /* ---------- Icônes (inline SVG, aucune ressource externe) ---------- */
+  const ICONS = {
+    regles:
+      '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M2 4a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v16a2 2 0 0 0-2-2H2z"/><path d="M22 4a2 2 0 0 0-2-2h-6a2 2 0 0 0-2 2v16a2 2 0 0 1 2-2h6z"/></svg>',
+    motdujour:
+      '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l2.1 5.6L20 10l-5.9 1.4L12 17l-2.1-5.6L4 10l5.9-1.4z"/></svg>',
+    dictee:
+      '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18v-5a9 9 0 0 1 18 0v5"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3z"/><path d="M3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/></svg>',
+  };
+
+  const TABS = [
+    { id: "regles", label: "Les règles", eyebrow: "Référentiel", title: "Les règles", sub: "Accords, conjugaison, confusions, usages, vocabulaire" },
+    { id: "motdujour", label: "Mot du jour", eyebrow: "Un mot par jour", title: "Le mot du jour", sub: "Enrichir son éloquence, jour après jour" },
+    { id: "dictee", label: "Dictée", eyebrow: "S'exercer", title: "Dictées", sub: "Du niveau facile à expert" },
+  ];
+
+  /* ---------- État & pile de navigation ---------- */
+  let currentTab = null;
+  let stack = []; // pile de fonctions render(root) ; index 0 = racine de l'onglet
+
+  function drawTop() {
+    const fn = stack[stack.length - 1];
+    util.clear(view);
+    window.scrollTo({ top: 0 });
+    fn(view);
+  }
+
+  function setHeader({ eyebrow, title, sub }) {
+    util.clear(headerEl);
+    util.append(headerEl, [
+      eyebrow ? util.el("div", { class: "eyebrow", text: eyebrow }) : null,
+      util.el("h1", { text: title || "" }),
+      sub ? util.el("div", { class: "sub", text: sub }) : null,
+    ]);
+  }
+
+  function renderTabbar() {
+    util.clear(tabbarEl);
+    TABS.forEach((t) => {
+      const btn = util.el("button", {
+        class: t.id === currentTab ? "active" : "",
+        role: "tab",
+        html: ICONS[t.id] + `<span>${t.label}</span>`,
+        on: { click: () => selectTab(t.id) },
+      });
+      tabbarEl.appendChild(btn);
+    });
+  }
+
+  function selectTab(tabId, opts) {
+    opts = opts || {};
+    const tab = TABS.find((t) => t.id === tabId) || TABS[0];
+    currentTab = tab.id;
+    setHeader(tab); // en-tête par défaut ; la vue peut le remplacer
+    const viewMod = window.LMJ.views[tab.id];
+    stack = [
+      (root) => {
+        setHeader(tab);
+        if (viewMod && viewMod.render) viewMod.render(root);
+        else root.appendChild(util.el("div", { class: "empty", text: "Bientôt disponible." }));
+      },
+    ];
+    renderTabbar();
+    drawTop();
+    store.set("tab", tab.id);
+    if (!opts.fromPop) history.replaceState({ tab: tab.id, depth: 0 }, "");
+  }
+
+  /* API de navigation pour les vues (drill-down) */
+  window.LMJ.nav = {
+    /** Empile un nouvel écran. header : {eyebrow,title,sub} optionnel. */
+    push(renderFn, header) {
+      stack.push((root) => {
+        if (header) setHeader(header);
+        renderFn(root);
+      });
+      history.pushState({ tab: currentTab, depth: stack.length - 1 }, "");
+      drawTop();
+    },
+    back() {
+      if (stack.length > 1) history.back();
+    },
+    setHeader,
+  };
+
+  window.addEventListener("popstate", (e) => {
+    if (stack.length > 1) {
+      stack.pop();
+      drawTop();
+    } else {
+      const st = e.state;
+      if (st && st.tab && st.tab !== currentTab) selectTab(st.tab, { fromPop: true });
+    }
+  });
+
+  /* ---------- Enregistrement du service worker ---------- */
+  function registerSW() {
+    if (!("serviceWorker" in navigator)) return;
+    // Uniquement en contexte sécurisé (https ou localhost) — pas en file://
+    if (location.protocol === "file:") return;
+    window.addEventListener("load", () => {
+      navigator.serviceWorker.register("service-worker.js").catch((e) =>
+        console.warn("[SW] non enregistré :", e)
+      );
+    });
+  }
+
+  /* ---------- Démarrage ---------- */
+  function start() {
+    if (LMJ.tts) LMJ.tts.init();
+    const last = store.get("tab", "regles");
+    selectTab(TABS.find((t) => t.id === last) ? last : "regles");
+    registerSW();
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", start);
+  } else {
+    start();
+  }
+})();
+
+</script>
+</body>
+</html>

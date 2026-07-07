@@ -1,0 +1,142 @@
+/* =====================================================================
+   Le Mot Juste — Vocabulaire : nuances entre mots proches
+   Schéma : { id, titre, cle (la clé pour choisir), entrees:[{mot, sens, exemple}] }
+   ===================================================================== */
+(function () {
+  "use strict";
+  const G = typeof window !== "undefined" ? window : globalThis;
+  const LMJ = (G.LMJ = G.LMJ || {});
+  LMJ.data = LMJ.data || {};
+
+  LMJ.data.nuances = [
+    {
+      id: "nu-amener",
+      titre: "Amener · Apporter · Emmener · Emporter",
+      cle: "amener/emmener → êtres animés ; apporter/emporter → choses. am-/ap- → vers ici ; em- → au loin.",
+      entrees: [
+        { mot: "amener", sens: "conduire une personne (ou un animal) vers un lieu", exemple: "Amène ton frère à la fête." },
+        { mot: "emmener", sens: "conduire une personne avec soi en partant", exemple: "Je t'emmène au cinéma." },
+        { mot: "apporter", sens: "porter une chose vers un lieu", exemple: "Apporte le dessert." },
+        { mot: "emporter", sens: "prendre une chose avec soi en partant", exemple: "N'oublie pas d'emporter ton parapluie." },
+      ],
+    },
+    {
+      id: "nu-an-annee",
+      titre: "An · Année (et jour/journée, soir/soirée)",
+      cle: "La forme courte compte l'unité ; la forme longue insiste sur la durée vécue, remplie.",
+      entrees: [
+        { mot: "an", sens: "l'unité de temps, le point sur le calendrier", exemple: "Il a trente ans." },
+        { mot: "année", sens: "la durée envisagée dans son déroulement", exemple: "Une année riche en événements." },
+        { mot: "jour / journée", sens: "même distinction : le point vs la durée", exemple: "Toute la journée / il y a trois jours." },
+      ],
+    },
+    {
+      id: "nu-second-deuxieme",
+      titre: "Second · Deuxième",
+      cle: "Puriste : « second » quand la série s'arrête à deux ; « deuxième » quand elle continue.",
+      entrees: [
+        { mot: "second", sens: "il n'y a que deux éléments (pas de troisième)", exemple: "La Seconde Guerre mondiale (usage consacré)." },
+        { mot: "deuxième", sens: "la série comporte plus de deux éléments", exemple: "Le deuxième étage sur cinq." },
+      ],
+    },
+    {
+      id: "nu-eminent-imminent",
+      titre: "Éminent · Imminent",
+      cle: "Éminent = remarquable ; imminent = sur le point d'arriver.",
+      entrees: [
+        { mot: "éminent", sens: "qui se distingue par sa valeur, supérieur", exemple: "Un éminent professeur." },
+        { mot: "imminent", sens: "qui va se produire d'un instant à l'autre", exemple: "Un danger imminent." },
+      ],
+    },
+    {
+      id: "nu-conjecture",
+      titre: "Conjecture · Conjoncture",
+      cle: "Conjecture = supposition ; conjoncture = situation du moment.",
+      entrees: [
+        { mot: "conjecture", sens: "une hypothèse, une opinion fondée sur des probabilités", exemple: "Se perdre en conjectures." },
+        { mot: "conjoncture", sens: "l'ensemble des circonstances, le contexte", exemple: "La conjoncture économique." },
+      ],
+    },
+    {
+      id: "nu-prodige-prodigue",
+      titre: "Prodige · Prodigue",
+      cle: "Prodige = merveille/génie ; prodigue = qui dépense sans compter.",
+      entrees: [
+        { mot: "prodige", sens: "un fait extraordinaire, ou un talent exceptionnel", exemple: "Un enfant prodige." },
+        { mot: "prodigue", sens: "qui donne ou dépense avec excès", exemple: "Le fils prodigue." },
+      ],
+    },
+    {
+      id: "nu-officiel-officieux",
+      titre: "Officiel · Officieux",
+      cle: "Officiel = confirmé par l'autorité ; officieux = connu mais non confirmé.",
+      entrees: [
+        { mot: "officiel", sens: "émanant d'une autorité, publiquement reconnu", exemple: "Le résultat officiel." },
+        { mot: "officieux", sens: "non officiel, à titre confidentiel", exemple: "Une source officieuse." },
+      ],
+    },
+    {
+      id: "nu-notable-notoire",
+      titre: "Notable · Notoire",
+      cle: "Notable = digne d'être noté (souvent positif) ; notoire = connu de tous (souvent négatif).",
+      entrees: [
+        { mot: "notable", sens: "important, remarquable", exemple: "Une amélioration notable." },
+        { mot: "notoire", sens: "que tout le monde sait, manifeste", exemple: "Un mensonge notoire." },
+      ],
+    },
+    {
+      id: "nu-emigrer-immigrer",
+      titre: "Émigrer · Immigrer",
+      cle: "É-migrer = sortir de son pays ; Im-migrer = entrer dans un pays.",
+      entrees: [
+        { mot: "émigrer", sens: "quitter son pays pour s'installer ailleurs", exemple: "Ils ont émigré vers le Canada." },
+        { mot: "immigrer", sens: "entrer dans un pays pour s'y établir", exemple: "Sa famille a immigré en France." },
+      ],
+    },
+    {
+      id: "nu-partial-partiel",
+      titre: "Partial · Partiel",
+      cle: "Partial = qui manque d'objectivité ; partiel = incomplet.",
+      entrees: [
+        { mot: "partial", sens: "qui prend parti, non impartial", exemple: "Un juge partial." },
+        { mot: "partiel", sens: "qui ne concerne qu'une partie", exemple: "Un remboursement partiel." },
+      ],
+    },
+    {
+      id: "nu-continu-continuel",
+      titre: "Continu · Continuel",
+      cle: "Continu = sans interruption ; continuel = qui se répète très souvent.",
+      entrees: [
+        { mot: "continu", sens: "ininterrompu dans le temps", exemple: "Un courant continu." },
+        { mot: "continuel", sens: "qui revient sans cesse (avec des reprises)", exemple: "Des interruptions continuelles." },
+      ],
+    },
+    {
+      id: "nu-venimeux-veneneux",
+      titre: "Venimeux · Vénéneux",
+      cle: "Venimeux = qui a du venin (animal) ; vénéneux = qui contient du poison (végétal).",
+      entrees: [
+        { mot: "venimeux", sens: "qui inocule un venin", exemple: "Un serpent venimeux." },
+        { mot: "vénéneux", sens: "toxique quand on l'ingère", exemple: "Un champignon vénéneux." },
+      ],
+    },
+    {
+      id: "nu-perpetrer-perpetuer",
+      titre: "Perpétrer · Perpétuer",
+      cle: "Perpétrer = commettre (un crime) ; perpétuer = faire durer.",
+      entrees: [
+        { mot: "perpétrer", sens: "accomplir un acte (généralement répréhensible)", exemple: "Perpétrer un attentat." },
+        { mot: "perpétuer", sens: "faire durer, transmettre", exemple: "Perpétuer une tradition." },
+      ],
+    },
+    {
+      id: "nu-recouvrer-recouvrir",
+      titre: "Recouvrer · Recouvrir",
+      cle: "Recouvrer = retrouver/récupérer ; recouvrir = couvrir de nouveau.",
+      entrees: [
+        { mot: "recouvrer", sens: "rentrer en possession de, retrouver", exemple: "Recouvrer la vue, recouvrer une dette." },
+        { mot: "recouvrir", sens: "couvrir entièrement", exemple: "La neige recouvre les toits." },
+      ],
+    },
+  ];
+})();
