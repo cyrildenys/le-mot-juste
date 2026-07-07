@@ -3,7 +3,7 @@
    Précache tous les assets → l'application fonctionne 100% hors-ligne.
    Incrémenter CACHE à chaque changement d'assets pour forcer la MAJ.
    ===================================================================== */
-const CACHE = "le-mot-juste-v3";
+const CACHE = "le-mot-juste-v4";
 
 const ASSETS = [
   "./",

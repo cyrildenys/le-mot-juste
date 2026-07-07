@@ -150,5 +150,61 @@
       ],
       astuce: "Remplaçable par « plus » → « davantage » en un mot.",
     },
+    {
+      id: "conf-sur-sur",
+      titre: "sur / sûr",
+      entrees: [
+        { mot: "sur", nature: "préposition / adjectif", sens: "position (sur la table) ou goût aigre", exemple: "Le livre est sur la table." },
+        { mot: "sûr", nature: "adjectif", sens: "= certain (accent circonflexe)", exemple: "Je suis sûr de moi." },
+      ],
+      astuce: "« sûr » = certain (on peut dire « certain ») → accent circonflexe.",
+    },
+    {
+      id: "conf-du-du",
+      titre: "du / dû",
+      entrees: [
+        { mot: "du", nature: "article contracté", sens: "= de le", exemple: "Je bois du café." },
+        { mot: "dû", nature: "participe passé de devoir", sens: "au masculin singulier (accent)", exemple: "Il a dû partir." },
+      ],
+      astuce: "Le participe « dû » prend un accent (mais « due, dus, dues » n'en prennent pas).",
+    },
+    {
+      id: "conf-notre-notre",
+      titre: "notre / nôtre (votre / vôtre)",
+      entrees: [
+        { mot: "notre / votre", nature: "déterminant possessif", sens: "devant un nom (pas d'accent)", exemple: "Notre maison, votre avis." },
+        { mot: "le nôtre / le vôtre", nature: "pronom possessif", sens: "remplace le nom (accent circonflexe)", exemple: "Ce livre est le nôtre." },
+      ],
+      astuce: "Précédé de « le/la/les » → pronom avec accent : le nôtre, le vôtre.",
+    },
+    {
+      id: "conf-quelque",
+      titre: "quelque / quel que",
+      entrees: [
+        { mot: "quelque(s)", nature: "déterminant", sens: "= plusieurs, un certain (devant un nom)", exemple: "Quelques amis sont venus." },
+        { mot: "quel que", nature: "locution", sens: "en deux mots devant le verbe être, s'accorde avec le sujet", exemple: "Quelle que soit ta décision…" },
+      ],
+      astuce: "Devant « soit » → deux mots : « quel que », accordé (quel, quelle, quels, quelles).",
+    },
+    {
+      id: "conf-sans-sen",
+      titre: "sans / s'en / c'en",
+      entrees: [
+        { mot: "sans", nature: "préposition", sens: "marque l'absence (= sans rien)", exemple: "Il est parti sans manteau." },
+        { mot: "s'en", nature: "se + en", sens: "avec un verbe pronominal", exemple: "Il s'en va." },
+        { mot: "c'en", nature: "cela + en", sens: "dans « c'en est fait / trop »", exemple: "C'en est trop !" },
+      ],
+      astuce: "Devant un verbe → « s'en » (il s'en souvient). Absence → « sans ».",
+    },
+    {
+      id: "conf-voie-voix",
+      titre: "voie / voix / voit",
+      entrees: [
+        { mot: "voie", nature: "nom / verbe (voir, subj.)", sens: "un chemin ; ou « qu'il voie »", exemple: "La voie ferrée ; il faut qu'il voie." },
+        { mot: "voix", nature: "nom féminin", sens: "le son émis, le vote", exemple: "Une belle voix ; compter les voix." },
+        { mot: "voit", nature: "verbe voir (il)", sens: "3e personne du présent", exemple: "Il voit clair." },
+      ],
+      astuce: "« voix » (le son) est invariable au pluriel : des voix.",
+    },
   ];
 })();

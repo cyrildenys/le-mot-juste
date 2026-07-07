@@ -138,5 +138,59 @@
         { mot: "recouvrir", sens: "couvrir entièrement", exemple: "La neige recouvre les toits." },
       ],
     },
+    {
+      id: "nu-effraction-infraction",
+      titre: "Effraction · Infraction",
+      cle: "Effraction = forcer une entrée ; infraction = violer une règle.",
+      entrees: [
+        { mot: "effraction", sens: "bris de clôture pour pénétrer quelque part", exemple: "Un vol avec effraction." },
+        { mot: "infraction", sens: "violation d'une loi, d'un règlement", exemple: "Une infraction au code de la route." },
+      ],
+    },
+    {
+      id: "nu-eruption-irruption",
+      titre: "Éruption · Irruption",
+      cle: "É-ruption = jaillir hors (volcan, boutons) ; Ir-ruption = entrer soudainement.",
+      entrees: [
+        { mot: "éruption", sens: "jaillissement (volcan, dents, boutons)", exemple: "Une éruption volcanique." },
+        { mot: "irruption", sens: "entrée soudaine et violente", exemple: "Il fit irruption dans la salle." },
+      ],
+    },
+    {
+      id: "nu-allusion-illusion",
+      titre: "Allusion · Illusion",
+      cle: "Allusion = sous-entendu ; illusion = perception ou croyance trompeuse.",
+      entrees: [
+        { mot: "allusion", sens: "évocation indirecte de quelque chose", exemple: "Faire allusion à un incident." },
+        { mot: "illusion", sens: "erreur de perception ou espoir vain", exemple: "Se faire des illusions." },
+      ],
+    },
+    {
+      id: "nu-collision-collusion",
+      titre: "Collision · Collusion",
+      cle: "Collision = choc physique ; collusion = entente secrète frauduleuse.",
+      entrees: [
+        { mot: "collision", sens: "choc entre deux corps", exemple: "Une collision entre deux voitures." },
+        { mot: "collusion", sens: "entente secrète au détriment d'un tiers", exemple: "Une collusion entre concurrents." },
+      ],
+    },
+    {
+      id: "nu-prescription-proscription",
+      titre: "Prescription · Proscription",
+      cle: "Prescrire = recommander/ordonner ; proscrire = interdire.",
+      entrees: [
+        { mot: "prescription", sens: "ordre, recommandation (notamment médicale)", exemple: "Suivre les prescriptions du médecin." },
+        { mot: "proscription", sens: "interdiction, bannissement", exemple: "La proscription de certains termes." },
+      ],
+    },
+    {
+      id: "nu-affluence-influence",
+      titre: "Affluence · Influence",
+      cle: "Affluence = grande foule ; influence = ascendant, pouvoir d'agir sur.",
+      entrees: [
+        { mot: "affluence", sens: "arrivée d'un grand nombre de personnes", exemple: "Les heures d'affluence." },
+        { mot: "influence", sens: "action qu'on exerce sur quelqu'un ou quelque chose", exemple: "Avoir de l'influence sur ses proches." },
+      ],
+    },
   ];
 })();

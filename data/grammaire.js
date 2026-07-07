@@ -117,5 +117,41 @@
       ],
       astuce: "Un nom commun est presque toujours accompagné d'un déterminant.",
     },
+    {
+      id: "gr-types-phrases",
+      titre: "Les types et formes de phrases",
+      resume: "Déclarative, interrogative, exclamative, impérative.",
+      explication:
+        "<p>On distingue quatre <strong>types</strong> de phrases : <strong>déclarative</strong> (elle affirme), <strong>interrogative</strong> (elle questionne), <strong>exclamative</strong> (elle exprime une émotion), <strong>impérative</strong> (elle ordonne).</p><p>À cela s'ajoutent des <strong>formes</strong> : affirmative/négative, active/passive, neutre/emphatique.</p>",
+      exemples: [
+        { ok: true, texte: "Tu viens. (déclarative) — Viens-tu ? (interrogative)" },
+        { ok: true, texte: "Quelle chance ! (exclamative) — Viens ici. (impérative)" },
+      ],
+      astuce: "La ponctuation finale trahit souvent le type : . ? !",
+    },
+    {
+      id: "gr-complement-agent",
+      titre: "Le complément d'agent",
+      resume: "Dans une phrase passive, il désigne l'auteur de l'action.",
+      explication:
+        "<p>À la voix passive, le <strong>complément d'agent</strong> indique qui accomplit réellement l'action. Il est introduit par <strong>par</strong> (parfois <strong>de</strong>).</p>",
+      exemples: [
+        { ok: true, texte: "La souris est mangée <em>par le chat</em>. (agent : le chat)" },
+        { ok: true, texte: "Il est respecté <em>de tous</em>." },
+      ],
+      astuce: "Le complément d'agent du passif correspond au sujet de la phrase active.",
+    },
+    {
+      id: "gr-apposition",
+      titre: "L'apposition",
+      resume: "Un groupe qui désigne autrement le nom, souvent entre virgules.",
+      explication:
+        "<p>L'<strong>apposition</strong> caractérise ou renomme un nom sans mot de liaison ; elle est généralement détachée par des <strong>virgules</strong> et peut être supprimée.</p>",
+      exemples: [
+        { ok: true, texte: "Paris, <em>capitale de la France</em>, est immense." },
+        { ok: true, texte: "Victor Hugo, <em>écrivain engagé</em>, publia beaucoup." },
+      ],
+      astuce: "Elle équivaut souvent à « c'est-à-dire » et se retire sans casser la phrase.",
+    },
   ];
 })();

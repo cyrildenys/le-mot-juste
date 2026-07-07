@@ -285,5 +285,98 @@
       { q: "Il a ___ la vue.", options: ["recouvert", "recouvré", "recouvru"], reponse: 1, n: 3, explication: "Retrouver → « recouvrer » (recouvré)." },
       { q: "La neige a ___ les toits.", options: ["recouvré", "recouvert", "recouvru"], reponse: 1, n: 3, explication: "Couvrir entièrement → « recouvrir » (recouvert)." },
     ],
+
+    /* ---------- Nouvelles confusions ---------- */
+    "conf-sur-sur": [
+      { q: "Le livre est ___ la table.", options: ["sûr", "sur", "sûre"], reponse: 1, n: 1, explication: "Préposition de position → « sur »." },
+      { q: "Je suis ___ de moi.", options: ["sur", "sûr", "sûre"], reponse: 1, n: 2, explication: "= certain → « sûr » (accent circonflexe)." },
+    ],
+    "conf-du-du": [
+      { q: "Je bois ___ café.", options: ["dû", "du", "due"], reponse: 1, n: 1, explication: "Article contracté (de + le) → « du »." },
+      { q: "Il a ___ partir plus tôt.", options: ["du", "dû", "due"], reponse: 1, n: 2, explication: "Participe passé de devoir (masc. sing.) → « dû »." },
+    ],
+    "conf-notre-notre": [
+      { q: "___ maison est petite.", options: ["Nôtre", "Notre", "Nôtres"], reponse: 1, n: 1, explication: "Déterminant devant le nom → « notre » (sans accent)." },
+      { q: "Ce livre est le ___.", options: ["notre", "nôtre", "nôtres"], reponse: 1, n: 2, explication: "Pronom (après « le ») → « nôtre » (accent)." },
+    ],
+    "conf-quelque": [
+      { q: "J'ai vu ___ amis.", options: ["quel que", "quelque", "quelques"], reponse: 2, n: 2, explication: "= plusieurs → déterminant « quelques »." },
+      { q: "___ soit ta décision, je te suis.", options: ["Quelque", "Quel que", "Quelle que"], reponse: 2, n: 3, explication: "Devant « soit », en deux mots, accord avec « décision » (fém.) → « quelle que »." },
+    ],
+    "conf-sans-sen": [
+      { q: "Il est parti ___ manteau.", options: ["s'en", "sans", "c'en"], reponse: 1, n: 1, explication: "Marque l'absence → « sans »." },
+      { q: "Il ___ souvient encore.", options: ["sans", "s'en", "c'en"], reponse: 1, n: 2, explication: "Verbe pronominal → « s'en »." },
+    ],
+    "conf-voie-voix": [
+      { q: "Elle a une belle ___.", options: ["voie", "voix", "voit"], reponse: 1, n: 1, explication: "Le son de la parole → « voix »." },
+      { q: "Il ___ clair dans cette affaire.", options: ["voie", "voix", "voit"], reponse: 2, n: 2, explication: "Verbe voir (il) → « voit »." },
+    ],
+
+    /* ---------- Nouvelles nuances ---------- */
+    "nu-effraction-infraction": [
+      { q: "Un vol avec ___.", options: ["infraction", "effraction", "fraction"], reponse: 1, n: 2, explication: "Forcer une entrée → « effraction »." },
+      { q: "Une ___ au code de la route.", options: ["effraction", "infraction", "fraction"], reponse: 1, n: 2, explication: "Violer une règle → « infraction »." },
+    ],
+    "nu-eruption-irruption": [
+      { q: "Une ___ volcanique.", options: ["irruption", "éruption", "interruption"], reponse: 1, n: 2, explication: "Jaillir hors → « éruption »." },
+      { q: "Il fit ___ dans la salle.", options: ["éruption", "irruption", "interruption"], reponse: 1, n: 3, explication: "Entrer soudainement → « irruption »." },
+    ],
+    "nu-allusion-illusion": [
+      { q: "Faire ___ à un incident.", options: ["illusion", "allusion", "élision"], reponse: 1, n: 2, explication: "Évoquer indirectement → « allusion »." },
+      { q: "Se faire des ___.", options: ["allusions", "illusions", "élisions"], reponse: 1, n: 2, explication: "Croyances trompeuses → « illusions »." },
+    ],
+    "nu-collision-collusion": [
+      { q: "Une ___ entre deux voitures.", options: ["collusion", "collision", "collation"], reponse: 1, n: 2, explication: "Choc physique → « collision »." },
+      { q: "Une ___ frauduleuse entre concurrents.", options: ["collision", "collusion", "collation"], reponse: 1, n: 3, explication: "Entente secrète → « collusion »." },
+    ],
+    "nu-prescription-proscription": [
+      { q: "Suivre les ___ du médecin.", options: ["proscriptions", "prescriptions", "descriptions"], reponse: 1, n: 2, explication: "Recommandations → « prescriptions »." },
+      { q: "La ___ de certains mots.", options: ["prescription", "proscription", "description"], reponse: 1, n: 3, explication: "Interdiction → « proscription »." },
+    ],
+    "nu-affluence-influence": [
+      { q: "Les heures d'___.", options: ["influence", "affluence", "confluence"], reponse: 1, n: 2, explication: "Grande foule → « affluence »." },
+      { q: "Avoir de l'___ sur ses proches.", options: ["affluence", "influence", "confluence"], reponse: 1, n: 2, explication: "Ascendant → « influence »." },
+    ],
+
+    /* ---------- Nouveaux accords ---------- */
+    "acc-meme": [
+      { q: "Ils ont fait les ___ erreurs.", options: ["même", "mêmes", "mémes"], reponse: 1, n: 2, explication: "Adjectif → accord avec « erreurs »." },
+      { q: "___ les experts se trompent.", options: ["Mêmes", "Même", "Mème"], reponse: 1, n: 3, explication: "Adverbe (= y compris) → invariable." },
+    ],
+    "acc-possible": [
+      { q: "Toutes les solutions ___.", options: ["possible", "possibles", "possibless"], reponse: 1, n: 2, explication: "Adjectif → accord avec « solutions »." },
+      { q: "Réunissez le plus de documents ___.", options: ["possibles", "possible", "possiblent"], reponse: 1, n: 3, explication: "« le plus de … possible » → invariable." },
+    ],
+    "acc-sujets-ou-ni": [
+      { q: "Ni l'un ni l'autre ne ___ venus.", options: ["est", "sont", "es"], reponse: 1, n: 2, explication: "Les deux concernés → pluriel." },
+      { q: "Pierre ou Paul ___ élu président. (un seul)", options: ["seront", "sera", "serons"], reponse: 1, n: 3, explication: "Un seul peut l'être → singulier." },
+    ],
+
+    /* ---------- Nouveaux mauvais usages ---------- */
+    "mu-au-niveau": [
+      { q: "Quelle formulation est préférable ?", options: ["Au niveau du budget, c'est tendu.", "Concernant le budget, c'est tendu.", "Au niveau budget, c'est tendu."], reponse: 1, n: 2, explication: "« au niveau de » = hauteur ; sinon « concernant »." },
+    ],
+    "mu-suite-a": [
+      { q: "Dans une lettre soignée :", options: ["Suite à votre courrier,", "À la suite de votre courrier,", "Suite votre courrier,"], reponse: 1, n: 2, explication: "Préférer « à la suite de » ou « en réponse à »." },
+    ],
+    "mu-je-mexcuse": [
+      { q: "Formulation correcte :", options: ["Je m'excuse.", "Je vous prie de m'excuser.", "Je m'excuse à vous."], reponse: 1, n: 2, explication: "On demande à autrui de nous excuser." },
+    ],
+    "mu-attention-intention": [
+      { q: "Note ___ du directeur (destinataire).", options: ["à l'intention", "à l'attention", "à l'attension"], reponse: 1, n: 3, explication: "Destinataire d'un courrier → « à l'attention »." },
+      { q: "Une fête ___ des enfants (pour eux).", options: ["à l'attention", "à l'intention", "à l'intension"], reponse: 1, n: 3, explication: "En faveur de → « à l'intention »." },
+    ],
+
+    /* ---------- Nouvelles notions de grammaire ---------- */
+    "gr-types-phrases": [
+      { q: "« Viens-tu ? » est une phrase…", options: ["déclarative", "interrogative", "impérative"], reponse: 1, n: 1, explication: "Elle pose une question → interrogative." },
+      { q: "« Quelle chance ! » est une phrase…", options: ["exclamative", "déclarative", "interrogative"], reponse: 0, n: 2, explication: "Elle exprime une émotion → exclamative." },
+    ],
+    "gr-complement-agent": [
+      { q: "« Il est aimé de tous. » « de tous » est…", options: ["un COD", "un complément d'agent", "un CC"], reponse: 1, n: 3, explication: "Auteur de l'action au passif → complément d'agent." },
+    ],
+    "gr-apposition": [
+      { q: "« Paris, capitale de la France, brille. » « capitale de la France » est…", options: ["une apposition", "un COD", "un CC"], reponse: 0, n: 3, explication: "Renomme le nom, détachée par virgules → apposition." },
+    ],
   };
 })();

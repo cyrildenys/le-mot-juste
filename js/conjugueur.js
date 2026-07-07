@@ -248,6 +248,39 @@
   }
 
   /* =====================================================================
+     Verbes composés (préfixe + modèle) & familles régulières
+     ===================================================================== */
+  const COMPOSES = {
+    apprendre: "prendre", comprendre: "prendre", surprendre: "prendre", reprendre: "prendre", entreprendre: "prendre",
+    admettre: "mettre", permettre: "mettre", promettre: "mettre", remettre: "mettre", soumettre: "mettre", transmettre: "mettre", commettre: "mettre", émettre: "mettre", omettre: "mettre", compromettre: "mettre",
+    devenir: "venir", revenir: "venir", parvenir: "venir", survenir: "venir", intervenir: "venir", provenir: "venir", prévenir: "venir", convenir: "venir", subvenir: "venir",
+    obtenir: "tenir", retenir: "tenir", contenir: "tenir", maintenir: "tenir", appartenir: "tenir", soutenir: "tenir", détenir: "tenir", entretenir: "tenir",
+    repartir: "partir", ressortir: "sortir", consentir: "sentir", pressentir: "sentir", ressentir: "sentir", démentir: "mentir", desservir: "servir", resservir: "servir", endormir: "dormir", rendormir: "dormir",
+    parcourir: "courir", secourir: "courir", accourir: "courir", concourir: "courir", discourir: "courir", recourir: "courir", encourir: "courir",
+    rouvrir: "ouvrir", entrouvrir: "ouvrir", découvrir: "couvrir", recouvrir: "couvrir", accueillir: "cueillir", recueillir: "cueillir",
+    poursuivre: "suivre", survivre: "vivre", revivre: "vivre",
+    reconnaître: "connaître", méconnaître: "connaître", apparaître: "paraître", disparaître: "paraître", comparaître: "paraître", réapparaître: "paraître", renaître: "naître",
+    abattre: "battre", combattre: "battre", débattre: "battre", rabattre: "battre",
+    refaire: "faire", défaire: "faire", satisfaire: "faire", contrefaire: "faire", parfaire: "faire", redire: "dire",
+  };
+
+  function prefixParts(prefix, modelKey) {
+    const m = V[modelKey];
+    const pre = (a) => a.map((x) => (x == null ? null : prefix + x));
+    const p = { pres: pre(m.pres), futStem: prefix + m.futStem, ps: [prefix + m.ps[0], m.ps[1]], ppr: prefix + m.ppr, pp: prefix + m.pp, impersonnel: m.impersonnel };
+    if (m.imp) p.imp = pre(m.imp);
+    if (m.subjForms) p.subjForms = pre(m.subjForms);
+    else if (m.subj) p.subj = [prefix + m.subj[0], prefix + m.subj[1]];
+    if (m.imper === false) p.imper = false;
+    else if (Array.isArray(m.imper)) p.imper = pre(m.imper);
+    return p;
+  }
+  function assembleParts(inf, groupe, irr, aux, raw) {
+    const simple = simpleFromParts(Object.assign({ infinitif: inf }, raw));
+    return assemble(inf, groupe, irr, aux, simple, raw.pp, raw.impersonnel);
+  }
+
+  /* =====================================================================
      Point d'entrée
      ===================================================================== */
   function conjugue(input) {
@@ -266,6 +299,43 @@
       const parts = Object.assign({ infinitif: inf }, irr);
       const simple = simpleFromParts(parts);
       return assemble(inf, irr.g || 3, true, irr.aux, simple, irr.pp, irr.impersonnel);
+    }
+
+    // Verbes composés (préfixe + modèle irrégulier)
+    if (COMPOSES[inf]) {
+      const model = COMPOSES[inf];
+      const prefix = inf.slice(0, inf.length - model.length);
+      return assembleParts(inf, 3, true, determineAux(inf), prefixParts(prefix, model));
+    }
+    // Familles régulières par terminaison (avant les groupes 1/2)
+    if (/cevoir$/.test(inf)) {
+      const p = inf.slice(0, -6);
+      return assembleParts(inf, 3, true, determineAux(inf), { pres: [p + "çois", p + "çois", p + "çoit", p + "cevons", p + "cevez", p + "çoivent"], futStem: p + "cevr", ps: [p + "ç", "u"], subj: [p + "çoiv", p + "cev"], ppr: p + "cevant", pp: p + "çu" });
+    }
+    if (/indre$/.test(inf)) {
+      const p = inf.slice(0, -5);
+      return assembleParts(inf, 3, true, determineAux(inf), { pres: [p + "ins", p + "ins", p + "int", p + "ignons", p + "ignez", p + "ignent"], futStem: inf.slice(0, -1), ps: [p + "ign", "i"], subj: [p + "ign", p + "ign"], ppr: p + "ignant", pp: p + "int" });
+    }
+    if (/crire$/.test(inf)) {
+      const p = inf.slice(0, -5);
+      return assembleParts(inf, 3, true, determineAux(inf), { pres: [p + "cris", p + "cris", p + "crit", p + "crivons", p + "crivez", p + "crivent"], futStem: p + "crir", ps: [p + "criv", "i"], subj: [p + "criv", p + "criv"], ppr: p + "crivant", pp: p + "crit" });
+    }
+    if (/uire$/.test(inf)) {
+      const p = inf.slice(0, -4);
+      return assembleParts(inf, 3, true, determineAux(inf), { pres: [p + "uis", p + "uis", p + "uit", p + "uisons", p + "uisez", p + "uisent"], futStem: p + "uir", ps: [p + "uis", "i"], subj: [p + "uis", p + "uis"], ppr: p + "uisant", pp: p + "uit" });
+    }
+    if (/rompre$/.test(inf)) {
+      const p = inf.slice(0, -6);
+      return assembleParts(inf, 3, true, determineAux(inf), { pres: [p + "romps", p + "romps", p + "rompt", p + "rompons", p + "rompez", p + "rompent"], futStem: p + "rompr", ps: [p + "romp", "i"], subj: [p + "romp", p + "romp"], ppr: p + "rompant", pp: p + "rompu" });
+    }
+    if (/vaincre$/.test(inf)) {
+      const p = inf.slice(0, -7);
+      return assembleParts(inf, 3, true, determineAux(inf), { pres: [p + "vaincs", p + "vaincs", p + "vainc", p + "vainquons", p + "vainquez", p + "vainquent"], futStem: p + "vaincr", ps: [p + "vainqu", "i"], subj: [p + "vainqu", p + "vainqu"], ppr: p + "vainquant", pp: p + "vaincu" });
+    }
+    // -dre régulier (attendre, rendre, perdre, répondre…) — hors -indre/-oudre/-prendre
+    if (/dre$/.test(inf) && !/(indre|oudre|prendre)$/.test(inf)) {
+      const p = inf.slice(0, -2);
+      return assembleParts(inf, 3, false, determineAux(inf), { pres: [p + "s", p + "s", p, p + "ons", p + "ez", p + "ent"], futStem: inf.slice(0, -1), ps: [p, "i"], subj: [p, p], ppr: p + "ant", pp: p + "u" });
     }
 
     // 1er groupe

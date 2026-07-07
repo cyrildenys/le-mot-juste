@@ -148,5 +148,51 @@
       ],
       astuce: "Si vous employez « dont », supprimez « en ».",
     },
+    {
+      id: "mu-au-niveau",
+      titre: "« au niveau de » (abus)",
+      resume: "À réserver à une hauteur réelle.",
+      explication:
+        "<p>« Au niveau de » indique proprement une <strong>hauteur</strong> ou un <strong>échelon</strong>. Employé comme passe-partout (= « en ce qui concerne »), il alourdit la phrase.</p>",
+      exemples: [
+        { ok: false, texte: "Au niveau du budget, c'est difficile.", correction: "Concernant le budget, c'est difficile." },
+        { ok: true, texte: "L'eau est montée au niveau du quai." },
+      ],
+      astuce: "Préférez « concernant », « quant à », « sur le plan de ».",
+    },
+    {
+      id: "mu-suite-a",
+      titre: "« suite à »",
+      resume: "Correction : « à la suite de » ou « comme suite à ».",
+      explication:
+        "<p>« Suite à » est critiqué dans un registre soigné. On lui préfère <strong>à la suite de</strong> (à cause de) ou, dans une lettre, <strong>comme suite à</strong> / <strong>en réponse à</strong>.</p>",
+      exemples: [
+        { ok: false, texte: "Suite à votre courrier, je vous informe…", correction: "À la suite de votre courrier / En réponse à votre courrier…" },
+      ],
+      astuce: "Dans une lettre formelle : « comme suite à » ou « en réponse à ».",
+    },
+    {
+      id: "mu-je-mexcuse",
+      titre: "« je m'excuse »",
+      resume: "On ne s'excuse pas soi-même : on prie autrui d'excuser.",
+      explication:
+        "<p>Dire « je m'excuse » revient à s'accorder soi-même le pardon. Il est plus correct de <strong>demander</strong> à l'autre de vous excuser.</p>",
+      exemples: [
+        { ok: false, texte: "Je m'excuse pour le retard.", correction: "Je vous prie de m'excuser / Excusez-moi pour le retard." },
+      ],
+      astuce: "« Veuillez m'excuser » ou « je vous présente mes excuses ».",
+    },
+    {
+      id: "mu-attention-intention",
+      titre: "« à l'attention » / « à l'intention »",
+      resume: "Attention = destinataire d'un courrier ; intention = en l'honneur de.",
+      explication:
+        "<p><strong>À l'attention de</strong> : pour signaler le <strong>destinataire</strong> d'un document (« Je porte à votre attention »).</p><p><strong>À l'intention de</strong> : <strong>en faveur de, pour</strong> quelqu'un (« une fête à l'intention des enfants »).</p>",
+      exemples: [
+        { ok: true, texte: "Note à l'<em>attention</em> du directeur. (courrier)" },
+        { ok: true, texte: "Un cadeau à l'<em>intention</em> de sa mère. (pour elle)" },
+      ],
+      astuce: "Courrier → attention. En l'honneur de / pour → intention.",
+    },
   ];
 })();

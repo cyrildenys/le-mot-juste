@@ -65,6 +65,18 @@
       source: "Marcel Proust",
       texte: "Longtemps, je me suis couché de bonne heure. Parfois, à peine ma bougie éteinte, mes yeux se fermaient si vite que je n'avais pas le temps de me dire : Je m'endors.",
     },
+    {
+      id: "f5", niveau: "facile", titre: "Le jardin",
+      texte: "Au printemps, le jardin se réveille. Les tulipes rouges bordent l'allée. Un merle chante sur la branche du cerisier. Grand-père arrose les salades avec soin.",
+    },
+    {
+      id: "i5", niveau: "intermediaire", titre: "La bibliothèque",
+      texte: "Dans la vieille bibliothèque, les livres que mon grand-père avait reliés dormaient sous la poussière. Je les ai ouverts un à un, émerveillé par les gravures qu'ils renfermaient. Les heures passèrent sans que je m'en aperçoive.",
+    },
+    {
+      id: "e5", niveau: "expert", titre: "L'ambition déçue",
+      texte: "Quelque brillants qu'eussent été ses débuts, il fallut qu'il rongeât son frein. Les honneurs qu'il avait tant convoités lui échappèrent, et il comprit, non sans amertume, que la fortune est volage. Il s'en fût allé, si l'orgueil ne l'eût retenu.",
+    },
   ];
 
   LMJ.data.dicteeNiveaux = [

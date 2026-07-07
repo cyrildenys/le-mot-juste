@@ -140,6 +140,44 @@
       ],
       astuce: "Multiplié ET en fin de nombre → s. Sinon, pas de s.",
     },
+    {
+      id: "acc-meme",
+      titre: "L'accord de « même »",
+      resume: "Adjectif, il s'accorde ; adverbe (= aussi), il est invariable.",
+      explication:
+        "<p><strong>Adjectif</strong> (il marque l'identité ou renforce un nom/pronom) : <em>même</em> s'accorde en nombre.</p><p><strong>Adverbe</strong> (au sens de « aussi, y compris ») : <em>même</em> est <strong>invariable</strong>.</p><p>Après un pronom personnel, il s'accorde et se lie par un trait d'union : eux-mêmes.</p>",
+      exemples: [
+        { ok: true, texte: "Ils ont fait les <em>mêmes</em> erreurs. (adjectif → accord)" },
+        { ok: true, texte: "<em>Même</em> les experts se trompent. (adverbe → invariable)" },
+        { ok: true, texte: "Elles l'ont réparé elles-<em>mêmes</em>." },
+      ],
+      astuce: "Si « même » signifie « aussi / y compris », il reste invariable.",
+    },
+    {
+      id: "acc-possible",
+      titre: "L'accord de « possible »",
+      resume: "Invariable après « le plus / le moins… possible ».",
+      explication:
+        "<p><em>Possible</em> s'accorde normalement comme un adjectif. Mais après un <strong>superlatif</strong> (« le plus, le moins… possible ») portant sur une quantité, il reste <strong>invariable</strong> (il se rapporte au tour impersonnel « qu'il est possible »).</p>",
+      exemples: [
+        { ok: true, texte: "Envisageons toutes les solutions <em>possibles</em>. (accord)" },
+        { ok: true, texte: "Réunissez le plus de documents <em>possible</em>. (invariable)" },
+        { ok: false, texte: "le moins d'erreurs <em>possibles</em>", correction: "le moins d'erreurs possible" },
+      ],
+      astuce: "Avec « le plus/le moins de … possible » → toujours invariable.",
+    },
+    {
+      id: "acc-sujets-ou-ni",
+      titre: "Accord du verbe avec « ou » / « ni »",
+      resume: "Selon le sens : action partagée → pluriel ; exclusion → singulier possible.",
+      explication:
+        "<p>Quand deux sujets sont reliés par <strong>ou</strong> ou <strong>ni</strong>, le verbe se met au <strong>pluriel</strong> si l'action peut concerner les deux, au <strong>singulier</strong> si elle en exclut un.</p>",
+      exemples: [
+        { ok: true, texte: "Ni la fatigue ni la peur ne l'<em>arrêtèrent</em>. (les deux → pluriel)" },
+        { ok: true, texte: "Pierre ou Paul sera <em>élu</em> président. (un seul → singulier)" },
+      ],
+      astuce: "Un seul des deux peut-il agir ? → singulier. Les deux ensemble ? → pluriel.",
+    },
   ];
 
   LMJ.data.conjugaisonRegles = [

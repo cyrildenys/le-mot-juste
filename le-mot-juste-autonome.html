@@ -800,6 +800,44 @@ button { font-family: inherit; }
       ],
       astuce: "Multiplié ET en fin de nombre → s. Sinon, pas de s.",
     },
+    {
+      id: "acc-meme",
+      titre: "L'accord de « même »",
+      resume: "Adjectif, il s'accorde ; adverbe (= aussi), il est invariable.",
+      explication:
+        "<p><strong>Adjectif</strong> (il marque l'identité ou renforce un nom/pronom) : <em>même</em> s'accorde en nombre.</p><p><strong>Adverbe</strong> (au sens de « aussi, y compris ») : <em>même</em> est <strong>invariable</strong>.</p><p>Après un pronom personnel, il s'accorde et se lie par un trait d'union : eux-mêmes.</p>",
+      exemples: [
+        { ok: true, texte: "Ils ont fait les <em>mêmes</em> erreurs. (adjectif → accord)" },
+        { ok: true, texte: "<em>Même</em> les experts se trompent. (adverbe → invariable)" },
+        { ok: true, texte: "Elles l'ont réparé elles-<em>mêmes</em>." },
+      ],
+      astuce: "Si « même » signifie « aussi / y compris », il reste invariable.",
+    },
+    {
+      id: "acc-possible",
+      titre: "L'accord de « possible »",
+      resume: "Invariable après « le plus / le moins… possible ».",
+      explication:
+        "<p><em>Possible</em> s'accorde normalement comme un adjectif. Mais après un <strong>superlatif</strong> (« le plus, le moins… possible ») portant sur une quantité, il reste <strong>invariable</strong> (il se rapporte au tour impersonnel « qu'il est possible »).</p>",
+      exemples: [
+        { ok: true, texte: "Envisageons toutes les solutions <em>possibles</em>. (accord)" },
+        { ok: true, texte: "Réunissez le plus de documents <em>possible</em>. (invariable)" },
+        { ok: false, texte: "le moins d'erreurs <em>possibles</em>", correction: "le moins d'erreurs possible" },
+      ],
+      astuce: "Avec « le plus/le moins de … possible » → toujours invariable.",
+    },
+    {
+      id: "acc-sujets-ou-ni",
+      titre: "Accord du verbe avec « ou » / « ni »",
+      resume: "Selon le sens : action partagée → pluriel ; exclusion → singulier possible.",
+      explication:
+        "<p>Quand deux sujets sont reliés par <strong>ou</strong> ou <strong>ni</strong>, le verbe se met au <strong>pluriel</strong> si l'action peut concerner les deux, au <strong>singulier</strong> si elle en exclut un.</p>",
+      exemples: [
+        { ok: true, texte: "Ni la fatigue ni la peur ne l'<em>arrêtèrent</em>. (les deux → pluriel)" },
+        { ok: true, texte: "Pierre ou Paul sera <em>élu</em> président. (un seul → singulier)" },
+      ],
+      astuce: "Un seul des deux peut-il agir ? → singulier. Les deux ensemble ? → pluriel.",
+    },
   ];
 
   LMJ.data.conjugaisonRegles = [
@@ -1035,6 +1073,62 @@ button { font-family: inherit; }
       ],
       astuce: "Remplaçable par « plus » → « davantage » en un mot.",
     },
+    {
+      id: "conf-sur-sur",
+      titre: "sur / sûr",
+      entrees: [
+        { mot: "sur", nature: "préposition / adjectif", sens: "position (sur la table) ou goût aigre", exemple: "Le livre est sur la table." },
+        { mot: "sûr", nature: "adjectif", sens: "= certain (accent circonflexe)", exemple: "Je suis sûr de moi." },
+      ],
+      astuce: "« sûr » = certain (on peut dire « certain ») → accent circonflexe.",
+    },
+    {
+      id: "conf-du-du",
+      titre: "du / dû",
+      entrees: [
+        { mot: "du", nature: "article contracté", sens: "= de le", exemple: "Je bois du café." },
+        { mot: "dû", nature: "participe passé de devoir", sens: "au masculin singulier (accent)", exemple: "Il a dû partir." },
+      ],
+      astuce: "Le participe « dû » prend un accent (mais « due, dus, dues » n'en prennent pas).",
+    },
+    {
+      id: "conf-notre-notre",
+      titre: "notre / nôtre (votre / vôtre)",
+      entrees: [
+        { mot: "notre / votre", nature: "déterminant possessif", sens: "devant un nom (pas d'accent)", exemple: "Notre maison, votre avis." },
+        { mot: "le nôtre / le vôtre", nature: "pronom possessif", sens: "remplace le nom (accent circonflexe)", exemple: "Ce livre est le nôtre." },
+      ],
+      astuce: "Précédé de « le/la/les » → pronom avec accent : le nôtre, le vôtre.",
+    },
+    {
+      id: "conf-quelque",
+      titre: "quelque / quel que",
+      entrees: [
+        { mot: "quelque(s)", nature: "déterminant", sens: "= plusieurs, un certain (devant un nom)", exemple: "Quelques amis sont venus." },
+        { mot: "quel que", nature: "locution", sens: "en deux mots devant le verbe être, s'accorde avec le sujet", exemple: "Quelle que soit ta décision…" },
+      ],
+      astuce: "Devant « soit » → deux mots : « quel que », accordé (quel, quelle, quels, quelles).",
+    },
+    {
+      id: "conf-sans-sen",
+      titre: "sans / s'en / c'en",
+      entrees: [
+        { mot: "sans", nature: "préposition", sens: "marque l'absence (= sans rien)", exemple: "Il est parti sans manteau." },
+        { mot: "s'en", nature: "se + en", sens: "avec un verbe pronominal", exemple: "Il s'en va." },
+        { mot: "c'en", nature: "cela + en", sens: "dans « c'en est fait / trop »", exemple: "C'en est trop !" },
+      ],
+      astuce: "Devant un verbe → « s'en » (il s'en souvient). Absence → « sans ».",
+    },
+    {
+      id: "conf-voie-voix",
+      titre: "voie / voix / voit",
+      entrees: [
+        { mot: "voie", nature: "nom / verbe (voir, subj.)", sens: "un chemin ; ou « qu'il voie »", exemple: "La voie ferrée ; il faut qu'il voie." },
+        { mot: "voix", nature: "nom féminin", sens: "le son émis, le vote", exemple: "Une belle voix ; compter les voix." },
+        { mot: "voit", nature: "verbe voir (il)", sens: "3e personne du présent", exemple: "Il voit clair." },
+      ],
+      astuce: "« voix » (le son) est invariable au pluriel : des voix.",
+    },
   ];
 })();
 
@@ -1190,6 +1284,52 @@ button { font-family: inherit; }
       ],
       astuce: "Si vous employez « dont », supprimez « en ».",
     },
+    {
+      id: "mu-au-niveau",
+      titre: "« au niveau de » (abus)",
+      resume: "À réserver à une hauteur réelle.",
+      explication:
+        "<p>« Au niveau de » indique proprement une <strong>hauteur</strong> ou un <strong>échelon</strong>. Employé comme passe-partout (= « en ce qui concerne »), il alourdit la phrase.</p>",
+      exemples: [
+        { ok: false, texte: "Au niveau du budget, c'est difficile.", correction: "Concernant le budget, c'est difficile." },
+        { ok: true, texte: "L'eau est montée au niveau du quai." },
+      ],
+      astuce: "Préférez « concernant », « quant à », « sur le plan de ».",
+    },
+    {
+      id: "mu-suite-a",
+      titre: "« suite à »",
+      resume: "Correction : « à la suite de » ou « comme suite à ».",
+      explication:
+        "<p>« Suite à » est critiqué dans un registre soigné. On lui préfère <strong>à la suite de</strong> (à cause de) ou, dans une lettre, <strong>comme suite à</strong> / <strong>en réponse à</strong>.</p>",
+      exemples: [
+        { ok: false, texte: "Suite à votre courrier, je vous informe…", correction: "À la suite de votre courrier / En réponse à votre courrier…" },
+      ],
+      astuce: "Dans une lettre formelle : « comme suite à » ou « en réponse à ».",
+    },
+    {
+      id: "mu-je-mexcuse",
+      titre: "« je m'excuse »",
+      resume: "On ne s'excuse pas soi-même : on prie autrui d'excuser.",
+      explication:
+        "<p>Dire « je m'excuse » revient à s'accorder soi-même le pardon. Il est plus correct de <strong>demander</strong> à l'autre de vous excuser.</p>",
+      exemples: [
+        { ok: false, texte: "Je m'excuse pour le retard.", correction: "Je vous prie de m'excuser / Excusez-moi pour le retard." },
+      ],
+      astuce: "« Veuillez m'excuser » ou « je vous présente mes excuses ».",
+    },
+    {
+      id: "mu-attention-intention",
+      titre: "« à l'attention » / « à l'intention »",
+      resume: "Attention = destinataire d'un courrier ; intention = en l'honneur de.",
+      explication:
+        "<p><strong>À l'attention de</strong> : pour signaler le <strong>destinataire</strong> d'un document (« Je porte à votre attention »).</p><p><strong>À l'intention de</strong> : <strong>en faveur de, pour</strong> quelqu'un (« une fête à l'intention des enfants »).</p>",
+      exemples: [
+        { ok: true, texte: "Note à l'<em>attention</em> du directeur. (courrier)" },
+        { ok: true, texte: "Un cadeau à l'<em>intention</em> de sa mère. (pour elle)" },
+      ],
+      astuce: "Courrier → attention. En l'honneur de / pour → intention.",
+    },
   ];
 })();
 
@@ -1335,6 +1475,60 @@ button { font-family: inherit; }
         { mot: "recouvrir", sens: "couvrir entièrement", exemple: "La neige recouvre les toits." },
       ],
     },
+    {
+      id: "nu-effraction-infraction",
+      titre: "Effraction · Infraction",
+      cle: "Effraction = forcer une entrée ; infraction = violer une règle.",
+      entrees: [
+        { mot: "effraction", sens: "bris de clôture pour pénétrer quelque part", exemple: "Un vol avec effraction." },
+        { mot: "infraction", sens: "violation d'une loi, d'un règlement", exemple: "Une infraction au code de la route." },
+      ],
+    },
+    {
+      id: "nu-eruption-irruption",
+      titre: "Éruption · Irruption",
+      cle: "É-ruption = jaillir hors (volcan, boutons) ; Ir-ruption = entrer soudainement.",
+      entrees: [
+        { mot: "éruption", sens: "jaillissement (volcan, dents, boutons)", exemple: "Une éruption volcanique." },
+        { mot: "irruption", sens: "entrée soudaine et violente", exemple: "Il fit irruption dans la salle." },
+      ],
+    },
+    {
+      id: "nu-allusion-illusion",
+      titre: "Allusion · Illusion",
+      cle: "Allusion = sous-entendu ; illusion = perception ou croyance trompeuse.",
+      entrees: [
+        { mot: "allusion", sens: "évocation indirecte de quelque chose", exemple: "Faire allusion à un incident." },
+        { mot: "illusion", sens: "erreur de perception ou espoir vain", exemple: "Se faire des illusions." },
+      ],
+    },
+    {
+      id: "nu-collision-collusion",
+      titre: "Collision · Collusion",
+      cle: "Collision = choc physique ; collusion = entente secrète frauduleuse.",
+      entrees: [
+        { mot: "collision", sens: "choc entre deux corps", exemple: "Une collision entre deux voitures." },
+        { mot: "collusion", sens: "entente secrète au détriment d'un tiers", exemple: "Une collusion entre concurrents." },
+      ],
+    },
+    {
+      id: "nu-prescription-proscription",
+      titre: "Prescription · Proscription",
+      cle: "Prescrire = recommander/ordonner ; proscrire = interdire.",
+      entrees: [
+        { mot: "prescription", sens: "ordre, recommandation (notamment médicale)", exemple: "Suivre les prescriptions du médecin." },
+        { mot: "proscription", sens: "interdiction, bannissement", exemple: "La proscription de certains termes." },
+      ],
+    },
+    {
+      id: "nu-affluence-influence",
+      titre: "Affluence · Influence",
+      cle: "Affluence = grande foule ; influence = ascendant, pouvoir d'agir sur.",
+      entrees: [
+        { mot: "affluence", sens: "arrivée d'un grand nombre de personnes", exemple: "Les heures d'affluence." },
+        { mot: "influence", sens: "action qu'on exerce sur quelqu'un ou quelque chose", exemple: "Avoir de l'influence sur ses proches." },
+      ],
+    },
   ];
 })();
 
@@ -1459,6 +1653,42 @@ button { font-family: inherit; }
       ],
       astuce: "Un nom commun est presque toujours accompagné d'un déterminant.",
     },
+    {
+      id: "gr-types-phrases",
+      titre: "Les types et formes de phrases",
+      resume: "Déclarative, interrogative, exclamative, impérative.",
+      explication:
+        "<p>On distingue quatre <strong>types</strong> de phrases : <strong>déclarative</strong> (elle affirme), <strong>interrogative</strong> (elle questionne), <strong>exclamative</strong> (elle exprime une émotion), <strong>impérative</strong> (elle ordonne).</p><p>À cela s'ajoutent des <strong>formes</strong> : affirmative/négative, active/passive, neutre/emphatique.</p>",
+      exemples: [
+        { ok: true, texte: "Tu viens. (déclarative) — Viens-tu ? (interrogative)" },
+        { ok: true, texte: "Quelle chance ! (exclamative) — Viens ici. (impérative)" },
+      ],
+      astuce: "La ponctuation finale trahit souvent le type : . ? !",
+    },
+    {
+      id: "gr-complement-agent",
+      titre: "Le complément d'agent",
+      resume: "Dans une phrase passive, il désigne l'auteur de l'action.",
+      explication:
+        "<p>À la voix passive, le <strong>complément d'agent</strong> indique qui accomplit réellement l'action. Il est introduit par <strong>par</strong> (parfois <strong>de</strong>).</p>",
+      exemples: [
+        { ok: true, texte: "La souris est mangée <em>par le chat</em>. (agent : le chat)" },
+        { ok: true, texte: "Il est respecté <em>de tous</em>." },
+      ],
+      astuce: "Le complément d'agent du passif correspond au sujet de la phrase active.",
+    },
+    {
+      id: "gr-apposition",
+      titre: "L'apposition",
+      resume: "Un groupe qui désigne autrement le nom, souvent entre virgules.",
+      explication:
+        "<p>L'<strong>apposition</strong> caractérise ou renomme un nom sans mot de liaison ; elle est généralement détachée par des <strong>virgules</strong> et peut être supprimée.</p>",
+      exemples: [
+        { ok: true, texte: "Paris, <em>capitale de la France</em>, est immense." },
+        { ok: true, texte: "Victor Hugo, <em>écrivain engagé</em>, publia beaucoup." },
+      ],
+      astuce: "Elle équivaut souvent à « c'est-à-dire » et se retire sans casser la phrase.",
+    },
   ];
 })();
 
@@ -1564,6 +1794,31 @@ button { font-family: inherit; }
     { mot: "cacophonie", nature: "nom féminin", registre: "soutenu", definition: "Rencontre discordante et désagréable de sons.", etymologie: "du grec kakophônia, « mauvais son ».", exemples: ["La cacophonie des klaxons.", "Une cacophonie de revendications."], synonymes: ["dissonance", "charivari", "tintamarre"], antonymes: ["harmonie", "euphonie"] },
     { mot: "dilettante", nature: "nom", registre: "soutenu", definition: "Qui s'adonne à une activité par plaisir, sans rigueur professionnelle.", etymologie: "de l'italien dilettante, « qui prend plaisir ».", exemples: ["Peindre en dilettante.", "Travailler en dilettante."], synonymes: ["amateur", "fantaisiste"], antonymes: ["professionnel", "spécialiste"] },
     { mot: "sybarite", nature: "nom / adjectif", registre: "littéraire", definition: "Personne qui recherche les plaisirs et la vie voluptueuse.", etymologie: "de Sybaris, cité grecque réputée pour son luxe.", exemples: ["Vivre en sybarite."], synonymes: ["jouisseur", "épicurien", "voluptueux"], antonymes: ["ascète", "stoïcien"] },
+    { mot: "alacrité", nature: "nom féminin", registre: "littéraire", definition: "Vivacité enjouée, entrain plein d'allégresse.", etymologie: "du latin alacritas, « ardeur ».", exemples: ["Il se mit au travail avec alacrité."], synonymes: ["entrain", "allégresse", "vivacité"], antonymes: ["apathie", "langueur"] },
+    { mot: "atavisme", nature: "nom masculin", registre: "soutenu", definition: "Réapparition de caractères hérités d'ancêtres éloignés ; hérédité.", etymologie: "du latin atavus, « aïeul ».", exemples: ["Par atavisme, il avait le goût de la mer."], synonymes: ["hérédité", "héritage"], antonymes: [] },
+    { mot: "concomitant", nature: "adjectif", registre: "soutenu", definition: "Qui se produit en même temps qu'un autre fait.", etymologie: "du latin concomitari, « accompagner ».", exemples: ["Une baisse concomitante des prix et de la demande."], synonymes: ["simultané", "coïncident"], antonymes: ["successif"] },
+    { mot: "dispendieux", nature: "adjectif", registre: "soutenu", definition: "Qui occasionne de grandes dépenses.", etymologie: "du latin dispendium, « dépense ».", exemples: ["Un train de vie dispendieux."], synonymes: ["coûteux", "onéreux", "ruineux"], antonymes: ["économique", "modique"] },
+    { mot: "faconde", nature: "nom féminin", registre: "littéraire", definition: "Facilité à parler, éloquence abondante (parfois avec excès).", etymologie: "du latin facundia, « éloquence ».", exemples: ["Sa faconde séduisait l'auditoire.", "Une faconde intarissable."], synonymes: ["éloquence", "verve", "loquacité"], antonymes: ["mutisme"] },
+    { mot: "immarcescible", nature: "adjectif", registre: "littéraire", definition: "Qui ne peut se flétrir, inaltérable.", etymologie: "du latin marcescere, « se faner ».", exemples: ["Une gloire immarcescible."], synonymes: ["inaltérable", "impérissable"], antonymes: ["éphémère", "périssable"] },
+    { mot: "impécunieux", nature: "adjectif", registre: "littéraire", definition: "Qui manque d'argent.", etymologie: "du latin pecunia, « argent ».", exemples: ["Un étudiant impécunieux."], synonymes: ["désargenté", "démuni", "fauché"], antonymes: ["fortuné", "aisé"] },
+    { mot: "inéluctable", nature: "adjectif", registre: "soutenu", definition: "Que l'on ne peut éviter, fatal.", etymologie: "du latin ineluctabilis, « contre quoi on ne peut lutter ».", exemples: ["Une issue inéluctable."], synonymes: ["inévitable", "fatal", "imparable"], antonymes: ["évitable"] },
+    { mot: "insigne", nature: "adjectif", registre: "soutenu", definition: "Qui se signale, remarquable (souvent en bien).", etymologie: "du latin insignis, « qui se distingue ».", exemples: ["Un insigne honneur.", "Une maladresse insigne."], synonymes: ["remarquable", "éclatant", "notable"], antonymes: ["ordinaire", "insignifiant"] },
+    { mot: "liminaire", nature: "adjectif", registre: "soutenu", definition: "Placé en tête d'un texte ; préliminaire.", etymologie: "du latin limen, « seuil ».", exemples: ["Une déclaration liminaire.", "Un propos liminaire."], synonymes: ["préliminaire", "introductif"], antonymes: ["final", "conclusif"] },
+    { mot: "logorrhée", nature: "nom féminin", registre: "soutenu", definition: "Flux de paroles intarissable et désordonné.", etymologie: "du grec logos, « parole », et rhein, « couler ».", exemples: ["Sa logorrhée épuisait ses interlocuteurs."], synonymes: ["verbiage", "faconde", "bavardage"], antonymes: ["laconisme", "concision"] },
+    { mot: "maïeutique", nature: "nom féminin", registre: "technique", domaine: "philosophie", definition: "Art de faire accoucher les esprits de leurs idées par le questionnement (Socrate).", etymologie: "du grec maieutikê, « art d'accoucher ».", exemples: ["Enseigner par la maïeutique."], synonymes: [], antonymes: [] },
+    { mot: "nonobstant", nature: "préposition / adverbe", registre: "littéraire", definition: "Malgré, sans être empêché par ; néanmoins.", etymologie: "de l'ancien français « non obstant », « ne faisant pas obstacle ».", exemples: ["Nonobstant les objections, il persista."], synonymes: ["malgré", "néanmoins", "cependant"], antonymes: [] },
+    { mot: "opiniâtre", nature: "adjectif", registre: "soutenu", definition: "Tenace, obstiné dans ses résolutions.", etymologie: "du latin opinio, « opinion ».", exemples: ["Un travail opiniâtre.", "Une fièvre opiniâtre."], synonymes: ["obstiné", "persévérant", "tenace"], antonymes: ["versatile", "inconstant"] },
+    { mot: "outrecuidance", nature: "nom féminin", registre: "littéraire", definition: "Présomption, audace effrontée et vaniteuse.", etymologie: "de l'ancien français « outrecuidier », « présumer trop ».", exemples: ["Répondre avec outrecuidance."], synonymes: ["présomption", "arrogance", "impudence"], antonymes: ["modestie", "humilité"] },
+    { mot: "palimpseste", nature: "nom masculin", registre: "littéraire", definition: "Parchemin gratté pour être réécrit ; par extension, superposition de traces.", etymologie: "du grec palimpsêstos, « gratté de nouveau ».", exemples: ["La ville est un palimpseste de son histoire."], synonymes: [], antonymes: [] },
+    { mot: "pérégrination", nature: "nom féminin", registre: "soutenu", definition: "Voyage, déplacement à travers de nombreux lieux (souvent au pluriel).", etymologie: "du latin peregrinatio, « voyage à l'étranger ».", exemples: ["Les pérégrinations d'un aventurier."], synonymes: ["voyage", "errance", "périple"], antonymes: ["sédentarité"] },
+    { mot: "philippique", nature: "nom féminin", registre: "littéraire", definition: "Discours violent contre quelqu'un ; réquisitoire enflammé.", etymologie: "des Philippiques de Démosthène contre Philippe de Macédoine.", exemples: ["Prononcer une philippique contre le pouvoir."], synonymes: ["réquisitoire", "diatribe", "invective"], antonymes: ["panégyrique", "éloge"] },
+    { mot: "rédhibitoire", nature: "adjectif", registre: "soutenu", definition: "Qui constitue un défaut ou un obstacle absolu, éliminatoire.", etymologie: "du latin redhibere, « faire reprendre ».", exemples: ["Un prix rédhibitoire.", "Un défaut rédhibitoire."], synonymes: ["éliminatoire", "insurmontable"], antonymes: ["négligeable"] },
+    { mot: "sciemment", nature: "adverbe", registre: "soutenu", definition: "En toute connaissance de cause, volontairement.", etymologie: "du latin sciens, « qui sait ».", exemples: ["Il a sciemment dissimulé la vérité."], synonymes: ["délibérément", "volontairement", "à dessein"], antonymes: ["involontairement", "inconsciemment"] },
+    { mot: "solécisme", nature: "nom masculin", registre: "technique", domaine: "grammaire", definition: "Faute contre les règles de la syntaxe.", etymologie: "de Soles, ville où l'on parlait un grec fautif.", exemples: ["« Malgré que » est un solécisme fréquent."], synonymes: ["incorrection"], antonymes: [] },
+    { mot: "tautologie", nature: "nom féminin", registre: "soutenu", definition: "Répétition inutile d'une même idée en termes différents.", etymologie: "du grec tautologia, « redite ».", exemples: ["« Monter en haut » est une tautologie."], synonymes: ["pléonasme", "redondance"], antonymes: [] },
+    { mot: "thaumaturge", nature: "nom masculin", registre: "littéraire", definition: "Personne qui fait ou prétend faire des miracles.", etymologie: "du grec thauma, « prodige », et ergon, « œuvre ».", exemples: ["On le tenait pour un thaumaturge."], synonymes: ["faiseur de miracles", "guérisseur"], antonymes: [] },
+    { mot: "ubiquité", nature: "nom féminin", registre: "soutenu", definition: "Faculté d'être présent partout à la fois.", etymologie: "du latin ubique, « partout ».", exemples: ["Je n'ai pas le don d'ubiquité."], synonymes: ["omniprésence"], antonymes: [] },
+    { mot: "vindicatif", nature: "adjectif", registre: "soutenu", definition: "Porté à la vengeance, rancunier.", etymologie: "du latin vindicta, « vengeance ».", exemples: ["Un caractère vindicatif."], synonymes: ["rancunier", "revanchard"], antonymes: ["magnanime", "indulgent"] },
   ];
 })();
 
@@ -1908,6 +2163,66 @@ button { font-family: inherit; }
       futStem: "vêtir", ps: ["vêt", "i"], subj: ["vêt", "vêt"],
       ppr: "vêtant", pp: "vêtu",
     },
+    nuire: {
+      g: 3, aux: "avoir",
+      pres: ["nuis", "nuis", "nuit", "nuisons", "nuisez", "nuisent"],
+      futStem: "nuir", ps: ["nuis", "i"], subj: ["nuis", "nuis"],
+      ppr: "nuisant", pp: "nui",
+    },
+    luire: {
+      g: 3, aux: "avoir",
+      pres: ["luis", "luis", "luit", "luisons", "luisez", "luisent"],
+      futStem: "luir", ps: ["luis", "i"], subj: ["luis", "luis"],
+      ppr: "luisant", pp: "lui",
+    },
+    coudre: {
+      g: 3, aux: "avoir",
+      pres: ["couds", "couds", "coud", "cousons", "cousez", "cousent"],
+      futStem: "coudr", ps: ["cous", "i"], subj: ["cous", "cous"],
+      ppr: "cousant", pp: "cousu",
+    },
+    moudre: {
+      g: 3, aux: "avoir",
+      pres: ["mouds", "mouds", "moud", "moulons", "moulez", "moulent"],
+      futStem: "moudr", ps: ["moul", "u"], subj: ["moul", "moul"],
+      ppr: "moulant", pp: "moulu",
+    },
+    conclure: {
+      g: 3, aux: "avoir",
+      pres: ["conclus", "conclus", "conclut", "concluons", "concluez", "concluent"],
+      futStem: "conclur", ps: ["concl", "u"], subj: ["conclu", "conclu"],
+      ppr: "concluant", pp: "conclu",
+    },
+    exclure: {
+      g: 3, aux: "avoir",
+      pres: ["exclus", "exclus", "exclut", "excluons", "excluez", "excluent"],
+      futStem: "exclur", ps: ["excl", "u"], subj: ["exclu", "exclu"],
+      ppr: "excluant", pp: "exclu",
+    },
+    inclure: {
+      g: 3, aux: "avoir",
+      pres: ["inclus", "inclus", "inclut", "incluons", "incluez", "incluent"],
+      futStem: "inclur", ps: ["incl", "u"], subj: ["inclu", "inclu"],
+      ppr: "incluant", pp: "inclus",
+    },
+    contredire: {
+      g: 3, aux: "avoir",
+      pres: ["contredis", "contredis", "contredit", "contredisons", "contredisez", "contredisent"],
+      futStem: "contredir", ps: ["contred", "i"], subj: ["contredis", "contredis"],
+      ppr: "contredisant", pp: "contredit",
+    },
+    interdire: {
+      g: 3, aux: "avoir",
+      pres: ["interdis", "interdis", "interdit", "interdisons", "interdisez", "interdisent"],
+      futStem: "interdir", ps: ["interd", "i"], subj: ["interdis", "interdis"],
+      ppr: "interdisant", pp: "interdit",
+    },
+    prédire: {
+      g: 3, aux: "avoir",
+      pres: ["prédis", "prédis", "prédit", "prédisons", "prédisez", "prédisent"],
+      futStem: "prédir", ps: ["préd", "i"], subj: ["prédis", "prédis"],
+      ppr: "prédisant", pp: "prédit",
+    },
     falloir: {
       g: 3, aux: "avoir", impersonnel: true,
       pres: [null, null, "faut", null, null, null],
@@ -2003,6 +2318,18 @@ button { font-family: inherit; }
       id: "e4", niveau: "expert", titre: "Du côté de chez Swann",
       source: "Marcel Proust",
       texte: "Longtemps, je me suis couché de bonne heure. Parfois, à peine ma bougie éteinte, mes yeux se fermaient si vite que je n'avais pas le temps de me dire : Je m'endors.",
+    },
+    {
+      id: "f5", niveau: "facile", titre: "Le jardin",
+      texte: "Au printemps, le jardin se réveille. Les tulipes rouges bordent l'allée. Un merle chante sur la branche du cerisier. Grand-père arrose les salades avec soin.",
+    },
+    {
+      id: "i5", niveau: "intermediaire", titre: "La bibliothèque",
+      texte: "Dans la vieille bibliothèque, les livres que mon grand-père avait reliés dormaient sous la poussière. Je les ai ouverts un à un, émerveillé par les gravures qu'ils renfermaient. Les heures passèrent sans que je m'en aperçoive.",
+    },
+    {
+      id: "e5", niveau: "expert", titre: "L'ambition déçue",
+      texte: "Quelque brillants qu'eussent été ses débuts, il fallut qu'il rongeât son frein. Les honneurs qu'il avait tant convoités lui échappèrent, et il comprit, non sans amertume, que la fortune est volage. Il s'en fût allé, si l'orgueil ne l'eût retenu.",
     },
   ];
 
@@ -2302,6 +2629,99 @@ button { font-family: inherit; }
       { q: "Il a ___ la vue.", options: ["recouvert", "recouvré", "recouvru"], reponse: 1, n: 3, explication: "Retrouver → « recouvrer » (recouvré)." },
       { q: "La neige a ___ les toits.", options: ["recouvré", "recouvert", "recouvru"], reponse: 1, n: 3, explication: "Couvrir entièrement → « recouvrir » (recouvert)." },
     ],
+
+    /* ---------- Nouvelles confusions ---------- */
+    "conf-sur-sur": [
+      { q: "Le livre est ___ la table.", options: ["sûr", "sur", "sûre"], reponse: 1, n: 1, explication: "Préposition de position → « sur »." },
+      { q: "Je suis ___ de moi.", options: ["sur", "sûr", "sûre"], reponse: 1, n: 2, explication: "= certain → « sûr » (accent circonflexe)." },
+    ],
+    "conf-du-du": [
+      { q: "Je bois ___ café.", options: ["dû", "du", "due"], reponse: 1, n: 1, explication: "Article contracté (de + le) → « du »." },
+      { q: "Il a ___ partir plus tôt.", options: ["du", "dû", "due"], reponse: 1, n: 2, explication: "Participe passé de devoir (masc. sing.) → « dû »." },
+    ],
+    "conf-notre-notre": [
+      { q: "___ maison est petite.", options: ["Nôtre", "Notre", "Nôtres"], reponse: 1, n: 1, explication: "Déterminant devant le nom → « notre » (sans accent)." },
+      { q: "Ce livre est le ___.", options: ["notre", "nôtre", "nôtres"], reponse: 1, n: 2, explication: "Pronom (après « le ») → « nôtre » (accent)." },
+    ],
+    "conf-quelque": [
+      { q: "J'ai vu ___ amis.", options: ["quel que", "quelque", "quelques"], reponse: 2, n: 2, explication: "= plusieurs → déterminant « quelques »." },
+      { q: "___ soit ta décision, je te suis.", options: ["Quelque", "Quel que", "Quelle que"], reponse: 2, n: 3, explication: "Devant « soit », en deux mots, accord avec « décision » (fém.) → « quelle que »." },
+    ],
+    "conf-sans-sen": [
+      { q: "Il est parti ___ manteau.", options: ["s'en", "sans", "c'en"], reponse: 1, n: 1, explication: "Marque l'absence → « sans »." },
+      { q: "Il ___ souvient encore.", options: ["sans", "s'en", "c'en"], reponse: 1, n: 2, explication: "Verbe pronominal → « s'en »." },
+    ],
+    "conf-voie-voix": [
+      { q: "Elle a une belle ___.", options: ["voie", "voix", "voit"], reponse: 1, n: 1, explication: "Le son de la parole → « voix »." },
+      { q: "Il ___ clair dans cette affaire.", options: ["voie", "voix", "voit"], reponse: 2, n: 2, explication: "Verbe voir (il) → « voit »." },
+    ],
+
+    /* ---------- Nouvelles nuances ---------- */
+    "nu-effraction-infraction": [
+      { q: "Un vol avec ___.", options: ["infraction", "effraction", "fraction"], reponse: 1, n: 2, explication: "Forcer une entrée → « effraction »." },
+      { q: "Une ___ au code de la route.", options: ["effraction", "infraction", "fraction"], reponse: 1, n: 2, explication: "Violer une règle → « infraction »." },
+    ],
+    "nu-eruption-irruption": [
+      { q: "Une ___ volcanique.", options: ["irruption", "éruption", "interruption"], reponse: 1, n: 2, explication: "Jaillir hors → « éruption »." },
+      { q: "Il fit ___ dans la salle.", options: ["éruption", "irruption", "interruption"], reponse: 1, n: 3, explication: "Entrer soudainement → « irruption »." },
+    ],
+    "nu-allusion-illusion": [
+      { q: "Faire ___ à un incident.", options: ["illusion", "allusion", "élision"], reponse: 1, n: 2, explication: "Évoquer indirectement → « allusion »." },
+      { q: "Se faire des ___.", options: ["allusions", "illusions", "élisions"], reponse: 1, n: 2, explication: "Croyances trompeuses → « illusions »." },
+    ],
+    "nu-collision-collusion": [
+      { q: "Une ___ entre deux voitures.", options: ["collusion", "collision", "collation"], reponse: 1, n: 2, explication: "Choc physique → « collision »." },
+      { q: "Une ___ frauduleuse entre concurrents.", options: ["collision", "collusion", "collation"], reponse: 1, n: 3, explication: "Entente secrète → « collusion »." },
+    ],
+    "nu-prescription-proscription": [
+      { q: "Suivre les ___ du médecin.", options: ["proscriptions", "prescriptions", "descriptions"], reponse: 1, n: 2, explication: "Recommandations → « prescriptions »." },
+      { q: "La ___ de certains mots.", options: ["prescription", "proscription", "description"], reponse: 1, n: 3, explication: "Interdiction → « proscription »." },
+    ],
+    "nu-affluence-influence": [
+      { q: "Les heures d'___.", options: ["influence", "affluence", "confluence"], reponse: 1, n: 2, explication: "Grande foule → « affluence »." },
+      { q: "Avoir de l'___ sur ses proches.", options: ["affluence", "influence", "confluence"], reponse: 1, n: 2, explication: "Ascendant → « influence »." },
+    ],
+
+    /* ---------- Nouveaux accords ---------- */
+    "acc-meme": [
+      { q: "Ils ont fait les ___ erreurs.", options: ["même", "mêmes", "mémes"], reponse: 1, n: 2, explication: "Adjectif → accord avec « erreurs »." },
+      { q: "___ les experts se trompent.", options: ["Mêmes", "Même", "Mème"], reponse: 1, n: 3, explication: "Adverbe (= y compris) → invariable." },
+    ],
+    "acc-possible": [
+      { q: "Toutes les solutions ___.", options: ["possible", "possibles", "possibless"], reponse: 1, n: 2, explication: "Adjectif → accord avec « solutions »." },
+      { q: "Réunissez le plus de documents ___.", options: ["possibles", "possible", "possiblent"], reponse: 1, n: 3, explication: "« le plus de … possible » → invariable." },
+    ],
+    "acc-sujets-ou-ni": [
+      { q: "Ni l'un ni l'autre ne ___ venus.", options: ["est", "sont", "es"], reponse: 1, n: 2, explication: "Les deux concernés → pluriel." },
+      { q: "Pierre ou Paul ___ élu président. (un seul)", options: ["seront", "sera", "serons"], reponse: 1, n: 3, explication: "Un seul peut l'être → singulier." },
+    ],
+
+    /* ---------- Nouveaux mauvais usages ---------- */
+    "mu-au-niveau": [
+      { q: "Quelle formulation est préférable ?", options: ["Au niveau du budget, c'est tendu.", "Concernant le budget, c'est tendu.", "Au niveau budget, c'est tendu."], reponse: 1, n: 2, explication: "« au niveau de » = hauteur ; sinon « concernant »." },
+    ],
+    "mu-suite-a": [
+      { q: "Dans une lettre soignée :", options: ["Suite à votre courrier,", "À la suite de votre courrier,", "Suite votre courrier,"], reponse: 1, n: 2, explication: "Préférer « à la suite de » ou « en réponse à »." },
+    ],
+    "mu-je-mexcuse": [
+      { q: "Formulation correcte :", options: ["Je m'excuse.", "Je vous prie de m'excuser.", "Je m'excuse à vous."], reponse: 1, n: 2, explication: "On demande à autrui de nous excuser." },
+    ],
+    "mu-attention-intention": [
+      { q: "Note ___ du directeur (destinataire).", options: ["à l'intention", "à l'attention", "à l'attension"], reponse: 1, n: 3, explication: "Destinataire d'un courrier → « à l'attention »." },
+      { q: "Une fête ___ des enfants (pour eux).", options: ["à l'attention", "à l'intention", "à l'intension"], reponse: 1, n: 3, explication: "En faveur de → « à l'intention »." },
+    ],
+
+    /* ---------- Nouvelles notions de grammaire ---------- */
+    "gr-types-phrases": [
+      { q: "« Viens-tu ? » est une phrase…", options: ["déclarative", "interrogative", "impérative"], reponse: 1, n: 1, explication: "Elle pose une question → interrogative." },
+      { q: "« Quelle chance ! » est une phrase…", options: ["exclamative", "déclarative", "interrogative"], reponse: 0, n: 2, explication: "Elle exprime une émotion → exclamative." },
+    ],
+    "gr-complement-agent": [
+      { q: "« Il est aimé de tous. » « de tous » est…", options: ["un COD", "un complément d'agent", "un CC"], reponse: 1, n: 3, explication: "Auteur de l'action au passif → complément d'agent." },
+    ],
+    "gr-apposition": [
+      { q: "« Paris, capitale de la France, brille. » « capitale de la France » est…", options: ["une apposition", "un COD", "un CC"], reponse: 0, n: 3, explication: "Renomme le nom, détachée par virgules → apposition." },
+    ],
   };
 })();
 
@@ -2557,6 +2977,39 @@ button { font-family: inherit; }
   }
 
   /* =====================================================================
+     Verbes composés (préfixe + modèle) & familles régulières
+     ===================================================================== */
+  const COMPOSES = {
+    apprendre: "prendre", comprendre: "prendre", surprendre: "prendre", reprendre: "prendre", entreprendre: "prendre",
+    admettre: "mettre", permettre: "mettre", promettre: "mettre", remettre: "mettre", soumettre: "mettre", transmettre: "mettre", commettre: "mettre", émettre: "mettre", omettre: "mettre", compromettre: "mettre",
+    devenir: "venir", revenir: "venir", parvenir: "venir", survenir: "venir", intervenir: "venir", provenir: "venir", prévenir: "venir", convenir: "venir", subvenir: "venir",
+    obtenir: "tenir", retenir: "tenir", contenir: "tenir", maintenir: "tenir", appartenir: "tenir", soutenir: "tenir", détenir: "tenir", entretenir: "tenir",
+    repartir: "partir", ressortir: "sortir", consentir: "sentir", pressentir: "sentir", ressentir: "sentir", démentir: "mentir", desservir: "servir", resservir: "servir", endormir: "dormir", rendormir: "dormir",
+    parcourir: "courir", secourir: "courir", accourir: "courir", concourir: "courir", discourir: "courir", recourir: "courir", encourir: "courir",
+    rouvrir: "ouvrir", entrouvrir: "ouvrir", découvrir: "couvrir", recouvrir: "couvrir", accueillir: "cueillir", recueillir: "cueillir",
+    poursuivre: "suivre", survivre: "vivre", revivre: "vivre",
+    reconnaître: "connaître", méconnaître: "connaître", apparaître: "paraître", disparaître: "paraître", comparaître: "paraître", réapparaître: "paraître", renaître: "naître",
+    abattre: "battre", combattre: "battre", débattre: "battre", rabattre: "battre",
+    refaire: "faire", défaire: "faire", satisfaire: "faire", contrefaire: "faire", parfaire: "faire", redire: "dire",
+  };
+
+  function prefixParts(prefix, modelKey) {
+    const m = V[modelKey];
+    const pre = (a) => a.map((x) => (x == null ? null : prefix + x));
+    const p = { pres: pre(m.pres), futStem: prefix + m.futStem, ps: [prefix + m.ps[0], m.ps[1]], ppr: prefix + m.ppr, pp: prefix + m.pp, impersonnel: m.impersonnel };
+    if (m.imp) p.imp = pre(m.imp);
+    if (m.subjForms) p.subjForms = pre(m.subjForms);
+    else if (m.subj) p.subj = [prefix + m.subj[0], prefix + m.subj[1]];
+    if (m.imper === false) p.imper = false;
+    else if (Array.isArray(m.imper)) p.imper = pre(m.imper);
+    return p;
+  }
+  function assembleParts(inf, groupe, irr, aux, raw) {
+    const simple = simpleFromParts(Object.assign({ infinitif: inf }, raw));
+    return assemble(inf, groupe, irr, aux, simple, raw.pp, raw.impersonnel);
+  }
+
+  /* =====================================================================
      Point d'entrée
      ===================================================================== */
   function conjugue(input) {
@@ -2575,6 +3028,43 @@ button { font-family: inherit; }
       const parts = Object.assign({ infinitif: inf }, irr);
       const simple = simpleFromParts(parts);
       return assemble(inf, irr.g || 3, true, irr.aux, simple, irr.pp, irr.impersonnel);
+    }
+
+    // Verbes composés (préfixe + modèle irrégulier)
+    if (COMPOSES[inf]) {
+      const model = COMPOSES[inf];
+      const prefix = inf.slice(0, inf.length - model.length);
+      return assembleParts(inf, 3, true, determineAux(inf), prefixParts(prefix, model));
+    }
+    // Familles régulières par terminaison (avant les groupes 1/2)
+    if (/cevoir$/.test(inf)) {
+      const p = inf.slice(0, -6);
+      return assembleParts(inf, 3, true, determineAux(inf), { pres: [p + "çois", p + "çois", p + "çoit", p + "cevons", p + "cevez", p + "çoivent"], futStem: p + "cevr", ps: [p + "ç", "u"], subj: [p + "çoiv", p + "cev"], ppr: p + "cevant", pp: p + "çu" });
+    }
+    if (/indre$/.test(inf)) {
+      const p = inf.slice(0, -5);
+      return assembleParts(inf, 3, true, determineAux(inf), { pres: [p + "ins", p + "ins", p + "int", p + "ignons", p + "ignez", p + "ignent"], futStem: inf.slice(0, -1), ps: [p + "ign", "i"], subj: [p + "ign", p + "ign"], ppr: p + "ignant", pp: p + "int" });
+    }
+    if (/crire$/.test(inf)) {
+      const p = inf.slice(0, -5);
+      return assembleParts(inf, 3, true, determineAux(inf), { pres: [p + "cris", p + "cris", p + "crit", p + "crivons", p + "crivez", p + "crivent"], futStem: p + "crir", ps: [p + "criv", "i"], subj: [p + "criv", p + "criv"], ppr: p + "crivant", pp: p + "crit" });
+    }
+    if (/uire$/.test(inf)) {
+      const p = inf.slice(0, -4);
+      return assembleParts(inf, 3, true, determineAux(inf), { pres: [p + "uis", p + "uis", p + "uit", p + "uisons", p + "uisez", p + "uisent"], futStem: p + "uir", ps: [p + "uis", "i"], subj: [p + "uis", p + "uis"], ppr: p + "uisant", pp: p + "uit" });
+    }
+    if (/rompre$/.test(inf)) {
+      const p = inf.slice(0, -6);
+      return assembleParts(inf, 3, true, determineAux(inf), { pres: [p + "romps", p + "romps", p + "rompt", p + "rompons", p + "rompez", p + "rompent"], futStem: p + "rompr", ps: [p + "romp", "i"], subj: [p + "romp", p + "romp"], ppr: p + "rompant", pp: p + "rompu" });
+    }
+    if (/vaincre$/.test(inf)) {
+      const p = inf.slice(0, -7);
+      return assembleParts(inf, 3, true, determineAux(inf), { pres: [p + "vaincs", p + "vaincs", p + "vainc", p + "vainquons", p + "vainquez", p + "vainquent"], futStem: p + "vaincr", ps: [p + "vainqu", "i"], subj: [p + "vainqu", p + "vainqu"], ppr: p + "vainquant", pp: p + "vaincu" });
+    }
+    // -dre régulier (attendre, rendre, perdre, répondre…) — hors -indre/-oudre/-prendre
+    if (/dre$/.test(inf) && !/(indre|oudre|prendre)$/.test(inf)) {
+      const p = inf.slice(0, -2);
+      return assembleParts(inf, 3, false, determineAux(inf), { pres: [p + "s", p + "s", p, p + "ons", p + "ez", p + "ent"], futStem: inf.slice(0, -1), ps: [p, "i"], subj: [p, p], ppr: p + "ant", pp: p + "u" });
     }
 
     // 1er groupe
