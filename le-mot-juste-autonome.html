@@ -396,6 +396,57 @@ button { font-family: inherit; }
   .cat-grid { grid-template-columns: 1fr 1fr 1fr; }
 }
 
+/* ---------- Carte de règle (liste) ---------- */
+.rule-card {
+  display: flex; align-items: center; gap: 14px; width: 100%; text-align: left; cursor: pointer;
+  background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius);
+  box-shadow: var(--shadow-1); padding: 16px 18px;
+  transition: transform .1s, box-shadow .2s, border-color .2s;
+}
+.rule-card:active { transform: scale(.99); }
+.rule-card:hover { border-color: var(--line-strong); }
+.rule-card + .rule-card { margin-top: 10px; }
+.rule-card .rc-body { flex: 1; min-width: 0; }
+.rule-card .rc-title { font-family: var(--serif); font-weight: 500; font-size: 18px; letter-spacing: -.005em; color: var(--ink); }
+.rule-card .rc-sub { font-size: 13.5px; color: var(--muted); margin-top: 3px; line-height: 1.4; }
+.rule-card .rc-arrow { color: var(--line-strong); flex: none; display: grid; place-items: center; }
+.rule-card:hover .rc-arrow { color: var(--accent); }
+
+/* ---------- Page « cours » ---------- */
+.cours-title { font-family: var(--serif); font-size: 27px; font-weight: 600; color: var(--accent-ink); line-height: 1.15; margin: 4px 0 6px; }
+.cours-lead { font-size: 16px; color: var(--muted); margin-bottom: 18px; }
+.cours-body { font-size: 16.5px; line-height: 1.62; }
+.cours-body p { margin: 0 0 12px; }
+.cours-section-lbl { font-size: 12px; letter-spacing: .1em; text-transform: uppercase; color: var(--accent); font-weight: 700; margin: 22px 0 8px; }
+
+/* ---------- Quiz ---------- */
+.quiz-progress { display: flex; align-items: center; justify-content: space-between; font-size: 13px; color: var(--muted); font-weight: 600; margin-bottom: 10px; }
+.quiz-bar { height: 6px; background: var(--line); border-radius: 999px; overflow: hidden; margin-bottom: 24px; }
+.quiz-bar > i { display: block; height: 100%; background: var(--accent); border-radius: 999px; transition: width .35s ease; }
+.quiz-question { font-family: var(--serif); font-size: 21px; line-height: 1.5; margin-bottom: 20px; }
+.quiz-blank { display: inline-block; min-width: 60px; border-bottom: 2.5px dashed var(--accent); vertical-align: baseline; }
+.quiz-opts { display: flex; flex-direction: column; gap: 10px; }
+.quiz-opt {
+  display: flex; align-items: center; gap: 12px; width: 100%; text-align: left; cursor: pointer;
+  padding: 15px 18px; border: 1.5px solid var(--line-strong); border-radius: var(--radius);
+  background: var(--surface); font-family: var(--serif); font-size: 17.5px; color: var(--ink);
+  transition: background .15s, border-color .15s, transform .08s, opacity .2s;
+}
+.quiz-opt:active { transform: scale(.99); }
+.quiz-opt .dot { width: 22px; height: 22px; border-radius: 50%; border: 2px solid var(--line-strong); flex: none; display: grid; place-items: center; }
+.quiz-opt .dot svg { width: 14px; height: 14px; }
+.quiz-opt.correct { border-color: var(--green); background: var(--green-soft); }
+.quiz-opt.correct .dot { border-color: var(--green); background: var(--green); color: #fff; }
+.quiz-opt.wrong { border-color: var(--red); background: var(--red-soft); }
+.quiz-opt.wrong .dot { border-color: var(--red); background: var(--red); color: #fff; }
+.quiz-opt.locked { cursor: default; }
+.quiz-opt.dim { opacity: .5; }
+.quiz-explain { margin-top: 18px; }
+.quiz-result { text-align: center; padding: 24px 0 8px; }
+.quiz-medal { font-size: 54px; line-height: 1; margin-bottom: 10px; }
+.quiz-score { font-family: var(--serif); font-size: 56px; font-weight: 600; color: var(--accent-ink); line-height: 1; }
+.quiz-score small { font-size: 26px; color: var(--muted); }
+
 </style>
 </head>
 <body>
@@ -1959,6 +2010,283 @@ button { font-family: inherit; }
 })();
 
 
+/* ===== data/quiz.js ===== */
+/* =====================================================================
+   Le Mot Juste — Banque de questions de quiz
+   Clé = id d'une règle (voir data/*.js). Valeur = liste de questions QCM.
+   Question : { q, options:[3], reponse: index de la bonne, explication }
+   Si q contient « ___ », c'est une phrase à trou.
+   ===================================================================== */
+(function () {
+  "use strict";
+  const G = typeof window !== "undefined" ? window : globalThis;
+  const LMJ = (G.LMJ = G.LMJ || {});
+  LMJ.data = LMJ.data || {};
+
+  LMJ.data.quiz = {
+    /* ---------- ACCORDS ---------- */
+    "acc-adjectif": [
+      { q: "Des chemises ___.", options: ["blanc", "blanches", "blanche"], reponse: 1, explication: "Accord avec « chemises » (féminin pluriel)." },
+      { q: "Un homme et une femme ___.", options: ["courageux", "courageuses", "courageuse"], reponse: 0, explication: "Genres différents → masculin pluriel." },
+    ],
+    "acc-pp-etre": [
+      { q: "Elles sont ___ hier soir.", options: ["arrivé", "arrivées", "arrivés"], reponse: 1, explication: "Avec être, accord avec le sujet (elles)." },
+      { q: "Les fleurs sont ___.", options: ["fané", "fanées", "fanés"], reponse: 1, explication: "Sujet « fleurs » féminin pluriel." },
+    ],
+    "acc-pp-avoir": [
+      { q: "La lettre que j'ai ___ hier.", options: ["écrit", "écrite", "écrits"], reponse: 1, explication: "COD « que » (=la lettre) placé avant → accord." },
+      { q: "J'ai ___ les pommes.", options: ["mangé", "mangées", "mangés"], reponse: 0, explication: "COD « les pommes » placé après → pas d'accord." },
+    ],
+    "acc-pp-pronominaux": [
+      { q: "Elle s'est ___ les mains.", options: ["lavée", "lavé", "lavées"], reponse: 1, explication: "COD « les mains » après le verbe → pas d'accord." },
+      { q: "Elle s'est ___ ce matin.", options: ["lavé", "lavée", "laver"], reponse: 1, explication: "« se » est COD → accord avec le sujet." },
+    ],
+    "acc-tout": [
+      { q: "Elles sont ___ étonnées.", options: ["toutes", "tout", "toute"], reponse: 1, explication: "Adverbe devant une voyelle → « tout » invariable." },
+      { q: "Elles sont ___ honteuses.", options: ["tout", "toutes", "toute"], reponse: 1, explication: "Devant consonne (h aspiré) → « toutes » par euphonie." },
+    ],
+    "acc-leur": [
+      { q: "Je ___ ai dit la vérité.", options: ["leur", "leurs", "leures"], reponse: 0, explication: "Pronom devant le verbe → invariable." },
+      { q: "___ enfants sont polis.", options: ["Leur", "Leurs", "Leures"], reponse: 1, explication: "Déterminant + nom pluriel → « leurs »." },
+    ],
+    "acc-couleurs": [
+      { q: "Des chaussures ___.", options: ["marrons", "marron", "marronnes"], reponse: 1, explication: "« marron » (nom employé comme couleur) → invariable." },
+      { q: "Des yeux ___.", options: ["bleu clair", "bleus clairs", "bleu clairs"], reponse: 0, explication: "Couleur composée → invariable." },
+    ],
+    "acc-demi": [
+      { q: "Une ___-heure.", options: ["demie", "demi", "demies"], reponse: 1, explication: "Devant le nom → « demi » invariable + trait d'union." },
+      { q: "Deux heures et ___.", options: ["demi", "demie", "demies"], reponse: 1, explication: "Après le nom → accord en genre (heure = féminin)." },
+    ],
+    "acc-verbe-sujet": [
+      { q: "La plupart des gens ___ ainsi.", options: ["pense", "pensent", "penses"], reponse: 1, explication: "Accord avec le complément (les gens)." },
+      { q: "Le panier de fruits ___ renversé.", options: ["étaient", "était", "étais"], reponse: 1, explication: "Le vrai sujet est « le panier » (singulier)." },
+    ],
+    "acc-vingt-cent": [
+      { q: "Quatre-___.", options: ["vingt", "vingts", "vingtes"], reponse: 1, explication: "Multiplié et en fin de nombre → « vingts »." },
+      { q: "Quatre-___-deux.", options: ["vingts", "vingt", "vingtes"], reponse: 1, explication: "Suivi d'un autre nombre → pas de s." },
+      { q: "Deux ___ ans.", options: ["milles", "mille", "mils"], reponse: 1, explication: "« mille » (adjectif numéral) est invariable." },
+    ],
+
+    /* ---------- CONJUGAISON ---------- */
+    "conj-er-ou-e": [
+      { q: "Il a ___ son travail.", options: ["terminer", "terminé", "terminez"], reponse: 1, explication: "« il a mordu » fonctionne → participe passé en -é." },
+      { q: "Je vais ___ dehors.", options: ["jouer", "joué", "jouez"], reponse: 0, explication: "« je vais mordre » fonctionne → infinitif en -er." },
+    ],
+    "conj-rai-rais": [
+      { q: "Demain, je ___ à Paris.", options: ["irais", "irai", "irait"], reponse: 1, explication: "Certitude future → futur (il ira)." },
+      { q: "Si je pouvais, je ___ volontiers.", options: ["viendrai", "viendrais", "viendrait"], reponse: 1, explication: "Hypothèse → conditionnel (il viendrait)." },
+    ],
+    "conj-imperatif-s": [
+      { q: "___ ta soupe !", options: ["Manges", "Mange", "Manger"], reponse: 1, explication: "1er groupe à l'impératif → pas de s." },
+      { q: "___-y, dépêche-toi !", options: ["Va", "Vas", "Vais"], reponse: 1, explication: "Devant « y », on ajoute un s : « Vas-y »." },
+    ],
+    "conj-present-er": [
+      { q: "Ils ___ dans le jardin.", options: ["joue", "jouent", "joues"], reponse: 1, explication: "3e personne du pluriel → -ent." },
+      { q: "Tu ___ très bien.", options: ["chante", "chantes", "chantent"], reponse: 1, explication: "2e personne du singulier → -es." },
+    ],
+    "conj-imparfait-passe-simple": [
+      { q: "Il ___ nuit quand l'orage éclata.", options: ["fit", "faisait", "fera"], reponse: 1, explication: "Décor / durée → imparfait." },
+      { q: "Chaque été, nous ___ à la mer.", options: ["allâmes", "allions", "allons"], reponse: 1, explication: "Habitude passée → imparfait." },
+    ],
+    "conj-subjonctif": [
+      { q: "Il faut que tu ___.", options: ["viens", "viennes", "viendras"], reponse: 1, explication: "« il faut que » → subjonctif présent." },
+      { q: "Je veux qu'il ___ beau.", options: ["fait", "fasse", "fera"], reponse: 1, explication: "Souhait → subjonctif présent." },
+    ],
+
+    /* ---------- CONFUSIONS ---------- */
+    "conf-a-a": [
+      { q: "Il ___ faim.", options: ["a", "à", "as"], reponse: 0, explication: "Remplaçable par « avait » → verbe « a »." },
+      { q: "Il va ___ Paris.", options: ["a", "à", "as"], reponse: 1, explication: "Préposition de lieu → « à »." },
+    ],
+    "conf-ou-ou": [
+      { q: "Thé ___ café ?", options: ["où", "ou", "oux"], reponse: 1, explication: "Remplaçable par « ou bien » → « ou »." },
+      { q: "___ vas-tu ?", options: ["Ou", "Où", "Oux"], reponse: 1, explication: "Indique le lieu → « où »." },
+    ],
+    "conf-ce-se": [
+      { q: "Il ___ lave.", options: ["ce", "se", "ces"], reponse: 1, explication: "Pronom réfléchi devant le verbe → « se »." },
+      { q: "___ matin, il pleut.", options: ["Se", "Ce", "Ces"], reponse: 1, explication: "Détermine « matin » → « ce »." },
+    ],
+    "conf-ces-ses": [
+      { q: "Il range ___ affaires.", options: ["ces", "ses", "c'est"], reponse: 1, explication: "= les siennes → « ses »." },
+      { q: "___ vrai, tu as raison.", options: ["Ses", "Ces", "C'est"], reponse: 2, explication: "= « cela est » → « c'est »." },
+      { q: "Il ___ trompé.", options: ["c'est", "s'est", "ces"], reponse: 1, explication: "Verbe pronominal → « s'est »." },
+    ],
+    "conf-son-sont": [
+      { q: "___ chien dort.", options: ["Sont", "Son", "Sons"], reponse: 1, explication: "= le sien → « son »." },
+      { q: "Ils ___ en retard.", options: ["son", "sont", "sonts"], reponse: 1, explication: "Remplaçable par « étaient » → « sont »." },
+    ],
+    "conf-on-ont": [
+      { q: "___ part demain.", options: ["Ont", "On", "Ons"], reponse: 1, explication: "Remplaçable par « il » → « on »." },
+      { q: "Ils ___ gagné.", options: ["on", "ont", "onts"], reponse: 1, explication: "Remplaçable par « avaient » → « ont »." },
+    ],
+    "conf-et-est": [
+      { q: "Toi ___ moi.", options: ["est", "et", "ai"], reponse: 1, explication: "Addition (= et puis) → « et »." },
+      { q: "Elle ___ prête.", options: ["et", "est", "ai"], reponse: 1, explication: "Remplaçable par « était » → « est »." },
+    ],
+    "conf-la-la": [
+      { q: "Reste ___ !", options: ["la", "là", "l'a"], reponse: 1, explication: "Indique le lieu → « là »." },
+      { q: "Il ___ vue hier.", options: ["la", "là", "l'a"], reponse: 2, explication: "= « l'avait » → « l'a »." },
+    ],
+    "conf-quel-quelle": [
+      { q: "Je crois ___ viendra.", options: ["quelle", "qu'elle", "quel"], reponse: 1, explication: "Remplaçable par « qu'il » → « qu'elle »." },
+      { q: "___ heure est-il ?", options: ["Qu'elle", "Quelle", "Quel"], reponse: 1, explication: "Détermine « heure » (féminin) → « quelle »." },
+    ],
+    "conf-peu-peut": [
+      { q: "Il ___ venir ce soir.", options: ["peu", "peut", "peux"], reponse: 1, explication: "Remplaçable par « pouvait » → « peut »." },
+      { q: "Il mange ___.", options: ["peut", "peu", "peux"], reponse: 1, explication: "= pas beaucoup → « peu »." },
+    ],
+    "conf-pres-pret": [
+      { q: "Il habite ___ d'ici.", options: ["prêt", "près", "prés"], reponse: 1, explication: "« près de » (distance)." },
+      { q: "Il est ___ à partir.", options: ["près", "prêt", "prés"], reponse: 1, explication: "« prêt à » (= préparé)." },
+    ],
+    "conf-quand-quant": [
+      { q: "___ à moi, je reste.", options: ["Quand", "Quant", "Qu'en"], reponse: 1, explication: "= en ce qui concerne → « quant à »." },
+      { q: "___ pars-tu ?", options: ["Quant", "Quand", "Qu'en"], reponse: 1, explication: "Indique le temps → « quand »." },
+    ],
+    "conf-plutot": [
+      { q: "Il est ___ sympathique.", options: ["plus tôt", "plutôt", "plutot"], reponse: 1, explication: "= assez / de préférence → « plutôt »." },
+      { q: "Lève-toi ___ demain.", options: ["plutôt", "plus tôt", "plustôt"], reponse: 1, explication: "Contraire de « plus tard » → « plus tôt »." },
+    ],
+    "conf-quoique": [
+      { q: "___ il soit tard, je reste.", options: ["Quoi que", "Quoique", "Quoi-que"], reponse: 1, explication: "= bien que → « quoique »." },
+      { q: "___ tu fasses, je te soutiens.", options: ["Quoique", "Quoi que", "Quoiques"], reponse: 1, explication: "= quelle que soit la chose que → « quoi que »." },
+    ],
+    "conf-davantage": [
+      { q: "Travaille ___ !", options: ["d'avantage", "davantage", "d'avantages"], reponse: 1, explication: "= plus → « davantage »." },
+      { q: "Il n'y a pas ___ à hésiter.", options: ["davantage", "d'avantage", "davantages"], reponse: 1, explication: "= de profit → « d'avantage »." },
+    ],
+
+    /* ---------- MAUVAIS USAGES ---------- */
+    "mu-aujourdhui": [
+      { q: "Quelle formulation est correcte ?", options: ["Au jour d'aujourd'hui, tout va bien.", "Aujourd'hui, tout va bien.", "Au jour aujourd'hui, tout va bien."], reponse: 1, explication: "« aujourd'hui » suffit ; le reste est un pléonasme." },
+    ],
+    "mu-malgre-que": [
+      { q: "___ il pleuve, je sors.", options: ["Malgré qu'", "Bien qu'", "Malgré que"], reponse: 1, explication: "Sens concessif → « bien que » + subjonctif." },
+      { q: "___ la pluie, je sors.", options: ["Bien que", "Malgré", "Malgré que"], reponse: 1, explication: "Devant un nom → « malgré »." },
+    ],
+    "mu-pallier": [
+      { q: "Cette mesure pallie ___ difficultés.", options: ["aux", "les", "des"], reponse: 1, explication: "« pallier » est transitif direct (pallier qqch)." },
+      { q: "Quelle construction est correcte ?", options: ["pallier à un manque", "pallier un manque", "pallier de un manque"], reponse: 1, explication: "On pallie quelque chose, sans préposition." },
+    ],
+    "mu-se-rappeler": [
+      { q: "Quelle construction est correcte ?", options: ["Je me rappelle de cette histoire.", "Je me rappelle cette histoire.", "Je me rappelle à cette histoire."], reponse: 1, explication: "« se rappeler qqch » (transitif direct)." },
+      { q: "Avec « se souvenir » :", options: ["Je me souviens cette histoire.", "Je me souviens de cette histoire.", "Je me souviens à cette histoire."], reponse: 1, explication: "« se souvenir DE quelque chose »." },
+    ],
+    "mu-chez-coiffeur": [
+      { q: "Je vais ___ coiffeur.", options: ["au", "chez le", "à le"], reponse: 1, explication: "Devant une personne → « chez »." },
+    ],
+    "mu-comme-meme": [
+      { q: "C'est ___ étonnant.", options: ["comme même", "quand même", "comme-même"], reponse: 1, explication: "L'expression correcte est « quand même »." },
+    ],
+    "mu-voire-meme": [
+      { q: "C'est difficile, ___ impossible.", options: ["voire même", "voire", "voir"], reponse: 1, explication: "« voire » = « et même » : pas de doublon." },
+    ],
+    "mu-apres-que": [
+      { q: "Après qu'il ___ parti, elle pleura.", options: ["soit", "est", "fût"], reponse: 1, explication: "« après que » se construit avec l'indicatif." },
+    ],
+    "mu-monter-en-haut": [
+      { q: "Quelle phrase est correcte ?", options: ["Il est monté en haut.", "Il est monté.", "Il est monté tout en haut du bas."], reponse: 1, explication: "« monter » implique déjà « en haut » (pléonasme)." },
+    ],
+    "mu-si-jaurais": [
+      { q: "Si j'___ su, je serais venu.", options: ["aurais", "avais", "aurai"], reponse: 1, explication: "Après « si », pas de conditionnel → imparfait." },
+    ],
+    "mu-espece": [
+      { q: "___ espèce de génie.", options: ["Un", "Une", "De"], reponse: 1, explication: "« espèce » est féminin → « une »." },
+    ],
+    "mu-dont-en": [
+      { q: "Quelle phrase est correcte ?", options: ["Le livre dont je t'en ai parlé.", "Le livre dont je t'ai parlé.", "Le livre que je t'en ai parlé."], reponse: 1, explication: "« dont » contient déjà « de » : pas de « en »." },
+    ],
+
+    /* ---------- NOTIONS DE GRAMMAIRE ---------- */
+    "gr-nature-fonction": [
+      { q: "Dans « un mur rouge », « rouge » est de nature…", options: ["nom", "adjectif", "adverbe"], reponse: 1, explication: "« rouge » est un adjectif (ici épithète)." },
+    ],
+    "gr-sujet": [
+      { q: "« Que dit le professeur ? » Le sujet est…", options: ["Que", "le professeur", "dit"], reponse: 1, explication: "Qui est-ce qui dit ? → le professeur (sujet inversé)." },
+    ],
+    "gr-cod-coi": [
+      { q: "« Je parle à Marie. » « à Marie » est…", options: ["un COD", "un COI", "le sujet"], reponse: 1, explication: "Introduit par « à » → complément d'objet indirect." },
+      { q: "« Je mange une pomme. » « une pomme » est…", options: ["un COD", "un COI", "un CC"], reponse: 0, explication: "Sans préposition → complément d'objet direct." },
+    ],
+    "gr-cc": [
+      { q: "« Il travaille dans le jardin. » « dans le jardin » est…", options: ["un COD", "un CC de lieu", "le sujet"], reponse: 1, explication: "Déplaçable/supprimable → complément circonstanciel de lieu." },
+    ],
+    "gr-epithete-attribut": [
+      { q: "« Cette voiture est rapide. » « rapide » est…", options: ["épithète", "attribut du sujet", "COD"], reponse: 1, explication: "Relié au sujet par « est » (verbe d'état) → attribut." },
+    ],
+    "gr-propositions": [
+      { q: "« Je pense qu'il dort. » contient…", options: ["une proposition", "deux propositions", "trois propositions"], reponse: 1, explication: "Deux verbes conjugués → deux propositions." },
+    ],
+    "gr-relative": [
+      { q: "« La ville où je suis né. » « où » introduit…", options: ["une relative", "une principale", "un COD"], reponse: 0, explication: "Pronom relatif → subordonnée relative." },
+    ],
+    "gr-voix-passive": [
+      { q: "Passif de « Le chat mange la souris » :", options: ["La souris mange le chat.", "La souris est mangée par le chat.", "Le chat est mangé."], reponse: 1, explication: "Le COD devient sujet ; agent introduit par « par »." },
+    ],
+    "gr-determinants": [
+      { q: "Lequel est un déterminant ?", options: ["rapidement", "cette", "manger"], reponse: 1, explication: "« cette » est un déterminant démonstratif." },
+    ],
+
+    /* ---------- VOCABULAIRE : NUANCES ---------- */
+    "nu-amener": [
+      { q: "___ ton frère à la fête.", options: ["Apporte", "Amène", "Emporte"], reponse: 1, explication: "Personne + vers ici → « amener »." },
+      { q: "N'oublie pas d'___ ton parapluie.", options: ["amener", "emporter", "emmener"], reponse: 1, explication: "Chose + au loin → « emporter »." },
+    ],
+    "nu-an-annee": [
+      { q: "Il a trente ___.", options: ["années", "ans", "an"], reponse: 1, explication: "L'unité comptée → « ans »." },
+      { q: "Une ___ riche en événements.", options: ["an", "année", "ans"], reponse: 1, explication: "La durée vécue → « année »." },
+    ],
+    "nu-second-deuxieme": [
+      { q: "Le ___ étage sur cinq.", options: ["second", "deuxième", "secondaire"], reponse: 1, explication: "Série de plus de deux → « deuxième »." },
+    ],
+    "nu-eminent-imminent": [
+      { q: "Un ___ professeur.", options: ["imminent", "éminent", "immanent"], reponse: 1, explication: "Remarquable, supérieur → « éminent »." },
+      { q: "Un danger ___.", options: ["éminent", "imminent", "immanent"], reponse: 1, explication: "Sur le point d'arriver → « imminent »." },
+    ],
+    "nu-conjecture": [
+      { q: "Se perdre en ___.", options: ["conjonctures", "conjectures", "conjugaisons"], reponse: 1, explication: "Suppositions → « conjectures »." },
+      { q: "La ___ économique.", options: ["conjecture", "conjoncture", "conjugaison"], reponse: 1, explication: "Situation du moment → « conjoncture »." },
+    ],
+    "nu-prodige-prodigue": [
+      { q: "Un enfant ___.", options: ["prodigue", "prodige", "prodigieux"], reponse: 1, explication: "Talent extraordinaire → « prodige »." },
+      { q: "Le fils ___.", options: ["prodige", "prodigue", "prodigieux"], reponse: 1, explication: "Qui dépense sans compter → « prodigue »." },
+    ],
+    "nu-officiel-officieux": [
+      { q: "Le résultat ___.", options: ["officieux", "officiel", "officiant"], reponse: 1, explication: "Confirmé par l'autorité → « officiel »." },
+      { q: "Une source ___.", options: ["officielle", "officieuse", "officiante"], reponse: 1, explication: "Connue mais non confirmée → « officieuse »." },
+    ],
+    "nu-notable-notoire": [
+      { q: "Une amélioration ___.", options: ["notoire", "notable", "notariale"], reponse: 1, explication: "Digne d'être notée → « notable »." },
+      { q: "Un mensonge ___.", options: ["notable", "notoire", "notarié"], reponse: 1, explication: "Connu de tous → « notoire »." },
+    ],
+    "nu-emigrer-immigrer": [
+      { q: "Ils ont ___ vers le Canada.", options: ["immigré", "émigré", "migré"], reponse: 1, explication: "Quitter son pays → « émigrer »." },
+      { q: "Sa famille a ___ en France.", options: ["émigré", "immigré", "migré"], reponse: 1, explication: "Entrer dans un pays → « immigrer »." },
+    ],
+    "nu-partial-partiel": [
+      { q: "Un juge ___.", options: ["partiel", "partial", "partagé"], reponse: 1, explication: "Manque d'objectivité → « partial »." },
+      { q: "Un remboursement ___.", options: ["partial", "partiel", "partagé"], reponse: 1, explication: "Incomplet → « partiel »." },
+    ],
+    "nu-continu-continuel": [
+      { q: "Un courant ___.", options: ["continuel", "continu", "continué"], reponse: 1, explication: "Sans interruption → « continu »." },
+      { q: "Des interruptions ___.", options: ["continues", "continuelles", "continuées"], reponse: 1, explication: "Qui se répètent sans cesse → « continuelles »." },
+    ],
+    "nu-venimeux-veneneux": [
+      { q: "Un serpent ___.", options: ["vénéneux", "venimeux", "venteux"], reponse: 1, explication: "Qui inocule un venin → « venimeux »." },
+      { q: "Un champignon ___.", options: ["venimeux", "vénéneux", "venteux"], reponse: 1, explication: "Toxique à l'ingestion → « vénéneux »." },
+    ],
+    "nu-perpetrer-perpetuer": [
+      { q: "___ un attentat.", options: ["Perpétuer", "Perpétrer", "Perpétuel"], reponse: 1, explication: "Commettre un acte → « perpétrer »." },
+      { q: "___ une tradition.", options: ["Perpétrer", "Perpétuer", "Perpétuel"], reponse: 1, explication: "Faire durer → « perpétuer »." },
+    ],
+    "nu-recouvrer-recouvrir": [
+      { q: "Il a ___ la vue.", options: ["recouvert", "recouvré", "recouvru"], reponse: 1, explication: "Retrouver → « recouvrer » (recouvré)." },
+      { q: "La neige a ___ les toits.", options: ["recouvré", "recouvert", "recouvru"], reponse: 1, explication: "Couvrir entièrement → « recouvrir » (recouvert)." },
+    ],
+  };
+})();
+
+
 /* ===== js/conjugueur.js ===== */
 /* =====================================================================
    Le Mot Juste — Moteur de conjugaison
@@ -2263,8 +2591,8 @@ button { font-family: inherit; }
 /* ===== js/view-regles.js ===== */
 /* =====================================================================
    Le Mot Juste — Vue « Les règles »
-   Grille de catégories, recherche transverse, accordéons de règles,
-   comparaisons de vocabulaire, et écran conjugueur.
+   Cartes légères (titre + court explicatif) → page « cours » détaillée
+   → quiz QCM (phrases à trou). + recherche transverse + conjugueur.
    ===================================================================== */
 (function () {
   "use strict";
@@ -2273,7 +2601,7 @@ button { font-family: inherit; }
   const { util } = LMJ;
   const el = util.el.bind(util);
 
-  /* ---------- Icônes de catégories ---------- */
+  /* ---------- Icônes ---------- */
   const IC = {
     accords: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>',
     conjugaison: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>',
@@ -2283,7 +2611,10 @@ button { font-family: inherit; }
     nuances: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="m3 21 3-3m0 0 6-6 3 3-6 6H6v-3Zm9-9 3-3 3 3-3 3-3-3Z"/></svg>',
     search: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>',
     back: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>',
-    bulb: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7c.6.5 1 1.3 1 2.1V17h6v-.2c0-.8.4-1.6 1-2.1A7 7 0 0 0 12 2Z"/></svg>',
+    arrow: '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>',
+    quiz: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M9.1 9a3 3 0 1 1 5.8 1c0 2-3 3-3 3"/><path d="M12 17h.01"/><circle cx="12" cy="12" r="10"/></svg>',
+    check: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>',
+    cross: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"/></svg>',
   };
 
   function categories() {
@@ -2298,141 +2629,231 @@ button { font-family: inherit; }
     ];
   }
 
-  /* =====================================================================
-     Rendu des différents types d'items
-     ===================================================================== */
+  /* Court explicatif affiché sur la carte et en chapô de la page cours */
+  function shortText(item, type) {
+    if (item.resume) return item.resume;
+    if (type === "confusion") return "Homophones à ne plus confondre.";
+    if (type === "nuance") return item.cle ? item.cle : "Mots proches, sens différents.";
+    return "";
+  }
+  const getQuiz = (item) => (item && item.id && LMJ.data.quiz ? LMJ.data.quiz[item.id] : null) || null;
+
+  /* ---------- Carte légère ---------- */
+  function cardNode(item, type) {
+    return el("button", { class: "rule-card", on: { click: () => openDetail(item, type) } }, [
+      el("div", { class: "rc-body" }, [
+        el("div", { class: "rc-title", text: item.titre }),
+        el("div", { class: "rc-sub", text: shortText(item, type) }),
+      ]),
+      el("span", { class: "rc-arrow", html: IC.arrow }),
+    ]);
+  }
+
+  /* ---------- Contenu détaillé (page cours) selon le type ---------- */
   function exemplesNode(exemples) {
     if (!exemples || !exemples.length) return null;
-    const box = el("div", { class: "stack", style: { marginTop: "12px" } });
+    const box = el("div", { class: "stack", style: { marginTop: "6px" } });
     exemples.forEach((ex) => {
       if (ex.ok) {
-        box.appendChild(el("div", { class: "ex ok" }, [
-          el("span", { class: "mark", text: "✓" }),
-          el("span", { class: "txt", html: ex.texte }),
-        ]));
+        box.appendChild(el("div", { class: "ex ok" }, [el("span", { class: "mark", text: "✓" }), el("span", { class: "txt", html: ex.texte })]));
       } else {
-        const row = el("div", { class: "ex no" }, [
-          el("span", { class: "mark", text: "✗" }),
-          el("span", { class: "txt", html: ex.texte }),
-        ]);
-        box.appendChild(row);
-        if (ex.correction) {
-          box.appendChild(el("div", { class: "ex ok" }, [
-            el("span", { class: "mark", text: "→" }),
-            el("span", { class: "txt", html: ex.correction }),
-          ]));
-        }
+        box.appendChild(el("div", { class: "ex no" }, [el("span", { class: "mark", text: "✗" }), el("span", { class: "txt", html: ex.texte })]));
+        if (ex.correction) box.appendChild(el("div", { class: "ex ok" }, [el("span", { class: "mark", text: "→" }), el("span", { class: "txt", html: ex.correction })]));
       }
     });
     return box;
   }
-
   function astuceNode(astuce) {
     if (!astuce) return null;
-    return el("div", { class: "note astuce", style: { marginTop: "12px" } }, [
-      el("strong", { text: "Astuce — " }),
-      document.createTextNode(astuce),
-    ]);
+    return el("div", { class: "note astuce", style: { marginTop: "14px" } }, [el("strong", { text: "Astuce — " }), document.createTextNode(astuce)]);
   }
 
-  function ruleNode(item, open) {
-    const det = el("details", { class: "rule" });
-    if (open) det.open = true;
-    const sum = el("summary", null, [
-      el("span", { class: "marker", html: '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>' }),
-      el("span", null, [
-        el("div", { text: item.titre }),
-        item.resume ? el("div", { class: "muted", style: { fontFamily: "var(--sans)", fontSize: "13.5px", fontWeight: "400", marginTop: "2px" }, text: item.resume }) : null,
-      ]),
-    ]);
-    const body = el("div", { class: "body" });
-    if (item.explication) body.appendChild(el("div", { html: item.explication }));
-    const ex = exemplesNode(item.exemples);
-    if (ex) body.appendChild(ex);
-    const as = astuceNode(item.astuce);
-    if (as) body.appendChild(as);
-    det.append(sum, body);
-    return det;
-  }
-
-  function confusionNode(item) {
-    const card = el("div", { class: "card" });
-    card.appendChild(el("h3", { text: item.titre, style: { fontSize: "19px", marginBottom: "10px", color: "var(--accent-ink)" } }));
-    item.entrees.forEach((e) => {
-      card.appendChild(el("div", { class: "nuance-word", style: { marginBottom: "8px" } }, [
-        el("span", { class: "w", text: e.mot }),
-        el("span", { class: "chip", style: { marginLeft: "8px", verticalAlign: "middle" }, text: e.nature }),
-        el("div", { class: "d", text: e.sens }),
-        e.exemple ? el("div", { class: "e", text: "« " + e.exemple + " »" }) : null,
-      ]));
-    });
-    const as = astuceNode(item.astuce);
-    if (as) card.appendChild(as);
-    return card;
-  }
-
-  function nuanceNode(item) {
-    const card = el("div", { class: "card" });
-    card.appendChild(el("h3", { text: item.titre, style: { fontSize: "19px", marginBottom: "8px", color: "var(--accent-ink)" } }));
-    if (item.cle) {
-      card.appendChild(el("div", { class: "note astuce", style: { marginBottom: "12px" } }, [
-        el("strong", { text: "La clé — " }), document.createTextNode(item.cle),
-      ]));
+  function detailBody(item, type) {
+    const wrap = el("div");
+    if (type === "confusion") {
+      item.entrees.forEach((e) => {
+        wrap.appendChild(el("div", { class: "nuance-word", style: { marginBottom: "8px" } }, [
+          el("span", { class: "w", text: e.mot }),
+          el("span", { class: "chip", style: { marginLeft: "8px", verticalAlign: "middle" }, text: e.nature }),
+          el("div", { class: "d", text: e.sens }),
+          e.exemple ? el("div", { class: "e", text: "« " + e.exemple + " »" }) : null,
+        ]));
+      });
+      wrap.appendChild(astuceNode(item.astuce));
+    } else if (type === "nuance") {
+      if (item.cle) wrap.appendChild(el("div", { class: "note astuce", style: { marginBottom: "14px" } }, [el("strong", { text: "La clé — " }), document.createTextNode(item.cle)]));
+      const grid = el("div", { class: "nuance-pair" });
+      item.entrees.forEach((e) => grid.appendChild(el("div", { class: "nuance-word" }, [
+        el("div", { class: "w", text: e.mot }), el("div", { class: "d", text: e.sens }), e.exemple ? el("div", { class: "e", text: "« " + e.exemple + " »" }) : null,
+      ])));
+      wrap.appendChild(grid);
+    } else {
+      if (item.explication) wrap.appendChild(el("div", { class: "cours-body", html: item.explication }));
+      const ex = exemplesNode(item.exemples);
+      if (ex) { wrap.appendChild(el("div", { class: "cours-section-lbl", text: "Exemples" })); wrap.appendChild(ex); }
+      const as = astuceNode(item.astuce);
+      if (as) wrap.appendChild(as);
     }
-    const grid = el("div", { class: "nuance-pair" });
-    item.entrees.forEach((e) => {
-      grid.appendChild(el("div", { class: "nuance-word" }, [
-        el("div", { class: "w", text: e.mot }),
-        el("div", { class: "d", text: e.sens }),
-        e.exemple ? el("div", { class: "e", text: "« " + e.exemple + " »" }) : null,
-      ]));
-    });
-    card.appendChild(grid);
-    return card;
+    return wrap;
   }
 
-  function itemNode(type, item) {
-    if (type === "confusion") return confusionNode(item);
-    if (type === "nuance") return nuanceNode(item);
-    return ruleNode(item);
+  function backBtn() {
+    return el("button", { class: "back", on: { click: () => LMJ.nav.back() } }, [el("span", { html: IC.back }), document.createTextNode("Retour")]);
+  }
+
+  /* ---------- Page cours ---------- */
+  function openDetail(item, type) {
+    LMJ.nav.push((root) => {
+      root.appendChild(backBtn());
+      root.appendChild(el("div", { class: "cours-lead", style: { marginTop: "10px" }, text: shortText(item, type) }));
+      root.appendChild(detailBody(item, type));
+
+      const quiz = getQuiz(item);
+      if (quiz && quiz.length) {
+        root.appendChild(el("div", { class: "spacer", style: { height: "8px" } }));
+        root.appendChild(el("button", {
+          class: "btn primary block", style: { marginTop: "14px" },
+          html: IC.quiz + `<span>Lancer le quiz · ${quiz.length} question${quiz.length > 1 ? "s" : ""}</span>`,
+          on: { click: () => openQuiz(item, quiz) },
+        }));
+      }
+    }, { eyebrow: "Fiche", title: item.titre });
+  }
+
+  /* ---------- Quiz ---------- */
+  function openQuiz(item, questions) {
+    const state = { i: 0, score: 0, answered: false, chosen: -1 };
+
+    LMJ.nav.push((root) => {
+      const host = el("div");
+      root.appendChild(host);
+
+      function draw() {
+        util.clear(host);
+        if (state.i >= questions.length) return drawResult();
+        const q = questions[state.i];
+
+        // Progression
+        host.appendChild(el("div", { class: "quiz-progress" }, [
+          el("span", { text: `Question ${state.i + 1} / ${questions.length}` }),
+          el("span", { text: `Score : ${state.score}` }),
+        ]));
+        host.appendChild(el("div", { class: "quiz-bar" }, el("i", { style: { width: Math.round((state.i / questions.length) * 100) + "%" } })));
+
+        // Question / phrase à trou
+        host.appendChild(sentenceNode(q, state.answered ? q.options[q.reponse] : null));
+
+        // Options
+        const opts = el("div", { class: "quiz-opts" });
+        q.options.forEach((opt, idx) => {
+          const dot = el("span", { class: "dot" });
+          const b = el("button", { class: "quiz-opt" }, [dot, document.createTextNode(opt)]);
+          if (state.answered) {
+            b.classList.add("locked");
+            if (idx === q.reponse) { b.classList.add("correct"); dot.innerHTML = IC.check; }
+            else if (idx === state.chosen) { b.classList.add("wrong"); dot.innerHTML = IC.cross; }
+            else b.classList.add("dim");
+          } else {
+            b.addEventListener("click", () => {
+              state.answered = true; state.chosen = idx;
+              if (idx === q.reponse) state.score++;
+              draw();
+            });
+          }
+          opts.appendChild(b);
+        });
+        host.appendChild(opts);
+
+        // Explication + suite
+        if (state.answered) {
+          const ok = state.chosen === q.reponse;
+          host.appendChild(el("div", { class: "note astuce quiz-explain" }, [
+            el("strong", { text: ok ? "Bravo ! " : "Pas tout à fait. " }),
+            document.createTextNode(q.explication || ""),
+          ]));
+          const last = state.i === questions.length - 1;
+          host.appendChild(el("button", {
+            class: "btn primary block", style: { marginTop: "18px" },
+            text: last ? "Voir le résultat" : "Question suivante",
+            on: { click: () => { state.i++; state.answered = false; state.chosen = -1; draw(); window.scrollTo({ top: 0 }); } },
+          }));
+        }
+      }
+
+      function drawResult() {
+        const total = questions.length;
+        const r = state.score / total;
+        const medal = r === 1 ? "🏆" : r >= 0.7 ? "🎉" : r >= 0.5 ? "👍" : "📚";
+        const msg = r === 1 ? "Sans faute, parfait !" : r >= 0.7 ? "Très bon score !" : r >= 0.5 ? "Pas mal, continue !" : "Relis la fiche et retente ta chance.";
+        util.clear(host);
+        host.appendChild(el("div", { class: "quiz-result" }, [
+          el("div", { class: "quiz-medal", text: medal }),
+          el("div", { class: "quiz-score", html: `${state.score}<small> / ${total}</small>` }),
+          el("div", { class: "muted", style: { marginTop: "8px", fontSize: "16px" }, text: msg }),
+        ]));
+        host.appendChild(el("button", {
+          class: "btn primary block", style: { marginTop: "18px" }, text: "Recommencer le quiz",
+          on: { click: () => { state.i = 0; state.score = 0; state.answered = false; state.chosen = -1; draw(); window.scrollTo({ top: 0 }); } },
+        }));
+        host.appendChild(el("button", { class: "btn block", style: { marginTop: "10px" }, text: "Retour à la fiche", on: { click: () => LMJ.nav.back() } }));
+      }
+
+      draw();
+    }, { eyebrow: "Quiz", title: item.titre });
+  }
+
+  function sentenceNode(q, revealWord) {
+    if (q.q.indexOf("___") === -1) return el("div", { class: "quiz-question", text: q.q });
+    const parts = q.q.split("___");
+    const frag = el("div", { class: "quiz-question" });
+    frag.appendChild(document.createTextNode(parts[0]));
+    if (revealWord) {
+      frag.appendChild(el("strong", { style: { color: "var(--accent-ink)" }, text: revealWord }));
+    } else {
+      frag.appendChild(el("span", { class: "quiz-blank", html: "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" }));
+    }
+    frag.appendChild(document.createTextNode(parts.slice(1).join("___")));
+    return frag;
+  }
+
+  /* ---------- Écran d'une catégorie ---------- */
+  function openCategory(cat) {
+    if (cat.type === "conjugaison") return openConjugaison();
+    LMJ.nav.push((root) => {
+      root.appendChild(backBtn());
+      root.appendChild(el("div", { class: "spacer" }));
+      (cat.data || []).forEach((item) => root.appendChild(cardNode(item, cat.type)));
+    }, { eyebrow: "Les règles", title: cat.nom, sub: cat.desc });
   }
 
   /* =====================================================================
-     Conjugueur
+     Conjugueur (inchangé sur le fond ; les règles de conjugaison passent
+     en cartes légères → page cours → quiz).
      ===================================================================== */
   const PRO_IND = ["je", "tu", "il/elle", "nous", "vous", "ils/elles"];
   const PRO_SUBJ = ["que je", "que tu", "qu'il/elle", "que nous", "que vous", "qu'ils/elles"];
   const IMP_LBL = ["(tu)", "(nous)", "(vous)"];
-
   function elide(pro, form) {
     const voyelle = /^[aàâeéèêiîïoôu ùûyh]/i.test(form);
-    if (voyelle) {
-      if (pro === "je") return "j'" + form;
-      if (pro === "que je") return "que j'" + form;
-    }
+    if (voyelle) { if (pro === "je") return "j'" + form; if (pro === "que je") return "que j'" + form; }
     return pro + " " + form;
   }
-
   function tenseBlock(label, forms, mode) {
     if (!forms) return null;
     const box = el("div", { class: "card", style: { padding: "14px 16px" } });
-    box.appendChild(el("div", { class: "lbl", style: { fontSize: "11px", letterSpacing: ".1em", textTransform: "uppercase", color: "var(--accent)", fontWeight: "700", marginBottom: "8px" }, text: label }));
+    box.appendChild(el("div", { style: { fontSize: "11px", letterSpacing: ".1em", textTransform: "uppercase", color: "var(--accent)", fontWeight: "700", marginBottom: "8px" }, text: label }));
     const list = el("div", { style: { fontFamily: "var(--serif)", fontSize: "16px", lineHeight: "1.85" } });
     forms.forEach((f, i) => {
       if (f == null) return;
-      let txt;
-      if (mode === "imp") txt = f + " ";
-      else txt = elide(mode === "subj" ? PRO_SUBJ[i] : PRO_IND[i], f);
-      const row = el("div", null, [
+      let txt = mode === "imp" ? f + " " : elide(mode === "subj" ? PRO_SUBJ[i] : PRO_IND[i], f);
+      list.appendChild(el("div", null, [
         mode === "imp" ? el("span", { class: "muted", style: { fontSize: "12px", marginRight: "6px" }, text: IMP_LBL[i] }) : null,
         document.createTextNode(txt),
-      ]);
-      list.appendChild(row);
+      ]));
     });
     box.appendChild(list);
     return box;
   }
-
   function renderConjugaison(container, verbe) {
     util.clear(container);
     const c = LMJ.conjugue(verbe);
@@ -2440,116 +2861,58 @@ button { font-family: inherit; }
       container.appendChild(el("div", { class: "empty" }, [
         el("div", { html: IC.search }),
         el("p", { html: `Le verbe <strong>« ${util.escape(c.infinitif)} »</strong> n'est pas encore dans la base.` }),
-        el("p", { class: "muted", text: "Le moteur couvre tous les verbes en -er et -ir réguliers, plus une cinquantaine d'irréguliers essentiels. Les verbes en -re/-oir irréguliers seront ajoutés progressivement." }),
+        el("p", { class: "muted", text: "Le moteur couvre tous les verbes en -er et -ir réguliers, plus une cinquantaine d'irréguliers essentiels." }),
       ]));
       return;
     }
-
     const grpLabel = c.groupe === 1 ? "1er groupe" : c.groupe === 2 ? "2e groupe" : "3e groupe";
-    const head = el("div", { class: "card", style: { marginBottom: "16px", background: "var(--surface-2)" } }, [
+    container.appendChild(el("div", { class: "card", style: { marginBottom: "16px", background: "var(--surface-2)" } }, [
       el("div", { style: { display: "flex", alignItems: "baseline", gap: "10px", flexWrap: "wrap" } }, [
         el("h2", { text: c.infinitif, style: { fontSize: "28px", color: "var(--accent-ink)" } }),
         el("span", { class: "chip accent", text: grpLabel }),
         el("span", { class: "chip", text: "auxiliaire " + (c.aux === "etre" ? "être" : "avoir") }),
         c.irregulier ? el("span", { class: "chip gold", text: "irrégulier" }) : null,
       ]),
-      el("div", { class: "muted", style: { marginTop: "8px", fontSize: "14.5px" }, html:
-        `Participe présent : <strong>${util.escape(c.participePresent || "—")}</strong> · Participe passé : <strong>${util.escape(c.participePasse)}</strong> · Gérondif : <strong>en ${util.escape(c.participePresent || "—")}</strong>` }),
-      c.aux === "etre" ? el("div", { class: "note", style: { marginTop: "10px" }, text: "Auxiliaire être : aux temps composés, le participe s'accorde avec le sujet (ex. allé, allée, allés, allées)." }) : null,
-    ]);
-    container.appendChild(head);
-
+      el("div", { class: "muted", style: { marginTop: "8px", fontSize: "14.5px" }, html: `Participe présent : <strong>${util.escape(c.participePresent || "—")}</strong> · Participe passé : <strong>${util.escape(c.participePasse)}</strong> · Gérondif : <strong>en ${util.escape(c.participePresent || "—")}</strong>` }),
+      c.aux === "etre" ? el("div", { class: "note", style: { marginTop: "10px" }, text: "Auxiliaire être : aux temps composés, le participe s'accorde avec le sujet." }) : null,
+    ]));
     const modes = [
-      { nom: "Indicatif", mode: "ind", temps: [
-        ["Présent", c.indicatif.present], ["Passé composé", c.indicatif.passeCompose],
-        ["Imparfait", c.indicatif.imparfait], ["Plus-que-parfait", c.indicatif.plusQueParfait],
-        ["Passé simple", c.indicatif.passeSimple], ["Passé antérieur", c.indicatif.passeAnterieur],
-        ["Futur simple", c.indicatif.futurSimple], ["Futur antérieur", c.indicatif.futurAnterieur],
-      ] },
-      { nom: "Conditionnel", mode: "ind", temps: [
-        ["Présent", c.conditionnel.present], ["Passé", c.conditionnel.passe],
-      ] },
-      { nom: "Subjonctif", mode: "subj", temps: [
-        ["Présent", c.subjonctif.present], ["Passé", c.subjonctif.passe],
-        ["Imparfait", c.subjonctif.imparfait], ["Plus-que-parfait", c.subjonctif.plusQueParfait],
-      ] },
-      { nom: "Impératif", mode: "imp", temps: [
-        ["Présent", c.imperatif.present], ["Passé", c.imperatif.passe],
-      ] },
+      { nom: "Indicatif", mode: "ind", temps: [["Présent", c.indicatif.present], ["Passé composé", c.indicatif.passeCompose], ["Imparfait", c.indicatif.imparfait], ["Plus-que-parfait", c.indicatif.plusQueParfait], ["Passé simple", c.indicatif.passeSimple], ["Passé antérieur", c.indicatif.passeAnterieur], ["Futur simple", c.indicatif.futurSimple], ["Futur antérieur", c.indicatif.futurAnterieur]] },
+      { nom: "Conditionnel", mode: "ind", temps: [["Présent", c.conditionnel.present], ["Passé", c.conditionnel.passe]] },
+      { nom: "Subjonctif", mode: "subj", temps: [["Présent", c.subjonctif.present], ["Passé", c.subjonctif.passe], ["Imparfait", c.subjonctif.imparfait], ["Plus-que-parfait", c.subjonctif.plusQueParfait]] },
+      { nom: "Impératif", mode: "imp", temps: [["Présent", c.imperatif.present], ["Passé", c.imperatif.passe]] },
     ];
-
     modes.forEach((m) => {
-      const anyForm = m.temps.some(([, f]) => f && f.some((x) => x != null));
-      if (!anyForm) return;
+      if (!m.temps.some(([, f]) => f && f.some((x) => x != null))) return;
       container.appendChild(el("h3", { text: m.nom, style: { fontSize: "18px", margin: "22px 0 12px" } }));
       const grid = el("div", { style: { display: "grid", gap: "12px", gridTemplateColumns: "repeat(auto-fill, minmax(200px, 1fr))" } });
-      m.temps.forEach(([label, forms]) => {
-        const b = tenseBlock(label, forms, m.mode);
-        if (b) grid.appendChild(b);
-      });
+      m.temps.forEach(([label, forms]) => { const b = tenseBlock(label, forms, m.mode); if (b) grid.appendChild(b); });
       container.appendChild(grid);
     });
   }
-
   function openConjugaison(initialVerb) {
     LMJ.nav.push((root) => {
       root.appendChild(backBtn());
-
-      const search = el("div", { class: "search", style: { marginBottom: "12px" } });
+      const search = el("div", { class: "search", style: { margin: "12px 0" } });
       const input = el("input", { type: "text", placeholder: "Entrez un verbe à l'infinitif…", autocapitalize: "none", autocomplete: "off", spellcheck: "false", enterkeyhint: "search" });
       search.append(el("span", { html: IC.search }), input);
       root.appendChild(search);
-
       const chips = el("div", { style: { display: "flex", flexWrap: "wrap", gap: "7px", marginBottom: "16px" } });
-      LMJ.verbesSuggestions.slice(0, 16).forEach((v) => {
-        chips.appendChild(el("button", { class: "chip", style: { cursor: "pointer" }, text: v, on: { click: () => { input.value = v; go(v); } } }));
-      });
+      LMJ.verbesSuggestions.slice(0, 16).forEach((v) => chips.appendChild(el("button", { class: "chip", style: { cursor: "pointer" }, text: v, on: { click: () => { input.value = v; go(v); } } })));
       root.appendChild(chips);
-
       const results = el("div");
       root.appendChild(results);
-
-      function go(v) {
-        const verbe = (v || input.value).trim();
-        if (!verbe) return;
-        renderConjugaison(results, verbe);
-        window.scrollTo({ top: 0, behavior: "smooth" });
-      }
+      function go(v) { const verbe = (v || input.value).trim(); if (!verbe) return; renderConjugaison(results, verbe); window.scrollTo({ top: 0, behavior: "smooth" }); }
       input.addEventListener("keydown", (e) => { if (e.key === "Enter") go(); });
-
-      // Règles de conjugaison sous le conjugueur
       root.appendChild(el("h3", { text: "Règles de conjugaison", style: { fontSize: "18px", margin: "26px 0 12px" } }));
-      (LMJ.data.conjugaisonRegles || []).forEach((r) => root.appendChild(ruleNode(r)));
-
+      (LMJ.data.conjugaisonRegles || []).forEach((r) => root.appendChild(cardNode(r, "rule")));
       const start = (initialVerb || "aimer").trim();
       input.value = start === "aimer" ? "" : start;
       go(start);
     }, { eyebrow: "Conjugaison", title: "Conjugueur", sub: "Tous les temps, tous les modes" });
   }
 
-  /* =====================================================================
-     Écran d'une catégorie
-     ===================================================================== */
-  function backBtn() {
-    return el("button", { class: "back", on: { click: () => LMJ.nav.back() } }, [
-      el("span", { html: IC.back }), document.createTextNode("Retour"),
-    ]);
-  }
-
-  function openCategory(cat) {
-    if (cat.type === "conjugaison") return openConjugaison();
-    LMJ.nav.push((root) => {
-      root.appendChild(backBtn());
-      root.appendChild(el("div", { class: "spacer" }));
-      const list = el("div", { class: "stack" });
-      (cat.data || []).forEach((item) => list.appendChild(itemNode(cat.type, item)));
-      root.appendChild(list);
-    }, { eyebrow: "Les règles", title: cat.nom, sub: cat.desc });
-  }
-
-  /* =====================================================================
-     Recherche transverse
-     ===================================================================== */
+  /* ---------- Recherche transverse ---------- */
   function buildIndex() {
     const idx = [];
     categories().forEach((cat) => {
@@ -2558,20 +2921,17 @@ button { font-family: inherit; }
         if (item.explication) hay += " " + item.explication;
         if (item.entrees) hay += " " + item.entrees.map((e) => (e.mot || "") + " " + (e.sens || "")).join(" ");
         if (item.astuce) hay += " " + item.astuce;
-        idx.push({ cat, type: cat.type === "conjugaison" ? "rule" : cat.type, item, hay: util.normSearch(hay) });
+        idx.push({ item, type: cat.type === "conjugaison" ? "rule" : cat.type, catNom: cat.nom, hay: util.normSearch(hay) });
       });
     });
     return idx;
   }
 
-  /* =====================================================================
-     Écran racine
-     ===================================================================== */
+  /* ---------- Écran racine ---------- */
   function render(root) {
     const cats = categories();
     const idx = buildIndex();
 
-    // Recherche
     const search = el("div", { class: "search" });
     const input = el("input", { type: "text", placeholder: "Rechercher une règle, un mot, un verbe…", autocapitalize: "none", autocomplete: "off", spellcheck: "false", enterkeyhint: "search" });
     search.append(el("span", { html: IC.search }), input);
@@ -2581,7 +2941,6 @@ button { font-family: inherit; }
     const gridWrap = el("div");
     root.append(resultsWrap, gridWrap);
 
-    // Grille des catégories
     const grid = el("div", { class: "cat-grid", style: { marginTop: "18px" } });
     cats.forEach((cat) => {
       const n = cat.data ? cat.data.length : 0;
@@ -2598,29 +2957,17 @@ button { font-family: inherit; }
       util.clear(resultsWrap);
       if (q.length < 2) { gridWrap.style.display = ""; return; }
       gridWrap.style.display = "none";
-      const hits = idx.filter((r) => r.hay.includes(q)).slice(0, 30);
-
-      resultsWrap.appendChild(el("div", { class: "muted", style: { margin: "14px 2px 6px", fontSize: "13.5px" }, text: hits.length + " résultat(s)" }));
-
+      const hits = idx.filter((r) => r.hay.includes(q)).slice(0, 40);
+      resultsWrap.appendChild(el("div", { class: "muted", style: { margin: "14px 2px 10px", fontSize: "13.5px" }, text: hits.length + " résultat(s)" }));
       if (!hits.length) {
         resultsWrap.appendChild(el("div", { class: "empty" }, [
           el("p", { text: "Aucune règle trouvée." }),
-          /(er|ir|re|oir)$/.test(q)
-            ? el("button", { class: "btn primary", text: "Conjuguer « " + input.value.trim() + " »", on: { click: () => openConjugaison(input.value.trim()) } })
-            : null,
+          /(er|ir|re|oir)$/.test(q) ? el("button", { class: "btn primary", text: "Conjuguer « " + input.value.trim() + " »", on: { click: () => openConjugaison(input.value.trim()) } }) : null,
         ]));
         return;
       }
-      const list = el("div", { class: "stack" });
-      hits.forEach((h) => {
-        const wrap = el("div");
-        wrap.appendChild(el("span", { class: "chip accent", style: { marginBottom: "8px" }, text: h.cat.nom }));
-        wrap.appendChild(itemNode(h.type, h.item));
-        list.appendChild(wrap);
-      });
-      resultsWrap.appendChild(list);
+      hits.forEach((h) => resultsWrap.appendChild(cardNode(h.item, h.type)));
     }
-
     let t;
     input.addEventListener("input", () => { clearTimeout(t); t = setTimeout(runSearch, 120); });
   }

@@ -1,7 +1,7 @@
 /* =====================================================================
    Le Mot Juste — Vue « Les règles »
-   Grille de catégories, recherche transverse, accordéons de règles,
-   comparaisons de vocabulaire, et écran conjugueur.
+   Cartes légères (titre + court explicatif) → page « cours » détaillée
+   → quiz QCM (phrases à trou). + recherche transverse + conjugueur.
    ===================================================================== */
 (function () {
   "use strict";
@@ -10,7 +10,7 @@
   const { util } = LMJ;
   const el = util.el.bind(util);
 
-  /* ---------- Icônes de catégories ---------- */
+  /* ---------- Icônes ---------- */
   const IC = {
     accords: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>',
     conjugaison: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>',
@@ -20,7 +20,10 @@
     nuances: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="m3 21 3-3m0 0 6-6 3 3-6 6H6v-3Zm9-9 3-3 3 3-3 3-3-3Z"/></svg>',
     search: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>',
     back: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>',
-    bulb: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7c.6.5 1 1.3 1 2.1V17h6v-.2c0-.8.4-1.6 1-2.1A7 7 0 0 0 12 2Z"/></svg>',
+    arrow: '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>',
+    quiz: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M9.1 9a3 3 0 1 1 5.8 1c0 2-3 3-3 3"/><path d="M12 17h.01"/><circle cx="12" cy="12" r="10"/></svg>',
+    check: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>',
+    cross: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"/></svg>',
   };
 
   function categories() {
@@ -35,141 +38,231 @@
     ];
   }
 
-  /* =====================================================================
-     Rendu des différents types d'items
-     ===================================================================== */
+  /* Court explicatif affiché sur la carte et en chapô de la page cours */
+  function shortText(item, type) {
+    if (item.resume) return item.resume;
+    if (type === "confusion") return "Homophones à ne plus confondre.";
+    if (type === "nuance") return item.cle ? item.cle : "Mots proches, sens différents.";
+    return "";
+  }
+  const getQuiz = (item) => (item && item.id && LMJ.data.quiz ? LMJ.data.quiz[item.id] : null) || null;
+
+  /* ---------- Carte légère ---------- */
+  function cardNode(item, type) {
+    return el("button", { class: "rule-card", on: { click: () => openDetail(item, type) } }, [
+      el("div", { class: "rc-body" }, [
+        el("div", { class: "rc-title", text: item.titre }),
+        el("div", { class: "rc-sub", text: shortText(item, type) }),
+      ]),
+      el("span", { class: "rc-arrow", html: IC.arrow }),
+    ]);
+  }
+
+  /* ---------- Contenu détaillé (page cours) selon le type ---------- */
   function exemplesNode(exemples) {
     if (!exemples || !exemples.length) return null;
-    const box = el("div", { class: "stack", style: { marginTop: "12px" } });
+    const box = el("div", { class: "stack", style: { marginTop: "6px" } });
     exemples.forEach((ex) => {
       if (ex.ok) {
-        box.appendChild(el("div", { class: "ex ok" }, [
-          el("span", { class: "mark", text: "✓" }),
-          el("span", { class: "txt", html: ex.texte }),
-        ]));
+        box.appendChild(el("div", { class: "ex ok" }, [el("span", { class: "mark", text: "✓" }), el("span", { class: "txt", html: ex.texte })]));
       } else {
-        const row = el("div", { class: "ex no" }, [
-          el("span", { class: "mark", text: "✗" }),
-          el("span", { class: "txt", html: ex.texte }),
-        ]);
-        box.appendChild(row);
-        if (ex.correction) {
-          box.appendChild(el("div", { class: "ex ok" }, [
-            el("span", { class: "mark", text: "→" }),
-            el("span", { class: "txt", html: ex.correction }),
-          ]));
-        }
+        box.appendChild(el("div", { class: "ex no" }, [el("span", { class: "mark", text: "✗" }), el("span", { class: "txt", html: ex.texte })]));
+        if (ex.correction) box.appendChild(el("div", { class: "ex ok" }, [el("span", { class: "mark", text: "→" }), el("span", { class: "txt", html: ex.correction })]));
       }
     });
     return box;
   }
-
   function astuceNode(astuce) {
     if (!astuce) return null;
-    return el("div", { class: "note astuce", style: { marginTop: "12px" } }, [
-      el("strong", { text: "Astuce — " }),
-      document.createTextNode(astuce),
-    ]);
+    return el("div", { class: "note astuce", style: { marginTop: "14px" } }, [el("strong", { text: "Astuce — " }), document.createTextNode(astuce)]);
   }
 
-  function ruleNode(item, open) {
-    const det = el("details", { class: "rule" });
-    if (open) det.open = true;
-    const sum = el("summary", null, [
-      el("span", { class: "marker", html: '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>' }),
-      el("span", null, [
-        el("div", { text: item.titre }),
-        item.resume ? el("div", { class: "muted", style: { fontFamily: "var(--sans)", fontSize: "13.5px", fontWeight: "400", marginTop: "2px" }, text: item.resume }) : null,
-      ]),
-    ]);
-    const body = el("div", { class: "body" });
-    if (item.explication) body.appendChild(el("div", { html: item.explication }));
-    const ex = exemplesNode(item.exemples);
-    if (ex) body.appendChild(ex);
-    const as = astuceNode(item.astuce);
-    if (as) body.appendChild(as);
-    det.append(sum, body);
-    return det;
-  }
-
-  function confusionNode(item) {
-    const card = el("div", { class: "card" });
-    card.appendChild(el("h3", { text: item.titre, style: { fontSize: "19px", marginBottom: "10px", color: "var(--accent-ink)" } }));
-    item.entrees.forEach((e) => {
-      card.appendChild(el("div", { class: "nuance-word", style: { marginBottom: "8px" } }, [
-        el("span", { class: "w", text: e.mot }),
-        el("span", { class: "chip", style: { marginLeft: "8px", verticalAlign: "middle" }, text: e.nature }),
-        el("div", { class: "d", text: e.sens }),
-        e.exemple ? el("div", { class: "e", text: "« " + e.exemple + " »" }) : null,
-      ]));
-    });
-    const as = astuceNode(item.astuce);
-    if (as) card.appendChild(as);
-    return card;
-  }
-
-  function nuanceNode(item) {
-    const card = el("div", { class: "card" });
-    card.appendChild(el("h3", { text: item.titre, style: { fontSize: "19px", marginBottom: "8px", color: "var(--accent-ink)" } }));
-    if (item.cle) {
-      card.appendChild(el("div", { class: "note astuce", style: { marginBottom: "12px" } }, [
-        el("strong", { text: "La clé — " }), document.createTextNode(item.cle),
-      ]));
+  function detailBody(item, type) {
+    const wrap = el("div");
+    if (type === "confusion") {
+      item.entrees.forEach((e) => {
+        wrap.appendChild(el("div", { class: "nuance-word", style: { marginBottom: "8px" } }, [
+          el("span", { class: "w", text: e.mot }),
+          el("span", { class: "chip", style: { marginLeft: "8px", verticalAlign: "middle" }, text: e.nature }),
+          el("div", { class: "d", text: e.sens }),
+          e.exemple ? el("div", { class: "e", text: "« " + e.exemple + " »" }) : null,
+        ]));
+      });
+      wrap.appendChild(astuceNode(item.astuce));
+    } else if (type === "nuance") {
+      if (item.cle) wrap.appendChild(el("div", { class: "note astuce", style: { marginBottom: "14px" } }, [el("strong", { text: "La clé — " }), document.createTextNode(item.cle)]));
+      const grid = el("div", { class: "nuance-pair" });
+      item.entrees.forEach((e) => grid.appendChild(el("div", { class: "nuance-word" }, [
+        el("div", { class: "w", text: e.mot }), el("div", { class: "d", text: e.sens }), e.exemple ? el("div", { class: "e", text: "« " + e.exemple + " »" }) : null,
+      ])));
+      wrap.appendChild(grid);
+    } else {
+      if (item.explication) wrap.appendChild(el("div", { class: "cours-body", html: item.explication }));
+      const ex = exemplesNode(item.exemples);
+      if (ex) { wrap.appendChild(el("div", { class: "cours-section-lbl", text: "Exemples" })); wrap.appendChild(ex); }
+      const as = astuceNode(item.astuce);
+      if (as) wrap.appendChild(as);
     }
-    const grid = el("div", { class: "nuance-pair" });
-    item.entrees.forEach((e) => {
-      grid.appendChild(el("div", { class: "nuance-word" }, [
-        el("div", { class: "w", text: e.mot }),
-        el("div", { class: "d", text: e.sens }),
-        e.exemple ? el("div", { class: "e", text: "« " + e.exemple + " »" }) : null,
-      ]));
-    });
-    card.appendChild(grid);
-    return card;
+    return wrap;
   }
 
-  function itemNode(type, item) {
-    if (type === "confusion") return confusionNode(item);
-    if (type === "nuance") return nuanceNode(item);
-    return ruleNode(item);
+  function backBtn() {
+    return el("button", { class: "back", on: { click: () => LMJ.nav.back() } }, [el("span", { html: IC.back }), document.createTextNode("Retour")]);
+  }
+
+  /* ---------- Page cours ---------- */
+  function openDetail(item, type) {
+    LMJ.nav.push((root) => {
+      root.appendChild(backBtn());
+      root.appendChild(el("div", { class: "cours-lead", style: { marginTop: "10px" }, text: shortText(item, type) }));
+      root.appendChild(detailBody(item, type));
+
+      const quiz = getQuiz(item);
+      if (quiz && quiz.length) {
+        root.appendChild(el("div", { class: "spacer", style: { height: "8px" } }));
+        root.appendChild(el("button", {
+          class: "btn primary block", style: { marginTop: "14px" },
+          html: IC.quiz + `<span>Lancer le quiz · ${quiz.length} question${quiz.length > 1 ? "s" : ""}</span>`,
+          on: { click: () => openQuiz(item, quiz) },
+        }));
+      }
+    }, { eyebrow: "Fiche", title: item.titre });
+  }
+
+  /* ---------- Quiz ---------- */
+  function openQuiz(item, questions) {
+    const state = { i: 0, score: 0, answered: false, chosen: -1 };
+
+    LMJ.nav.push((root) => {
+      const host = el("div");
+      root.appendChild(host);
+
+      function draw() {
+        util.clear(host);
+        if (state.i >= questions.length) return drawResult();
+        const q = questions[state.i];
+
+        // Progression
+        host.appendChild(el("div", { class: "quiz-progress" }, [
+          el("span", { text: `Question ${state.i + 1} / ${questions.length}` }),
+          el("span", { text: `Score : ${state.score}` }),
+        ]));
+        host.appendChild(el("div", { class: "quiz-bar" }, el("i", { style: { width: Math.round((state.i / questions.length) * 100) + "%" } })));
+
+        // Question / phrase à trou
+        host.appendChild(sentenceNode(q, state.answered ? q.options[q.reponse] : null));
+
+        // Options
+        const opts = el("div", { class: "quiz-opts" });
+        q.options.forEach((opt, idx) => {
+          const dot = el("span", { class: "dot" });
+          const b = el("button", { class: "quiz-opt" }, [dot, document.createTextNode(opt)]);
+          if (state.answered) {
+            b.classList.add("locked");
+            if (idx === q.reponse) { b.classList.add("correct"); dot.innerHTML = IC.check; }
+            else if (idx === state.chosen) { b.classList.add("wrong"); dot.innerHTML = IC.cross; }
+            else b.classList.add("dim");
+          } else {
+            b.addEventListener("click", () => {
+              state.answered = true; state.chosen = idx;
+              if (idx === q.reponse) state.score++;
+              draw();
+            });
+          }
+          opts.appendChild(b);
+        });
+        host.appendChild(opts);
+
+        // Explication + suite
+        if (state.answered) {
+          const ok = state.chosen === q.reponse;
+          host.appendChild(el("div", { class: "note astuce quiz-explain" }, [
+            el("strong", { text: ok ? "Bravo ! " : "Pas tout à fait. " }),
+            document.createTextNode(q.explication || ""),
+          ]));
+          const last = state.i === questions.length - 1;
+          host.appendChild(el("button", {
+            class: "btn primary block", style: { marginTop: "18px" },
+            text: last ? "Voir le résultat" : "Question suivante",
+            on: { click: () => { state.i++; state.answered = false; state.chosen = -1; draw(); window.scrollTo({ top: 0 }); } },
+          }));
+        }
+      }
+
+      function drawResult() {
+        const total = questions.length;
+        const r = state.score / total;
+        const medal = r === 1 ? "🏆" : r >= 0.7 ? "🎉" : r >= 0.5 ? "👍" : "📚";
+        const msg = r === 1 ? "Sans faute, parfait !" : r >= 0.7 ? "Très bon score !" : r >= 0.5 ? "Pas mal, continue !" : "Relis la fiche et retente ta chance.";
+        util.clear(host);
+        host.appendChild(el("div", { class: "quiz-result" }, [
+          el("div", { class: "quiz-medal", text: medal }),
+          el("div", { class: "quiz-score", html: `${state.score}<small> / ${total}</small>` }),
+          el("div", { class: "muted", style: { marginTop: "8px", fontSize: "16px" }, text: msg }),
+        ]));
+        host.appendChild(el("button", {
+          class: "btn primary block", style: { marginTop: "18px" }, text: "Recommencer le quiz",
+          on: { click: () => { state.i = 0; state.score = 0; state.answered = false; state.chosen = -1; draw(); window.scrollTo({ top: 0 }); } },
+        }));
+        host.appendChild(el("button", { class: "btn block", style: { marginTop: "10px" }, text: "Retour à la fiche", on: { click: () => LMJ.nav.back() } }));
+      }
+
+      draw();
+    }, { eyebrow: "Quiz", title: item.titre });
+  }
+
+  function sentenceNode(q, revealWord) {
+    if (q.q.indexOf("___") === -1) return el("div", { class: "quiz-question", text: q.q });
+    const parts = q.q.split("___");
+    const frag = el("div", { class: "quiz-question" });
+    frag.appendChild(document.createTextNode(parts[0]));
+    if (revealWord) {
+      frag.appendChild(el("strong", { style: { color: "var(--accent-ink)" }, text: revealWord }));
+    } else {
+      frag.appendChild(el("span", { class: "quiz-blank", html: "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" }));
+    }
+    frag.appendChild(document.createTextNode(parts.slice(1).join("___")));
+    return frag;
+  }
+
+  /* ---------- Écran d'une catégorie ---------- */
+  function openCategory(cat) {
+    if (cat.type === "conjugaison") return openConjugaison();
+    LMJ.nav.push((root) => {
+      root.appendChild(backBtn());
+      root.appendChild(el("div", { class: "spacer" }));
+      (cat.data || []).forEach((item) => root.appendChild(cardNode(item, cat.type)));
+    }, { eyebrow: "Les règles", title: cat.nom, sub: cat.desc });
   }
 
   /* =====================================================================
-     Conjugueur
+     Conjugueur (inchangé sur le fond ; les règles de conjugaison passent
+     en cartes légères → page cours → quiz).
      ===================================================================== */
   const PRO_IND = ["je", "tu", "il/elle", "nous", "vous", "ils/elles"];
   const PRO_SUBJ = ["que je", "que tu", "qu'il/elle", "que nous", "que vous", "qu'ils/elles"];
   const IMP_LBL = ["(tu)", "(nous)", "(vous)"];
-
   function elide(pro, form) {
     const voyelle = /^[aàâeéèêiîïoôu ùûyh]/i.test(form);
-    if (voyelle) {
-      if (pro === "je") return "j'" + form;
-      if (pro === "que je") return "que j'" + form;
-    }
+    if (voyelle) { if (pro === "je") return "j'" + form; if (pro === "que je") return "que j'" + form; }
     return pro + " " + form;
   }
-
   function tenseBlock(label, forms, mode) {
     if (!forms) return null;
     const box = el("div", { class: "card", style: { padding: "14px 16px" } });
-    box.appendChild(el("div", { class: "lbl", style: { fontSize: "11px", letterSpacing: ".1em", textTransform: "uppercase", color: "var(--accent)", fontWeight: "700", marginBottom: "8px" }, text: label }));
+    box.appendChild(el("div", { style: { fontSize: "11px", letterSpacing: ".1em", textTransform: "uppercase", color: "var(--accent)", fontWeight: "700", marginBottom: "8px" }, text: label }));
     const list = el("div", { style: { fontFamily: "var(--serif)", fontSize: "16px", lineHeight: "1.85" } });
     forms.forEach((f, i) => {
       if (f == null) return;
-      let txt;
-      if (mode === "imp") txt = f + " ";
-      else txt = elide(mode === "subj" ? PRO_SUBJ[i] : PRO_IND[i], f);
-      const row = el("div", null, [
+      let txt = mode === "imp" ? f + " " : elide(mode === "subj" ? PRO_SUBJ[i] : PRO_IND[i], f);
+      list.appendChild(el("div", null, [
         mode === "imp" ? el("span", { class: "muted", style: { fontSize: "12px", marginRight: "6px" }, text: IMP_LBL[i] }) : null,
         document.createTextNode(txt),
-      ]);
-      list.appendChild(row);
+      ]));
     });
     box.appendChild(list);
     return box;
   }
-
   function renderConjugaison(container, verbe) {
     util.clear(container);
     const c = LMJ.conjugue(verbe);
@@ -177,116 +270,58 @@
       container.appendChild(el("div", { class: "empty" }, [
         el("div", { html: IC.search }),
         el("p", { html: `Le verbe <strong>« ${util.escape(c.infinitif)} »</strong> n'est pas encore dans la base.` }),
-        el("p", { class: "muted", text: "Le moteur couvre tous les verbes en -er et -ir réguliers, plus une cinquantaine d'irréguliers essentiels. Les verbes en -re/-oir irréguliers seront ajoutés progressivement." }),
+        el("p", { class: "muted", text: "Le moteur couvre tous les verbes en -er et -ir réguliers, plus une cinquantaine d'irréguliers essentiels." }),
       ]));
       return;
     }
-
     const grpLabel = c.groupe === 1 ? "1er groupe" : c.groupe === 2 ? "2e groupe" : "3e groupe";
-    const head = el("div", { class: "card", style: { marginBottom: "16px", background: "var(--surface-2)" } }, [
+    container.appendChild(el("div", { class: "card", style: { marginBottom: "16px", background: "var(--surface-2)" } }, [
       el("div", { style: { display: "flex", alignItems: "baseline", gap: "10px", flexWrap: "wrap" } }, [
         el("h2", { text: c.infinitif, style: { fontSize: "28px", color: "var(--accent-ink)" } }),
         el("span", { class: "chip accent", text: grpLabel }),
         el("span", { class: "chip", text: "auxiliaire " + (c.aux === "etre" ? "être" : "avoir") }),
         c.irregulier ? el("span", { class: "chip gold", text: "irrégulier" }) : null,
       ]),
-      el("div", { class: "muted", style: { marginTop: "8px", fontSize: "14.5px" }, html:
-        `Participe présent : <strong>${util.escape(c.participePresent || "—")}</strong> · Participe passé : <strong>${util.escape(c.participePasse)}</strong> · Gérondif : <strong>en ${util.escape(c.participePresent || "—")}</strong>` }),
-      c.aux === "etre" ? el("div", { class: "note", style: { marginTop: "10px" }, text: "Auxiliaire être : aux temps composés, le participe s'accorde avec le sujet (ex. allé, allée, allés, allées)." }) : null,
-    ]);
-    container.appendChild(head);
-
+      el("div", { class: "muted", style: { marginTop: "8px", fontSize: "14.5px" }, html: `Participe présent : <strong>${util.escape(c.participePresent || "—")}</strong> · Participe passé : <strong>${util.escape(c.participePasse)}</strong> · Gérondif : <strong>en ${util.escape(c.participePresent || "—")}</strong>` }),
+      c.aux === "etre" ? el("div", { class: "note", style: { marginTop: "10px" }, text: "Auxiliaire être : aux temps composés, le participe s'accorde avec le sujet." }) : null,
+    ]));
     const modes = [
-      { nom: "Indicatif", mode: "ind", temps: [
-        ["Présent", c.indicatif.present], ["Passé composé", c.indicatif.passeCompose],
-        ["Imparfait", c.indicatif.imparfait], ["Plus-que-parfait", c.indicatif.plusQueParfait],
-        ["Passé simple", c.indicatif.passeSimple], ["Passé antérieur", c.indicatif.passeAnterieur],
-        ["Futur simple", c.indicatif.futurSimple], ["Futur antérieur", c.indicatif.futurAnterieur],
-      ] },
-      { nom: "Conditionnel", mode: "ind", temps: [
-        ["Présent", c.conditionnel.present], ["Passé", c.conditionnel.passe],
-      ] },
-      { nom: "Subjonctif", mode: "subj", temps: [
-        ["Présent", c.subjonctif.present], ["Passé", c.subjonctif.passe],
-        ["Imparfait", c.subjonctif.imparfait], ["Plus-que-parfait", c.subjonctif.plusQueParfait],
-      ] },
-      { nom: "Impératif", mode: "imp", temps: [
-        ["Présent", c.imperatif.present], ["Passé", c.imperatif.passe],
-      ] },
+      { nom: "Indicatif", mode: "ind", temps: [["Présent", c.indicatif.present], ["Passé composé", c.indicatif.passeCompose], ["Imparfait", c.indicatif.imparfait], ["Plus-que-parfait", c.indicatif.plusQueParfait], ["Passé simple", c.indicatif.passeSimple], ["Passé antérieur", c.indicatif.passeAnterieur], ["Futur simple", c.indicatif.futurSimple], ["Futur antérieur", c.indicatif.futurAnterieur]] },
+      { nom: "Conditionnel", mode: "ind", temps: [["Présent", c.conditionnel.present], ["Passé", c.conditionnel.passe]] },
+      { nom: "Subjonctif", mode: "subj", temps: [["Présent", c.subjonctif.present], ["Passé", c.subjonctif.passe], ["Imparfait", c.subjonctif.imparfait], ["Plus-que-parfait", c.subjonctif.plusQueParfait]] },
+      { nom: "Impératif", mode: "imp", temps: [["Présent", c.imperatif.present], ["Passé", c.imperatif.passe]] },
     ];
-
     modes.forEach((m) => {
-      const anyForm = m.temps.some(([, f]) => f && f.some((x) => x != null));
-      if (!anyForm) return;
+      if (!m.temps.some(([, f]) => f && f.some((x) => x != null))) return;
       container.appendChild(el("h3", { text: m.nom, style: { fontSize: "18px", margin: "22px 0 12px" } }));
       const grid = el("div", { style: { display: "grid", gap: "12px", gridTemplateColumns: "repeat(auto-fill, minmax(200px, 1fr))" } });
-      m.temps.forEach(([label, forms]) => {
-        const b = tenseBlock(label, forms, m.mode);
-        if (b) grid.appendChild(b);
-      });
+      m.temps.forEach(([label, forms]) => { const b = tenseBlock(label, forms, m.mode); if (b) grid.appendChild(b); });
       container.appendChild(grid);
     });
   }
-
   function openConjugaison(initialVerb) {
     LMJ.nav.push((root) => {
       root.appendChild(backBtn());
-
-      const search = el("div", { class: "search", style: { marginBottom: "12px" } });
+      const search = el("div", { class: "search", style: { margin: "12px 0" } });
       const input = el("input", { type: "text", placeholder: "Entrez un verbe à l'infinitif…", autocapitalize: "none", autocomplete: "off", spellcheck: "false", enterkeyhint: "search" });
       search.append(el("span", { html: IC.search }), input);
       root.appendChild(search);
-
       const chips = el("div", { style: { display: "flex", flexWrap: "wrap", gap: "7px", marginBottom: "16px" } });
-      LMJ.verbesSuggestions.slice(0, 16).forEach((v) => {
-        chips.appendChild(el("button", { class: "chip", style: { cursor: "pointer" }, text: v, on: { click: () => { input.value = v; go(v); } } }));
-      });
+      LMJ.verbesSuggestions.slice(0, 16).forEach((v) => chips.appendChild(el("button", { class: "chip", style: { cursor: "pointer" }, text: v, on: { click: () => { input.value = v; go(v); } } })));
       root.appendChild(chips);
-
       const results = el("div");
       root.appendChild(results);
-
-      function go(v) {
-        const verbe = (v || input.value).trim();
-        if (!verbe) return;
-        renderConjugaison(results, verbe);
-        window.scrollTo({ top: 0, behavior: "smooth" });
-      }
+      function go(v) { const verbe = (v || input.value).trim(); if (!verbe) return; renderConjugaison(results, verbe); window.scrollTo({ top: 0, behavior: "smooth" }); }
       input.addEventListener("keydown", (e) => { if (e.key === "Enter") go(); });
-
-      // Règles de conjugaison sous le conjugueur
       root.appendChild(el("h3", { text: "Règles de conjugaison", style: { fontSize: "18px", margin: "26px 0 12px" } }));
-      (LMJ.data.conjugaisonRegles || []).forEach((r) => root.appendChild(ruleNode(r)));
-
+      (LMJ.data.conjugaisonRegles || []).forEach((r) => root.appendChild(cardNode(r, "rule")));
       const start = (initialVerb || "aimer").trim();
       input.value = start === "aimer" ? "" : start;
       go(start);
     }, { eyebrow: "Conjugaison", title: "Conjugueur", sub: "Tous les temps, tous les modes" });
   }
 
-  /* =====================================================================
-     Écran d'une catégorie
-     ===================================================================== */
-  function backBtn() {
-    return el("button", { class: "back", on: { click: () => LMJ.nav.back() } }, [
-      el("span", { html: IC.back }), document.createTextNode("Retour"),
-    ]);
-  }
-
-  function openCategory(cat) {
-    if (cat.type === "conjugaison") return openConjugaison();
-    LMJ.nav.push((root) => {
-      root.appendChild(backBtn());
-      root.appendChild(el("div", { class: "spacer" }));
-      const list = el("div", { class: "stack" });
-      (cat.data || []).forEach((item) => list.appendChild(itemNode(cat.type, item)));
-      root.appendChild(list);
-    }, { eyebrow: "Les règles", title: cat.nom, sub: cat.desc });
-  }
-
-  /* =====================================================================
-     Recherche transverse
-     ===================================================================== */
+  /* ---------- Recherche transverse ---------- */
   function buildIndex() {
     const idx = [];
     categories().forEach((cat) => {
@@ -295,20 +330,17 @@
         if (item.explication) hay += " " + item.explication;
         if (item.entrees) hay += " " + item.entrees.map((e) => (e.mot || "") + " " + (e.sens || "")).join(" ");
         if (item.astuce) hay += " " + item.astuce;
-        idx.push({ cat, type: cat.type === "conjugaison" ? "rule" : cat.type, item, hay: util.normSearch(hay) });
+        idx.push({ item, type: cat.type === "conjugaison" ? "rule" : cat.type, catNom: cat.nom, hay: util.normSearch(hay) });
       });
     });
     return idx;
   }
 
-  /* =====================================================================
-     Écran racine
-     ===================================================================== */
+  /* ---------- Écran racine ---------- */
   function render(root) {
     const cats = categories();
     const idx = buildIndex();
 
-    // Recherche
     const search = el("div", { class: "search" });
     const input = el("input", { type: "text", placeholder: "Rechercher une règle, un mot, un verbe…", autocapitalize: "none", autocomplete: "off", spellcheck: "false", enterkeyhint: "search" });
     search.append(el("span", { html: IC.search }), input);
@@ -318,7 +350,6 @@
     const gridWrap = el("div");
     root.append(resultsWrap, gridWrap);
 
-    // Grille des catégories
     const grid = el("div", { class: "cat-grid", style: { marginTop: "18px" } });
     cats.forEach((cat) => {
       const n = cat.data ? cat.data.length : 0;
@@ -335,29 +366,17 @@
       util.clear(resultsWrap);
       if (q.length < 2) { gridWrap.style.display = ""; return; }
       gridWrap.style.display = "none";
-      const hits = idx.filter((r) => r.hay.includes(q)).slice(0, 30);
-
-      resultsWrap.appendChild(el("div", { class: "muted", style: { margin: "14px 2px 6px", fontSize: "13.5px" }, text: hits.length + " résultat(s)" }));
-
+      const hits = idx.filter((r) => r.hay.includes(q)).slice(0, 40);
+      resultsWrap.appendChild(el("div", { class: "muted", style: { margin: "14px 2px 10px", fontSize: "13.5px" }, text: hits.length + " résultat(s)" }));
       if (!hits.length) {
         resultsWrap.appendChild(el("div", { class: "empty" }, [
           el("p", { text: "Aucune règle trouvée." }),
-          /(er|ir|re|oir)$/.test(q)
-            ? el("button", { class: "btn primary", text: "Conjuguer « " + input.value.trim() + " »", on: { click: () => openConjugaison(input.value.trim()) } })
-            : null,
+          /(er|ir|re|oir)$/.test(q) ? el("button", { class: "btn primary", text: "Conjuguer « " + input.value.trim() + " »", on: { click: () => openConjugaison(input.value.trim()) } }) : null,
         ]));
         return;
       }
-      const list = el("div", { class: "stack" });
-      hits.forEach((h) => {
-        const wrap = el("div");
-        wrap.appendChild(el("span", { class: "chip accent", style: { marginBottom: "8px" }, text: h.cat.nom }));
-        wrap.appendChild(itemNode(h.type, h.item));
-        list.appendChild(wrap);
-      });
-      resultsWrap.appendChild(list);
+      hits.forEach((h) => resultsWrap.appendChild(cardNode(h.item, h.type)));
     }
-
     let t;
     input.addEventListener("input", () => { clearTimeout(t); t = setTimeout(runSearch, 120); });
   }

@@ -386,3 +386,54 @@ button { font-family: inherit; }
 @media (min-width: 560px) {
   .cat-grid { grid-template-columns: 1fr 1fr 1fr; }
 }
+
+/* ---------- Carte de règle (liste) ---------- */
+.rule-card {
+  display: flex; align-items: center; gap: 14px; width: 100%; text-align: left; cursor: pointer;
+  background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius);
+  box-shadow: var(--shadow-1); padding: 16px 18px;
+  transition: transform .1s, box-shadow .2s, border-color .2s;
+}
+.rule-card:active { transform: scale(.99); }
+.rule-card:hover { border-color: var(--line-strong); }
+.rule-card + .rule-card { margin-top: 10px; }
+.rule-card .rc-body { flex: 1; min-width: 0; }
+.rule-card .rc-title { font-family: var(--serif); font-weight: 500; font-size: 18px; letter-spacing: -.005em; color: var(--ink); }
+.rule-card .rc-sub { font-size: 13.5px; color: var(--muted); margin-top: 3px; line-height: 1.4; }
+.rule-card .rc-arrow { color: var(--line-strong); flex: none; display: grid; place-items: center; }
+.rule-card:hover .rc-arrow { color: var(--accent); }
+
+/* ---------- Page « cours » ---------- */
+.cours-title { font-family: var(--serif); font-size: 27px; font-weight: 600; color: var(--accent-ink); line-height: 1.15; margin: 4px 0 6px; }
+.cours-lead { font-size: 16px; color: var(--muted); margin-bottom: 18px; }
+.cours-body { font-size: 16.5px; line-height: 1.62; }
+.cours-body p { margin: 0 0 12px; }
+.cours-section-lbl { font-size: 12px; letter-spacing: .1em; text-transform: uppercase; color: var(--accent); font-weight: 700; margin: 22px 0 8px; }
+
+/* ---------- Quiz ---------- */
+.quiz-progress { display: flex; align-items: center; justify-content: space-between; font-size: 13px; color: var(--muted); font-weight: 600; margin-bottom: 10px; }
+.quiz-bar { height: 6px; background: var(--line); border-radius: 999px; overflow: hidden; margin-bottom: 24px; }
+.quiz-bar > i { display: block; height: 100%; background: var(--accent); border-radius: 999px; transition: width .35s ease; }
+.quiz-question { font-family: var(--serif); font-size: 21px; line-height: 1.5; margin-bottom: 20px; }
+.quiz-blank { display: inline-block; min-width: 60px; border-bottom: 2.5px dashed var(--accent); vertical-align: baseline; }
+.quiz-opts { display: flex; flex-direction: column; gap: 10px; }
+.quiz-opt {
+  display: flex; align-items: center; gap: 12px; width: 100%; text-align: left; cursor: pointer;
+  padding: 15px 18px; border: 1.5px solid var(--line-strong); border-radius: var(--radius);
+  background: var(--surface); font-family: var(--serif); font-size: 17.5px; color: var(--ink);
+  transition: background .15s, border-color .15s, transform .08s, opacity .2s;
+}
+.quiz-opt:active { transform: scale(.99); }
+.quiz-opt .dot { width: 22px; height: 22px; border-radius: 50%; border: 2px solid var(--line-strong); flex: none; display: grid; place-items: center; }
+.quiz-opt .dot svg { width: 14px; height: 14px; }
+.quiz-opt.correct { border-color: var(--green); background: var(--green-soft); }
+.quiz-opt.correct .dot { border-color: var(--green); background: var(--green); color: #fff; }
+.quiz-opt.wrong { border-color: var(--red); background: var(--red-soft); }
+.quiz-opt.wrong .dot { border-color: var(--red); background: var(--red); color: #fff; }
+.quiz-opt.locked { cursor: default; }
+.quiz-opt.dim { opacity: .5; }
+.quiz-explain { margin-top: 18px; }
+.quiz-result { text-align: center; padding: 24px 0 8px; }
+.quiz-medal { font-size: 54px; line-height: 1; margin-bottom: 10px; }
+.quiz-score { font-family: var(--serif); font-size: 56px; font-weight: 600; color: var(--accent-ink); line-height: 1; }
+.quiz-score small { font-size: 26px; color: var(--muted); }

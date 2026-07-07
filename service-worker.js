@@ -3,7 +3,7 @@
    Précache tous les assets → l'application fonctionne 100% hors-ligne.
    Incrémenter CACHE à chaque changement d'assets pour forcer la MAJ.
    ===================================================================== */
-const CACHE = "le-mot-juste-v1";
+const CACHE = "le-mot-juste-v2";
 
 const ASSETS = [
   "./",
@@ -24,6 +24,7 @@ const ASSETS = [
   "data/mots.js",
   "data/verbes.js",
   "data/dictees.js",
+  "data/quiz.js",
   "icons/icon.svg",
   "icons/icon-192.png",
   "icons/icon-512.png",
