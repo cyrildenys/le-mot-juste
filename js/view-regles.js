@@ -45,7 +45,40 @@
     if (type === "nuance") return item.cle ? item.cle : "Mots proches, sens différents.";
     return "";
   }
-  const getQuiz = (item) => (item && item.id && LMJ.data.quiz ? LMJ.data.quiz[item.id] : null) || null;
+  const NIVEAUX = { 1: { nom: "Facile", cls: "niv-1" }, 2: { nom: "Intermédiaire", cls: "niv-2" }, 3: { nom: "Expert", cls: "niv-3" } };
+  const niv3 = (n) => (n >= 3 ? 3 : n <= 1 ? 1 : 2);
+
+  // Toutes les questions de la catégorie de la fiche (pour un quiz progressif).
+  function categoryDataOf(item) {
+    const cat = categories().find((c) => (c.data || []).some((x) => x.id === item.id));
+    return cat ? cat.data : [item];
+  }
+  function quizPool(item) {
+    const pool = [];
+    categoryDataOf(item).forEach((r) => {
+      (LMJ.data.quiz[r.id] || []).forEach((q) => pool.push(Object.assign({ _own: r.id === item.id, _n: niv3(q.n || 1) }, q)));
+    });
+    return pool;
+  }
+  function shuffle(a) { for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); const t = a[i]; a[i] = a[j]; a[j] = t; } return a; }
+
+  // Construit un quiz d'au moins 10 questions, ordonné par difficulté croissante.
+  function buildRamp(item) {
+    const pool = quizPool(item);
+    const tiers = { 1: [], 2: [], 3: [] };
+    pool.forEach((q) => tiers[q._n].push(q));
+    [1, 2, 3].forEach((k) => { tiers[k] = tiers[k].filter((q) => q._own).concat(shuffle(tiers[k].filter((q) => !q._own))); });
+    const want = 10, desired = { 1: 4, 2: 3, 3: 3 };
+    let pick = [];
+    [1, 2, 3].forEach((k) => { pick = pick.concat(tiers[k].slice(0, desired[k])); });
+    if (pick.length < want) {
+      const rest = [];
+      [1, 2, 3].forEach((k) => rest.push(...tiers[k].slice(desired[k])));
+      for (const q of rest) { if (pick.length >= want) break; pick.push(q); }
+    }
+    pick.sort((a, b) => a._n - b._n);
+    return pick;
+  }
 
   /* ---------- Carte légère ---------- */
   function cardNode(item, type) {
@@ -117,20 +150,23 @@
       root.appendChild(el("div", { class: "cours-lead", style: { marginTop: "10px" }, text: shortText(item, type) }));
       root.appendChild(detailBody(item, type));
 
-      const quiz = getQuiz(item);
-      if (quiz && quiz.length) {
+      const pool = quizPool(item);
+      if (pool.length) {
+        const n = pool.length >= 10 ? 10 : pool.length;
         root.appendChild(el("div", { class: "spacer", style: { height: "8px" } }));
         root.appendChild(el("button", {
           class: "btn primary block", style: { marginTop: "14px" },
-          html: IC.quiz + `<span>Lancer le quiz · ${quiz.length} question${quiz.length > 1 ? "s" : ""}</span>`,
-          on: { click: () => openQuiz(item, quiz) },
+          html: IC.quiz + `<span>Lancer le quiz · ${n} questions</span>`,
+          on: { click: () => openQuiz(item) },
         }));
+        root.appendChild(el("div", { class: "muted", style: { textAlign: "center", fontSize: "12.5px", marginTop: "8px" }, text: "Difficulté croissante, du facile à l'expert." }));
       }
     }, { eyebrow: "Fiche", title: item.titre });
   }
 
   /* ---------- Quiz ---------- */
-  function openQuiz(item, questions) {
+  function openQuiz(item) {
+    let questions = buildRamp(item);
     const state = { i: 0, score: 0, answered: false, chosen: -1 };
 
     LMJ.nav.push((root) => {
@@ -148,6 +184,10 @@
           el("span", { text: `Score : ${state.score}` }),
         ]));
         host.appendChild(el("div", { class: "quiz-bar" }, el("i", { style: { width: Math.round((state.i / questions.length) * 100) + "%" } })));
+
+        // Badge de niveau
+        const niv = NIVEAUX[q._n || 1];
+        host.appendChild(el("div", { style: { marginBottom: "14px" } }, el("span", { class: "niv-badge " + niv.cls, text: niv.nom })));
 
         // Question / phrase à trou
         host.appendChild(sentenceNode(q, state.answered ? q.options[q.reponse] : null));
@@ -202,7 +242,7 @@
         ]));
         host.appendChild(el("button", {
           class: "btn primary block", style: { marginTop: "18px" }, text: "Recommencer le quiz",
-          on: { click: () => { state.i = 0; state.score = 0; state.answered = false; state.chosen = -1; draw(); window.scrollTo({ top: 0 }); } },
+          on: { click: () => { questions = buildRamp(item); state.i = 0; state.score = 0; state.answered = false; state.chosen = -1; draw(); window.scrollTo({ top: 0 }); } },
         }));
         host.appendChild(el("button", { class: "btn block", style: { marginTop: "10px" }, text: "Retour à la fiche", on: { click: () => LMJ.nav.back() } }));
       }
