@@ -411,5 +411,53 @@
       { q: "Où ___ ?", options: ["va-il", "va-t-il", "vat-il"], reponse: 1, n: 1, explication: "Deux voyelles → -t- euphonique : « va-t-il »." },
       { q: "Que ___ ?", options: ["mange-t-on", "mange-on", "manget-on"], reponse: 0, n: 2, explication: "« mange » finit par une voyelle → « mange-t-on »." },
     ],
+
+    /* ---------- Ajouts vérifiés (vague 4) ---------- */
+    "conf-ni-ny": [
+      { q: "Il n'a ni faim ___ soif.", options: ["n'y", "ni", "nie"], reponse: 1, n: 1, explication: "Coordination négative → « ni »." },
+      { q: "Il ___ pense jamais.", options: ["ni", "n'y", "nie"], reponse: 1, n: 2, explication: "« ne + y » → « n'y »." },
+    ],
+    "conf-si-sy": [
+      { q: "___ tu veux, viens.", options: ["S'y", "Si", "Ci"], reponse: 1, n: 1, explication: "Condition → « si »." },
+      { q: "Il ___ attendait.", options: ["si", "s'y", "ci"], reponse: 1, n: 2, explication: "« se + y » → « s'y »." },
+    ],
+    "conf-sa-ca": [
+      { q: "___ voiture est neuve.", options: ["Ça", "Sa", "Çà"], reponse: 1, n: 1, explication: "Possessif (= ma) → « sa »." },
+      { q: "___ me plaît beaucoup.", options: ["Sa", "Ça", "Çà"], reponse: 1, n: 1, explication: "= cela → « ça »." },
+      { q: "Des papiers traînaient ___ et là.", options: ["sa", "ça", "çà"], reponse: 2, n: 3, explication: "Locution « çà et là » → « çà » (accent grave)." },
+    ],
+    "conf-on-onn": [
+      { q: "___ gagné le match !", options: ["On n'a", "On a", "Ont a"], reponse: 1, n: 1, explication: "Forme affirmative → « on a »." },
+      { q: "___ rien compris à l'énoncé.", options: ["On a", "On n'a", "On-a"], reponse: 1, n: 2, explication: "Négation (rien) → « on n'a »." },
+    ],
+    "conj-trois-groupes": [
+      { q: "« finir » appartient au…", options: ["1er groupe", "2e groupe", "3e groupe"], reponse: 1, n: 1, explication: "-ir + participe « finissant » → 2e groupe." },
+      { q: "« partir » appartient au…", options: ["2e groupe", "3e groupe", "1er groupe"], reponse: 1, n: 2, explication: "-ir sans -issant (partant) → 3e groupe." },
+      { q: "« aller » appartient au…", options: ["1er groupe", "3e groupe", "2e groupe"], reponse: 1, n: 3, explication: "Verbe irrégulier → 3e groupe (malgré -er)." },
+    ],
+    "conj-imparfait-terminaisons": [
+      { q: "Nous ___ (chanter, imparfait).", options: ["chantons", "chantions", "chanterons"], reponse: 1, n: 1, explication: "Imparfait « nous » → -ions." },
+      { q: "Il ___ (croire, imparfait).", options: ["croiyait", "croyait", "croiait"], reponse: 1, n: 3, explication: "Radical « croy- » + -ait → « croyait »." },
+    ],
+    "gr-pronoms-personnels": [
+      { q: "Dans « Je le vois », « le » est un pronom…", options: ["sujet", "complément (COD)", "possessif"], reponse: 1, n: 1, explication: "Remplace le COD → pronom complément." },
+      { q: "Dans « Je lui parle », « lui » est…", options: ["un COD", "un COI", "un sujet"], reponse: 1, n: 2, explication: "« parler à » → complément indirect." },
+    ],
+    "gr-adverbe": [
+      { q: "Dans « Il court vite », « vite » est…", options: ["un adjectif", "un adverbe", "un nom"], reponse: 1, n: 1, explication: "Modifie le verbe, invariable → adverbe." },
+      { q: "L'adverbe est un mot…", options: ["variable", "invariable", "toujours en -ment"], reponse: 1, n: 2, explication: "L'adverbe est invariable." },
+    ],
+    "nu-comprehensif-comprehensible": [
+      { q: "Un professeur ___ envers ses élèves.", options: ["compréhensible", "compréhensif", "compréhensé"], reponse: 1, n: 2, explication: "Indulgent (personne) → « compréhensif »." },
+      { q: "Une explication ___.", options: ["compréhensive", "compréhensible", "compréhense"], reponse: 1, n: 2, explication: "Qu'on peut comprendre → « compréhensible »." },
+    ],
+    "nu-original-originel": [
+      { q: "Le péché ___.", options: ["original", "originel", "originaire"], reponse: 1, n: 2, explication: "Qui date de l'origine → « originel »." },
+      { q: "Une idée ___.", options: ["originelle", "originale", "originaire"], reponse: 1, n: 2, explication: "Neuve, singulière → « originale »." },
+    ],
+    "nu-habilete-habilite": [
+      { q: "L'___ d'un artisan.", options: ["habilité", "habileté", "habiletée"], reponse: 1, n: 2, explication: "Adresse, savoir-faire → « habileté »." },
+      { q: "L'___ légale à signer l'acte.", options: ["habileté", "habilité", "habiletée"], reponse: 1, n: 3, explication: "Capacité juridique → « habilité »." },
+    ],
   };
 })();

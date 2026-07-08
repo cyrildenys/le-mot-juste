@@ -942,6 +942,32 @@ button { font-family: inherit; }
       ],
       astuce: "Deux voyelles se rencontrent → on glisse un -t- : « va-t-il ».",
     },
+    {
+      id: "conj-trois-groupes",
+      titre: "Les trois groupes de verbes",
+      resume: "1er : -er ; 2e : -ir (…issant) ; 3e : tous les autres.",
+      explication:
+        "<p><strong>1er groupe</strong> : verbes en <em>-er</em> (sauf « aller »).</p><p><strong>2e groupe</strong> : verbes en <em>-ir</em> dont le participe présent est en <em>-issant</em> (finir → finissant).</p><p><strong>3e groupe</strong> : tous les autres verbes, dits irréguliers (aller, les verbes en -ir sans -issant comme partir, les verbes en -oir et en -re).</p>",
+      exemples: [
+        { ok: true, texte: "chanter, aimer, parler → 1er groupe" },
+        { ok: true, texte: "finir, choisir, grandir → 2e groupe" },
+        { ok: true, texte: "aller, partir, prendre, voir → 3e groupe" },
+      ],
+      astuce: "Pour le 2e groupe, vérifiez le participe présent : « -issant ».",
+    },
+    {
+      id: "conj-imparfait-terminaisons",
+      titre: "Les terminaisons de l'imparfait",
+      resume: "-ais, -ais, -ait, -ions, -iez, -aient (pour tous les verbes).",
+      explication:
+        "<p>À l'imparfait, <strong>tous</strong> les verbes prennent les mêmes terminaisons : <strong>-ais, -ais, -ait, -ions, -iez, -aient</strong>.</p><p>On les ajoute au radical de la 1re personne du pluriel du présent (nous chant<em>ons</em> → je chant<em>ais</em>).</p>",
+      exemples: [
+        { ok: true, texte: "je chantais, nous finissions, ils prenaient" },
+        { ok: true, texte: "nous mangeons → je mangeais" },
+        { ok: false, texte: "il <em>croiyait</em>", correction: "il croyait" },
+      ],
+      astuce: "Seul « être » a un radical particulier : j'ét<em>ais</em>.",
+    },
   ];
 })();
 
@@ -1172,6 +1198,43 @@ button { font-family: inherit; }
         { mot: "tâche", nature: "nom / verbe (tâcher)", sens: "un travail à accomplir (accent circonflexe)", exemple: "Une tâche difficile ; tâcher de finir." },
       ],
       astuce: "Un travail → « tâche » (accent), comme « tâcher de ».",
+    },
+    {
+      id: "conf-ni-ny",
+      titre: "ni / n'y",
+      entrees: [
+        { mot: "ni", nature: "conjonction de négation", sens: "coordonne en niant (ni… ni…)", exemple: "Il n'a ni faim ni soif." },
+        { mot: "n'y", nature: "ne + y", sens: "négation + pronom « y »", exemple: "Il n'y pense jamais." },
+      ],
+      astuce: "« n'y » = « ne + y » : on peut compléter par « pas / jamais ».",
+    },
+    {
+      id: "conf-si-sy",
+      titre: "si / s'y",
+      entrees: [
+        { mot: "si", nature: "conjonction / adverbe", sens: "condition (si tu veux) ou intensité (si beau)", exemple: "Si tu viens, préviens-moi." },
+        { mot: "s'y", nature: "se + y", sens: "pronom réfléchi + « y »", exemple: "Il s'y attendait." },
+      ],
+      astuce: "Remplaçable par « je m'y / tu t'y » → « s'y ».",
+    },
+    {
+      id: "conf-sa-ca",
+      titre: "sa / ça / çà",
+      entrees: [
+        { mot: "sa", nature: "déterminant possessif", sens: "= la sienne (devant un nom féminin)", exemple: "Sa voiture est neuve." },
+        { mot: "ça", nature: "pronom", sens: "= cela (familier)", exemple: "Ça me plaît." },
+        { mot: "çà", nature: "adverbe", sens: "seulement dans « çà et là »", exemple: "Des papiers traînaient çà et là." },
+      ],
+      astuce: "Possessif → « sa » (= « ma »). « cela » → « ça ».",
+    },
+    {
+      id: "conf-on-onn",
+      titre: "on / on n'",
+      entrees: [
+        { mot: "on a, on est…", nature: "forme affirmative", sens: "pas de négation", exemple: "On a tout compris." },
+        { mot: "on n'a, on n'est…", nature: "forme négative", sens: "le « n' » de la négation « ne »", exemple: "On n'a rien compris." },
+      ],
+      astuce: "Peut-on ajouter « pas / plus / rien / jamais » ? Alors il faut « on n' ».",
     },
   ];
 })();
@@ -1603,6 +1666,33 @@ button { font-family: inherit; }
         { mot: "inclination", sens: "penchant, disposition naturelle", exemple: "Une inclination pour les arts." },
       ],
     },
+    {
+      id: "nu-comprehensif-comprehensible",
+      titre: "Compréhensif · Compréhensible",
+      cle: "Compréhensif se dit d'une personne (indulgente) ; compréhensible d'une chose (qu'on peut comprendre).",
+      entrees: [
+        { mot: "compréhensif", sens: "qui comprend autrui, indulgent, tolérant", exemple: "Un chef compréhensif." },
+        { mot: "compréhensible", sens: "qui peut être compris, clair", exemple: "Une explication compréhensible." },
+      ],
+    },
+    {
+      id: "nu-original-originel",
+      titre: "Original · Originel",
+      cle: "Original = nouveau, singulier ; originel = qui date de l'origine.",
+      entrees: [
+        { mot: "original", sens: "neuf, inédit, qui ne ressemble à rien d'autre", exemple: "Une idée originale." },
+        { mot: "originel", sens: "qui existe depuis l'origine, initial", exemple: "Le péché originel ; le sens originel d'un mot." },
+      ],
+    },
+    {
+      id: "nu-habilete-habilite",
+      titre: "Habileté · Habilité",
+      cle: "Habileté = adresse, savoir-faire ; habilité = aptitude légale, capacité juridique.",
+      entrees: [
+        { mot: "habileté", sens: "adresse, dextérité, savoir-faire", exemple: "L'habileté d'un artisan." },
+        { mot: "habilité", sens: "capacité légale à agir (terme de droit)", exemple: "L'habilité d'un notaire à authentifier un acte." },
+      ],
+    },
   ];
 })();
 
@@ -1775,6 +1865,31 @@ button { font-family: inherit; }
       ],
       astuce: "Moyen mnémo pour la coordination : « Mais où est donc Ornicar ? »",
     },
+    {
+      id: "gr-pronoms-personnels",
+      titre: "Les pronoms personnels",
+      resume: "Ils remplacent un nom ; sujets ou compléments.",
+      explication:
+        "<p>Les <strong>pronoms personnels</strong> désignent les personnes ou remplacent un groupe nominal.</p><p><strong>Sujets</strong> : je, tu, il/elle/on, nous, vous, ils/elles.</p><p><strong>Compléments</strong> : me, te, se, le/la/les, lui/leur, nous, vous, ainsi que « en » et « y ».</p>",
+      exemples: [
+        { ok: true, texte: "Je le vois. (le = COD)" },
+        { ok: true, texte: "Je lui parle. (lui = COI)" },
+        { ok: true, texte: "J'en viens. J'y pense. (en, y)" },
+      ],
+      astuce: "« lui/leur » sont compléments indirects ; « le/la/les » directs.",
+    },
+    {
+      id: "gr-adverbe",
+      titre: "L'adverbe",
+      resume: "Mot invariable qui modifie un verbe, un adjectif, un autre adverbe.",
+      explication:
+        "<p>L'<strong>adverbe</strong> est un mot <strong>invariable</strong> qui précise le sens d'un verbe, d'un adjectif, d'un autre adverbe ou de toute la phrase.</p><p>On distingue des adverbes de manière (vite, bien), de temps (hier), de lieu (ici), de quantité (beaucoup), de négation (ne… pas)…</p>",
+      exemples: [
+        { ok: true, texte: "Il court <em>vite</em>. C'est <em>très</em> beau." },
+        { ok: true, texte: "Beaucoup d'adverbes de manière se terminent par -ment (lentement)." },
+      ],
+      astuce: "L'adverbe ne s'accorde jamais : il est invariable.",
+    },
   ];
 })();
 
@@ -1925,6 +2040,17 @@ button { font-family: inherit; }
     { mot: "prégnant", nature: "adjectif", registre: "soutenu", definition: "Qui s'impose fortement à l'esprit ou à la perception.", exemples: ["Une image prégnante.", "Un symbole prégnant."], synonymes: ["marquant", "prenant", "frappant"], antonymes: ["insignifiant"] },
     { mot: "rétif", nature: "adjectif", registre: "soutenu", definition: "Qui refuse d'avancer, récalcitrant, indocile.", etymologie: "du latin populaire restivus.", exemples: ["Un cheval rétif.", "Rétif à toute discipline."], synonymes: ["récalcitrant", "rebelle", "indocile"], antonymes: ["docile", "obéissant"] },
     { mot: "vétuste", nature: "adjectif", registre: "soutenu", definition: "Détérioré, dégradé par le temps ; vieux et délabré.", etymologie: "du latin vetustus, « ancien ».", exemples: ["Un immeuble vétuste."], synonymes: ["délabré", "décrépit", "caduc"], antonymes: ["neuf", "moderne"] },
+    { mot: "atrabilaire", nature: "adjectif", registre: "littéraire", definition: "D'une humeur noire, chagrine et irritable.", etymologie: "de « atrabile » (la bile noire), une des humeurs de la médecine ancienne.", exemples: ["Un vieillard atrabilaire."], synonymes: ["acariâtre", "bilieux", "chagrin"], antonymes: ["enjoué", "affable"] },
+    { mot: "aporie", nature: "nom féminin", registre: "soutenu", domaine: "philosophie", definition: "Difficulté ou contradiction logique insoluble dans un raisonnement.", etymologie: "du grec aporia, « absence de chemin, impasse ».", exemples: ["Le débat se heurta à une aporie."], synonymes: ["impasse", "contradiction", "dilemme"], antonymes: ["solution"] },
+    { mot: "épigone", nature: "nom masculin", registre: "littéraire", definition: "Successeur ou imitateur, souvent peu original, d'un maître ou d'une école.", etymologie: "du grec epigonos, « né après, descendant ».", exemples: ["Les épigones du romantisme."], synonymes: ["imitateur", "disciple", "suiveur"], antonymes: ["précurseur", "initiateur"] },
+    { mot: "quolibet", nature: "nom masculin", registre: "soutenu", definition: "Propos moqueur, raillerie lancée à quelqu'un.", etymologie: "du latin scolastique quodlibet, « ce qu'on voudra ».", exemples: ["Essuyer les quolibets de la foule."], synonymes: ["raillerie", "sarcasme", "moquerie"], antonymes: ["compliment", "éloge"] },
+    { mot: "jérémiade", nature: "nom féminin", registre: "soutenu", definition: "Plainte, lamentation interminable et importune (souvent au pluriel).", etymologie: "du nom du prophète Jérémie, auteur des Lamentations.", exemples: ["Cesse tes jérémiades !"], synonymes: ["lamentation", "plainte", "récrimination"], antonymes: [] },
+    { mot: "vindicte", nature: "nom féminin", registre: "soutenu", domaine: "droit", definition: "Poursuite et punition d'un coupable ; « vindicte publique ».", etymologie: "du latin vindicta, « vengeance, punition ».", exemples: ["Désigner quelqu'un à la vindicte publique."], synonymes: ["punition", "vengeance"], antonymes: ["pardon"] },
+    { mot: "obole", nature: "nom féminin", registre: "soutenu", definition: "Modeste contribution, petite offrande.", etymologie: "du grec obolos (ancienne monnaie), par le latin obolus.", exemples: ["Apporter son obole à une œuvre."], synonymes: ["contribution", "don", "écot"], antonymes: [] },
+    { mot: "palabre", nature: "nom féminin", registre: "soutenu", definition: "Discussion longue et souvent oiseuse.", etymologie: "de l'espagnol palabra, « parole ».", exemples: ["Après d'interminables palabres, ils signèrent."], synonymes: ["discussion", "tractation", "bavardage"], antonymes: [] },
+    { mot: "zizanie", nature: "nom féminin", registre: "courant soutenu", definition: "Mésentente, discorde ; surtout dans « semer la zizanie ».", etymologie: "du latin chrétien zizania, « ivraie, mauvaise herbe ».", exemples: ["Il a semé la zizanie dans l'équipe."], synonymes: ["discorde", "désaccord", "brouille"], antonymes: ["entente", "concorde"] },
+    { mot: "hâbleur", nature: "nom / adjectif", registre: "littéraire", definition: "Qui parle beaucoup en exagérant ses mérites ; vantard.", etymologie: "de « hâbler » (parler avec vantardise), de l'espagnol hablar, « parler ».", exemples: ["Un hâbleur qui promet monts et merveilles."], synonymes: ["vantard", "fanfaron", "bravache"], antonymes: ["modeste"] },
+    { mot: "sagacité", nature: "nom féminin", registre: "soutenu", definition: "Finesse et pénétration d'esprit qui font deviner et comprendre.", etymologie: "du latin sagacitas, « finesse de l'odorat », puis « pénétration ».", exemples: ["Il devina la ruse avec sagacité."], synonymes: ["perspicacité", "clairvoyance", "discernement"], antonymes: ["aveuglement"] },
   ];
 })();
 
@@ -2878,6 +3004,54 @@ button { font-family: inherit; }
     "conj-t-euphonique": [
       { q: "Où ___ ?", options: ["va-il", "va-t-il", "vat-il"], reponse: 1, n: 1, explication: "Deux voyelles → -t- euphonique : « va-t-il »." },
       { q: "Que ___ ?", options: ["mange-t-on", "mange-on", "manget-on"], reponse: 0, n: 2, explication: "« mange » finit par une voyelle → « mange-t-on »." },
+    ],
+
+    /* ---------- Ajouts vérifiés (vague 4) ---------- */
+    "conf-ni-ny": [
+      { q: "Il n'a ni faim ___ soif.", options: ["n'y", "ni", "nie"], reponse: 1, n: 1, explication: "Coordination négative → « ni »." },
+      { q: "Il ___ pense jamais.", options: ["ni", "n'y", "nie"], reponse: 1, n: 2, explication: "« ne + y » → « n'y »." },
+    ],
+    "conf-si-sy": [
+      { q: "___ tu veux, viens.", options: ["S'y", "Si", "Ci"], reponse: 1, n: 1, explication: "Condition → « si »." },
+      { q: "Il ___ attendait.", options: ["si", "s'y", "ci"], reponse: 1, n: 2, explication: "« se + y » → « s'y »." },
+    ],
+    "conf-sa-ca": [
+      { q: "___ voiture est neuve.", options: ["Ça", "Sa", "Çà"], reponse: 1, n: 1, explication: "Possessif (= ma) → « sa »." },
+      { q: "___ me plaît beaucoup.", options: ["Sa", "Ça", "Çà"], reponse: 1, n: 1, explication: "= cela → « ça »." },
+      { q: "Des papiers traînaient ___ et là.", options: ["sa", "ça", "çà"], reponse: 2, n: 3, explication: "Locution « çà et là » → « çà » (accent grave)." },
+    ],
+    "conf-on-onn": [
+      { q: "___ gagné le match !", options: ["On n'a", "On a", "Ont a"], reponse: 1, n: 1, explication: "Forme affirmative → « on a »." },
+      { q: "___ rien compris à l'énoncé.", options: ["On a", "On n'a", "On-a"], reponse: 1, n: 2, explication: "Négation (rien) → « on n'a »." },
+    ],
+    "conj-trois-groupes": [
+      { q: "« finir » appartient au…", options: ["1er groupe", "2e groupe", "3e groupe"], reponse: 1, n: 1, explication: "-ir + participe « finissant » → 2e groupe." },
+      { q: "« partir » appartient au…", options: ["2e groupe", "3e groupe", "1er groupe"], reponse: 1, n: 2, explication: "-ir sans -issant (partant) → 3e groupe." },
+      { q: "« aller » appartient au…", options: ["1er groupe", "3e groupe", "2e groupe"], reponse: 1, n: 3, explication: "Verbe irrégulier → 3e groupe (malgré -er)." },
+    ],
+    "conj-imparfait-terminaisons": [
+      { q: "Nous ___ (chanter, imparfait).", options: ["chantons", "chantions", "chanterons"], reponse: 1, n: 1, explication: "Imparfait « nous » → -ions." },
+      { q: "Il ___ (croire, imparfait).", options: ["croiyait", "croyait", "croiait"], reponse: 1, n: 3, explication: "Radical « croy- » + -ait → « croyait »." },
+    ],
+    "gr-pronoms-personnels": [
+      { q: "Dans « Je le vois », « le » est un pronom…", options: ["sujet", "complément (COD)", "possessif"], reponse: 1, n: 1, explication: "Remplace le COD → pronom complément." },
+      { q: "Dans « Je lui parle », « lui » est…", options: ["un COD", "un COI", "un sujet"], reponse: 1, n: 2, explication: "« parler à » → complément indirect." },
+    ],
+    "gr-adverbe": [
+      { q: "Dans « Il court vite », « vite » est…", options: ["un adjectif", "un adverbe", "un nom"], reponse: 1, n: 1, explication: "Modifie le verbe, invariable → adverbe." },
+      { q: "L'adverbe est un mot…", options: ["variable", "invariable", "toujours en -ment"], reponse: 1, n: 2, explication: "L'adverbe est invariable." },
+    ],
+    "nu-comprehensif-comprehensible": [
+      { q: "Un professeur ___ envers ses élèves.", options: ["compréhensible", "compréhensif", "compréhensé"], reponse: 1, n: 2, explication: "Indulgent (personne) → « compréhensif »." },
+      { q: "Une explication ___.", options: ["compréhensive", "compréhensible", "compréhense"], reponse: 1, n: 2, explication: "Qu'on peut comprendre → « compréhensible »." },
+    ],
+    "nu-original-originel": [
+      { q: "Le péché ___.", options: ["original", "originel", "originaire"], reponse: 1, n: 2, explication: "Qui date de l'origine → « originel »." },
+      { q: "Une idée ___.", options: ["originelle", "originale", "originaire"], reponse: 1, n: 2, explication: "Neuve, singulière → « originale »." },
+    ],
+    "nu-habilete-habilite": [
+      { q: "L'___ d'un artisan.", options: ["habilité", "habileté", "habiletée"], reponse: 1, n: 2, explication: "Adresse, savoir-faire → « habileté »." },
+      { q: "L'___ légale à signer l'acte.", options: ["habileté", "habilité", "habiletée"], reponse: 1, n: 3, explication: "Capacité juridique → « habilité »." },
     ],
   };
 })();

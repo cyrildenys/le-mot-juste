@@ -210,5 +210,32 @@
         { mot: "inclination", sens: "penchant, disposition naturelle", exemple: "Une inclination pour les arts." },
       ],
     },
+    {
+      id: "nu-comprehensif-comprehensible",
+      titre: "Compréhensif · Compréhensible",
+      cle: "Compréhensif se dit d'une personne (indulgente) ; compréhensible d'une chose (qu'on peut comprendre).",
+      entrees: [
+        { mot: "compréhensif", sens: "qui comprend autrui, indulgent, tolérant", exemple: "Un chef compréhensif." },
+        { mot: "compréhensible", sens: "qui peut être compris, clair", exemple: "Une explication compréhensible." },
+      ],
+    },
+    {
+      id: "nu-original-originel",
+      titre: "Original · Originel",
+      cle: "Original = nouveau, singulier ; originel = qui date de l'origine.",
+      entrees: [
+        { mot: "original", sens: "neuf, inédit, qui ne ressemble à rien d'autre", exemple: "Une idée originale." },
+        { mot: "originel", sens: "qui existe depuis l'origine, initial", exemple: "Le péché originel ; le sens originel d'un mot." },
+      ],
+    },
+    {
+      id: "nu-habilete-habilite",
+      titre: "Habileté · Habilité",
+      cle: "Habileté = adresse, savoir-faire ; habilité = aptitude légale, capacité juridique.",
+      entrees: [
+        { mot: "habileté", sens: "adresse, dextérité, savoir-faire", exemple: "L'habileté d'un artisan." },
+        { mot: "habilité", sens: "capacité légale à agir (terme de droit)", exemple: "L'habilité d'un notaire à authentifier un acte." },
+      ],
+    },
   ];
 })();

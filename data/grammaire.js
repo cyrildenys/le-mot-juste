@@ -165,5 +165,30 @@
       ],
       astuce: "Moyen mnémo pour la coordination : « Mais où est donc Ornicar ? »",
     },
+    {
+      id: "gr-pronoms-personnels",
+      titre: "Les pronoms personnels",
+      resume: "Ils remplacent un nom ; sujets ou compléments.",
+      explication:
+        "<p>Les <strong>pronoms personnels</strong> désignent les personnes ou remplacent un groupe nominal.</p><p><strong>Sujets</strong> : je, tu, il/elle/on, nous, vous, ils/elles.</p><p><strong>Compléments</strong> : me, te, se, le/la/les, lui/leur, nous, vous, ainsi que « en » et « y ».</p>",
+      exemples: [
+        { ok: true, texte: "Je le vois. (le = COD)" },
+        { ok: true, texte: "Je lui parle. (lui = COI)" },
+        { ok: true, texte: "J'en viens. J'y pense. (en, y)" },
+      ],
+      astuce: "« lui/leur » sont compléments indirects ; « le/la/les » directs.",
+    },
+    {
+      id: "gr-adverbe",
+      titre: "L'adverbe",
+      resume: "Mot invariable qui modifie un verbe, un adjectif, un autre adverbe.",
+      explication:
+        "<p>L'<strong>adverbe</strong> est un mot <strong>invariable</strong> qui précise le sens d'un verbe, d'un adjectif, d'un autre adverbe ou de toute la phrase.</p><p>On distingue des adverbes de manière (vite, bien), de temps (hier), de lieu (ici), de quantité (beaucoup), de négation (ne… pas)…</p>",
+      exemples: [
+        { ok: true, texte: "Il court <em>vite</em>. C'est <em>très</em> beau." },
+        { ok: true, texte: "Beaucoup d'adverbes de manière se terminent par -ment (lentement)." },
+      ],
+      astuce: "L'adverbe ne s'accorde jamais : il est invariable.",
+    },
   ];
 })();

@@ -282,5 +282,31 @@
       ],
       astuce: "Deux voyelles se rencontrent → on glisse un -t- : « va-t-il ».",
     },
+    {
+      id: "conj-trois-groupes",
+      titre: "Les trois groupes de verbes",
+      resume: "1er : -er ; 2e : -ir (…issant) ; 3e : tous les autres.",
+      explication:
+        "<p><strong>1er groupe</strong> : verbes en <em>-er</em> (sauf « aller »).</p><p><strong>2e groupe</strong> : verbes en <em>-ir</em> dont le participe présent est en <em>-issant</em> (finir → finissant).</p><p><strong>3e groupe</strong> : tous les autres verbes, dits irréguliers (aller, les verbes en -ir sans -issant comme partir, les verbes en -oir et en -re).</p>",
+      exemples: [
+        { ok: true, texte: "chanter, aimer, parler → 1er groupe" },
+        { ok: true, texte: "finir, choisir, grandir → 2e groupe" },
+        { ok: true, texte: "aller, partir, prendre, voir → 3e groupe" },
+      ],
+      astuce: "Pour le 2e groupe, vérifiez le participe présent : « -issant ».",
+    },
+    {
+      id: "conj-imparfait-terminaisons",
+      titre: "Les terminaisons de l'imparfait",
+      resume: "-ais, -ais, -ait, -ions, -iez, -aient (pour tous les verbes).",
+      explication:
+        "<p>À l'imparfait, <strong>tous</strong> les verbes prennent les mêmes terminaisons : <strong>-ais, -ais, -ait, -ions, -iez, -aient</strong>.</p><p>On les ajoute au radical de la 1re personne du pluriel du présent (nous chant<em>ons</em> → je chant<em>ais</em>).</p>",
+      exemples: [
+        { ok: true, texte: "je chantais, nous finissions, ils prenaient" },
+        { ok: true, texte: "nous mangeons → je mangeais" },
+        { ok: false, texte: "il <em>croiyait</em>", correction: "il croyait" },
+      ],
+      astuce: "Seul « être » a un radical particulier : j'ét<em>ais</em>.",
+    },
   ];
 })();

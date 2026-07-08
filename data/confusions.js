@@ -224,5 +224,42 @@
       ],
       astuce: "Un travail → « tâche » (accent), comme « tâcher de ».",
     },
+    {
+      id: "conf-ni-ny",
+      titre: "ni / n'y",
+      entrees: [
+        { mot: "ni", nature: "conjonction de négation", sens: "coordonne en niant (ni… ni…)", exemple: "Il n'a ni faim ni soif." },
+        { mot: "n'y", nature: "ne + y", sens: "négation + pronom « y »", exemple: "Il n'y pense jamais." },
+      ],
+      astuce: "« n'y » = « ne + y » : on peut compléter par « pas / jamais ».",
+    },
+    {
+      id: "conf-si-sy",
+      titre: "si / s'y",
+      entrees: [
+        { mot: "si", nature: "conjonction / adverbe", sens: "condition (si tu veux) ou intensité (si beau)", exemple: "Si tu viens, préviens-moi." },
+        { mot: "s'y", nature: "se + y", sens: "pronom réfléchi + « y »", exemple: "Il s'y attendait." },
+      ],
+      astuce: "Remplaçable par « je m'y / tu t'y » → « s'y ».",
+    },
+    {
+      id: "conf-sa-ca",
+      titre: "sa / ça / çà",
+      entrees: [
+        { mot: "sa", nature: "déterminant possessif", sens: "= la sienne (devant un nom féminin)", exemple: "Sa voiture est neuve." },
+        { mot: "ça", nature: "pronom", sens: "= cela (familier)", exemple: "Ça me plaît." },
+        { mot: "çà", nature: "adverbe", sens: "seulement dans « çà et là »", exemple: "Des papiers traînaient çà et là." },
+      ],
+      astuce: "Possessif → « sa » (= « ma »). « cela » → « ça ».",
+    },
+    {
+      id: "conf-on-onn",
+      titre: "on / on n'",
+      entrees: [
+        { mot: "on a, on est…", nature: "forme affirmative", sens: "pas de négation", exemple: "On a tout compris." },
+        { mot: "on n'a, on n'est…", nature: "forme négative", sens: "le « n' » de la négation « ne »", exemple: "On n'a rien compris." },
+      ],
+      astuce: "Peut-on ajouter « pas / plus / rien / jamais » ? Alors il faut « on n' ».",
+    },
   ];
 })();
