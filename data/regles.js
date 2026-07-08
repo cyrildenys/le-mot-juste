@@ -191,6 +191,32 @@
       ],
       astuce: "Le premier élément équivaut-il à un adverbe ? Alors il ne s'accorde pas.",
     },
+    {
+      id: "acc-ci-joint",
+      titre: "L'accord de « ci-joint », « ci-inclus »",
+      resume: "Invariable en tête de phrase ou devant un nom sans déterminant ; accord après le nom.",
+      explication:
+        "<p><strong>Invariable</strong> (valeur adverbiale) : en tête de phrase, ou devant un nom sans déterminant.</p><p><strong>Accord obligatoire</strong> quand il suit le nom.</p><p><strong>Au choix</strong> dans le corps de la phrase devant un nom précédé d'un déterminant.</p>",
+      exemples: [
+        { ok: true, texte: "<em>Ci-joint</em> les documents demandés. (en tête → invariable)" },
+        { ok: true, texte: "Les factures <em>ci-jointes</em>. (après le nom → accord)" },
+        { ok: true, texte: "Vous trouverez ci-joint <em>ou</em> ci-jointes deux copies. (au choix)" },
+      ],
+      astuce: "En tête = invariable ; après le nom = accord.",
+    },
+    {
+      id: "acc-pp-infinitif",
+      titre: "Participe passé suivi d'un infinitif",
+      resume: "Accord si le COD placé avant fait l'action de l'infinitif.",
+      explication:
+        "<p>Le participe passé suivi d'un infinitif s'accorde avec le <strong>COD placé avant</strong> uniquement si ce COD <strong>fait l'action</strong> exprimée par l'infinitif.</p><p>Le participe passé de <strong>« faire »</strong> suivi d'un infinitif reste toujours <strong>invariable</strong>.</p>",
+      exemples: [
+        { ok: true, texte: "Les choristes que j'ai <em>entendus</em> chanter. (ils chantent → accord)" },
+        { ok: true, texte: "Les chansons que j'ai <em>entendu</em> chanter. (elles ne chantent pas → invariable)" },
+        { ok: true, texte: "Elle s'est <em>fait</em> couper les cheveux. (« fait » + infinitif → invariable)" },
+      ],
+      astuce: "Le COD fait-il l'action de l'infinitif ? Oui → accord ; non → invariable.",
+    },
   ];
 
   LMJ.data.conjugaisonRegles = [
@@ -307,6 +333,30 @@
         { ok: false, texte: "il <em>croiyait</em>", correction: "il croyait" },
       ],
       astuce: "Seul « être » a un radical particulier : j'ét<em>ais</em>.",
+    },
+    {
+      id: "conj-passe-compose",
+      titre: "La formation du passé composé",
+      resume: "Auxiliaire (avoir ou être) au présent + participe passé.",
+      explication:
+        "<p>Le passé composé se forme avec l'<strong>auxiliaire « avoir » ou « être » au présent</strong>, suivi du <strong>participe passé</strong> du verbe.</p><p>Avec <strong>être</strong>, le participe s'accorde avec le sujet ; avec <strong>avoir</strong>, il s'accorde avec le COD placé avant.</p>",
+      exemples: [
+        { ok: true, texte: "J'<em>ai mangé</em>. Nous <em>avons fini</em>." },
+        { ok: true, texte: "Elle <em>est partie</em>. Ils <em>sont venus</em>." },
+      ],
+      astuce: "Auxiliaire au présent → passé composé ; à l'imparfait → plus-que-parfait.",
+    },
+    {
+      id: "conj-futur-terminaisons",
+      titre: "Les terminaisons du futur simple",
+      resume: "-rai, -ras, -ra, -rons, -rez, -ront (pour tous les verbes).",
+      explication:
+        "<p>Au futur simple, tous les verbes prennent les mêmes terminaisons : <strong>-rai, -ras, -ra, -rons, -rez, -ront</strong>.</p><p>Pour les 1er et 2e groupes, on les ajoute à l'<strong>infinitif</strong> (chanter → je chanterai ; finir → je finirai).</p>",
+      exemples: [
+        { ok: true, texte: "je chanterai, tu finiras, ils chanteront" },
+        { ok: false, texte: "je <em>mangerais</em> demain", correction: "je mangerai demain (futur, sans s)" },
+      ],
+      astuce: "Attention à ne pas confondre avec le conditionnel (-rais).",
     },
   ];
 })();

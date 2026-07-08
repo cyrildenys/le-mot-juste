@@ -459,5 +459,67 @@
       { q: "L'___ d'un artisan.", options: ["habilité", "habileté", "habiletée"], reponse: 1, n: 2, explication: "Adresse, savoir-faire → « habileté »." },
       { q: "L'___ légale à signer l'acte.", options: ["habileté", "habilité", "habiletée"], reponse: 1, n: 3, explication: "Capacité juridique → « habilité »." },
     ],
+
+    /* ---------- Ajouts vérifiés (vague 5) ---------- */
+    "conf-cense-sense": [
+      { q: "Nul n'est ___ ignorer la loi.", options: ["sensé", "censé", "sancé"], reponse: 1, n: 2, explication: "= supposé → « censé »." },
+      { q: "Une décision ___.", options: ["censée", "sensée", "sencée"], reponse: 1, n: 2, explication: "= pleine de bon sens → « sensée »." },
+    ],
+    "conf-differend-different": [
+      { q: "Ils ont réglé leur ___.", options: ["différent", "différend", "différant"], reponse: 1, n: 2, explication: "Un désaccord (nom) → « différend »." },
+      { q: "Nous avons des goûts ___.", options: ["différends", "différents", "différant"], reponse: 1, n: 2, explication: "Adjectif → « différents »." },
+    ],
+    "conf-amande-amende": [
+      { q: "Payer une ___ pour excès de vitesse.", options: ["amande", "amende", "emande"], reponse: 1, n: 1, explication: "Sanction financière → « amende »." },
+      { q: "Un gâteau aux ___.", options: ["amendes", "amandes", "amantes"], reponse: 1, n: 1, explication: "Le fruit → « amande »." },
+    ],
+    "conf-balade-ballade": [
+      { q: "Une ___ en forêt.", options: ["ballade", "balade", "ballades"], reponse: 1, n: 1, explication: "Une promenade → « balade »." },
+      { q: "Une ___ de Chopin.", options: ["balade", "ballade", "balades"], reponse: 1, n: 2, explication: "Un poème / une pièce musicale → « ballade »." },
+    ],
+    "conf-dans-den": [
+      { q: "Il est ___ le jardin.", options: ["d'en", "dans", "dent"], reponse: 1, n: 1, explication: "Préposition de lieu → « dans »." },
+      { q: "Le plaisir ___ parler.", options: ["dans", "d'en", "dent"], reponse: 1, n: 2, explication: "« de + en » → « d'en »." },
+    ],
+    "mu-aeroport": [
+      { q: "Orthographe correcte :", options: ["aréoport", "aéroport", "aérioport"], reponse: 1, n: 1, explication: "« aéro- » (air) → « aéroport »." },
+    ],
+    "mu-dilemme": [
+      { q: "Orthographe correcte :", options: ["dilemne", "dilemme", "dilème"], reponse: 1, n: 2, explication: "Deux « m » → « dilemme »." },
+    ],
+    "mu-remunerer": [
+      { q: "Orthographe correcte :", options: ["rénumérer", "rémunérer", "rénumaire"], reponse: 1, n: 2, explication: "De « munus » (rétribution) → « rémunérer »." },
+    ],
+    "mu-obnubiler": [
+      { q: "Orthographe correcte :", options: ["obnibuler", "obnubiler", "omnibuler"], reponse: 1, n: 2, explication: "« -nu- » comme « nuage » → « obnubiler »." },
+    ],
+    "acc-ci-joint": [
+      { q: "___ les documents demandés.", options: ["Ci-joints", "Ci-joint", "Ci-jointe"], reponse: 1, n: 2, explication: "En tête de phrase → invariable." },
+      { q: "Veuillez consulter les pièces ___.", options: ["ci-joint", "ci-jointes", "ci-joints"], reponse: 1, n: 3, explication: "Après le nom (pièces, fém. pl.) → accord." },
+    ],
+    "acc-pp-infinitif": [
+      { q: "Les choristes que j'ai ___ chanter.", options: ["entendu", "entendus", "entendues"], reponse: 1, n: 3, explication: "Les choristes font l'action de chanter → accord." },
+      { q: "Les chansons que j'ai ___ chanter.", options: ["entendues", "entendu", "entendus"], reponse: 1, n: 3, explication: "Les chansons ne chantent pas → invariable." },
+    ],
+    "gr-prepositions": [
+      { q: "Lequel est une préposition ?", options: ["rapidement", "sans", "mais"], reponse: 1, n: 1, explication: "« sans » introduit un complément → préposition." },
+      { q: "« Il part pour Paris. » « pour » est…", options: ["un adverbe", "une préposition", "une conjonction"], reponse: 1, n: 2, explication: "Relie le verbe à son complément → préposition." },
+    ],
+    "gr-complement-du-nom": [
+      { q: "« une tasse à café » : « à café » est…", options: ["un COD", "un complément du nom", "un adjectif"], reponse: 1, n: 2, explication: "Introduit par « à », il complète le nom « tasse »." },
+      { q: "« le livre de Marie » : « de Marie » est…", options: ["un complément du nom", "un COI", "un attribut"], reponse: 0, n: 2, explication: "Précise le nom « livre » → complément du nom." },
+    ],
+    "gr-degres-adjectif": [
+      { q: "« plus grand que » exprime…", options: ["un superlatif", "un comparatif", "un attribut"], reponse: 1, n: 1, explication: "Comparaison entre deux → comparatif." },
+      { q: "« le plus grand » exprime…", options: ["un comparatif", "un superlatif", "une apposition"], reponse: 1, n: 2, explication: "Degré extrême → superlatif." },
+    ],
+    "conj-passe-compose": [
+      { q: "Le passé composé se forme avec…", options: ["l'auxiliaire à l'imparfait + participe", "l'auxiliaire au présent + participe passé", "le radical + terminaisons"], reponse: 1, n: 1, explication: "Auxiliaire (avoir/être) au présent + participe passé." },
+      { q: "« Nous ___ mangé. »", options: ["avions", "avons", "aurons"], reponse: 1, n: 1, explication: "Passé composé → auxiliaire au présent : « avons mangé »." },
+    ],
+    "conj-futur-terminaisons": [
+      { q: "« Ils ___ (chanter) demain. »", options: ["chanteront", "chanteraient", "chantèrent"], reponse: 0, n: 1, explication: "Futur, ils → -ront : « chanteront »." },
+      { q: "Terminaison du futur à la 1re personne du singulier :", options: ["-rais", "-rai", "-ra"], reponse: 1, n: 2, explication: "Futur je → -rai (sans s)." },
+    ],
   };
 })();

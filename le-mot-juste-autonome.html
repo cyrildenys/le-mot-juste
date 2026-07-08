@@ -851,6 +851,32 @@ button { font-family: inherit; }
       ],
       astuce: "Le premier élément équivaut-il à un adverbe ? Alors il ne s'accorde pas.",
     },
+    {
+      id: "acc-ci-joint",
+      titre: "L'accord de « ci-joint », « ci-inclus »",
+      resume: "Invariable en tête de phrase ou devant un nom sans déterminant ; accord après le nom.",
+      explication:
+        "<p><strong>Invariable</strong> (valeur adverbiale) : en tête de phrase, ou devant un nom sans déterminant.</p><p><strong>Accord obligatoire</strong> quand il suit le nom.</p><p><strong>Au choix</strong> dans le corps de la phrase devant un nom précédé d'un déterminant.</p>",
+      exemples: [
+        { ok: true, texte: "<em>Ci-joint</em> les documents demandés. (en tête → invariable)" },
+        { ok: true, texte: "Les factures <em>ci-jointes</em>. (après le nom → accord)" },
+        { ok: true, texte: "Vous trouverez ci-joint <em>ou</em> ci-jointes deux copies. (au choix)" },
+      ],
+      astuce: "En tête = invariable ; après le nom = accord.",
+    },
+    {
+      id: "acc-pp-infinitif",
+      titre: "Participe passé suivi d'un infinitif",
+      resume: "Accord si le COD placé avant fait l'action de l'infinitif.",
+      explication:
+        "<p>Le participe passé suivi d'un infinitif s'accorde avec le <strong>COD placé avant</strong> uniquement si ce COD <strong>fait l'action</strong> exprimée par l'infinitif.</p><p>Le participe passé de <strong>« faire »</strong> suivi d'un infinitif reste toujours <strong>invariable</strong>.</p>",
+      exemples: [
+        { ok: true, texte: "Les choristes que j'ai <em>entendus</em> chanter. (ils chantent → accord)" },
+        { ok: true, texte: "Les chansons que j'ai <em>entendu</em> chanter. (elles ne chantent pas → invariable)" },
+        { ok: true, texte: "Elle s'est <em>fait</em> couper les cheveux. (« fait » + infinitif → invariable)" },
+      ],
+      astuce: "Le COD fait-il l'action de l'infinitif ? Oui → accord ; non → invariable.",
+    },
   ];
 
   LMJ.data.conjugaisonRegles = [
@@ -967,6 +993,30 @@ button { font-family: inherit; }
         { ok: false, texte: "il <em>croiyait</em>", correction: "il croyait" },
       ],
       astuce: "Seul « être » a un radical particulier : j'ét<em>ais</em>.",
+    },
+    {
+      id: "conj-passe-compose",
+      titre: "La formation du passé composé",
+      resume: "Auxiliaire (avoir ou être) au présent + participe passé.",
+      explication:
+        "<p>Le passé composé se forme avec l'<strong>auxiliaire « avoir » ou « être » au présent</strong>, suivi du <strong>participe passé</strong> du verbe.</p><p>Avec <strong>être</strong>, le participe s'accorde avec le sujet ; avec <strong>avoir</strong>, il s'accorde avec le COD placé avant.</p>",
+      exemples: [
+        { ok: true, texte: "J'<em>ai mangé</em>. Nous <em>avons fini</em>." },
+        { ok: true, texte: "Elle <em>est partie</em>. Ils <em>sont venus</em>." },
+      ],
+      astuce: "Auxiliaire au présent → passé composé ; à l'imparfait → plus-que-parfait.",
+    },
+    {
+      id: "conj-futur-terminaisons",
+      titre: "Les terminaisons du futur simple",
+      resume: "-rai, -ras, -ra, -rons, -rez, -ront (pour tous les verbes).",
+      explication:
+        "<p>Au futur simple, tous les verbes prennent les mêmes terminaisons : <strong>-rai, -ras, -ra, -rons, -rez, -ront</strong>.</p><p>Pour les 1er et 2e groupes, on les ajoute à l'<strong>infinitif</strong> (chanter → je chanterai ; finir → je finirai).</p>",
+      exemples: [
+        { ok: true, texte: "je chanterai, tu finiras, ils chanteront" },
+        { ok: false, texte: "je <em>mangerais</em> demain", correction: "je mangerai demain (futur, sans s)" },
+      ],
+      astuce: "Attention à ne pas confondre avec le conditionnel (-rais).",
     },
   ];
 })();
@@ -1236,6 +1286,51 @@ button { font-family: inherit; }
       ],
       astuce: "Peut-on ajouter « pas / plus / rien / jamais » ? Alors il faut « on n' ».",
     },
+    {
+      id: "conf-cense-sense",
+      titre: "censé / sensé",
+      entrees: [
+        { mot: "censé", nature: "adjectif", sens: "= supposé, réputé (censé faire qqch)", exemple: "Nul n'est censé ignorer la loi." },
+        { mot: "sensé", nature: "adjectif", sens: "= qui a du bon sens, raisonnable", exemple: "Une décision sensée." },
+      ],
+      astuce: "Remplaçable par « supposé » → « censé ».",
+    },
+    {
+      id: "conf-differend-different",
+      titre: "différend / différent",
+      entrees: [
+        { mot: "différend", nature: "nom masculin", sens: "un désaccord, un litige", exemple: "Régler un différend." },
+        { mot: "différent", nature: "adjectif", sens: "qui n'est pas semblable", exemple: "Des avis différents." },
+      ],
+      astuce: "Un « différend » (nom) = un litige ; « différent » (adjectif) s'accorde.",
+    },
+    {
+      id: "conf-amande-amende",
+      titre: "amande / amende",
+      entrees: [
+        { mot: "amande", nature: "nom féminin", sens: "le fruit de l'amandier", exemple: "Un gâteau aux amandes." },
+        { mot: "amende", nature: "nom féminin", sens: "sanction pécuniaire", exemple: "Payer une amende." },
+      ],
+      astuce: "La sanction → « amende » (comme « amender »).",
+    },
+    {
+      id: "conf-balade-ballade",
+      titre: "balade / ballade",
+      entrees: [
+        { mot: "balade", nature: "nom féminin", sens: "une promenade", exemple: "Une balade en forêt." },
+        { mot: "ballade", nature: "nom féminin", sens: "un poème, une pièce musicale", exemple: "Une ballade de Chopin." },
+      ],
+      astuce: "Deux « l » comme mélodie : la « ballade » est un poème ou une chanson.",
+    },
+    {
+      id: "conf-dans-den",
+      titre: "dans / d'en",
+      entrees: [
+        { mot: "dans", nature: "préposition", sens: "indique le lieu, le temps", exemple: "Il est dans le jardin." },
+        { mot: "d'en", nature: "de + en", sens: "préposition « de » + pronom « en »", exemple: "Le plaisir d'en parler." },
+      ],
+      astuce: "« d'en » = « de + en » : souvent devant un infinitif (d'en rire, d'en sortir).",
+    },
   ];
 })();
 
@@ -1448,6 +1543,50 @@ button { font-family: inherit; }
         { ok: true, texte: "En termes de marine, « bâbord » désigne la gauche." },
       ],
       astuce: "Toujours au pluriel : « en termes de » (et de préférence « en matière de »).",
+    },
+    {
+      id: "mu-aeroport",
+      titre: "« aréoport »",
+      resume: "Barbarisme : on écrit « aéroport ».",
+      explication:
+        "<p>Le préfixe vient de <strong>aéro-</strong> (du grec <em>aêr</em>, « air »), comme dans « aérien », « aéronef ». La forme « aréoport » est fautive.</p>",
+      exemples: [
+        { ok: false, texte: "On se retrouve à l'aréoport.", correction: "On se retrouve à l'aéroport." },
+      ],
+      astuce: "Pensez à « air » → « aéro- ».",
+    },
+    {
+      id: "mu-dilemme",
+      titre: "« dilemne »",
+      resume: "Le mot correct est « dilemme ».",
+      explication:
+        "<p>« Dilemme » (du grec <em>dilêmma</em>) s'écrit avec deux <strong>m</strong>. La graphie « dilemne » n'existe pas.</p>",
+      exemples: [
+        { ok: false, texte: "Je suis face à un dilemne.", correction: "Je suis face à un dilemme." },
+      ],
+      astuce: "Comme « emmener » : deux m, jamais « -mn- ».",
+    },
+    {
+      id: "mu-remunerer",
+      titre: "« rénumérer »",
+      resume: "Le verbe correct est « rémunérer ».",
+      explication:
+        "<p>« Rémunérer » vient du latin <em>munus</em> (« don, rétribution »), d'où <strong>ré-mu-nérer</strong>. La forme « rénumérer » (par confusion avec « numéro ») est fautive.</p>",
+      exemples: [
+        { ok: false, texte: "Il faut rénumérer les heures supplémentaires.", correction: "Il faut rémunérer les heures supplémentaires." },
+      ],
+      astuce: "« rému- » (rétribution), pas « rénu- » (rien à voir avec numéro).",
+    },
+    {
+      id: "mu-obnubiler",
+      titre: "« obnibuler »",
+      resume: "Le verbe correct est « obnubiler ».",
+      explication:
+        "<p>« Obnubiler » (du latin <em>nubes</em>, « nuage » : littéralement « couvrir d'un nuage ») s'écrit <strong>ob-nu-biler</strong>. La forme « obnibuler » est fautive.</p>",
+      exemples: [
+        { ok: false, texte: "Il est obnibulé par cette idée.", correction: "Il est obnubilé par cette idée." },
+      ],
+      astuce: "« -nu- » comme « nuage » : obnubiler.",
     },
   ];
 })();
@@ -1890,6 +2029,42 @@ button { font-family: inherit; }
       ],
       astuce: "L'adverbe ne s'accorde jamais : il est invariable.",
     },
+    {
+      id: "gr-prepositions",
+      titre: "Les prépositions",
+      resume: "Mots invariables qui introduisent un complément.",
+      explication:
+        "<p>La <strong>préposition</strong> est un mot invariable qui relie un mot à son complément : <em>à, de, dans, par, pour, sans, sur, sous, avec, chez, vers, entre, contre…</em></p><p>Certaines forment des locutions prépositives : <em>à côté de, près de, afin de, grâce à…</em></p>",
+      exemples: [
+        { ok: true, texte: "Il part <em>pour</em> Paris <em>avec</em> ses amis." },
+        { ok: true, texte: "Le livre est <em>sur</em> la table." },
+      ],
+      astuce: "La préposition ne change jamais de forme : elle est invariable.",
+    },
+    {
+      id: "gr-complement-du-nom",
+      titre: "Le complément du nom",
+      resume: "Un groupe, introduit par une préposition, qui précise un nom.",
+      explication:
+        "<p>Le <strong>complément du nom</strong> complète un nom ; il est le plus souvent introduit par une <strong>préposition</strong> (de, à, en, pour…) et suit le nom qu'il précise.</p>",
+      exemples: [
+        { ok: true, texte: "Le livre <em>de Marie</em>. (complément du nom « livre »)" },
+        { ok: true, texte: "Une tasse <em>à café</em> ; un sac <em>en cuir</em>." },
+      ],
+      astuce: "Il répond à « de quoi ? de qui ? » posé après le nom.",
+    },
+    {
+      id: "gr-degres-adjectif",
+      titre: "Les degrés de l'adjectif",
+      resume: "Comparatif (plus/moins/aussi… que) et superlatif (le plus/le moins…).",
+      explication:
+        "<p>L'adjectif peut exprimer un <strong>comparatif</strong> : de supériorité (<em>plus… que</em>), d'infériorité (<em>moins… que</em>), d'égalité (<em>aussi… que</em>).</p><p>Et un <strong>superlatif</strong> : relatif (<em>le plus / le moins…</em>) ou absolu (<em>très, extrêmement…</em>).</p>",
+      exemples: [
+        { ok: true, texte: "Il est <em>plus grand que</em> son frère. (comparatif)" },
+        { ok: true, texte: "C'est <em>le plus grand</em> de la classe. (superlatif)" },
+      ],
+      astuce: "Formes irrégulières : bon → meilleur ; mauvais → pire ; bien → mieux.",
+    },
   ];
 })();
 
@@ -2051,6 +2226,18 @@ button { font-family: inherit; }
     { mot: "zizanie", nature: "nom féminin", registre: "courant soutenu", definition: "Mésentente, discorde ; surtout dans « semer la zizanie ».", etymologie: "du latin chrétien zizania, « ivraie, mauvaise herbe ».", exemples: ["Il a semé la zizanie dans l'équipe."], synonymes: ["discorde", "désaccord", "brouille"], antonymes: ["entente", "concorde"] },
     { mot: "hâbleur", nature: "nom / adjectif", registre: "littéraire", definition: "Qui parle beaucoup en exagérant ses mérites ; vantard.", etymologie: "de « hâbler » (parler avec vantardise), de l'espagnol hablar, « parler ».", exemples: ["Un hâbleur qui promet monts et merveilles."], synonymes: ["vantard", "fanfaron", "bravache"], antonymes: ["modeste"] },
     { mot: "sagacité", nature: "nom féminin", registre: "soutenu", definition: "Finesse et pénétration d'esprit qui font deviner et comprendre.", etymologie: "du latin sagacitas, « finesse de l'odorat », puis « pénétration ».", exemples: ["Il devina la ruse avec sagacité."], synonymes: ["perspicacité", "clairvoyance", "discernement"], antonymes: ["aveuglement"] },
+    { mot: "acabit", nature: "nom masculin", registre: "littéraire", definition: "Nature, sorte, espèce (souvent péjoratif) : « de cet acabit », « de tout acabit ».", etymologie: "origine obscure ; attesté dès le XVe siècle.", exemples: ["Deux escrocs du même acabit."], synonymes: ["nature", "sorte", "genre", "espèce"], antonymes: [] },
+    { mot: "cacochyme", nature: "adjectif", registre: "littéraire", definition: "D'une santé chancelante ; faible et maladif.", etymologie: "du grec kakokhumos, « qui a de mauvaises humeurs ».", exemples: ["Un vieillard cacochyme."], synonymes: ["maladif", "souffreteux", "valétudinaire"], antonymes: ["vigoureux", "robuste"] },
+    { mot: "déréliction", nature: "nom féminin", registre: "littéraire", definition: "État d'abandon moral et de solitude totale.", etymologie: "du latin derelictio, « abandon ».", exemples: ["Un sentiment de déréliction l'envahit."], synonymes: ["abandon", "délaissement", "solitude"], antonymes: ["réconfort"] },
+    { mot: "exorde", nature: "nom masculin", registre: "soutenu", domaine: "rhétorique", definition: "Première partie d'un discours ; introduction.", etymologie: "du latin exordium, « commencement d'un discours ».", exemples: ["Un exorde solennel."], synonymes: ["introduction", "préambule", "entrée en matière"], antonymes: ["péroraison", "conclusion"] },
+    { mot: "panégyrique", nature: "nom masculin", registre: "soutenu", definition: "Éloge public et sans réserve d'une personne ou d'une chose.", etymologie: "du grec panêgurikos, « discours d'assemblée solennelle ».", exemples: ["Faire le panégyrique d'un héros."], synonymes: ["éloge", "apologie", "dithyrambe"], antonymes: ["satire", "réquisitoire"] },
+    { mot: "turpitude", nature: "nom féminin", registre: "littéraire", definition: "Conduite honteuse, ignominie ; action ou parole basse.", etymologie: "du latin turpitudo, « laideur, honte ».", exemples: ["Dénoncer les turpitudes d'un régime."], synonymes: ["ignominie", "bassesse", "infamie"], antonymes: ["dignité", "noblesse"] },
+    { mot: "forfaiture", nature: "nom féminin", registre: "soutenu", domaine: "droit", definition: "Grave manquement au devoir de sa charge ; trahison de la confiance.", etymologie: "de « forfaire », « manquer à son devoir ».", exemples: ["Un tel abus relève de la forfaiture."], synonymes: ["trahison", "prévarication", "félonie"], antonymes: ["loyauté", "probité"] },
+    { mot: "patibulaire", nature: "adjectif", registre: "littéraire", definition: "Qui inspire la méfiance, sinistre : « une mine patibulaire ».", etymologie: "du latin patibulum, « gibet ».", exemples: ["Un individu à l'air patibulaire."], synonymes: ["inquiétant", "sinistre", "louche"], antonymes: ["avenant", "rassurant"] },
+    { mot: "sédition", nature: "nom féminin", registre: "soutenu", definition: "Soulèvement concerté contre l'autorité établie.", etymologie: "du latin seditio, « division, révolte ».", exemples: ["Réprimer une sédition."], synonymes: ["insurrection", "révolte", "soulèvement"], antonymes: ["obéissance", "soumission"] },
+    { mot: "vaticiner", nature: "verbe", registre: "littéraire", definition: "Prophétiser, prédire l'avenir à la manière d'un oracle (souvent péjoratif).", etymologie: "du latin vaticinari, de vates, « devin ».", exemples: ["Il vaticine sur la fin du monde."], synonymes: ["prophétiser", "prédire", "présager"], antonymes: [] },
+    { mot: "mirifique", nature: "adjectif", registre: "soutenu", definition: "Merveilleux, étonnant (souvent avec une nuance ironique).", etymologie: "du latin mirificus, « qui fait des merveilles ».", exemples: ["Des promesses mirifiques."], synonymes: ["merveilleux", "prodigieux", "mirobolant"], antonymes: ["banal", "ordinaire"] },
+    { mot: "concile", nature: "nom masculin", registre: "technique", domaine: "religion", definition: "Assemblée d'évêques statuant sur des questions de doctrine et de discipline.", etymologie: "du latin concilium, « assemblée ».", exemples: ["Le concile de Trente."], synonymes: ["synode", "assemblée"], antonymes: [] },
   ];
 })();
 
@@ -2581,6 +2768,18 @@ button { font-family: inherit; }
       id: "e5", niveau: "expert", titre: "L'ambition déçue",
       texte: "Quelque brillants qu'eussent été ses débuts, il fallut qu'il rongeât son frein. Les honneurs qu'il avait tant convoités lui échappèrent, et il comprit, non sans amertume, que la fortune est volage. Il s'en fût allé, si l'orgueil ne l'eût retenu.",
     },
+    {
+      id: "f6", niveau: "facile", titre: "L'automne",
+      texte: "En automne, les feuilles tombent des arbres. Le vent souffle dans les rues. Les enfants ramassent des marrons. Le soir arrive plus tôt qu'en été.",
+    },
+    {
+      id: "i6", niveau: "intermediaire", titre: "Le concert",
+      texte: "Les musiciens que nous avions attendus entrèrent enfin sur la scène. La salle, comble, retint son souffle. Dès les premières notes, une émotion que personne n'avait prévue nous saisit. Nous les avons longuement applaudis.",
+    },
+    {
+      id: "e6", niveau: "expert", titre: "Le procès",
+      texte: "Quoi qu'il eût plaidé, l'avocat ne parvint pas à convaincre les jurés que son client fût innocent. Les preuves qu'on avait recueillies l'accablaient. Bien qu'il s'en défendît, chacun pressentait que la sentence serait sévère.",
+    },
   ];
 
   LMJ.data.dicteeNiveaux = [
@@ -3053,6 +3252,68 @@ button { font-family: inherit; }
       { q: "L'___ d'un artisan.", options: ["habilité", "habileté", "habiletée"], reponse: 1, n: 2, explication: "Adresse, savoir-faire → « habileté »." },
       { q: "L'___ légale à signer l'acte.", options: ["habileté", "habilité", "habiletée"], reponse: 1, n: 3, explication: "Capacité juridique → « habilité »." },
     ],
+
+    /* ---------- Ajouts vérifiés (vague 5) ---------- */
+    "conf-cense-sense": [
+      { q: "Nul n'est ___ ignorer la loi.", options: ["sensé", "censé", "sancé"], reponse: 1, n: 2, explication: "= supposé → « censé »." },
+      { q: "Une décision ___.", options: ["censée", "sensée", "sencée"], reponse: 1, n: 2, explication: "= pleine de bon sens → « sensée »." },
+    ],
+    "conf-differend-different": [
+      { q: "Ils ont réglé leur ___.", options: ["différent", "différend", "différant"], reponse: 1, n: 2, explication: "Un désaccord (nom) → « différend »." },
+      { q: "Nous avons des goûts ___.", options: ["différends", "différents", "différant"], reponse: 1, n: 2, explication: "Adjectif → « différents »." },
+    ],
+    "conf-amande-amende": [
+      { q: "Payer une ___ pour excès de vitesse.", options: ["amande", "amende", "emande"], reponse: 1, n: 1, explication: "Sanction financière → « amende »." },
+      { q: "Un gâteau aux ___.", options: ["amendes", "amandes", "amantes"], reponse: 1, n: 1, explication: "Le fruit → « amande »." },
+    ],
+    "conf-balade-ballade": [
+      { q: "Une ___ en forêt.", options: ["ballade", "balade", "ballades"], reponse: 1, n: 1, explication: "Une promenade → « balade »." },
+      { q: "Une ___ de Chopin.", options: ["balade", "ballade", "balades"], reponse: 1, n: 2, explication: "Un poème / une pièce musicale → « ballade »." },
+    ],
+    "conf-dans-den": [
+      { q: "Il est ___ le jardin.", options: ["d'en", "dans", "dent"], reponse: 1, n: 1, explication: "Préposition de lieu → « dans »." },
+      { q: "Le plaisir ___ parler.", options: ["dans", "d'en", "dent"], reponse: 1, n: 2, explication: "« de + en » → « d'en »." },
+    ],
+    "mu-aeroport": [
+      { q: "Orthographe correcte :", options: ["aréoport", "aéroport", "aérioport"], reponse: 1, n: 1, explication: "« aéro- » (air) → « aéroport »." },
+    ],
+    "mu-dilemme": [
+      { q: "Orthographe correcte :", options: ["dilemne", "dilemme", "dilème"], reponse: 1, n: 2, explication: "Deux « m » → « dilemme »." },
+    ],
+    "mu-remunerer": [
+      { q: "Orthographe correcte :", options: ["rénumérer", "rémunérer", "rénumaire"], reponse: 1, n: 2, explication: "De « munus » (rétribution) → « rémunérer »." },
+    ],
+    "mu-obnubiler": [
+      { q: "Orthographe correcte :", options: ["obnibuler", "obnubiler", "omnibuler"], reponse: 1, n: 2, explication: "« -nu- » comme « nuage » → « obnubiler »." },
+    ],
+    "acc-ci-joint": [
+      { q: "___ les documents demandés.", options: ["Ci-joints", "Ci-joint", "Ci-jointe"], reponse: 1, n: 2, explication: "En tête de phrase → invariable." },
+      { q: "Veuillez consulter les pièces ___.", options: ["ci-joint", "ci-jointes", "ci-joints"], reponse: 1, n: 3, explication: "Après le nom (pièces, fém. pl.) → accord." },
+    ],
+    "acc-pp-infinitif": [
+      { q: "Les choristes que j'ai ___ chanter.", options: ["entendu", "entendus", "entendues"], reponse: 1, n: 3, explication: "Les choristes font l'action de chanter → accord." },
+      { q: "Les chansons que j'ai ___ chanter.", options: ["entendues", "entendu", "entendus"], reponse: 1, n: 3, explication: "Les chansons ne chantent pas → invariable." },
+    ],
+    "gr-prepositions": [
+      { q: "Lequel est une préposition ?", options: ["rapidement", "sans", "mais"], reponse: 1, n: 1, explication: "« sans » introduit un complément → préposition." },
+      { q: "« Il part pour Paris. » « pour » est…", options: ["un adverbe", "une préposition", "une conjonction"], reponse: 1, n: 2, explication: "Relie le verbe à son complément → préposition." },
+    ],
+    "gr-complement-du-nom": [
+      { q: "« une tasse à café » : « à café » est…", options: ["un COD", "un complément du nom", "un adjectif"], reponse: 1, n: 2, explication: "Introduit par « à », il complète le nom « tasse »." },
+      { q: "« le livre de Marie » : « de Marie » est…", options: ["un complément du nom", "un COI", "un attribut"], reponse: 0, n: 2, explication: "Précise le nom « livre » → complément du nom." },
+    ],
+    "gr-degres-adjectif": [
+      { q: "« plus grand que » exprime…", options: ["un superlatif", "un comparatif", "un attribut"], reponse: 1, n: 1, explication: "Comparaison entre deux → comparatif." },
+      { q: "« le plus grand » exprime…", options: ["un comparatif", "un superlatif", "une apposition"], reponse: 1, n: 2, explication: "Degré extrême → superlatif." },
+    ],
+    "conj-passe-compose": [
+      { q: "Le passé composé se forme avec…", options: ["l'auxiliaire à l'imparfait + participe", "l'auxiliaire au présent + participe passé", "le radical + terminaisons"], reponse: 1, n: 1, explication: "Auxiliaire (avoir/être) au présent + participe passé." },
+      { q: "« Nous ___ mangé. »", options: ["avions", "avons", "aurons"], reponse: 1, n: 1, explication: "Passé composé → auxiliaire au présent : « avons mangé »." },
+    ],
+    "conj-futur-terminaisons": [
+      { q: "« Ils ___ (chanter) demain. »", options: ["chanteront", "chanteraient", "chantèrent"], reponse: 0, n: 1, explication: "Futur, ils → -ront : « chanteront »." },
+      { q: "Terminaison du futur à la 1re personne du singulier :", options: ["-rais", "-rai", "-ra"], reponse: 1, n: 2, explication: "Futur je → -rai (sans s)." },
+    ],
   };
 })();
 
@@ -3447,6 +3708,20 @@ button { font-family: inherit; }
     "finir", "choisir", "réfléchir", "réussir", "grandir", "obéir", "remplir", "saisir", "agir", "punir", "nourrir", "guérir", "applaudir", "bâtir",
     "aimer", "parler", "chanter", "manger", "commencer", "placer", "nager", "jouer", "donner", "trouver", "penser", "demander", "regarder", "travailler", "arriver", "entrer", "rester", "tomber", "monter",
     "appeler", "jeter", "acheter", "geler", "préférer", "espérer", "céder", "lever", "mener", "peser", "employer", "nettoyer", "payer", "envoyer", "essayer", "créer", "étudier", "oublier", "manier",
+    // Familles régulières supplémentaires (toutes gérées par le moteur)
+    "entendre", "tendre", "étendre", "prétendre", "détendre", "défendre", "dépendre", "suspendre", "revendre", "tondre", "pondre", "fondre", "confondre", "correspondre", "répandre", "tordre", "démordre",
+    "introduire", "déduire", "reconduire", "cuire", "luire", "instruire",
+    "feindre", "teindre", "ceindre", "contraindre", "restreindre", "astreindre", "enfreindre", "adjoindre", "disjoindre",
+    "percevoir", "décevoir",
+    "inscrire", "prescrire", "souscrire", "transcrire", "proscrire",
+    "débattre", "rabattre", "corrompre",
+    "compromettre", "omettre", "émettre", "soumettre",
+    "détenir", "entretenir", "provenir", "convenir", "subvenir",
+    "reprendre", "surprendre", "entreprendre",
+    "entrouvrir", "endormir", "rendormir", "pressentir", "consentir", "ressentir", "desservir", "resservir",
+    "accourir", "concourir", "discourir", "recourir",
+    "méconnaître", "comparaître", "réapparaître", "satisfaire", "contrefaire", "prédire", "interdire", "contredire",
+    "revivre", "sourire", "déplaire", "requérir",
   ];
 
   LMJ.conjugue = conjugue;
@@ -3831,7 +4106,7 @@ button { font-family: inherit; }
       root.appendChild(el("h3", { text: "Annexe des verbes", style: { fontSize: "18px", margin: "28px 0 6px" } }));
       root.appendChild(el("div", { class: "muted", style: { fontSize: "12.5px", marginBottom: "12px" }, text: "Sélectionne un verbe pour ouvrir sa conjugaison complète." }));
       const cloud = el("div", { style: { display: "flex", flexWrap: "wrap", gap: "8px" } });
-      (LMJ.verbesAnnexe || [])
+      [...new Set(LMJ.verbesAnnexe || [])]
         .filter((v) => LMJ.conjugue(v).disponible)
         .sort((a, b) => a.localeCompare(b, "fr"))
         .forEach((v) => cloud.appendChild(el("button", { class: "chip", style: { cursor: "pointer" }, text: v, on: { click: () => openVerbe(v) } })));

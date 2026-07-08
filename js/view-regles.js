@@ -372,7 +372,7 @@
       root.appendChild(el("h3", { text: "Annexe des verbes", style: { fontSize: "18px", margin: "28px 0 6px" } }));
       root.appendChild(el("div", { class: "muted", style: { fontSize: "12.5px", marginBottom: "12px" }, text: "Sélectionne un verbe pour ouvrir sa conjugaison complète." }));
       const cloud = el("div", { style: { display: "flex", flexWrap: "wrap", gap: "8px" } });
-      (LMJ.verbesAnnexe || [])
+      [...new Set(LMJ.verbesAnnexe || [])]
         .filter((v) => LMJ.conjugue(v).disponible)
         .sort((a, b) => a.localeCompare(b, "fr"))
         .forEach((v) => cloud.appendChild(el("button", { class: "chip", style: { cursor: "pointer" }, text: v, on: { click: () => openVerbe(v) } })));

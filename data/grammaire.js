@@ -190,5 +190,41 @@
       ],
       astuce: "L'adverbe ne s'accorde jamais : il est invariable.",
     },
+    {
+      id: "gr-prepositions",
+      titre: "Les prépositions",
+      resume: "Mots invariables qui introduisent un complément.",
+      explication:
+        "<p>La <strong>préposition</strong> est un mot invariable qui relie un mot à son complément : <em>à, de, dans, par, pour, sans, sur, sous, avec, chez, vers, entre, contre…</em></p><p>Certaines forment des locutions prépositives : <em>à côté de, près de, afin de, grâce à…</em></p>",
+      exemples: [
+        { ok: true, texte: "Il part <em>pour</em> Paris <em>avec</em> ses amis." },
+        { ok: true, texte: "Le livre est <em>sur</em> la table." },
+      ],
+      astuce: "La préposition ne change jamais de forme : elle est invariable.",
+    },
+    {
+      id: "gr-complement-du-nom",
+      titre: "Le complément du nom",
+      resume: "Un groupe, introduit par une préposition, qui précise un nom.",
+      explication:
+        "<p>Le <strong>complément du nom</strong> complète un nom ; il est le plus souvent introduit par une <strong>préposition</strong> (de, à, en, pour…) et suit le nom qu'il précise.</p>",
+      exemples: [
+        { ok: true, texte: "Le livre <em>de Marie</em>. (complément du nom « livre »)" },
+        { ok: true, texte: "Une tasse <em>à café</em> ; un sac <em>en cuir</em>." },
+      ],
+      astuce: "Il répond à « de quoi ? de qui ? » posé après le nom.",
+    },
+    {
+      id: "gr-degres-adjectif",
+      titre: "Les degrés de l'adjectif",
+      resume: "Comparatif (plus/moins/aussi… que) et superlatif (le plus/le moins…).",
+      explication:
+        "<p>L'adjectif peut exprimer un <strong>comparatif</strong> : de supériorité (<em>plus… que</em>), d'infériorité (<em>moins… que</em>), d'égalité (<em>aussi… que</em>).</p><p>Et un <strong>superlatif</strong> : relatif (<em>le plus / le moins…</em>) ou absolu (<em>très, extrêmement…</em>).</p>",
+      exemples: [
+        { ok: true, texte: "Il est <em>plus grand que</em> son frère. (comparatif)" },
+        { ok: true, texte: "C'est <em>le plus grand</em> de la classe. (superlatif)" },
+      ],
+      astuce: "Formes irrégulières : bon → meilleur ; mauvais → pire ; bien → mieux.",
+    },
   ];
 })();

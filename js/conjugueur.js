@@ -387,6 +387,20 @@
     "finir", "choisir", "réfléchir", "réussir", "grandir", "obéir", "remplir", "saisir", "agir", "punir", "nourrir", "guérir", "applaudir", "bâtir",
     "aimer", "parler", "chanter", "manger", "commencer", "placer", "nager", "jouer", "donner", "trouver", "penser", "demander", "regarder", "travailler", "arriver", "entrer", "rester", "tomber", "monter",
     "appeler", "jeter", "acheter", "geler", "préférer", "espérer", "céder", "lever", "mener", "peser", "employer", "nettoyer", "payer", "envoyer", "essayer", "créer", "étudier", "oublier", "manier",
+    // Familles régulières supplémentaires (toutes gérées par le moteur)
+    "entendre", "tendre", "étendre", "prétendre", "détendre", "défendre", "dépendre", "suspendre", "revendre", "tondre", "pondre", "fondre", "confondre", "correspondre", "répandre", "tordre", "démordre",
+    "introduire", "déduire", "reconduire", "cuire", "luire", "instruire",
+    "feindre", "teindre", "ceindre", "contraindre", "restreindre", "astreindre", "enfreindre", "adjoindre", "disjoindre",
+    "percevoir", "décevoir",
+    "inscrire", "prescrire", "souscrire", "transcrire", "proscrire",
+    "débattre", "rabattre", "corrompre",
+    "compromettre", "omettre", "émettre", "soumettre",
+    "détenir", "entretenir", "provenir", "convenir", "subvenir",
+    "reprendre", "surprendre", "entreprendre",
+    "entrouvrir", "endormir", "rendormir", "pressentir", "consentir", "ressentir", "desservir", "resservir",
+    "accourir", "concourir", "discourir", "recourir",
+    "méconnaître", "comparaître", "réapparaître", "satisfaire", "contrefaire", "prédire", "interdire", "contredire",
+    "revivre", "sourire", "déplaire", "requérir",
   ];
 
   LMJ.conjugue = conjugue;

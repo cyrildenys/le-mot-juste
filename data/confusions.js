@@ -261,5 +261,50 @@
       ],
       astuce: "Peut-on ajouter « pas / plus / rien / jamais » ? Alors il faut « on n' ».",
     },
+    {
+      id: "conf-cense-sense",
+      titre: "censé / sensé",
+      entrees: [
+        { mot: "censé", nature: "adjectif", sens: "= supposé, réputé (censé faire qqch)", exemple: "Nul n'est censé ignorer la loi." },
+        { mot: "sensé", nature: "adjectif", sens: "= qui a du bon sens, raisonnable", exemple: "Une décision sensée." },
+      ],
+      astuce: "Remplaçable par « supposé » → « censé ».",
+    },
+    {
+      id: "conf-differend-different",
+      titre: "différend / différent",
+      entrees: [
+        { mot: "différend", nature: "nom masculin", sens: "un désaccord, un litige", exemple: "Régler un différend." },
+        { mot: "différent", nature: "adjectif", sens: "qui n'est pas semblable", exemple: "Des avis différents." },
+      ],
+      astuce: "Un « différend » (nom) = un litige ; « différent » (adjectif) s'accorde.",
+    },
+    {
+      id: "conf-amande-amende",
+      titre: "amande / amende",
+      entrees: [
+        { mot: "amande", nature: "nom féminin", sens: "le fruit de l'amandier", exemple: "Un gâteau aux amandes." },
+        { mot: "amende", nature: "nom féminin", sens: "sanction pécuniaire", exemple: "Payer une amende." },
+      ],
+      astuce: "La sanction → « amende » (comme « amender »).",
+    },
+    {
+      id: "conf-balade-ballade",
+      titre: "balade / ballade",
+      entrees: [
+        { mot: "balade", nature: "nom féminin", sens: "une promenade", exemple: "Une balade en forêt." },
+        { mot: "ballade", nature: "nom féminin", sens: "un poème, une pièce musicale", exemple: "Une ballade de Chopin." },
+      ],
+      astuce: "Deux « l » comme mélodie : la « ballade » est un poème ou une chanson.",
+    },
+    {
+      id: "conf-dans-den",
+      titre: "dans / d'en",
+      entrees: [
+        { mot: "dans", nature: "préposition", sens: "indique le lieu, le temps", exemple: "Il est dans le jardin." },
+        { mot: "d'en", nature: "de + en", sens: "préposition « de » + pronom « en »", exemple: "Le plaisir d'en parler." },
+      ],
+      astuce: "« d'en » = « de + en » : souvent devant un infinitif (d'en rire, d'en sortir).",
+    },
   ];
 })();

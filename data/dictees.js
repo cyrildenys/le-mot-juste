@@ -77,6 +77,18 @@
       id: "e5", niveau: "expert", titre: "L'ambition déçue",
       texte: "Quelque brillants qu'eussent été ses débuts, il fallut qu'il rongeât son frein. Les honneurs qu'il avait tant convoités lui échappèrent, et il comprit, non sans amertume, que la fortune est volage. Il s'en fût allé, si l'orgueil ne l'eût retenu.",
     },
+    {
+      id: "f6", niveau: "facile", titre: "L'automne",
+      texte: "En automne, les feuilles tombent des arbres. Le vent souffle dans les rues. Les enfants ramassent des marrons. Le soir arrive plus tôt qu'en été.",
+    },
+    {
+      id: "i6", niveau: "intermediaire", titre: "Le concert",
+      texte: "Les musiciens que nous avions attendus entrèrent enfin sur la scène. La salle, comble, retint son souffle. Dès les premières notes, une émotion que personne n'avait prévue nous saisit. Nous les avons longuement applaudis.",
+    },
+    {
+      id: "e6", niveau: "expert", titre: "Le procès",
+      texte: "Quoi qu'il eût plaidé, l'avocat ne parvint pas à convaincre les jurés que son client fût innocent. Les preuves qu'on avait recueillies l'accablaient. Bien qu'il s'en défendît, chacun pressentait que la sentence serait sévère.",
+    },
   ];
 
   LMJ.data.dicteeNiveaux = [

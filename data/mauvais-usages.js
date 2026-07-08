@@ -206,5 +206,49 @@
       ],
       astuce: "Toujours au pluriel : « en termes de » (et de préférence « en matière de »).",
     },
+    {
+      id: "mu-aeroport",
+      titre: "« aréoport »",
+      resume: "Barbarisme : on écrit « aéroport ».",
+      explication:
+        "<p>Le préfixe vient de <strong>aéro-</strong> (du grec <em>aêr</em>, « air »), comme dans « aérien », « aéronef ». La forme « aréoport » est fautive.</p>",
+      exemples: [
+        { ok: false, texte: "On se retrouve à l'aréoport.", correction: "On se retrouve à l'aéroport." },
+      ],
+      astuce: "Pensez à « air » → « aéro- ».",
+    },
+    {
+      id: "mu-dilemme",
+      titre: "« dilemne »",
+      resume: "Le mot correct est « dilemme ».",
+      explication:
+        "<p>« Dilemme » (du grec <em>dilêmma</em>) s'écrit avec deux <strong>m</strong>. La graphie « dilemne » n'existe pas.</p>",
+      exemples: [
+        { ok: false, texte: "Je suis face à un dilemne.", correction: "Je suis face à un dilemme." },
+      ],
+      astuce: "Comme « emmener » : deux m, jamais « -mn- ».",
+    },
+    {
+      id: "mu-remunerer",
+      titre: "« rénumérer »",
+      resume: "Le verbe correct est « rémunérer ».",
+      explication:
+        "<p>« Rémunérer » vient du latin <em>munus</em> (« don, rétribution »), d'où <strong>ré-mu-nérer</strong>. La forme « rénumérer » (par confusion avec « numéro ») est fautive.</p>",
+      exemples: [
+        { ok: false, texte: "Il faut rénumérer les heures supplémentaires.", correction: "Il faut rémunérer les heures supplémentaires." },
+      ],
+      astuce: "« rému- » (rétribution), pas « rénu- » (rien à voir avec numéro).",
+    },
+    {
+      id: "mu-obnubiler",
+      titre: "« obnibuler »",
+      resume: "Le verbe correct est « obnubiler ».",
+      explication:
+        "<p>« Obnubiler » (du latin <em>nubes</em>, « nuage » : littéralement « couvrir d'un nuage ») s'écrit <strong>ob-nu-biler</strong>. La forme « obnibuler » est fautive.</p>",
+      exemples: [
+        { ok: false, texte: "Il est obnibulé par cette idée.", correction: "Il est obnubilé par cette idée." },
+      ],
+      astuce: "« -nu- » comme « nuage » : obnubiler.",
+    },
   ];
 })();
