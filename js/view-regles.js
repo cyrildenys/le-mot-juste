@@ -339,26 +339,45 @@
       container.appendChild(grid);
     });
   }
-  function openConjugaison(initialVerb) {
+  // Page dédiée à la conjugaison d'un verbe.
+  function openVerbe(verbe) {
+    const v = (verbe || "").trim();
+    if (!v) return;
     LMJ.nav.push((root) => {
       root.appendChild(backBtn());
-      const search = el("div", { class: "search", style: { margin: "12px 0" } });
-      const input = el("input", { type: "text", placeholder: "Entrez un verbe à l'infinitif…", autocapitalize: "none", autocomplete: "off", spellcheck: "false", enterkeyhint: "search" });
+      const c = el("div", { style: { marginTop: "10px" } });
+      root.appendChild(c);
+      renderConjugaison(c, v);
+    }, { eyebrow: "Conjugaison", title: v });
+  }
+
+  function openConjugaison(initialVerb) {
+    if (initialVerb) return openVerbe(initialVerb);
+    LMJ.nav.push((root) => {
+      root.appendChild(backBtn());
+
+      // Recherche (seule ; plus de chips-filtres)
+      const search = el("div", { class: "search", style: { margin: "12px 0 6px" } });
+      const input = el("input", { type: "text", placeholder: "Rechercher un verbe à conjuguer…", autocapitalize: "none", autocomplete: "off", spellcheck: "false", enterkeyhint: "search" });
       search.append(el("span", { html: IC.search }), input);
       root.appendChild(search);
-      const chips = el("div", { style: { display: "flex", flexWrap: "wrap", gap: "7px", marginBottom: "16px" } });
-      LMJ.verbesSuggestions.slice(0, 16).forEach((v) => chips.appendChild(el("button", { class: "chip", style: { cursor: "pointer" }, text: v, on: { click: () => { input.value = v; go(v); } } })));
-      root.appendChild(chips);
-      const results = el("div");
-      root.appendChild(results);
-      function go(v) { const verbe = (v || input.value).trim(); if (!verbe) return; renderConjugaison(results, verbe); window.scrollTo({ top: 0, behavior: "smooth" }); }
-      input.addEventListener("keydown", (e) => { if (e.key === "Enter") go(); });
-      root.appendChild(el("h3", { text: "Règles de conjugaison", style: { fontSize: "18px", margin: "26px 0 12px" } }));
+      input.addEventListener("keydown", (e) => { if (e.key === "Enter" && input.value.trim()) openVerbe(input.value.trim()); });
+      root.appendChild(el("div", { class: "muted", style: { fontSize: "12.5px", margin: "0 2px" }, text: "Tape un verbe puis Entrée, ou choisis-en un dans l'annexe plus bas." }));
+
+      // Règles de conjugaison — tout en haut
+      root.appendChild(el("h3", { text: "Règles de conjugaison", style: { fontSize: "18px", margin: "22px 0 12px" } }));
       (LMJ.data.conjugaisonRegles || []).forEach((r) => root.appendChild(cardNode(r, "rule")));
-      const start = (initialVerb || "aimer").trim();
-      input.value = start === "aimer" ? "" : start;
-      go(start);
-    }, { eyebrow: "Conjugaison", title: "Conjugueur", sub: "Tous les temps, tous les modes" });
+
+      // Annexe des verbes — en bas
+      root.appendChild(el("h3", { text: "Annexe des verbes", style: { fontSize: "18px", margin: "28px 0 6px" } }));
+      root.appendChild(el("div", { class: "muted", style: { fontSize: "12.5px", marginBottom: "12px" }, text: "Sélectionne un verbe pour ouvrir sa conjugaison complète." }));
+      const cloud = el("div", { style: { display: "flex", flexWrap: "wrap", gap: "8px" } });
+      (LMJ.verbesAnnexe || [])
+        .filter((v) => LMJ.conjugue(v).disponible)
+        .sort((a, b) => a.localeCompare(b, "fr"))
+        .forEach((v) => cloud.appendChild(el("button", { class: "chip", style: { cursor: "pointer" }, text: v, on: { click: () => openVerbe(v) } })));
+      root.appendChild(cloud);
+    }, { eyebrow: "Conjugaison", title: "Conjugueur", sub: "Règles + annexe des verbes" });
   }
 
   /* ---------- Recherche transverse ---------- */

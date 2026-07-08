@@ -153,5 +153,17 @@
       ],
       astuce: "Elle équivaut souvent à « c'est-à-dire » et se retire sans casser la phrase.",
     },
+    {
+      id: "gr-conjonctions",
+      titre: "Les conjonctions",
+      resume: "De coordination (mais, ou, et…) ou de subordination (que, quand, si…).",
+      explication:
+        "<p>La <strong>conjonction de coordination</strong> relie deux mots ou propositions de même fonction : <em>mais, ou, et, donc, or, ni, car</em>.</p><p>La <strong>conjonction de subordination</strong> introduit une proposition subordonnée : <em>que, quand, comme, si, lorsque, puisque, quoique, afin que…</em></p>",
+      exemples: [
+        { ok: true, texte: "Il pleut <em>mais</em> je sors. (coordination)" },
+        { ok: true, texte: "Je sors <em>quand</em> il pleut. (subordination)" },
+      ],
+      astuce: "Moyen mnémo pour la coordination : « Mais où est donc Ornicar ? »",
+    },
   ];
 })();

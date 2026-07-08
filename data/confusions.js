@@ -206,5 +206,23 @@
       ],
       astuce: "« voix » (le son) est invariable au pluriel : des voix.",
     },
+    {
+      id: "conf-peut-etre",
+      titre: "peut-être / peut être",
+      entrees: [
+        { mot: "peut-être", nature: "adverbe", sens: "= probablement (avec trait d'union)", exemple: "Il viendra peut-être." },
+        { mot: "peut être", nature: "verbe pouvoir + être", sens: "il/elle peut être", exemple: "Ce plan peut être amélioré." },
+      ],
+      astuce: "Remplaçable par « probablement » → « peut-être » (trait d'union).",
+    },
+    {
+      id: "conf-tache",
+      titre: "tache / tâche",
+      entrees: [
+        { mot: "tache", nature: "nom / verbe (tacher)", sens: "une salissure", exemple: "Une tache de café." },
+        { mot: "tâche", nature: "nom / verbe (tâcher)", sens: "un travail à accomplir (accent circonflexe)", exemple: "Une tâche difficile ; tâcher de finir." },
+      ],
+      astuce: "Un travail → « tâche » (accent), comme « tâcher de ».",
+    },
   ];
 })();

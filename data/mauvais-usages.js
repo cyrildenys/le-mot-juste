@@ -194,5 +194,17 @@
       ],
       astuce: "Courrier → attention. En l'honneur de / pour → intention.",
     },
+    {
+      id: "mu-en-termes",
+      titre: "« en terme de »",
+      resume: "S'écrit « en termes de » (pluriel).",
+      explication:
+        "<p>La locution correcte est <strong>en termes de</strong> (au pluriel) et signifie proprement « dans le vocabulaire de ». Employée au sens de « en matière de / du point de vue de », elle est critiquée : préférez alors ces tournures.</p>",
+      exemples: [
+        { ok: false, texte: "En terme de qualité, c'est parfait.", correction: "En matière de qualité / Du point de vue de la qualité…" },
+        { ok: true, texte: "En termes de marine, « bâbord » désigne la gauche." },
+      ],
+      astuce: "Toujours au pluriel : « en termes de » (et de préférence « en matière de »).",
+    },
   ];
 })();

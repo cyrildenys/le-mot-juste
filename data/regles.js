@@ -178,6 +178,19 @@
       ],
       astuce: "Un seul des deux peut-il agir ? → singulier. Les deux ensemble ? → pluriel.",
     },
+    {
+      id: "acc-adj-composes",
+      titre: "L'accord des adjectifs composés",
+      resume: "Deux adjectifs → les deux s'accordent ; un élément invariable reste invariable.",
+      explication:
+        "<p>Si les deux éléments sont des <strong>adjectifs</strong>, tous deux s'accordent (des enfants <em>sourds-muets</em>).</p><p>Si le premier élément est un <strong>adverbe</strong> ou joue un rôle invariable (mi-, demi-, nouveau- au sens de « nouvellement »), il reste <strong>invariable</strong> (des <em>nouveau-nés</em>, des personnes <em>haut placées</em>).</p>",
+      exemples: [
+        { ok: true, texte: "Des enfants <em>sourds-muets</em>. (deux adjectifs → accord)" },
+        { ok: true, texte: "Des <em>nouveau-nés</em>. (nouveau = nouvellement → invariable)" },
+        { ok: false, texte: "des <em>nouveaux-nés</em>", correction: "des nouveau-nés" },
+      ],
+      astuce: "Le premier élément équivaut-il à un adverbe ? Alors il ne s'accorde pas.",
+    },
   ];
 
   LMJ.data.conjugaisonRegles = [
@@ -255,6 +268,19 @@
         { ok: false, texte: "Il faut que tu <em>viens</em>", correction: "Il faut que tu viennes" },
       ],
       astuce: "« Bien que », « pour que », « jusqu'à ce que », « à moins que » → subjonctif.",
+    },
+    {
+      id: "conj-t-euphonique",
+      titre: "Le « t » euphonique (a-t-il ?)",
+      resume: "On intercale -t- entre deux voyelles dans l'interrogation.",
+      explication:
+        "<p>À la 3e personne, lorsque le verbe se termine par une <strong>voyelle</strong> (e, a) juste devant <em>il, elle, on</em>, on ajoute un <strong>-t-</strong> entre traits d'union pour la liaison.</p><p>Inutile si le verbe finit déjà par <strong>t</strong> ou <strong>d</strong> (vient-il, prend-elle).</p>",
+      exemples: [
+        { ok: true, texte: "Viendra-<em>t</em>-il ? Que mange-<em>t</em>-on ? Y a-<em>t</em>-il quelqu'un ?" },
+        { ok: true, texte: "Vient-il ? Prend-elle ? (pas de -t-)" },
+        { ok: false, texte: "Va-il ?", correction: "Va-t-il ?" },
+      ],
+      astuce: "Deux voyelles se rencontrent → on glisse un -t- : « va-t-il ».",
     },
   ];
 })();

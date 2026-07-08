@@ -838,6 +838,19 @@ button { font-family: inherit; }
       ],
       astuce: "Un seul des deux peut-il agir ? → singulier. Les deux ensemble ? → pluriel.",
     },
+    {
+      id: "acc-adj-composes",
+      titre: "L'accord des adjectifs composés",
+      resume: "Deux adjectifs → les deux s'accordent ; un élément invariable reste invariable.",
+      explication:
+        "<p>Si les deux éléments sont des <strong>adjectifs</strong>, tous deux s'accordent (des enfants <em>sourds-muets</em>).</p><p>Si le premier élément est un <strong>adverbe</strong> ou joue un rôle invariable (mi-, demi-, nouveau- au sens de « nouvellement »), il reste <strong>invariable</strong> (des <em>nouveau-nés</em>, des personnes <em>haut placées</em>).</p>",
+      exemples: [
+        { ok: true, texte: "Des enfants <em>sourds-muets</em>. (deux adjectifs → accord)" },
+        { ok: true, texte: "Des <em>nouveau-nés</em>. (nouveau = nouvellement → invariable)" },
+        { ok: false, texte: "des <em>nouveaux-nés</em>", correction: "des nouveau-nés" },
+      ],
+      astuce: "Le premier élément équivaut-il à un adverbe ? Alors il ne s'accorde pas.",
+    },
   ];
 
   LMJ.data.conjugaisonRegles = [
@@ -915,6 +928,19 @@ button { font-family: inherit; }
         { ok: false, texte: "Il faut que tu <em>viens</em>", correction: "Il faut que tu viennes" },
       ],
       astuce: "« Bien que », « pour que », « jusqu'à ce que », « à moins que » → subjonctif.",
+    },
+    {
+      id: "conj-t-euphonique",
+      titre: "Le « t » euphonique (a-t-il ?)",
+      resume: "On intercale -t- entre deux voyelles dans l'interrogation.",
+      explication:
+        "<p>À la 3e personne, lorsque le verbe se termine par une <strong>voyelle</strong> (e, a) juste devant <em>il, elle, on</em>, on ajoute un <strong>-t-</strong> entre traits d'union pour la liaison.</p><p>Inutile si le verbe finit déjà par <strong>t</strong> ou <strong>d</strong> (vient-il, prend-elle).</p>",
+      exemples: [
+        { ok: true, texte: "Viendra-<em>t</em>-il ? Que mange-<em>t</em>-on ? Y a-<em>t</em>-il quelqu'un ?" },
+        { ok: true, texte: "Vient-il ? Prend-elle ? (pas de -t-)" },
+        { ok: false, texte: "Va-il ?", correction: "Va-t-il ?" },
+      ],
+      astuce: "Deux voyelles se rencontrent → on glisse un -t- : « va-t-il ».",
     },
   ];
 })();
@@ -1129,6 +1155,24 @@ button { font-family: inherit; }
       ],
       astuce: "« voix » (le son) est invariable au pluriel : des voix.",
     },
+    {
+      id: "conf-peut-etre",
+      titre: "peut-être / peut être",
+      entrees: [
+        { mot: "peut-être", nature: "adverbe", sens: "= probablement (avec trait d'union)", exemple: "Il viendra peut-être." },
+        { mot: "peut être", nature: "verbe pouvoir + être", sens: "il/elle peut être", exemple: "Ce plan peut être amélioré." },
+      ],
+      astuce: "Remplaçable par « probablement » → « peut-être » (trait d'union).",
+    },
+    {
+      id: "conf-tache",
+      titre: "tache / tâche",
+      entrees: [
+        { mot: "tache", nature: "nom / verbe (tacher)", sens: "une salissure", exemple: "Une tache de café." },
+        { mot: "tâche", nature: "nom / verbe (tâcher)", sens: "un travail à accomplir (accent circonflexe)", exemple: "Une tâche difficile ; tâcher de finir." },
+      ],
+      astuce: "Un travail → « tâche » (accent), comme « tâcher de ».",
+    },
   ];
 })();
 
@@ -1330,6 +1374,18 @@ button { font-family: inherit; }
       ],
       astuce: "Courrier → attention. En l'honneur de / pour → intention.",
     },
+    {
+      id: "mu-en-termes",
+      titre: "« en terme de »",
+      resume: "S'écrit « en termes de » (pluriel).",
+      explication:
+        "<p>La locution correcte est <strong>en termes de</strong> (au pluriel) et signifie proprement « dans le vocabulaire de ». Employée au sens de « en matière de / du point de vue de », elle est critiquée : préférez alors ces tournures.</p>",
+      exemples: [
+        { ok: false, texte: "En terme de qualité, c'est parfait.", correction: "En matière de qualité / Du point de vue de la qualité…" },
+        { ok: true, texte: "En termes de marine, « bâbord » désigne la gauche." },
+      ],
+      astuce: "Toujours au pluriel : « en termes de » (et de préférence « en matière de »).",
+    },
   ];
 })();
 
@@ -1529,6 +1585,24 @@ button { font-family: inherit; }
         { mot: "influence", sens: "action qu'on exerce sur quelqu'un ou quelque chose", exemple: "Avoir de l'influence sur ses proches." },
       ],
     },
+    {
+      id: "nu-evoquer-invoquer",
+      titre: "Évoquer · Invoquer",
+      cle: "Évoquer = rappeler, mentionner ; invoquer = appeler à l'aide ou citer comme argument.",
+      entrees: [
+        { mot: "évoquer", sens: "faire venir à l'esprit, mentionner", exemple: "Évoquer un souvenir." },
+        { mot: "invoquer", sens: "appeler à son secours ; alléguer", exemple: "Invoquer la légitime défense." },
+      ],
+    },
+    {
+      id: "nu-inclinaison-inclination",
+      titre: "Inclinaison · Inclination",
+      cle: "Inclinaison = angle, pente (concret) ; inclination = penchant, goût (moral).",
+      entrees: [
+        { mot: "inclinaison", sens: "état de ce qui est incliné, angle", exemple: "L'inclinaison du toit." },
+        { mot: "inclination", sens: "penchant, disposition naturelle", exemple: "Une inclination pour les arts." },
+      ],
+    },
   ];
 })();
 
@@ -1689,6 +1763,18 @@ button { font-family: inherit; }
       ],
       astuce: "Elle équivaut souvent à « c'est-à-dire » et se retire sans casser la phrase.",
     },
+    {
+      id: "gr-conjonctions",
+      titre: "Les conjonctions",
+      resume: "De coordination (mais, ou, et…) ou de subordination (que, quand, si…).",
+      explication:
+        "<p>La <strong>conjonction de coordination</strong> relie deux mots ou propositions de même fonction : <em>mais, ou, et, donc, or, ni, car</em>.</p><p>La <strong>conjonction de subordination</strong> introduit une proposition subordonnée : <em>que, quand, comme, si, lorsque, puisque, quoique, afin que…</em></p>",
+      exemples: [
+        { ok: true, texte: "Il pleut <em>mais</em> je sors. (coordination)" },
+        { ok: true, texte: "Je sors <em>quand</em> il pleut. (subordination)" },
+      ],
+      astuce: "Moyen mnémo pour la coordination : « Mais où est donc Ornicar ? »",
+    },
   ];
 })();
 
@@ -1819,6 +1905,26 @@ button { font-family: inherit; }
     { mot: "thaumaturge", nature: "nom masculin", registre: "littéraire", definition: "Personne qui fait ou prétend faire des miracles.", etymologie: "du grec thauma, « prodige », et ergon, « œuvre ».", exemples: ["On le tenait pour un thaumaturge."], synonymes: ["faiseur de miracles", "guérisseur"], antonymes: [] },
     { mot: "ubiquité", nature: "nom féminin", registre: "soutenu", definition: "Faculté d'être présent partout à la fois.", etymologie: "du latin ubique, « partout ».", exemples: ["Je n'ai pas le don d'ubiquité."], synonymes: ["omniprésence"], antonymes: [] },
     { mot: "vindicatif", nature: "adjectif", registre: "soutenu", definition: "Porté à la vengeance, rancunier.", etymologie: "du latin vindicta, « vengeance ».", exemples: ["Un caractère vindicatif."], synonymes: ["rancunier", "revanchard"], antonymes: ["magnanime", "indulgent"] },
+    { mot: "abnégation", nature: "nom féminin", registre: "soutenu", definition: "Renoncement à soi-même, sacrifice de son intérêt.", etymologie: "du latin abnegare, « refuser ».", exemples: ["Se dévouer avec abnégation."], synonymes: ["dévouement", "désintéressement", "sacrifice"], antonymes: ["égoisme"] },
+    { mot: "acuité", nature: "nom féminin", registre: "soutenu", definition: "Caractère aigu, finesse d'un sens ou d'une intelligence.", etymologie: "du latin acutus, « aigu ».", exemples: ["L'acuité de son regard.", "Une crise d'une rare acuité."], synonymes: ["finesse", "pénétration", "intensité"], antonymes: ["émoussement"] },
+    { mot: "affres", nature: "nom féminin pluriel", registre: "littéraire", definition: "Tourments, angoisses violentes.", exemples: ["Les affres de la création.", "Connaître les affres du doute."], synonymes: ["tourments", "angoisses", "affolement"], antonymes: ["quiétude", "sérénité"] },
+    { mot: "apanage", nature: "nom masculin", registre: "soutenu", definition: "Bien, privilège propre et exclusif à quelqu'un.", etymologie: "de l'ancien français apaner, « doter ».", exemples: ["La sagesse n'est pas l'apanage de l'âge."], synonymes: ["privilège", "propre", "monopole"], antonymes: [] },
+    { mot: "captieux", nature: "adjectif", registre: "littéraire", definition: "Qui séduit et trompe par une apparence de vérité.", etymologie: "du latin captiosus, « trompeur ».", exemples: ["Un raisonnement captieux."], synonymes: ["spécieux", "fallacieux", "insidieux"], antonymes: ["sincère", "franc"] },
+    { mot: "célérité", nature: "nom féminin", registre: "soutenu", definition: "Promptitude, rapidité dans l'exécution.", etymologie: "du latin celeritas, « vitesse ».", exemples: ["Agir avec célérité."], synonymes: ["rapidité", "promptitude", "diligence"], antonymes: ["lenteur", "atermoiement"] },
+    { mot: "courroux", nature: "nom masculin", registre: "littéraire", definition: "Vive colère, irritation profonde.", etymologie: "du latin populaire corruptium.", exemples: ["Apaiser le courroux du prince."], synonymes: ["colère", "ire", "fureur"], antonymes: ["mansuétude", "sérénité"] },
+    { mot: "dessein", nature: "nom masculin", registre: "soutenu", definition: "Projet formé, intention arrêtée.", etymologie: "de l'ancien français desseigner.", exemples: ["Nourrir de vastes desseins.", "À dessein (= exprès)."], synonymes: ["projet", "intention", "visée"], antonymes: ["hasard"] },
+    { mot: "écueil", nature: "nom masculin", registre: "soutenu", definition: "Obstacle, danger qui menace une entreprise (au propre : rocher sous l'eau).", exemples: ["Éviter cet écueil.", "Le principal écueil du projet."], synonymes: ["obstacle", "difficulté", "piège"], antonymes: [] },
+    { mot: "exacerber", nature: "verbe", registre: "soutenu", definition: "Porter à son paroxysme, aggraver (une douleur, un sentiment).", etymologie: "du latin exacerbare, « irriter ».", exemples: ["La crise exacerba les tensions."], synonymes: ["aviver", "aggraver", "attiser"], antonymes: ["apaiser", "atténuer"] },
+    { mot: "inanité", nature: "nom féminin", registre: "littéraire", definition: "Caractère vide, vain et inutile de quelque chose.", etymologie: "du latin inanitas, « vide ».", exemples: ["L'inanité de ses efforts."], synonymes: ["vanité", "inutilité", "vacuité"], antonymes: ["utilité", "efficacité"] },
+    { mot: "incoercible", nature: "adjectif", registre: "littéraire", definition: "Qu'on ne peut réprimer ou contenir.", etymologie: "du latin coercere, « contenir ».", exemples: ["Un rire incoercible.", "Une envie incoercible."], synonymes: ["irrépressible", "irrésistible"], antonymes: ["contrôlable"] },
+    { mot: "inextinguible", nature: "adjectif", registre: "littéraire", definition: "Qu'on ne peut éteindre ou apaiser.", etymologie: "du latin exstinguere, « éteindre ».", exemples: ["Une soif inextinguible.", "Un fou rire inextinguible."], synonymes: ["inapaisable", "insatiable"], antonymes: [] },
+    { mot: "mordicus", nature: "adverbe", registre: "familier soutenu", definition: "Avec une ténacité obstinée ; sans démordre.", etymologie: "mot latin, « en mordant ».", exemples: ["Soutenir mordicus une opinion."], synonymes: ["obstinément", "fermement"], antonymes: [] },
+    { mot: "oiseux", nature: "adjectif", registre: "soutenu", definition: "Inutile, vain, sans portée (propos, discussion).", etymologie: "du latin otiosus, « oisif ».", exemples: ["Une querelle oiseuse.", "Des discussions oiseuses."], synonymes: ["vain", "futile", "stérile"], antonymes: ["utile", "fécond"] },
+    { mot: "ombrageux", nature: "adjectif", registre: "soutenu", definition: "Susceptible, méfiant, qui s'offense aisément.", exemples: ["Un caractère ombrageux.", "Une fierté ombrageuse."], synonymes: ["susceptible", "méfiant", "soupçonneux"], antonymes: ["confiant", "placide"] },
+    { mot: "patent", nature: "adjectif", registre: "soutenu", definition: "Évident, manifeste, qui ne prête pas à discussion.", etymologie: "du latin patens, « ouvert ».", exemples: ["Une injustice patente.", "Un échec patent."], synonymes: ["manifeste", "flagrant", "évident"], antonymes: ["latent", "caché"] },
+    { mot: "prégnant", nature: "adjectif", registre: "soutenu", definition: "Qui s'impose fortement à l'esprit ou à la perception.", exemples: ["Une image prégnante.", "Un symbole prégnant."], synonymes: ["marquant", "prenant", "frappant"], antonymes: ["insignifiant"] },
+    { mot: "rétif", nature: "adjectif", registre: "soutenu", definition: "Qui refuse d'avancer, récalcitrant, indocile.", etymologie: "du latin populaire restivus.", exemples: ["Un cheval rétif.", "Rétif à toute discipline."], synonymes: ["récalcitrant", "rebelle", "indocile"], antonymes: ["docile", "obéissant"] },
+    { mot: "vétuste", nature: "adjectif", registre: "soutenu", definition: "Détérioré, dégradé par le temps ; vieux et délabré.", etymologie: "du latin vetustus, « ancien ».", exemples: ["Un immeuble vétuste."], synonymes: ["délabré", "décrépit", "caduc"], antonymes: ["neuf", "moderne"] },
   ];
 })();
 
@@ -2222,6 +2328,24 @@ button { font-family: inherit; }
       pres: ["prédis", "prédis", "prédit", "prédisons", "prédisez", "prédisent"],
       futStem: "prédir", ps: ["préd", "i"], subj: ["prédis", "prédis"],
       ppr: "prédisant", pp: "prédit",
+    },
+    mouvoir: {
+      g: 3, aux: "avoir",
+      pres: ["meus", "meus", "meut", "mouvons", "mouvez", "meuvent"],
+      futStem: "mouvr", ps: ["m", "u"], subj: ["meuv", "mouv"],
+      ppr: "mouvant", pp: "mû",
+    },
+    émouvoir: {
+      g: 3, aux: "avoir",
+      pres: ["émeus", "émeus", "émeut", "émouvons", "émouvez", "émeuvent"],
+      futStem: "émouvr", ps: ["ém", "u"], subj: ["émeuv", "émouv"],
+      ppr: "émouvant", pp: "ému",
+    },
+    promouvoir: {
+      g: 3, aux: "avoir",
+      pres: ["promeus", "promeus", "promeut", "promouvons", "promouvez", "promeuvent"],
+      futStem: "promouvr", ps: ["prom", "u"], subj: ["promeuv", "promouv"],
+      ppr: "promouvant", pp: "promu",
     },
     falloir: {
       g: 3, aux: "avoir", impersonnel: true,
@@ -2722,6 +2846,39 @@ button { font-family: inherit; }
     "gr-apposition": [
       { q: "« Paris, capitale de la France, brille. » « capitale de la France » est…", options: ["une apposition", "un COD", "un CC"], reponse: 0, n: 3, explication: "Renomme le nom, détachée par virgules → apposition." },
     ],
+
+    /* ---------- Ajouts (vague 3) ---------- */
+    "conf-peut-etre": [
+      { q: "Il viendra ___ demain.", options: ["peut être", "peut-être", "peut-etre"], reponse: 1, n: 1, explication: "= probablement → « peut-être » (trait d'union)." },
+      { q: "Ce plan ___ amélioré.", options: ["peut-être", "peut être", "peut-etre"], reponse: 1, n: 2, explication: "= il peut être → « peut être » (verbe)." },
+    ],
+    "conf-tache": [
+      { q: "Une ___ de café sur la nappe.", options: ["tâche", "tache", "tâches"], reponse: 1, n: 1, explication: "Une salissure → « tache » (sans accent)." },
+      { q: "J'ai une ___ à finir ce soir.", options: ["tache", "tâche", "taches"], reponse: 1, n: 2, explication: "Un travail → « tâche » (accent circonflexe)." },
+    ],
+    "nu-evoquer-invoquer": [
+      { q: "Il a ___ des souvenirs d'enfance.", options: ["invoqué", "évoqué", "provoqué"], reponse: 1, n: 2, explication: "Rappeler, mentionner → « évoquer »." },
+      { q: "Il ___ la légitime défense.", options: ["évoque", "invoque", "provoque"], reponse: 1, n: 3, explication: "Citer comme argument → « invoquer »." },
+    ],
+    "nu-inclinaison-inclination": [
+      { q: "L'___ du toit.", options: ["inclination", "inclinaison", "déclinaison"], reponse: 1, n: 2, explication: "Angle, pente → « inclinaison »." },
+      { q: "Une ___ naturelle pour la musique.", options: ["inclinaison", "inclination", "déclinaison"], reponse: 1, n: 3, explication: "Penchant, goût → « inclination »." },
+    ],
+    "acc-adj-composes": [
+      { q: "Des enfants ___.", options: ["sourd-muets", "sourds-muets", "sourds-muet"], reponse: 1, n: 3, explication: "Deux adjectifs → les deux s'accordent." },
+      { q: "Des ___.", options: ["nouveaux-nés", "nouveau-nés", "nouveau-né"], reponse: 1, n: 3, explication: "« nouveau » = nouvellement (invariable) ; « né » s'accorde." },
+    ],
+    "gr-conjonctions": [
+      { q: "« mais » est une conjonction de…", options: ["subordination", "coordination", "juxtaposition"], reponse: 1, n: 1, explication: "mais/ou/et/donc/or/ni/car → coordination." },
+      { q: "« lorsque » est une conjonction de…", options: ["coordination", "subordination", "juxtaposition"], reponse: 1, n: 2, explication: "Introduit une subordonnée → subordination." },
+    ],
+    "mu-en-termes": [
+      { q: "Orthographe correcte :", options: ["en terme de qualité", "en termes de qualité", "en therme de qualité"], reponse: 1, n: 2, explication: "Toujours au pluriel : « en termes de »." },
+    ],
+    "conj-t-euphonique": [
+      { q: "Où ___ ?", options: ["va-il", "va-t-il", "vat-il"], reponse: 1, n: 1, explication: "Deux voyelles → -t- euphonique : « va-t-il »." },
+      { q: "Que ___ ?", options: ["mange-t-on", "mange-on", "manget-on"], reponse: 0, n: 2, explication: "« mange » finit par une voyelle → « mange-t-on »." },
+    ],
   };
 })();
 
@@ -2991,6 +3148,7 @@ button { font-family: inherit; }
     reconnaître: "connaître", méconnaître: "connaître", apparaître: "paraître", disparaître: "paraître", comparaître: "paraître", réapparaître: "paraître", renaître: "naître",
     abattre: "battre", combattre: "battre", débattre: "battre", rabattre: "battre",
     refaire: "faire", défaire: "faire", satisfaire: "faire", contrefaire: "faire", parfaire: "faire", redire: "dire",
+    sourire: "rire", déplaire: "plaire", complaire: "plaire",
   };
 
   function prefixParts(prefix, modelKey) {
@@ -3037,6 +3195,10 @@ button { font-family: inherit; }
       return assembleParts(inf, 3, true, determineAux(inf), prefixParts(prefix, model));
     }
     // Familles régulières par terminaison (avant les groupes 1/2)
+    if (/quérir$/.test(inf)) {
+      const p = inf.slice(0, -6);
+      return assembleParts(inf, 3, true, determineAux(inf), { pres: [p + "quiers", p + "quiers", p + "quiert", p + "quérons", p + "quérez", p + "quièrent"], futStem: p + "querr", ps: [p + "qu", "i"], subj: [p + "quièr", p + "quér"], ppr: p + "quérant", pp: p + "quis" });
+    }
     if (/cevoir$/.test(inf)) {
       const p = inf.slice(0, -6);
       return assembleParts(inf, 3, true, determineAux(inf), { pres: [p + "çois", p + "çois", p + "çoit", p + "cevons", p + "cevez", p + "çoivent"], futStem: p + "cevr", ps: [p + "ç", "u"], subj: [p + "çoiv", p + "cev"], ppr: p + "cevant", pp: p + "çu" });
@@ -3088,6 +3250,29 @@ button { font-family: inherit; }
     "savoir", "voir", "venir", "prendre", "mettre", "partir", "finir", "manger",
     "commencer", "appeler", "acheter", "employer", "payer", "espérer", "lever",
     "aimer", "parler", "choisir", "recevoir", "boire", "connaître", "écrire",
+  ];
+
+  /* Annexe : liste de verbes courants à conjuguer (triée à l'affichage) */
+  LMJ.verbesAnnexe = [
+    "être", "avoir", "aller", "faire", "dire", "pouvoir", "vouloir", "devoir", "savoir", "voir",
+    "falloir", "pleuvoir", "recevoir", "apercevoir", "concevoir", "percevoir",
+    "venir", "devenir", "revenir", "parvenir", "prévenir", "tenir", "obtenir", "retenir", "soutenir", "maintenir",
+    "prendre", "apprendre", "comprendre", "surprendre", "reprendre", "entreprendre",
+    "mettre", "permettre", "promettre", "admettre", "remettre", "soumettre", "transmettre",
+    "partir", "sortir", "dormir", "servir", "sentir", "mentir", "courir", "parcourir", "secourir",
+    "ouvrir", "offrir", "couvrir", "découvrir", "souffrir", "cueillir", "accueillir", "recueillir",
+    "boire", "croire", "lire", "écrire", "décrire", "inscrire", "prescrire",
+    "vivre", "survivre", "suivre", "poursuivre", "rire", "sourire",
+    "connaître", "reconnaître", "paraître", "apparaître", "disparaître", "naître", "renaître", "mourir",
+    "conduire", "produire", "traduire", "construire", "détruire", "réduire", "séduire", "introduire", "cuire", "nuire",
+    "plaire", "déplaire", "vaincre", "convaincre", "battre", "combattre", "abattre",
+    "craindre", "plaindre", "peindre", "éteindre", "atteindre", "joindre", "rejoindre",
+    "résoudre", "coudre", "moudre", "conclure", "exclure", "inclure",
+    "attendre", "entendre", "rendre", "vendre", "perdre", "répondre", "descendre", "prétendre", "mordre", "tondre", "fondre",
+    "rompre", "interrompre", "acquérir", "conquérir", "requérir", "mouvoir", "émouvoir", "promouvoir",
+    "finir", "choisir", "réfléchir", "réussir", "grandir", "obéir", "remplir", "saisir", "agir", "punir", "nourrir", "guérir", "applaudir", "bâtir",
+    "aimer", "parler", "chanter", "manger", "commencer", "placer", "nager", "jouer", "donner", "trouver", "penser", "demander", "regarder", "travailler", "arriver", "entrer", "rester", "tomber", "monter",
+    "appeler", "jeter", "acheter", "geler", "préférer", "espérer", "céder", "lever", "mener", "peser", "employer", "nettoyer", "payer", "envoyer", "essayer", "créer", "étudier", "oublier", "manier",
   ];
 
   LMJ.conjugue = conjugue;
@@ -3439,26 +3624,45 @@ button { font-family: inherit; }
       container.appendChild(grid);
     });
   }
-  function openConjugaison(initialVerb) {
+  // Page dédiée à la conjugaison d'un verbe.
+  function openVerbe(verbe) {
+    const v = (verbe || "").trim();
+    if (!v) return;
     LMJ.nav.push((root) => {
       root.appendChild(backBtn());
-      const search = el("div", { class: "search", style: { margin: "12px 0" } });
-      const input = el("input", { type: "text", placeholder: "Entrez un verbe à l'infinitif…", autocapitalize: "none", autocomplete: "off", spellcheck: "false", enterkeyhint: "search" });
+      const c = el("div", { style: { marginTop: "10px" } });
+      root.appendChild(c);
+      renderConjugaison(c, v);
+    }, { eyebrow: "Conjugaison", title: v });
+  }
+
+  function openConjugaison(initialVerb) {
+    if (initialVerb) return openVerbe(initialVerb);
+    LMJ.nav.push((root) => {
+      root.appendChild(backBtn());
+
+      // Recherche (seule ; plus de chips-filtres)
+      const search = el("div", { class: "search", style: { margin: "12px 0 6px" } });
+      const input = el("input", { type: "text", placeholder: "Rechercher un verbe à conjuguer…", autocapitalize: "none", autocomplete: "off", spellcheck: "false", enterkeyhint: "search" });
       search.append(el("span", { html: IC.search }), input);
       root.appendChild(search);
-      const chips = el("div", { style: { display: "flex", flexWrap: "wrap", gap: "7px", marginBottom: "16px" } });
-      LMJ.verbesSuggestions.slice(0, 16).forEach((v) => chips.appendChild(el("button", { class: "chip", style: { cursor: "pointer" }, text: v, on: { click: () => { input.value = v; go(v); } } })));
-      root.appendChild(chips);
-      const results = el("div");
-      root.appendChild(results);
-      function go(v) { const verbe = (v || input.value).trim(); if (!verbe) return; renderConjugaison(results, verbe); window.scrollTo({ top: 0, behavior: "smooth" }); }
-      input.addEventListener("keydown", (e) => { if (e.key === "Enter") go(); });
-      root.appendChild(el("h3", { text: "Règles de conjugaison", style: { fontSize: "18px", margin: "26px 0 12px" } }));
+      input.addEventListener("keydown", (e) => { if (e.key === "Enter" && input.value.trim()) openVerbe(input.value.trim()); });
+      root.appendChild(el("div", { class: "muted", style: { fontSize: "12.5px", margin: "0 2px" }, text: "Tape un verbe puis Entrée, ou choisis-en un dans l'annexe plus bas." }));
+
+      // Règles de conjugaison — tout en haut
+      root.appendChild(el("h3", { text: "Règles de conjugaison", style: { fontSize: "18px", margin: "22px 0 12px" } }));
       (LMJ.data.conjugaisonRegles || []).forEach((r) => root.appendChild(cardNode(r, "rule")));
-      const start = (initialVerb || "aimer").trim();
-      input.value = start === "aimer" ? "" : start;
-      go(start);
-    }, { eyebrow: "Conjugaison", title: "Conjugueur", sub: "Tous les temps, tous les modes" });
+
+      // Annexe des verbes — en bas
+      root.appendChild(el("h3", { text: "Annexe des verbes", style: { fontSize: "18px", margin: "28px 0 6px" } }));
+      root.appendChild(el("div", { class: "muted", style: { fontSize: "12.5px", marginBottom: "12px" }, text: "Sélectionne un verbe pour ouvrir sa conjugaison complète." }));
+      const cloud = el("div", { style: { display: "flex", flexWrap: "wrap", gap: "8px" } });
+      (LMJ.verbesAnnexe || [])
+        .filter((v) => LMJ.conjugue(v).disponible)
+        .sort((a, b) => a.localeCompare(b, "fr"))
+        .forEach((v) => cloud.appendChild(el("button", { class: "chip", style: { cursor: "pointer" }, text: v, on: { click: () => openVerbe(v) } })));
+      root.appendChild(cloud);
+    }, { eyebrow: "Conjugaison", title: "Conjugueur", sub: "Règles + annexe des verbes" });
   }
 
   /* ---------- Recherche transverse ---------- */

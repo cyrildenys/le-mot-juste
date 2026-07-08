@@ -192,5 +192,23 @@
         { mot: "influence", sens: "action qu'on exerce sur quelqu'un ou quelque chose", exemple: "Avoir de l'influence sur ses proches." },
       ],
     },
+    {
+      id: "nu-evoquer-invoquer",
+      titre: "Évoquer · Invoquer",
+      cle: "Évoquer = rappeler, mentionner ; invoquer = appeler à l'aide ou citer comme argument.",
+      entrees: [
+        { mot: "évoquer", sens: "faire venir à l'esprit, mentionner", exemple: "Évoquer un souvenir." },
+        { mot: "invoquer", sens: "appeler à son secours ; alléguer", exemple: "Invoquer la légitime défense." },
+      ],
+    },
+    {
+      id: "nu-inclinaison-inclination",
+      titre: "Inclinaison · Inclination",
+      cle: "Inclinaison = angle, pente (concret) ; inclination = penchant, goût (moral).",
+      entrees: [
+        { mot: "inclinaison", sens: "état de ce qui est incliné, angle", exemple: "L'inclinaison du toit." },
+        { mot: "inclination", sens: "penchant, disposition naturelle", exemple: "Une inclination pour les arts." },
+      ],
+    },
   ];
 })();

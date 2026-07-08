@@ -262,6 +262,7 @@
     reconnaître: "connaître", méconnaître: "connaître", apparaître: "paraître", disparaître: "paraître", comparaître: "paraître", réapparaître: "paraître", renaître: "naître",
     abattre: "battre", combattre: "battre", débattre: "battre", rabattre: "battre",
     refaire: "faire", défaire: "faire", satisfaire: "faire", contrefaire: "faire", parfaire: "faire", redire: "dire",
+    sourire: "rire", déplaire: "plaire", complaire: "plaire",
   };
 
   function prefixParts(prefix, modelKey) {
@@ -308,6 +309,10 @@
       return assembleParts(inf, 3, true, determineAux(inf), prefixParts(prefix, model));
     }
     // Familles régulières par terminaison (avant les groupes 1/2)
+    if (/quérir$/.test(inf)) {
+      const p = inf.slice(0, -6);
+      return assembleParts(inf, 3, true, determineAux(inf), { pres: [p + "quiers", p + "quiers", p + "quiert", p + "quérons", p + "quérez", p + "quièrent"], futStem: p + "querr", ps: [p + "qu", "i"], subj: [p + "quièr", p + "quér"], ppr: p + "quérant", pp: p + "quis" });
+    }
     if (/cevoir$/.test(inf)) {
       const p = inf.slice(0, -6);
       return assembleParts(inf, 3, true, determineAux(inf), { pres: [p + "çois", p + "çois", p + "çoit", p + "cevons", p + "cevez", p + "çoivent"], futStem: p + "cevr", ps: [p + "ç", "u"], subj: [p + "çoiv", p + "cev"], ppr: p + "cevant", pp: p + "çu" });
@@ -359,6 +364,29 @@
     "savoir", "voir", "venir", "prendre", "mettre", "partir", "finir", "manger",
     "commencer", "appeler", "acheter", "employer", "payer", "espérer", "lever",
     "aimer", "parler", "choisir", "recevoir", "boire", "connaître", "écrire",
+  ];
+
+  /* Annexe : liste de verbes courants à conjuguer (triée à l'affichage) */
+  LMJ.verbesAnnexe = [
+    "être", "avoir", "aller", "faire", "dire", "pouvoir", "vouloir", "devoir", "savoir", "voir",
+    "falloir", "pleuvoir", "recevoir", "apercevoir", "concevoir", "percevoir",
+    "venir", "devenir", "revenir", "parvenir", "prévenir", "tenir", "obtenir", "retenir", "soutenir", "maintenir",
+    "prendre", "apprendre", "comprendre", "surprendre", "reprendre", "entreprendre",
+    "mettre", "permettre", "promettre", "admettre", "remettre", "soumettre", "transmettre",
+    "partir", "sortir", "dormir", "servir", "sentir", "mentir", "courir", "parcourir", "secourir",
+    "ouvrir", "offrir", "couvrir", "découvrir", "souffrir", "cueillir", "accueillir", "recueillir",
+    "boire", "croire", "lire", "écrire", "décrire", "inscrire", "prescrire",
+    "vivre", "survivre", "suivre", "poursuivre", "rire", "sourire",
+    "connaître", "reconnaître", "paraître", "apparaître", "disparaître", "naître", "renaître", "mourir",
+    "conduire", "produire", "traduire", "construire", "détruire", "réduire", "séduire", "introduire", "cuire", "nuire",
+    "plaire", "déplaire", "vaincre", "convaincre", "battre", "combattre", "abattre",
+    "craindre", "plaindre", "peindre", "éteindre", "atteindre", "joindre", "rejoindre",
+    "résoudre", "coudre", "moudre", "conclure", "exclure", "inclure",
+    "attendre", "entendre", "rendre", "vendre", "perdre", "répondre", "descendre", "prétendre", "mordre", "tondre", "fondre",
+    "rompre", "interrompre", "acquérir", "conquérir", "requérir", "mouvoir", "émouvoir", "promouvoir",
+    "finir", "choisir", "réfléchir", "réussir", "grandir", "obéir", "remplir", "saisir", "agir", "punir", "nourrir", "guérir", "applaudir", "bâtir",
+    "aimer", "parler", "chanter", "manger", "commencer", "placer", "nager", "jouer", "donner", "trouver", "penser", "demander", "regarder", "travailler", "arriver", "entrer", "rester", "tomber", "monter",
+    "appeler", "jeter", "acheter", "geler", "préférer", "espérer", "céder", "lever", "mener", "peser", "employer", "nettoyer", "payer", "envoyer", "essayer", "créer", "étudier", "oublier", "manier",
   ];
 
   LMJ.conjugue = conjugue;

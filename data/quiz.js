@@ -378,5 +378,38 @@
     "gr-apposition": [
       { q: "« Paris, capitale de la France, brille. » « capitale de la France » est…", options: ["une apposition", "un COD", "un CC"], reponse: 0, n: 3, explication: "Renomme le nom, détachée par virgules → apposition." },
     ],
+
+    /* ---------- Ajouts (vague 3) ---------- */
+    "conf-peut-etre": [
+      { q: "Il viendra ___ demain.", options: ["peut être", "peut-être", "peut-etre"], reponse: 1, n: 1, explication: "= probablement → « peut-être » (trait d'union)." },
+      { q: "Ce plan ___ amélioré.", options: ["peut-être", "peut être", "peut-etre"], reponse: 1, n: 2, explication: "= il peut être → « peut être » (verbe)." },
+    ],
+    "conf-tache": [
+      { q: "Une ___ de café sur la nappe.", options: ["tâche", "tache", "tâches"], reponse: 1, n: 1, explication: "Une salissure → « tache » (sans accent)." },
+      { q: "J'ai une ___ à finir ce soir.", options: ["tache", "tâche", "taches"], reponse: 1, n: 2, explication: "Un travail → « tâche » (accent circonflexe)." },
+    ],
+    "nu-evoquer-invoquer": [
+      { q: "Il a ___ des souvenirs d'enfance.", options: ["invoqué", "évoqué", "provoqué"], reponse: 1, n: 2, explication: "Rappeler, mentionner → « évoquer »." },
+      { q: "Il ___ la légitime défense.", options: ["évoque", "invoque", "provoque"], reponse: 1, n: 3, explication: "Citer comme argument → « invoquer »." },
+    ],
+    "nu-inclinaison-inclination": [
+      { q: "L'___ du toit.", options: ["inclination", "inclinaison", "déclinaison"], reponse: 1, n: 2, explication: "Angle, pente → « inclinaison »." },
+      { q: "Une ___ naturelle pour la musique.", options: ["inclinaison", "inclination", "déclinaison"], reponse: 1, n: 3, explication: "Penchant, goût → « inclination »." },
+    ],
+    "acc-adj-composes": [
+      { q: "Des enfants ___.", options: ["sourd-muets", "sourds-muets", "sourds-muet"], reponse: 1, n: 3, explication: "Deux adjectifs → les deux s'accordent." },
+      { q: "Des ___.", options: ["nouveaux-nés", "nouveau-nés", "nouveau-né"], reponse: 1, n: 3, explication: "« nouveau » = nouvellement (invariable) ; « né » s'accorde." },
+    ],
+    "gr-conjonctions": [
+      { q: "« mais » est une conjonction de…", options: ["subordination", "coordination", "juxtaposition"], reponse: 1, n: 1, explication: "mais/ou/et/donc/or/ni/car → coordination." },
+      { q: "« lorsque » est une conjonction de…", options: ["coordination", "subordination", "juxtaposition"], reponse: 1, n: 2, explication: "Introduit une subordonnée → subordination." },
+    ],
+    "mu-en-termes": [
+      { q: "Orthographe correcte :", options: ["en terme de qualité", "en termes de qualité", "en therme de qualité"], reponse: 1, n: 2, explication: "Toujours au pluriel : « en termes de »." },
+    ],
+    "conj-t-euphonique": [
+      { q: "Où ___ ?", options: ["va-il", "va-t-il", "vat-il"], reponse: 1, n: 1, explication: "Deux voyelles → -t- euphonique : « va-t-il »." },
+      { q: "Que ___ ?", options: ["mange-t-on", "mange-on", "manget-on"], reponse: 0, n: 2, explication: "« mange » finit par une voyelle → « mange-t-on »." },
+    ],
   };
 })();

@@ -397,6 +397,24 @@
       futStem: "prédir", ps: ["préd", "i"], subj: ["prédis", "prédis"],
       ppr: "prédisant", pp: "prédit",
     },
+    mouvoir: {
+      g: 3, aux: "avoir",
+      pres: ["meus", "meus", "meut", "mouvons", "mouvez", "meuvent"],
+      futStem: "mouvr", ps: ["m", "u"], subj: ["meuv", "mouv"],
+      ppr: "mouvant", pp: "mû",
+    },
+    émouvoir: {
+      g: 3, aux: "avoir",
+      pres: ["émeus", "émeus", "émeut", "émouvons", "émouvez", "émeuvent"],
+      futStem: "émouvr", ps: ["ém", "u"], subj: ["émeuv", "émouv"],
+      ppr: "émouvant", pp: "ému",
+    },
+    promouvoir: {
+      g: 3, aux: "avoir",
+      pres: ["promeus", "promeus", "promeut", "promouvons", "promouvez", "promeuvent"],
+      futStem: "promouvr", ps: ["prom", "u"], subj: ["promeuv", "promouv"],
+      ppr: "promouvant", pp: "promu",
+    },
     falloir: {
       g: 3, aux: "avoir", impersonnel: true,
       pres: [null, null, "faut", null, null, null],
