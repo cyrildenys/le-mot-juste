@@ -420,6 +420,15 @@
     });
     gridWrap.appendChild(grid);
 
+    // Pied de page : compteurs + version (pour vérifier la mise à jour)
+    const totalFiches = cats.reduce((s, c) => s + (c.data ? c.data.length : 0), 0);
+    const nbMots = (LMJ.data.mots || []).length;
+    gridWrap.appendChild(el("div", {
+      class: "muted",
+      style: { textAlign: "center", fontSize: "12px", marginTop: "22px", opacity: ".75" },
+      text: `${totalFiches} fiches · ${nbMots} mots · Le Mot Juste ${LMJ.VERSION || ""}`,
+    }));
+
     function runSearch() {
       const q = util.normSearch(input.value);
       util.clear(resultsWrap);

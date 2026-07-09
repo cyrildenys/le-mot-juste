@@ -3,7 +3,7 @@
    Précache tous les assets → l'application fonctionne 100% hors-ligne.
    Incrémenter CACHE à chaque changement d'assets pour forcer la MAJ.
    ===================================================================== */
-const CACHE = "le-mot-juste-v7";
+const CACHE = "le-mot-juste-v8";
 
 const ASSETS = [
   "./",
@@ -56,31 +56,29 @@ self.addEventListener("activate", (event) => {
   self.clients.claim();
 });
 
+// Stratégie « réseau d'abord » : en ligne → toujours la dernière version
+// (et on rafraîchit le cache) ; hors-ligne → on sert le cache.
 self.addEventListener("fetch", (event) => {
   const req = event.request;
   if (req.method !== "GET") return;
+  const url = new URL(req.url);
+  if (url.origin !== self.location.origin) return; // laisser passer l'externe
 
-  // Navigation → renvoyer index.html depuis le cache (SPA, hors-ligne)
-  if (req.mode === "navigate") {
-    event.respondWith(
-      caches.match("index.html").then((r) => r || fetch(req))
-    );
-    return;
-  }
-
-  // Cache d'abord, réseau en secours (et on met en cache au passage)
   event.respondWith(
-    caches.match(req).then((cached) => {
-      if (cached) return cached;
-      return fetch(req)
-        .then((res) => {
-          if (res && res.status === 200 && res.type === "basic") {
-            const clone = res.clone();
-            caches.open(CACHE).then((c) => c.put(req, clone));
-          }
-          return res;
+    fetch(req)
+      .then((res) => {
+        if (res && res.status === 200 && res.type === "basic") {
+          const clone = res.clone();
+          caches.open(CACHE).then((c) => c.put(req, clone));
+        }
+        return res;
+      })
+      .catch(() =>
+        caches.match(req).then((cached) => {
+          if (cached) return cached;
+          if (req.mode === "navigate") return caches.match("index.html");
+          return Response.error();
         })
-        .catch(() => cached);
-    })
+      )
   );
 });

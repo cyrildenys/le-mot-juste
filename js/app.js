@@ -110,10 +110,27 @@
     if (!("serviceWorker" in navigator)) return;
     // Uniquement en contexte sécurisé (https ou localhost) — pas en file://
     if (location.protocol === "file:") return;
+
+    // Recharge une fois lorsqu'une nouvelle version prend le contrôle.
+    let refreshing = false;
+    navigator.serviceWorker.addEventListener("controllerchange", () => {
+      if (refreshing) return;
+      refreshing = true;
+      location.reload();
+    });
+
     window.addEventListener("load", () => {
-      navigator.serviceWorker.register("service-worker.js").catch((e) =>
-        console.warn("[SW] non enregistré :", e)
-      );
+      navigator.serviceWorker
+        .register("service-worker.js", { updateViaCache: "none" })
+        .then((reg) => {
+          reg.update();
+          // Vérifie les mises à jour à chaque retour sur l'app et périodiquement.
+          document.addEventListener("visibilitychange", () => {
+            if (document.visibilityState === "visible") reg.update();
+          });
+          setInterval(() => reg.update(), 60 * 60 * 1000);
+        })
+        .catch((e) => console.warn("[SW] non enregistré :", e));
     });
   }
 
