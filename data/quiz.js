@@ -521,5 +521,30 @@
       { q: "« Ils ___ (chanter) demain. »", options: ["chanteront", "chanteraient", "chantèrent"], reponse: 0, n: 1, explication: "Futur, ils → -ront : « chanteront »." },
       { q: "Terminaison du futur à la 1re personne du singulier :", options: ["-rais", "-rai", "-ra"], reponse: 1, n: 2, explication: "Futur je → -rai (sans s)." },
     ],
+
+    /* ---------- Accords : complément ---------- */
+    "acc-pluriel-noms": [
+      { q: "un journal → des ___.", options: ["journals", "journaux", "journeaux"], reponse: 1, n: 1, explication: "-al → -aux." },
+      { q: "un genou → des ___.", options: ["genous", "genoux", "genouds"], reponse: 1, n: 2, explication: "Exception en -x (bijou, caillou, chou, genou, hibou, joujou, pou)." },
+      { q: "un détail → des ___.", options: ["détaux", "détails", "détailles"], reponse: 1, n: 3, explication: "« détail » suit la règle générale (+s), contrairement à travail → travaux." },
+    ],
+    "acc-noms-composes": [
+      { q: "un chou-fleur → des ___.", options: ["chou-fleurs", "choux-fleurs", "choux-fleur"], reponse: 1, n: 2, explication: "Nom + nom → les deux s'accordent." },
+      { q: "un tire-bouchon → des ___.", options: ["tires-bouchons", "tire-bouchons", "tire-bouchon"], reponse: 1, n: 2, explication: "Verbe (invariable) + nom → « tire-bouchons »." },
+      { q: "un porte-monnaie → des ___.", options: ["portes-monnaies", "porte-monnaie", "porte-monnaies"], reponse: 1, n: 3, explication: "Verbe invariable + « monnaie » (concept) → invariable." },
+    ],
+    "acc-tel": [
+      { q: "Des arbres ___ que le chêne.", options: ["tel", "tels", "telles"], reponse: 1, n: 2, explication: "« tel que » s'accorde avec « arbres » (masc. pl.) qui précède." },
+      { q: "Elle bondit, ___ une gazelle.", options: ["telle", "tel", "tels"], reponse: 0, n: 3, explication: "« tel » (sans que) s'accorde avec « gazelle » qui suit → telle." },
+    ],
+    "acc-participe-present": [
+      { q: "Des enfants ___ à leurs parents. (qui obéissent)", options: ["obéissants", "obéissant", "obéissent"], reponse: 1, n: 3, explication: "Participe présent (+ complément) → invariable." },
+      { q: "Des élèves ___. (dociles)", options: ["obéissant", "obéissants", "obéissent"], reponse: 1, n: 2, explication: "Adjectif verbal (qualité) → accord." },
+      { q: "Adjectif verbal de « fatiguer » :", options: ["fatiguant", "fatigant", "fatigants"], reponse: 1, n: 2, explication: "Adjectif : « fatigant » (le participe présent est « fatiguant »)." },
+    ],
+    "acc-aucun-nul": [
+      { q: "___ élève n'était absent.", options: ["Aucuns", "Aucun", "Aucune"], reponse: 1, n: 1, explication: "Singulier par défaut → « aucun »." },
+      { q: "Il n'a engagé ___ frais.", options: ["aucun", "aucuns", "aucune"], reponse: 1, n: 3, explication: "« frais » n'a pas de singulier → « aucuns »." },
+    ],
   };
 })();

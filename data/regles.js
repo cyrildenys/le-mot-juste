@@ -217,6 +217,71 @@
       ],
       astuce: "Le COD fait-il l'action de l'infinitif ? Oui → accord ; non → invariable.",
     },
+    {
+      id: "acc-pluriel-noms",
+      titre: "Le pluriel des noms",
+      resume: "En général +s, mais de nombreuses exceptions (-x, -aux).",
+      explication:
+        "<p>Règle générale : on ajoute un <strong>-s</strong> (un chat → des chats).</p><p>Noms en <strong>-s, -x, -z</strong> : invariables (une voix → des voix). Noms en <strong>-au, -eau, -eu</strong> : <strong>-x</strong> (un tuyau → des tuyaux, un jeu → des jeux). Noms en <strong>-al</strong> : <strong>-aux</strong> (un cheval → des chevaux). Noms en <strong>-ail</strong> : en général <strong>+s</strong> (des détails).</p>",
+      exemples: [
+        { ok: true, texte: "un tableau → des <em>tableaux</em> ; un journal → des <em>journaux</em>" },
+        { ok: true, texte: "une souris → des <em>souris</em> (invariable)" },
+        { ok: false, texte: "des <em>chevals</em>", correction: "des chevaux" },
+      ],
+      astuce: "Les 7 « bijoux » en -x : bijou, caillou, chou, genou, hibou, joujou, pou.",
+    },
+    {
+      id: "acc-noms-composes",
+      titre: "Le pluriel des noms composés",
+      resume: "Seuls les noms et les adjectifs s'accordent ; verbes, adverbes et prépositions restent invariables.",
+      explication:
+        "<p>Dans un nom composé, on ne met au pluriel que les <strong>noms</strong> et les <strong>adjectifs</strong> ; les <strong>verbes, adverbes et prépositions</strong> restent invariables. On raisonne selon le <strong>sens</strong>.</p>",
+      exemples: [
+        { ok: true, texte: "un chou-fleur → des <em>choux-fleurs</em> (nom + nom)" },
+        { ok: true, texte: "un coffre-fort → des <em>coffres-forts</em> (nom + adjectif)" },
+        { ok: true, texte: "un tire-bouchon → des <em>tire-bouchons</em> (verbe invariable + nom)" },
+      ],
+      astuce: "« un porte-monnaie → des porte-monnaie » : on porte de la monnaie (invariable).",
+    },
+    {
+      id: "acc-tel",
+      titre: "L'accord de « tel » et « tel que »",
+      resume: "« tel » s'accorde avec le nom qui suit ; « tel que » avec le nom qui précède.",
+      explication:
+        "<p><strong>Tel</strong> (sans « que ») s'accorde avec le nom qui le <strong>suit</strong> (le terme de comparaison).</p><p><strong>Tel que</strong> s'accorde avec le nom qui le <strong>précède</strong> (son antécédent).</p>",
+      exemples: [
+        { ok: true, texte: "Tel père, tel fils." },
+        { ok: true, texte: "Des bêtes <em>telles que</em> le tigre. (telles ← bêtes, qui précède)" },
+        { ok: true, texte: "Elle bondit, <em>telle</em> une gazelle. (telle ← gazelle, qui suit)" },
+      ],
+      astuce: "« tel quel » s'accorde avec le nom concerné : je les rends tels quels.",
+    },
+    {
+      id: "acc-participe-present",
+      titre: "Participe présent ou adjectif verbal ?",
+      resume: "Le participe présent est invariable ; l'adjectif verbal s'accorde.",
+      explication:
+        "<p>La forme en <strong>-ant</strong> est <strong>invariable</strong> quand c'est un <strong>participe présent</strong> (forme verbale, souvent suivie d'un complément) : « des enfants <em>obéissant</em> à leurs parents ».</p><p>Elle <strong>s'accorde</strong> quand c'est un <strong>adjectif verbal</strong> (elle exprime une qualité) : « des enfants <em>obéissants</em> ».</p>",
+      exemples: [
+        { ok: true, texte: "Des travaux <em>exigeant</em> de la minutie. (participe → invariable)" },
+        { ok: true, texte: "Des travaux <em>exigeants</em>. (adjectif → accord)" },
+        { ok: true, texte: "Orthographe parfois différente : fatig<em>a</em>nt (adj.) / fatig<em>ua</em>nt (participe)." },
+      ],
+      astuce: "Test : si on peut mettre au féminin, c'est l'adjectif (il s'accorde).",
+    },
+    {
+      id: "acc-aucun-nul",
+      titre: "L'accord de « aucun » et « nul »",
+      resume: "Généralement au singulier ; pluriel seulement devant un nom sans singulier.",
+      explication:
+        "<p><em>Aucun, aucune, nul, nulle</em> s'emploient normalement au <strong>singulier</strong> (aucun élève, nulle trace).</p><p>Ils se mettent au <strong>pluriel</strong> uniquement devant un nom qui n'a pas de singulier (aucuns frais, nulles funérailles).</p>",
+      exemples: [
+        { ok: true, texte: "<em>Aucun</em> bruit ne troublait la nuit." },
+        { ok: true, texte: "Il n'a engagé <em>aucuns</em> frais. (« frais » toujours pluriel)" },
+        { ok: false, texte: "<em>aucuns</em> élèves", correction: "aucun élève" },
+      ],
+      astuce: "Par défaut, singulier. Pluriel réservé aux noms toujours pluriels (frais, funérailles…).",
+    },
   ];
 
   LMJ.data.conjugaisonRegles = [

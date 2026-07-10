@@ -654,7 +654,7 @@ button { font-family: inherit; }
   LMJ.util = util;
   LMJ.store = store;
   LMJ.tts = tts;
-  LMJ.VERSION = "v9";
+  LMJ.VERSION = "v10";
 })();
 
 
@@ -877,6 +877,71 @@ button { font-family: inherit; }
         { ok: true, texte: "Elle s'est <em>fait</em> couper les cheveux. (« fait » + infinitif → invariable)" },
       ],
       astuce: "Le COD fait-il l'action de l'infinitif ? Oui → accord ; non → invariable.",
+    },
+    {
+      id: "acc-pluriel-noms",
+      titre: "Le pluriel des noms",
+      resume: "En général +s, mais de nombreuses exceptions (-x, -aux).",
+      explication:
+        "<p>Règle générale : on ajoute un <strong>-s</strong> (un chat → des chats).</p><p>Noms en <strong>-s, -x, -z</strong> : invariables (une voix → des voix). Noms en <strong>-au, -eau, -eu</strong> : <strong>-x</strong> (un tuyau → des tuyaux, un jeu → des jeux). Noms en <strong>-al</strong> : <strong>-aux</strong> (un cheval → des chevaux). Noms en <strong>-ail</strong> : en général <strong>+s</strong> (des détails).</p>",
+      exemples: [
+        { ok: true, texte: "un tableau → des <em>tableaux</em> ; un journal → des <em>journaux</em>" },
+        { ok: true, texte: "une souris → des <em>souris</em> (invariable)" },
+        { ok: false, texte: "des <em>chevals</em>", correction: "des chevaux" },
+      ],
+      astuce: "Les 7 « bijoux » en -x : bijou, caillou, chou, genou, hibou, joujou, pou.",
+    },
+    {
+      id: "acc-noms-composes",
+      titre: "Le pluriel des noms composés",
+      resume: "Seuls les noms et les adjectifs s'accordent ; verbes, adverbes et prépositions restent invariables.",
+      explication:
+        "<p>Dans un nom composé, on ne met au pluriel que les <strong>noms</strong> et les <strong>adjectifs</strong> ; les <strong>verbes, adverbes et prépositions</strong> restent invariables. On raisonne selon le <strong>sens</strong>.</p>",
+      exemples: [
+        { ok: true, texte: "un chou-fleur → des <em>choux-fleurs</em> (nom + nom)" },
+        { ok: true, texte: "un coffre-fort → des <em>coffres-forts</em> (nom + adjectif)" },
+        { ok: true, texte: "un tire-bouchon → des <em>tire-bouchons</em> (verbe invariable + nom)" },
+      ],
+      astuce: "« un porte-monnaie → des porte-monnaie » : on porte de la monnaie (invariable).",
+    },
+    {
+      id: "acc-tel",
+      titre: "L'accord de « tel » et « tel que »",
+      resume: "« tel » s'accorde avec le nom qui suit ; « tel que » avec le nom qui précède.",
+      explication:
+        "<p><strong>Tel</strong> (sans « que ») s'accorde avec le nom qui le <strong>suit</strong> (le terme de comparaison).</p><p><strong>Tel que</strong> s'accorde avec le nom qui le <strong>précède</strong> (son antécédent).</p>",
+      exemples: [
+        { ok: true, texte: "Tel père, tel fils." },
+        { ok: true, texte: "Des bêtes <em>telles que</em> le tigre. (telles ← bêtes, qui précède)" },
+        { ok: true, texte: "Elle bondit, <em>telle</em> une gazelle. (telle ← gazelle, qui suit)" },
+      ],
+      astuce: "« tel quel » s'accorde avec le nom concerné : je les rends tels quels.",
+    },
+    {
+      id: "acc-participe-present",
+      titre: "Participe présent ou adjectif verbal ?",
+      resume: "Le participe présent est invariable ; l'adjectif verbal s'accorde.",
+      explication:
+        "<p>La forme en <strong>-ant</strong> est <strong>invariable</strong> quand c'est un <strong>participe présent</strong> (forme verbale, souvent suivie d'un complément) : « des enfants <em>obéissant</em> à leurs parents ».</p><p>Elle <strong>s'accorde</strong> quand c'est un <strong>adjectif verbal</strong> (elle exprime une qualité) : « des enfants <em>obéissants</em> ».</p>",
+      exemples: [
+        { ok: true, texte: "Des travaux <em>exigeant</em> de la minutie. (participe → invariable)" },
+        { ok: true, texte: "Des travaux <em>exigeants</em>. (adjectif → accord)" },
+        { ok: true, texte: "Orthographe parfois différente : fatig<em>a</em>nt (adj.) / fatig<em>ua</em>nt (participe)." },
+      ],
+      astuce: "Test : si on peut mettre au féminin, c'est l'adjectif (il s'accorde).",
+    },
+    {
+      id: "acc-aucun-nul",
+      titre: "L'accord de « aucun » et « nul »",
+      resume: "Généralement au singulier ; pluriel seulement devant un nom sans singulier.",
+      explication:
+        "<p><em>Aucun, aucune, nul, nulle</em> s'emploient normalement au <strong>singulier</strong> (aucun élève, nulle trace).</p><p>Ils se mettent au <strong>pluriel</strong> uniquement devant un nom qui n'a pas de singulier (aucuns frais, nulles funérailles).</p>",
+      exemples: [
+        { ok: true, texte: "<em>Aucun</em> bruit ne troublait la nuit." },
+        { ok: true, texte: "Il n'a engagé <em>aucuns</em> frais. (« frais » toujours pluriel)" },
+        { ok: false, texte: "<em>aucuns</em> élèves", correction: "aucun élève" },
+      ],
+      astuce: "Par défaut, singulier. Pluriel réservé aux noms toujours pluriels (frais, funérailles…).",
     },
   ];
 
@@ -3315,6 +3380,31 @@ button { font-family: inherit; }
       { q: "« Ils ___ (chanter) demain. »", options: ["chanteront", "chanteraient", "chantèrent"], reponse: 0, n: 1, explication: "Futur, ils → -ront : « chanteront »." },
       { q: "Terminaison du futur à la 1re personne du singulier :", options: ["-rais", "-rai", "-ra"], reponse: 1, n: 2, explication: "Futur je → -rai (sans s)." },
     ],
+
+    /* ---------- Accords : complément ---------- */
+    "acc-pluriel-noms": [
+      { q: "un journal → des ___.", options: ["journals", "journaux", "journeaux"], reponse: 1, n: 1, explication: "-al → -aux." },
+      { q: "un genou → des ___.", options: ["genous", "genoux", "genouds"], reponse: 1, n: 2, explication: "Exception en -x (bijou, caillou, chou, genou, hibou, joujou, pou)." },
+      { q: "un détail → des ___.", options: ["détaux", "détails", "détailles"], reponse: 1, n: 3, explication: "« détail » suit la règle générale (+s), contrairement à travail → travaux." },
+    ],
+    "acc-noms-composes": [
+      { q: "un chou-fleur → des ___.", options: ["chou-fleurs", "choux-fleurs", "choux-fleur"], reponse: 1, n: 2, explication: "Nom + nom → les deux s'accordent." },
+      { q: "un tire-bouchon → des ___.", options: ["tires-bouchons", "tire-bouchons", "tire-bouchon"], reponse: 1, n: 2, explication: "Verbe (invariable) + nom → « tire-bouchons »." },
+      { q: "un porte-monnaie → des ___.", options: ["portes-monnaies", "porte-monnaie", "porte-monnaies"], reponse: 1, n: 3, explication: "Verbe invariable + « monnaie » (concept) → invariable." },
+    ],
+    "acc-tel": [
+      { q: "Des arbres ___ que le chêne.", options: ["tel", "tels", "telles"], reponse: 1, n: 2, explication: "« tel que » s'accorde avec « arbres » (masc. pl.) qui précède." },
+      { q: "Elle bondit, ___ une gazelle.", options: ["telle", "tel", "tels"], reponse: 0, n: 3, explication: "« tel » (sans que) s'accorde avec « gazelle » qui suit → telle." },
+    ],
+    "acc-participe-present": [
+      { q: "Des enfants ___ à leurs parents. (qui obéissent)", options: ["obéissants", "obéissant", "obéissent"], reponse: 1, n: 3, explication: "Participe présent (+ complément) → invariable." },
+      { q: "Des élèves ___. (dociles)", options: ["obéissant", "obéissants", "obéissent"], reponse: 1, n: 2, explication: "Adjectif verbal (qualité) → accord." },
+      { q: "Adjectif verbal de « fatiguer » :", options: ["fatiguant", "fatigant", "fatigants"], reponse: 1, n: 2, explication: "Adjectif : « fatigant » (le participe présent est « fatiguant »)." },
+    ],
+    "acc-aucun-nul": [
+      { q: "___ élève n'était absent.", options: ["Aucuns", "Aucun", "Aucune"], reponse: 1, n: 1, explication: "Singulier par défaut → « aucun »." },
+      { q: "Il n'a engagé ___ frais.", options: ["aucun", "aucuns", "aucune"], reponse: 1, n: 3, explication: "« frais » n'a pas de singulier → « aucuns »." },
+    ],
   };
 })();
 
@@ -3365,6 +3455,17 @@ button { font-family: inherit; }
       "<p>D'après la Banque de dépannage linguistique :</p><ul><li><strong>Invariable</strong> en tête de phrase (« Ci-joint la copie ») ou devant un nom sans déterminant (« Vous trouverez ci-joint copie du contrat »).</li><li><strong>Accord obligatoire</strong> après le nom (« les pièces ci-jointes »).</li><li><strong>Au choix</strong> devant un nom précédé d'un déterminant (« ci-joint » ou « ci-jointes les deux copies »).</li></ul>",
     "acc-pp-infinitif":
       "<p>Le participe passé suivi d'un infinitif s'accorde avec le COD antéposé <strong>seulement si ce COD fait l'action</strong> de l'infinitif :</p><ul><li>« les cantatrices que j'ai <em>entendues</em> chanter » (elles chantent → accord) ;</li><li>« les airs que j'ai <em>entendu</em> chanter » (les airs sont chantés → invariable).</li></ul><p>Le participe <strong>fait</strong> + infinitif est <strong>toujours invariable</strong> (« Elle s'est <em>fait</em> couper les cheveux »). Depuis 1990, <strong>laissé</strong> + infinitif l'est aussi (« Elle s'est <em>laissé</em> convaincre »).</p>",
+
+    "acc-pluriel-noms":
+      "<p><strong>Noms en -au, -eau, -eu → -x</strong> (des tuyaux, des cadeaux, des feux), sauf <em>landau, sarrau</em> (→ -aus) et <em>bleu, pneu, émeu</em> (→ -eus).</p><p><strong>Noms en -ou → -s</strong>, sauf sept qui prennent -x : <em>bijou, caillou, chou, genou, hibou, joujou, pou</em>.</p><p><strong>Noms en -al → -aux</strong> (chevaux, journaux), sauf <em>bal, carnaval, chacal, festival, récital, régal</em> (→ -als).</p><p><strong>Noms en -ail → -s</strong> (des détails, des rails), sauf sept qui font -aux : <em>bail, corail, émail, soupirail, travail, vantail, vitrail</em>.</p>",
+    "acc-noms-composes":
+      "<p>On met au pluriel <strong>uniquement les noms et les adjectifs</strong> ; verbes, adverbes et prépositions restent invariables. On raisonne selon le sens.</p><ul><li><strong>Nom + nom / nom + adjectif</strong> : les deux s'accordent — des choux-fleurs, des coffres-forts, des grands-pères.</li><li><strong>Verbe + nom</strong> : le verbe est invariable ; le nom s'accorde ou non selon le sens — des tire-bouchons, mais un/des porte-monnaie (on porte de la monnaie).</li><li><strong>Mot invariable + nom</strong> : seul le nom peut s'accorder — des arrière-boutiques, des haut-parleurs (« haut » = adverbe, invariable).</li></ul>",
+    "acc-tel":
+      "<p><strong>Tel</strong> (comparaison, sans « que ») s'accorde avec le nom qui <strong>suit</strong> : « Ils fondirent <em>tels</em> des aigles » ; « <em>Telle</em> une reine, elle avança ».</p><p><strong>Tel que</strong> s'accorde avec le nom <strong>antécédent</strong> qui précède : « des fauves <em>tels que</em> le tigre ».</p><p><strong>Tel quel</strong> (= sans changement) s'accorde avec le nom auquel il se rapporte : « Je rends les documents <em>tels quels</em>. »</p>",
+    "acc-participe-present":
+      "<p><strong>Test :</strong> mettez la forme au féminin. Si c'est possible, c'est un <strong>adjectif verbal</strong> (il s'accorde) ; sinon, c'est un <strong>participe présent</strong> (invariable). Le participe accepte souvent un complément ou la négation.</p><p><strong>Orthographes différentes</strong> (adjectif / participe) : fatigant / fatiguant, précédent / précédant, différent / différant, négligent / négligeant, convaincant / convainquant, provocant / provoquant, navigant / naviguant, adhérent / adhérant, influent / influant.</p>",
+    "acc-aucun-nul":
+      "<p><em>Aucun(e)</em> et <em>nul(le)</em> se mettent au <strong>pluriel</strong> uniquement devant un nom qui n'a pas de singulier : <em>aucuns frais, aucunes funérailles, nulles fiançailles</em>.</p><p>« Nul » est aussi un adjectif qualificatif variable au sens de « sans valeur » (des résultats <em>nuls</em>) et un pronom (« <em>nul</em> n'est parfait »).</p>",
 
     /* ---------- CONJUGAISON ---------- */
     "conj-er-ou-e":
