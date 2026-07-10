@@ -250,5 +250,50 @@
       ],
       astuce: "« -nu- » comme « nuage » : obnubiler.",
     },
+    {
+      id: "mu-infarctus",
+      titre: "« infractus »",
+      resume: "Le mot correct est « infarctus ».",
+      explication:
+        "<p>« Infarctus » vient du latin <em>infarctus</em> (« farci, rempli »), à rapprocher de « farci ». La confusion avec « fracture » (comme si le cœur se brisait) donne à tort « infractus ».</p>",
+      exemples: [
+        { ok: false, texte: "Il a fait un infractus.", correction: "Il a fait un infarctus." },
+      ],
+      astuce: "Pensez à « farci » : infar-ctus, pas « infra- ».",
+    },
+    {
+      id: "mu-digression",
+      titre: "« disgression »",
+      resume: "Le mot correct est « digression ».",
+      explication:
+        "<p>« Digression » vient du latin <em>digressio</em> (« action de s'éloigner »), sans <strong>s</strong> après le <strong>di-</strong>. La confusion avec des mots en « dis- » (disjoindre, discontinuer) donne à tort « disgression ».</p>",
+      exemples: [
+        { ok: false, texte: "Faire une disgression.", correction: "Faire une digression." },
+      ],
+      astuce: "« di- » (s'éloigner), pas « dis- » : digression.",
+    },
+    {
+      id: "mu-solutionner",
+      titre: "« solutionner »",
+      resume: "L'Académie française préconise « résoudre ».",
+      explication:
+        "<p>« Solutionner » n'est pas à proprement parler fautif (il est formé régulièrement sur « solution »), mais l'<strong>Académie française</strong> le juge lourd et recommande <strong>résoudre</strong> à la place.</p>",
+      exemples: [
+        { ok: false, texte: "Il va solutionner le problème.", correction: "Il va résoudre le problème." },
+        { ok: false, texte: "Solutionner une énigme.", correction: "Résoudre une énigme." },
+      ],
+      astuce: "Préférez toujours « résoudre » : plus court et recommandé par l'Académie.",
+    },
+    {
+      id: "mu-au-temps-pour-moi",
+      titre: "« au temps pour moi » / « autant pour moi »",
+      resume: "L'Académie française retient « au temps pour moi ».",
+      explication:
+        "<p>Expression d'origine militaire : « au temps » signifiait reprendre un mouvement depuis le début après une erreur. L'<strong>Académie française</strong> retient cette orthographe conforme à l'étymologie, même si « autant pour moi » est devenu très courant.</p>",
+      exemples: [
+        { ok: true, texte: "Au temps pour moi, je me suis trompé." },
+      ],
+      astuce: "Pour admettre une erreur, l'Académie recommande « au temps pour moi ».",
+    },
   ];
 })();

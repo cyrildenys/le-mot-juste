@@ -639,5 +639,19 @@
       { q: "Quel signe annonce une explication ou une énumération ?", options: ["la virgule", "les deux-points", "le point-virgule"], reponse: 1, n: 1, explication: "Les deux-points annoncent une explication/citation/énumération." },
       { q: "Le point-virgule sert à…", options: ["terminer une phrase", "relier deux idées proches", "séparer des chiffres"], reponse: 1, n: 2, explication: "Il relie deux propositions complètes et liées par le sens." },
     ],
+
+    /* ---------- Mauvais usages : complément (vague 2) ---------- */
+    "mu-infarctus": [
+      { q: "Orthographe correcte :", options: ["infractus", "infarctus", "infartus"], reponse: 1, n: 1, explication: "Vient de « farci » → « infarctus »." },
+    ],
+    "mu-digression": [
+      { q: "Orthographe correcte :", options: ["disgression", "digression", "distgression"], reponse: 1, n: 2, explication: "« di- » (s'éloigner) sans s → « digression »." },
+    ],
+    "mu-solutionner": [
+      { q: "L'Académie française recommande :", options: ["Solutionner le problème.", "Résoudre le problème.", "Solutionner problème."], reponse: 1, n: 2, explication: "« résoudre » est préféré à « solutionner »." },
+    ],
+    "mu-au-temps-pour-moi": [
+      { q: "Forme retenue par l'Académie française :", options: ["Autant pour moi.", "Au temps pour moi.", "Autant que pour moi."], reponse: 1, n: 3, explication: "Conforme à l'étymologie militaire (« au temps »)." },
+    ],
   };
 })();
