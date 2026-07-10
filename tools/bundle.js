@@ -15,7 +15,7 @@ const SCRIPTS = [
   "js/core.js",
   "data/regles.js", "data/confusions.js", "data/mauvais-usages.js",
   "data/nuances.js", "data/grammaire.js", "data/mots.js",
-  "data/verbes.js", "data/dictees.js", "data/quiz.js",
+  "data/verbes.js", "data/dictees.js", "data/quiz.js", "data/approfondissements.js",
   "js/conjugueur.js", "js/view-regles.js", "js/view-motdujour.js",
   "js/view-dictee.js", "js/app.js",
 ];

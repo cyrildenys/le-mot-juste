@@ -150,6 +150,13 @@
       root.appendChild(el("div", { class: "cours-lead", style: { marginTop: "10px" }, text: shortText(item, type) }));
       root.appendChild(detailBody(item, type));
 
+      // Section « Pour aller plus loin » (contenu approfondi, si disponible)
+      const approf = LMJ.data.approf && LMJ.data.approf[item.id];
+      if (approf) {
+        root.appendChild(el("div", { class: "cours-section-lbl", text: "Pour aller plus loin" }));
+        root.appendChild(el("div", { class: "cours-body", html: approf }));
+      }
+
       const pool = quizPool(item);
       if (pool.length) {
         const n = pool.length >= 10 ? 10 : pool.length;
