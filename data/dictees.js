@@ -89,6 +89,18 @@
       id: "e6", niveau: "expert", titre: "Le procès",
       texte: "Quoi qu'il eût plaidé, l'avocat ne parvint pas à convaincre les jurés que son client fût innocent. Les preuves qu'on avait recueillies l'accablaient. Bien qu'il s'en défendît, chacun pressentait que la sentence serait sévère.",
     },
+    {
+      id: "f7", niveau: "facile", titre: "Le marché du samedi",
+      texte: "Chaque samedi, mes parents vont au marché du village. Ils achètent des légumes frais et du pain chaud. Je les accompagne parfois avec mon petit frère. Nous rentrons toujours les bras chargés.",
+    },
+    {
+      id: "i7", niveau: "intermediaire", titre: "La panne",
+      texte: "La voiture qu'ils avaient louée tomba en panne au milieu de la route. Ils durent attendre, sous une pluie battante, l'arrivée d'un dépanneur. Personne n'avait emporté de parapluie ce jour-là. Malgré tout, ils gardèrent leur bonne humeur.",
+    },
+    {
+      id: "e7", niveau: "expert", titre: "La lettre retrouvée",
+      texte: "Il eût fallu qu'elle détruisît cette lettre avant que quiconque ne la découvrît. Les mots qu'elle y avait tracés, jadis pleins d'espérance, semblaient désormais dérisoires. Elle se demanda longtemps si elle eût agi autrement, connaissant ce qu'elle savait à présent.",
+    },
   ];
 
   LMJ.data.dicteeNiveaux = [
