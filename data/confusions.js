@@ -306,5 +306,124 @@
       ],
       astuce: "« d'en » = « de + en » : souvent devant un infinitif (d'en rire, d'en sortir).",
     },
+    {
+      id: "conf-mes-mais",
+      titre: "mes / mais / met / mets",
+      entrees: [
+        { mot: "mes", nature: "déterminant possessif pluriel", sens: "= les miens, les miennes", exemple: "Mes amis arrivent." },
+        { mot: "mais", nature: "conjonction", sens: "marque l'opposition", exemple: "Il pleut mais je sors." },
+        { mot: "met / mets", nature: "verbe mettre", sens: "il met ; tu mets ; un mets (nom : un plat)", exemple: "Il met la table. Un mets raffiné." },
+      ],
+      astuce: "« mais » s'oppose (= cependant) ; « mes » précède toujours un nom pluriel.",
+    },
+    {
+      id: "conf-cet-sept",
+      titre: "cet / cette / sept",
+      entrees: [
+        { mot: "cet", nature: "déterminant démonstratif", sens: "devant un nom masculin singulier (voyelle/h muet)", exemple: "Cet arbre est grand." },
+        { mot: "cette", nature: "déterminant démonstratif féminin", sens: "devant un nom féminin singulier", exemple: "Cette maison est belle." },
+        { mot: "sept", nature: "adjectif numéral", sens: "le nombre 7", exemple: "Sept jours dans la semaine." },
+      ],
+      astuce: "« sept » est un nombre (invariable) ; « cet/cette » désignent (= celui-ci/celle-ci).",
+    },
+    {
+      id: "conf-foi-fois-foie",
+      titre: "foi / fois / foie",
+      entrees: [
+        { mot: "foi", nature: "nom féminin", sens: "la confiance, la croyance", exemple: "Avoir foi en quelqu'un." },
+        { mot: "fois", nature: "nom féminin", sens: "marque la répétition, l'occurrence", exemple: "Une fois, deux fois…" },
+        { mot: "foie", nature: "nom masculin", sens: "l'organe du corps", exemple: "Le foie filtre le sang." },
+      ],
+      astuce: "« foie » (organe) est masculin ; « foi » et « fois » sont féminins.",
+    },
+    {
+      id: "conf-cour-cours-court",
+      titre: "cour / cours / court",
+      entrees: [
+        { mot: "cour", nature: "nom féminin", sens: "espace extérieur, tribunal, entourage royal", exemple: "Jouer dans la cour de récréation." },
+        { mot: "cours", nature: "nom masculin / verbe courir", sens: "une leçon, un trajet ; ou « je cours »", exemple: "Un cours de français. Je cours vite." },
+        { mot: "court", nature: "adjectif / verbe courir", sens: "peu long ; ou « il court »", exemple: "Un texte court. Il court dans le parc." },
+      ],
+      astuce: "« court » est aussi un adjectif (contraire de long) ; « cours » ne l'est jamais.",
+    },
+    {
+      id: "conf-mere-maire-mer",
+      titre: "mère / maire / mer",
+      entrees: [
+        { mot: "mère", nature: "nom féminin", sens: "la maman", exemple: "Ma mère m'attend." },
+        { mot: "maire", nature: "nom masculin/féminin", sens: "premier élu d'une commune", exemple: "Le maire de la ville." },
+        { mot: "mer", nature: "nom féminin", sens: "l'étendue d'eau salée", exemple: "Se baigner dans la mer." },
+      ],
+      astuce: "« mère » et « maire » ont un accent circonflexe ou non selon leur sens précis ; « mer » n'en a jamais.",
+    },
+    {
+      id: "conf-vert-vers-ver-verre",
+      titre: "vert / vers / ver / verre",
+      entrees: [
+        { mot: "vert", nature: "adjectif", sens: "la couleur", exemple: "Une pomme verte." },
+        { mot: "vers", nature: "préposition / nom", sens: "en direction de ; ou une ligne de poème", exemple: "Il va vers la sortie. Un vers de Victor Hugo." },
+        { mot: "ver", nature: "nom masculin", sens: "le petit animal (ver de terre)", exemple: "Un ver de terre." },
+        { mot: "verre", nature: "nom masculin", sens: "la matière ou le récipient", exemple: "Un verre d'eau." },
+      ],
+      astuce: "Quatre mots, quatre sens : couleur (vert), direction (vers), animal (ver), objet (verre).",
+    },
+    {
+      id: "conf-sain-sein-saint",
+      titre: "sain / sein / saint",
+      entrees: [
+        { mot: "sain", nature: "adjectif", sens: "en bonne santé", exemple: "Un corps sain." },
+        { mot: "sein", nature: "nom masculin", sens: "la poitrine ; « au sein de » = à l'intérieur de", exemple: "Au sein de l'entreprise." },
+        { mot: "saint", nature: "adjectif / nom", sens: "sacré, vénéré par l'Église", exemple: "Un saint patron." },
+      ],
+      astuce: "« au sein de » = au milieu de, à l'intérieur de.",
+    },
+    {
+      id: "conf-compte-comte-conte",
+      titre: "compte / comte / conte",
+      entrees: [
+        { mot: "compte", nature: "nom masculin / verbe compter", sens: "calcul, montant ; ou « il compte »", exemple: "Ouvrir un compte. Il compte les points." },
+        { mot: "comte", nature: "nom masculin", sens: "titre de noblesse", exemple: "Le comte et la comtesse." },
+        { mot: "conte", nature: "nom masculin / verbe conter", sens: "récit merveilleux ; ou « il conte »", exemple: "Un conte de fées." },
+      ],
+      astuce: "« conte » se raconte (une histoire) ; « compte » se calcule.",
+    },
+    {
+      id: "conf-tant-temps-ten",
+      titre: "tant / temps / t'en",
+      entrees: [
+        { mot: "tant", nature: "adverbe de quantité", sens: "= tellement", exemple: "Il a tant travaillé." },
+        { mot: "temps", nature: "nom masculin", sens: "la durée, la météo", exemple: "Le temps passe vite." },
+        { mot: "t'en", nature: "te + en", sens: "pronom devant un verbe", exemple: "Tu t'en souviens ?" },
+      ],
+      astuce: "« temps » se rapporte toujours à la durée ou à la météo ; « tant » précise une quantité.",
+    },
+    {
+      id: "conf-dessein-dessin",
+      titre: "dessein / dessin",
+      entrees: [
+        { mot: "dessein", nature: "nom masculin", sens: "un projet, une intention", exemple: "Il nourrissait de sombres desseins." },
+        { mot: "dessin", nature: "nom masculin", sens: "une image tracée", exemple: "Faire un dessin au crayon." },
+      ],
+      astuce: "« dessein » (avec e) = intention ; « dessin » (avec i) = image, comme « dessiner ».",
+    },
+    {
+      id: "conf-chair-chaire-cher",
+      titre: "chair / chaire / cher",
+      entrees: [
+        { mot: "chair", nature: "nom féminin", sens: "la matière du corps ; la pulpe d'un fruit", exemple: "La chair du fruit est juteuse." },
+        { mot: "chaire", nature: "nom féminin", sens: "tribune d'un professeur ou d'un prêtre", exemple: "Le prêtre monte en chaire." },
+        { mot: "cher / chère", nature: "adjectif", sens: "coûteux, ou affectueux (cher ami)", exemple: "Un objet cher. Mon cher ami." },
+      ],
+      astuce: "« chaire » (avec un e) est un meuble/tribune ; « chair » est la matière du corps.",
+    },
+    {
+      id: "conf-resonner-raisonner",
+      titre: "résonner / raisonner",
+      entrees: [
+        { mot: "résonner", nature: "verbe", sens: "produire un son qui se prolonge, faire écho", exemple: "Ses pas résonnaient dans le couloir." },
+        { mot: "raisonner", nature: "verbe", sens: "penser logiquement, argumenter", exemple: "Il faut raisonner avant d'agir." },
+      ],
+      astuce: "« résonner » = un son (comme « sonner ») ; « raisonner » = la pensée (comme « raison »).",
+    },
   ];
 })();

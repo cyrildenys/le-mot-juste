@@ -556,5 +556,61 @@
       { q: "Ces voitures sont ___.", options: ["cher", "chères", "chèrent"], reponse: 1, n: 2, explication: "« chères » est ici attribut du sujet (adjectif) → accord." },
       { q: "Ces voitures ___ cher.", options: ["coûtent", "coûtes", "coûtons"], reponse: 0, n: 2, explication: "« cher » reste invariable, modifie le verbe « coûtent »." },
     ],
+
+    /* ---------- Confusions : complément (vague 6) ---------- */
+    "conf-mes-mais": [
+      { q: "___ amis arrivent demain.", options: ["Mais", "Mes", "Met"], reponse: 1, n: 1, explication: "Déterminant possessif devant un nom pluriel → « mes »." },
+      { q: "Il pleut ___ je sors quand même.", options: ["mes", "mais", "met"], reponse: 1, n: 1, explication: "Opposition → « mais »." },
+      { q: "Un ___ raffiné.", options: ["mais", "mes", "mets"], reponse: 2, n: 2, explication: "Un plat → « mets » (nom)." },
+    ],
+    "conf-cet-sept": [
+      { q: "___ arbre est immense.", options: ["Cette", "Cet", "Sept"], reponse: 1, n: 1, explication: "Masculin singulier devant voyelle → « cet »." },
+      { q: "Il y a ___ jours dans la semaine.", options: ["cet", "cette", "sept"], reponse: 2, n: 1, explication: "Le nombre 7 → « sept »." },
+    ],
+    "conf-foi-fois-foie": [
+      { q: "Une ___, il neigea en été.", options: ["foi", "fois", "foie"], reponse: 1, n: 1, explication: "Occurrence → « fois »." },
+      { q: "Le ___ filtre le sang.", options: ["foi", "fois", "foie"], reponse: 2, n: 2, explication: "L'organe → « foie » (masculin)." },
+      { q: "Avoir ___ en quelqu'un.", options: ["foie", "fois", "foi"], reponse: 2, n: 2, explication: "La confiance → « foi »." },
+    ],
+    "conf-cour-cours-court": [
+      { q: "Les enfants jouent dans la ___.", options: ["cours", "cour", "court"], reponse: 1, n: 1, explication: "Espace extérieur → « cour »." },
+      { q: "Un texte ___.", options: ["cour", "cours", "court"], reponse: 2, n: 2, explication: "Adjectif (peu long) → « court »." },
+      { q: "Je ___ tous les matins.", options: ["cour", "cours", "court"], reponse: 1, n: 2, explication: "Verbe courir, je → « cours »." },
+    ],
+    "conf-mere-maire-mer": [
+      { q: "Ma ___ m'attend à la maison.", options: ["mer", "mère", "maire"], reponse: 1, n: 1, explication: "La maman → « mère »." },
+      { q: "Le ___ inaugure la mairie.", options: ["mère", "mer", "maire"], reponse: 2, n: 1, explication: "Premier élu de la commune → « maire »." },
+    ],
+    "conf-vert-vers-ver-verre": [
+      { q: "Un pull ___.", options: ["vers", "vert", "verre"], reponse: 1, n: 1, explication: "La couleur → « vert »." },
+      { q: "Il marche ___ la sortie.", options: ["vert", "vers", "ver"], reponse: 1, n: 1, explication: "En direction de → « vers »." },
+      { q: "Un ___ d'eau.", options: ["vert", "vers", "verre"], reponse: 2, n: 2, explication: "Le récipient → « verre »." },
+    ],
+    "conf-sain-sein-saint": [
+      { q: "Un mode de vie ___.", options: ["sein", "sain", "saint"], reponse: 1, n: 1, explication: "En bonne santé → « sain »." },
+      { q: "Au ___ de l'entreprise.", options: ["sain", "sein", "saint"], reponse: 1, n: 2, explication: "= à l'intérieur de → « sein »." },
+    ],
+    "conf-compte-comte-conte": [
+      { q: "Il ___ les points.", options: ["comte", "compte", "conte"], reponse: 1, n: 1, explication: "Verbe compter, il → « compte »." },
+      { q: "Un ___ de fées.", options: ["compte", "comte", "conte"], reponse: 2, n: 1, explication: "Un récit merveilleux → « conte »." },
+      { q: "Le ___ et la comtesse.", options: ["conte", "compte", "comte"], reponse: 2, n: 2, explication: "Titre de noblesse → « comte »." },
+    ],
+    "conf-tant-temps-ten": [
+      { q: "Il a ___ travaillé.", options: ["temps", "tant", "t'en"], reponse: 1, n: 1, explication: "= tellement → « tant »." },
+      { q: "Le ___ passe vite.", options: ["tant", "temps", "t'en"], reponse: 1, n: 1, explication: "La durée → « temps »." },
+      { q: "Tu ___ souviens ?", options: ["tant", "temps", "t'en"], reponse: 2, n: 2, explication: "« te + en » devant le verbe → « t'en »." },
+    ],
+    "conf-dessein-dessin": [
+      { q: "Il nourrissait de sombres ___.", options: ["dessins", "desseins", "dessains"], reponse: 1, n: 2, explication: "Des intentions → « desseins »." },
+      { q: "Faire un ___ au crayon.", options: ["dessein", "dessin", "dessain"], reponse: 1, n: 1, explication: "Une image tracée → « dessin »." },
+    ],
+    "conf-chair-chaire-cher": [
+      { q: "Le prêtre monte en ___.", options: ["chair", "chaire", "cher"], reponse: 1, n: 2, explication: "Tribune → « chaire »." },
+      { q: "La ___ du fruit est juteuse.", options: ["chaire", "chair", "cher"], reponse: 1, n: 2, explication: "La pulpe/matière → « chair »." },
+    ],
+    "conf-resonner-raisonner": [
+      { q: "Ses pas ___ dans le couloir.", options: ["raisonnaient", "résonnaient", "résonnait"], reponse: 1, n: 2, explication: "Le son qui se prolonge → « résonner »." },
+      { q: "Il faut ___ avant d'agir.", options: ["résonner", "raisonner", "résonnez"], reponse: 1, n: 2, explication: "Penser logiquement → « raisonner »." },
+    ],
   };
 })();
