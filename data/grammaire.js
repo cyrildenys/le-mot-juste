@@ -226,5 +226,78 @@
       ],
       astuce: "Formes irrégulières : bon → meilleur ; mauvais → pire ; bien → mieux.",
     },
+    {
+      id: "gr-nom",
+      titre: "Le nom",
+      resume: "Commun ou propre ; concret ou abstrait ; a un genre et un nombre.",
+      explication:
+        "<p>Le <strong>nom commun</strong> désigne une catégorie d'êtres ou de choses (un chat, une table) ; le <strong>nom propre</strong> désigne un être ou un lieu unique, avec une majuscule (Paris, Léa).</p><p>Un nom peut être <strong>concret</strong> (perceptible : une chaise) ou <strong>abstrait</strong> (une idée : la liberté). Il possède toujours un <strong>genre</strong> (masculin/féminin) et un <strong>nombre</strong> (singulier/pluriel), qu'il transmet à ses déterminants et adjectifs.</p>",
+      exemples: [
+        { ok: true, texte: "Paris (propre) ; la ville (commun)." },
+        { ok: true, texte: "un stylo (concret) ; le courage (abstrait)." },
+      ],
+      astuce: "Le nom propre garde sa majuscule même au milieu d'une phrase.",
+    },
+    {
+      id: "gr-pronoms-demonstratifs-possessifs",
+      titre: "Pronoms démonstratifs et possessifs",
+      resume: "Démonstratifs : celui, celle… Possessifs : le mien, la tienne…",
+      explication:
+        "<p>Le <strong>pronom démonstratif</strong> remplace un nom en le montrant : <em>celui, celle, ceux, celles, ceci, cela, ça, celui-ci, celle-là…</em></p><p>Le <strong>pronom possessif</strong> remplace un nom en indiquant l'appartenance : <em>le mien, la tienne, les siens, le nôtre, la vôtre, les leurs…</em></p>",
+      exemples: [
+        { ok: true, texte: "Ce livre-ci ou <em>celui-là</em> ? (démonstratif)" },
+        { ok: true, texte: "Ta valise est plus lourde que <em>la mienne</em>. (possessif)" },
+      ],
+      astuce: "Ne confondez pas avec les déterminants correspondants (ce livre / mon livre), qui accompagnent un nom au lieu de le remplacer.",
+    },
+    {
+      id: "gr-subordonnee-completive",
+      titre: "La subordonnée conjonctive complétive",
+      resume: "Introduite par « que », elle est COD du verbe de la principale.",
+      explication:
+        "<p>La <strong>complétive</strong> est une subordonnée introduite par <strong>« que »</strong> (ou une autre conjonction) qui complète le verbe de la principale, le plus souvent comme <strong>COD</strong>.</p><p>Elle diffère de la relative : elle n'a pas d'antécédent et « que » n'y a pas de fonction propre (il n'est qu'un mot introducteur).</p>",
+      exemples: [
+        { ok: true, texte: "Je pense <em>que tu as raison</em>. (COD de « pense »)" },
+        { ok: true, texte: "Il souhaite <em>que nous venions</em>." },
+      ],
+      astuce: "Si l'on peut remplacer la subordonnée par « cela » (je pense cela), c'est une complétive COD.",
+    },
+    {
+      id: "gr-subordonnees-circonstancielles",
+      titre: "Les subordonnées circonstancielles",
+      resume: "Elles précisent temps, cause, conséquence, but, condition, concession…",
+      explication:
+        "<p>Ces subordonnées jouent le rôle d'un <strong>complément circonstanciel</strong> pour toute la principale. Elles sont introduites par une conjonction de subordination selon leur sens :</p><ul><li><strong>Temps</strong> : quand, lorsque, dès que, avant que…</li><li><strong>Cause</strong> : parce que, puisque, comme…</li><li><strong>Conséquence</strong> : si bien que, de sorte que…</li><li><strong>But</strong> : pour que, afin que…</li><li><strong>Condition</strong> : si, à condition que…</li><li><strong>Concession/opposition</strong> : bien que, quoique, alors que…</li></ul>",
+      exemples: [
+        { ok: true, texte: "Il sortit <em>dès qu'il eut fini</em>. (temps)" },
+        { ok: true, texte: "Elle réussit <em>parce qu'elle avait travaillé</em>. (cause)" },
+        { ok: true, texte: "<em>Bien qu'il pleuve</em>, nous sortons. (concession)" },
+      ],
+      astuce: "Le sens de la conjonction indique directement le type de circonstance exprimée.",
+    },
+    {
+      id: "gr-discours-direct-indirect",
+      titre: "Discours direct et discours indirect",
+      resume: "Direct : on cite les paroles ; indirect : on les rapporte dans une subordonnée.",
+      explication:
+        "<p>Le <strong>discours direct</strong> rapporte les paroles telles quelles, entre guillemets, avec un verbe introducteur : « Il a dit : \"Je viendrai\" ».</p><p>Le <strong>discours indirect</strong> les intègre dans une subordonnée complétive, sans guillemets : « Il a dit qu'il viendrait ». Cela entraîne des changements de pronoms, de temps et d'indicateurs de temps/lieu (aujourd'hui → ce jour-là, ici → là).</p>",
+      exemples: [
+        { ok: true, texte: "Direct : Elle a demandé : « Que fais-tu ? »" },
+        { ok: true, texte: "Indirect : Elle a demandé ce que je faisais." },
+      ],
+      astuce: "Au discours indirect, l'interrogation directe disparaît (pas de point d'interrogation, pas d'inversion).",
+    },
+    {
+      id: "gr-ponctuation",
+      titre: "La ponctuation",
+      resume: "Point, virgule, point-virgule, deux-points… structurent la phrase et le sens.",
+      explication:
+        "<p>Le <strong>point</strong> termine une phrase déclarative ; le <strong>point d'interrogation</strong> et le <strong>point d'exclamation</strong> terminent respectivement une phrase interrogative et exclamative.</p><p>La <strong>virgule</strong> sépare des éléments de même fonction ou détache un groupe ; le <strong>point-virgule</strong> relie deux propositions proches par le sens ; les <strong>deux-points</strong> annoncent une explication, une citation ou une énumération.</p>",
+      exemples: [
+        { ok: true, texte: "Il aime les pommes, les poires et les prunes. (virgules d'énumération)" },
+        { ok: true, texte: "Elle est fatiguée : elle n'a pas dormi. (deux-points = explication)" },
+      ],
+      astuce: "Le point-virgule relie deux idées complètes et liées, sans les subordonner l'une à l'autre.",
+    },
   ];
 })();

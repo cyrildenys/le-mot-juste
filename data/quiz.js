@@ -612,5 +612,32 @@
       { q: "Ses pas ___ dans le couloir.", options: ["raisonnaient", "résonnaient", "résonnait"], reponse: 1, n: 2, explication: "Le son qui se prolonge → « résonner »." },
       { q: "Il faut ___ avant d'agir.", options: ["résonner", "raisonner", "résonnez"], reponse: 1, n: 2, explication: "Penser logiquement → « raisonner »." },
     ],
+
+    /* ---------- Grammaire : complément (vague 2) ---------- */
+    "gr-nom": [
+      { q: "« Paris » est un nom…", options: ["commun", "propre", "abstrait"], reponse: 1, n: 1, explication: "Désigne un lieu unique, majuscule → nom propre." },
+      { q: "« le courage » est un nom…", options: ["concret", "abstrait", "propre"], reponse: 1, n: 2, explication: "Une idée, non perceptible → nom abstrait." },
+    ],
+    "gr-pronoms-demonstratifs-possessifs": [
+      { q: "« Ta valise est plus lourde que la mienne. » « la mienne » est un pronom…", options: ["démonstratif", "possessif", "personnel"], reponse: 1, n: 2, explication: "Indique l'appartenance → pronom possessif." },
+      { q: "« Prends celui-ci. » « celui-ci » est un pronom…", options: ["possessif", "démonstratif", "personnel"], reponse: 1, n: 1, explication: "Montre → pronom démonstratif." },
+    ],
+    "gr-subordonnee-completive": [
+      { q: "« Je pense que tu as raison. » La subordonnée est…", options: ["une relative", "une complétive", "une circonstancielle"], reponse: 1, n: 2, explication: "COD du verbe « pense », sans antécédent → complétive." },
+      { q: "On peut remplacer une complétive par…", options: ["« cela »", "un adjectif", "rien, jamais"], reponse: 0, n: 2, explication: "« Je pense cela » → confirme le rôle de COD." },
+    ],
+    "gr-subordonnees-circonstancielles": [
+      { q: "« Bien qu'il pleuve, nous sortons. » exprime…", options: ["la cause", "la concession", "le but"], reponse: 1, n: 2, explication: "« bien que » → opposition/concession." },
+      { q: "« Il sortit dès qu'il eut fini. » exprime…", options: ["le temps", "la conséquence", "la condition"], reponse: 0, n: 2, explication: "« dès que » → circonstancielle de temps." },
+      { q: "« Parce qu'il pleuvait » exprime…", options: ["la conséquence", "la cause", "le but"], reponse: 1, n: 1, explication: "« parce que » → cause." },
+    ],
+    "gr-discours-direct-indirect": [
+      { q: "« Il a dit : \"Je viendrai.\" » est au discours…", options: ["indirect", "direct", "complétif"], reponse: 1, n: 1, explication: "Guillemets, paroles exactes → discours direct." },
+      { q: "« Il a dit qu'il viendrait. » est au discours…", options: ["direct", "indirect", "complétif"], reponse: 1, n: 2, explication: "Intégré dans une subordonnée, sans guillemets → discours indirect." },
+    ],
+    "gr-ponctuation": [
+      { q: "Quel signe annonce une explication ou une énumération ?", options: ["la virgule", "les deux-points", "le point-virgule"], reponse: 1, n: 1, explication: "Les deux-points annoncent une explication/citation/énumération." },
+      { q: "Le point-virgule sert à…", options: ["terminer une phrase", "relier deux idées proches", "séparer des chiffres"], reponse: 1, n: 2, explication: "Il relie deux propositions complètes et liées par le sens." },
+    ],
   };
 })();
