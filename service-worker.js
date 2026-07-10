@@ -3,7 +3,7 @@
    Précache tous les assets → l'application fonctionne 100% hors-ligne.
    Incrémenter CACHE à chaque changement d'assets pour forcer la MAJ.
    ===================================================================== */
-const CACHE = "le-mot-juste-v19";
+const CACHE = "le-mot-juste-v20";
 
 const ASSETS = [
   "./",
@@ -50,11 +50,20 @@ self.addEventListener("install", (event) => {
 
 self.addEventListener("activate", (event) => {
   event.waitUntil(
-    caches.keys().then((keys) =>
-      Promise.all(keys.filter((k) => k !== CACHE).map((k) => caches.delete(k)))
-    )
+    (async () => {
+      const keys = await caches.keys();
+      await Promise.all(keys.filter((k) => k !== CACHE).map((k) => caches.delete(k)));
+      await self.clients.claim();
+      // Recharge de force toutes les fenêtres ouvertes : sur PWA installée,
+      // un « quitter puis rouvrir » suspend souvent la page au lieu de la
+      // recharger, donc le JS déjà en mémoire ne vérifie jamais les mises à
+      // jour. En forçant la navigation depuis le service worker (qui, lui,
+      // est bien mis à jour automatiquement par le navigateur), on garantit
+      // que la nouvelle version s'affiche dès que ce SW prend le contrôle.
+      const clients = await self.clients.matchAll({ type: "window" });
+      clients.forEach((client) => client.navigate(client.url).catch(() => {}));
+    })()
   );
-  self.clients.claim();
 });
 
 // Stratégie « réseau d'abord » : en ligne → toujours la dernière version
