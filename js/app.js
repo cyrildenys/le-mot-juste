@@ -137,6 +137,8 @@
   /* ---------- Démarrage ---------- */
   function start() {
     if (LMJ.tts) LMJ.tts.init();
+    const badge = util.$("#version-badge");
+    if (badge) badge.textContent = LMJ.VERSION || "";
     const last = store.get("tab", "regles");
     selectTab(TABS.find((t) => t.id === last) ? last : "regles");
     registerSW();
