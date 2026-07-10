@@ -397,6 +397,26 @@
       futStem: "prédir", ps: ["préd", "i"], subj: ["prédis", "prédis"],
       ppr: "prédisant", pp: "prédit",
     },
+    repentir: {
+      // N'existe qu'à la forme pronominale (se repentir) ; formes vérifiées.
+      g: 3, aux: "etre",
+      pres: ["repens", "repens", "repent", "repentons", "repentez", "repentent"],
+      futStem: "repentir", ps: ["repent", "i"], subj: ["repent", "repent"],
+      ppr: "repentant", pp: "repenti",
+    },
+    taire: {
+      g: 3, aux: "avoir",
+      pres: ["tais", "tais", "tait", "taisons", "taisez", "taisent"],
+      futStem: "tair", ps: ["t", "u"], subj: ["tais", "tais"],
+      ppr: "taisant", pp: "tu",
+    },
+    prévaloir: {
+      g: 3, aux: "avoir",
+      pres: ["prévaux", "prévaux", "prévaut", "prévalons", "prévalez", "prévalent"],
+      futStem: "prévaudr", ps: ["préval", "u"], subj: ["préval", "préval"],
+      // Exception vérifiée : subjonctif présent en -e (que je prévale), pas -ille comme « valoir ».
+      ppr: "prévalant", pp: "prévalu",
+    },
     asseoir: {
       g: 3, aux: "avoir",
       pres: ["assieds", "assieds", "assied", "asseyons", "asseyez", "asseyent"],

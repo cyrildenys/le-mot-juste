@@ -328,9 +328,11 @@
         el("span", { class: "chip accent", text: grpLabel }),
         el("span", { class: "chip", text: "auxiliaire " + (c.aux === "etre" ? "être" : "avoir") }),
         c.irregulier ? el("span", { class: "chip gold", text: "irrégulier" }) : null,
+        c.pronominal ? el("span", { class: "chip gold", text: "pronominal" }) : null,
       ]),
       el("div", { class: "muted", style: { marginTop: "8px", fontSize: "14.5px" }, html: `Participe présent : <strong>${util.escape(c.participePresent || "—")}</strong> · Participe passé : <strong>${util.escape(c.participePasse)}</strong> · Gérondif : <strong>en ${util.escape(c.participePresent || "—")}</strong>` }),
-      c.aux === "etre" ? el("div", { class: "note", style: { marginTop: "10px" }, text: "Auxiliaire être : aux temps composés, le participe s'accorde avec le sujet." }) : null,
+      c.pronominal ? el("div", { class: "note", style: { marginTop: "10px" }, text: "Verbe pronominal : auxiliaire être obligatoire. L'accord du participe passé suit une règle particulière — voir la fiche « Participe passé des verbes pronominaux »." })
+        : c.aux === "etre" ? el("div", { class: "note", style: { marginTop: "10px" }, text: "Auxiliaire être : aux temps composés, le participe s'accorde avec le sujet." }) : null,
     ]));
     const modes = [
       { nom: "Indicatif", mode: "ind", temps: [["Présent", c.indicatif.present], ["Passé composé", c.indicatif.passeCompose], ["Imparfait", c.indicatif.imparfait], ["Plus-que-parfait", c.indicatif.plusQueParfait], ["Passé simple", c.indicatif.passeSimple], ["Passé antérieur", c.indicatif.passeAnterieur], ["Futur simple", c.indicatif.futurSimple], ["Futur antérieur", c.indicatif.futurAnterieur]] },

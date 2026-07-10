@@ -120,5 +120,13 @@
       "<p>Il précise le sens d'un nom et est le plus souvent introduit par une préposition (de, à, en, pour, sans…). Il peut indiquer la matière (une bague <em>en or</em>), la possession (le livre <em>de Marie</em>), l'usage (une salle <em>de sport</em>) ou le contenu (une tasse <em>de thé</em>).</p>",
     "gr-degres-adjectif":
       "<p><strong>Comparatif</strong> : supériorité (plus… que), infériorité (moins… que), égalité (aussi… que). <strong>Superlatif</strong> : relatif (le / la / les plus…, le moins…) ou absolu (très, fort, extrêmement…).</p><p>Formes irrégulières : bon → meilleur / le meilleur ; mauvais → pire ; petit → moindre ; bien → mieux.</p>",
+    "conj-futur-proche-passe-recent":
+      "<p>Ces périphrases verbales sont très employées à l'oral et à l'écrit courant, en alternative aux temps simples.</p><p>Le futur proche insiste sur l'imminence (« le train va partir ») ; le passé récent insiste sur la fraîcheur de l'action (« il vient de partir »). On peut les combiner avec « être en train de » pour le présent progressif (« il est en train de partir »), une tournure similaire mais non temporelle.</p>",
+    "conj-concordance-des-temps":
+      "<p>Tableau de correspondance (principale au passé) : présent → imparfait ; passé composé → plus-que-parfait ; futur simple → conditionnel présent ; futur antérieur → conditionnel passé.</p><p>Si la principale est au présent ou au futur, aucun changement n'est nécessaire dans la subordonnée.</p>",
+    "conj-valeurs-conditionnel":
+      "<p>Le conditionnel n'est pas un temps du futur : c'est un mode à part entière, qui présente l'action comme dépendante d'une condition (réelle, hypothétique, ou seulement implicite comme dans la politesse).</p><p>On le trouve aussi dans l'expression du souhait ou du regret irréel : « J'aimerais tant le revoir » ; « On aurait dit qu'il pleuvait » (comparaison irréelle).</p>",
+    "acc-genre-des-noms":
+      "<p>D'autres noms au genre parfois hésitant : un exode, un obélisque, un ovule (masculin, souvent confondu), une steppe, une ecchymose, un incendie, un pétale, un hémisphère.</p><p>Pour les mots composés « amour, délice, orgue », l'usage littéraire (féminin pluriel) reste minoritaire aujourd'hui : le masculin pluriel est largement accepté dans la langue courante, y compris par l'Académie française qui n'y voit plus une faute.</p>",
   };
 })();

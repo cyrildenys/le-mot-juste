@@ -425,5 +425,34 @@
       ],
       astuce: "« résonner » = un son (comme « sonner ») ; « raisonner » = la pensée (comme « raison »).",
     },
+    {
+      id: "conf-pause-pose",
+      titre: "pause / pose",
+      entrees: [
+        { mot: "pause", nature: "nom féminin", sens: "un arrêt, une interruption", exemple: "Faire une pause." },
+        { mot: "pose", nature: "nom féminin / verbe poser", sens: "position du corps ; ou « il pose »", exemple: "Garder la pose. Il pose sa valise." },
+      ],
+      astuce: "« pause » = arrêt (comme « faire une pause café ») ; « pose » vient de « poser ».",
+    },
+    {
+      id: "conf-sceau-seau-saut-sot",
+      titre: "sceau / seau / saut / sot",
+      entrees: [
+        { mot: "sceau", nature: "nom masculin", sens: "cachet officiel", exemple: "Le sceau de l'État." },
+        { mot: "seau", nature: "nom masculin", sens: "récipient à anse", exemple: "Un seau d'eau." },
+        { mot: "saut", nature: "nom masculin", sens: "bond, action de sauter", exemple: "Un saut en hauteur." },
+        { mot: "sot", nature: "adjectif / nom", sens: "stupide, sans esprit", exemple: "Une remarque sotte." },
+      ],
+      astuce: "« sceau » (cachet) contient « sc » comme dans « inscription » officielle.",
+    },
+    {
+      id: "conf-cygne-signe",
+      titre: "cygne / signe",
+      entrees: [
+        { mot: "cygne", nature: "nom masculin", sens: "l'oiseau blanc", exemple: "Un cygne glisse sur l'étang." },
+        { mot: "signe", nature: "nom masculin", sens: "marque, indice, geste", exemple: "Faire signe de la main." },
+      ],
+      astuce: "« cygne » (l'oiseau) partage son y avec « olympique » ; « signe » vient de « signaler ».",
+    },
   ];
 })();

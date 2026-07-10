@@ -307,6 +307,19 @@
       ],
       astuce: "Si le mot modifie le verbe (et non un nom), il reste invariable.",
     },
+    {
+      id: "acc-genre-des-noms",
+      titre: "Le genre des noms (pièges fréquents)",
+      resume: "Certains noms ont un genre trompeur, à connaître par cœur.",
+      explication:
+        "<p>Le genre d'un nom ne se devine pas toujours à sa terminaison. Quelques noms fréquemment mal genrés : <strong>une</strong> échappatoire, <strong>une</strong> oasis, <strong>une</strong> orbite, <strong>un</strong> pétale, <strong>un</strong> tentacule (malgré son -e final), <strong>un</strong> armistice, <strong>un</strong> exode, <strong>un</strong> astérisque.</p><p>Cas particulier : <em>amour, délice, orgue</em> sont <strong>masculins au singulier</strong> et s'emploient souvent au <strong>féminin au pluriel</strong> dans un registre littéraire (de grandes amours ; des délices infinies), mais restent couramment masculins au pluriel dans l'usage courant.</p>",
+      exemples: [
+        { ok: true, texte: "Une échappatoire habile ; une vaste oasis." },
+        { ok: true, texte: "Un pétale de rose ; les tentacules du poulpe." },
+        { ok: false, texte: "<em>Un</em> échappatoire", correction: "Une échappatoire" },
+      ],
+      astuce: "En cas de doute, un dictionnaire tranche vite : mieux vaut vérifier que de généraliser depuis la terminaison.",
+    },
   ];
 
   LMJ.data.conjugaisonRegles = [
@@ -447,6 +460,42 @@
         { ok: false, texte: "je <em>mangerais</em> demain", correction: "je mangerai demain (futur, sans s)" },
       ],
       astuce: "Attention à ne pas confondre avec le conditionnel (-rais).",
+    },
+    {
+      id: "conj-futur-proche-passe-recent",
+      titre: "Futur proche et passé récent",
+      resume: "Aller + infinitif (futur proche) ; venir de + infinitif (passé récent).",
+      explication:
+        "<p>Le <strong>futur proche</strong> se forme avec <em>aller</em> conjugué au présent + <strong>infinitif</strong> ; il exprime une action sur le point de se produire.</p><p>Le <strong>passé récent</strong> se forme avec <em>venir</em> conjugué au présent + <strong>de</strong> + <strong>infinitif</strong> ; il exprime une action qui vient tout juste de se produire.</p>",
+      exemples: [
+        { ok: true, texte: "Je <em>vais partir</em> dans cinq minutes. (futur proche)" },
+        { ok: true, texte: "Il <em>vient d'arriver</em>. (passé récent)" },
+      ],
+      astuce: "« aller » + infinitif regarde vers l'avenir ; « venir de » + infinitif regarde vers le passé immédiat.",
+    },
+    {
+      id: "conj-concordance-des-temps",
+      titre: "La concordance des temps",
+      resume: "Le temps de la subordonnée dépend du temps de la principale.",
+      explication:
+        "<p>Dans le discours indirect ou après certaines subordonnées, le temps du verbe subordonné dépend du temps de la principale : si la principale est au <strong>passé</strong>, le présent devient <strong>imparfait</strong>, le futur devient <strong>conditionnel présent</strong>, le passé composé devient <strong>plus-que-parfait</strong>.</p>",
+      exemples: [
+        { ok: true, texte: "Il dit qu'il <em>vient</em>. → Il a dit qu'il <em>venait</em>." },
+        { ok: true, texte: "Elle pense qu'il <em>viendra</em>. → Elle pensait qu'il <em>viendrait</em>." },
+      ],
+      astuce: "Principale au passé → on « recule » le temps de la subordonnée d'un cran.",
+    },
+    {
+      id: "conj-valeurs-conditionnel",
+      titre: "Les valeurs du conditionnel",
+      resume: "Hypothèse, futur du passé, information non confirmée, politesse.",
+      explication:
+        "<p>Le conditionnel présent exprime :</p><ul><li>une <strong>hypothèse</strong> soumise à condition : « Si j'avais le temps, je <em>viendrais</em>. »</li><li>le <strong>futur dans le passé</strong> : « Il m'a dit qu'il <em>viendrait</em>. »</li><li>une <strong>information non confirmée</strong> (style journalistique) : « Le suspect <em>serait</em> en fuite. »</li><li>la <strong>politesse</strong> ou l'atténuation : « Je <em>voudrais</em> un café. »</li></ul>",
+      exemples: [
+        { ok: true, texte: "Si tu venais, nous <em>serions</em> plus nombreux. (hypothèse)" },
+        { ok: true, texte: "Selon les témoins, l'incendie <em>aurait</em> démarré vers minuit. (info non confirmée)" },
+      ],
+      astuce: "Ne pas confondre avec le futur simple : le conditionnel dépend toujours d'une condition, réelle ou implicite.",
     },
   ];
 })();

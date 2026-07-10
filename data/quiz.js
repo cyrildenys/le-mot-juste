@@ -612,6 +612,19 @@
       { q: "Ses pas ___ dans le couloir.", options: ["raisonnaient", "résonnaient", "résonnait"], reponse: 1, n: 2, explication: "Le son qui se prolonge → « résonner »." },
       { q: "Il faut ___ avant d'agir.", options: ["résonner", "raisonner", "résonnez"], reponse: 1, n: 2, explication: "Penser logiquement → « raisonner »." },
     ],
+    "conf-pause-pose": [
+      { q: "Faire une ___ café.", options: ["pose", "pause", "posse"], reponse: 1, n: 1, explication: "Un arrêt → « pause »." },
+      { q: "Garder la ___ pour la photo.", options: ["pause", "pose", "posse"], reponse: 1, n: 2, explication: "Position du corps → « pose »." },
+    ],
+    "conf-sceau-seau-saut-sot": [
+      { q: "Un ___ d'eau pour arroser.", options: ["sceau", "seau", "saut"], reponse: 1, n: 1, explication: "Le récipient → « seau »." },
+      { q: "Le ___ de l'État sur le document.", options: ["seau", "sceau", "sot"], reponse: 1, n: 2, explication: "Le cachet officiel → « sceau »." },
+      { q: "Un ___ en hauteur.", options: ["sceau", "saut", "sot"], reponse: 1, n: 1, explication: "L'action de sauter → « saut »." },
+    ],
+    "conf-cygne-signe": [
+      { q: "Un ___ blanc glisse sur l'étang.", options: ["signe", "cygne", "cignes"], reponse: 1, n: 1, explication: "L'oiseau → « cygne »." },
+      { q: "Faire ___ de la main.", options: ["cygne", "signe", "cignes"], reponse: 1, n: 1, explication: "Un geste, un indice → « signe »." },
+    ],
 
     /* ---------- Grammaire : complément (vague 2) ---------- */
     "gr-nom": [
@@ -639,6 +652,10 @@
       { q: "Quel signe annonce une explication ou une énumération ?", options: ["la virgule", "les deux-points", "le point-virgule"], reponse: 1, n: 1, explication: "Les deux-points annoncent une explication/citation/énumération." },
       { q: "Le point-virgule sert à…", options: ["terminer une phrase", "relier deux idées proches", "séparer des chiffres"], reponse: 1, n: 2, explication: "Il relie deux propositions complètes et liées par le sens." },
     ],
+    "gr-niveaux-de-langue": [
+      { q: "« J'ai pas un rond » relève du registre…", options: ["soutenu", "familier", "courant"], reponse: 1, n: 1, explication: "Vocabulaire relâché, oral entre proches → familier." },
+      { q: "« Je suis démuni » relève du registre…", options: ["familier", "soutenu", "courant"], reponse: 1, n: 2, explication: "Vocabulaire recherché → soutenu." },
+    ],
 
     /* ---------- Mauvais usages : complément (vague 2) ---------- */
     "mu-infarctus": [
@@ -652,6 +669,9 @@
     ],
     "mu-au-temps-pour-moi": [
       { q: "Forme retenue par l'Académie française :", options: ["Autant pour moi.", "Au temps pour moi.", "Autant que pour moi."], reponse: 1, n: 3, explication: "Conforme à l'étymologie militaire (« au temps »)." },
+    ],
+    "mu-cela-dit-ceci-dit": [
+      { q: "Forme recommandée par l'Académie française :", options: ["Ceci dit,", "Cela dit,", "Cela dis,"], reponse: 1, n: 2, explication: "« cela » reprend ce qui précède → « cela dit »." },
     ],
 
     /* ---------- Nuances : complément (vague 3) ---------- */
@@ -701,6 +721,26 @@
     "nu-consommer-consumer": [
       { q: "___ de l'énergie.", options: ["Consumer", "Consommer", "Consumé"], reponse: 1, n: 1, explication: "Utiliser → « consommer »." },
       { q: "Le feu ___ toute la forêt.", options: ["consomma", "consuma", "consommait"], reponse: 1, n: 2, explication: "Détruire par le feu → « consuma »." },
+    ],
+
+    /* ---------- Ajouts (audit corpus) ---------- */
+    "conj-futur-proche-passe-recent": [
+      { q: "Je ___ partir dans cinq minutes.", options: ["viens de", "vais", "venais de"], reponse: 1, n: 1, explication: "Futur proche → « aller » + infinitif." },
+      { q: "Il ___ arriver à l'instant.", options: ["va", "vient d'", "allait"], reponse: 1, n: 1, explication: "Passé récent → « venir de » + infinitif." },
+    ],
+    "conj-concordance-des-temps": [
+      { q: "Il a dit qu'il ___ (venir, présent → passé).", options: ["vient", "venait", "viendra"], reponse: 1, n: 2, explication: "Principale au passé → présent devient imparfait." },
+      { q: "Elle pensait qu'il ___ (futur → passé).", options: ["viendra", "viendrait", "vient"], reponse: 1, n: 3, explication: "Principale au passé → futur devient conditionnel présent." },
+    ],
+    "conj-valeurs-conditionnel": [
+      { q: "« Le suspect ___ en fuite. » (information non confirmée)", options: ["est", "serait", "sera"], reponse: 1, n: 2, explication: "Information non confirmée → conditionnel." },
+      { q: "« Il m'a dit qu'il ___. » (futur du passé)", options: ["viendra", "viendrait", "vient"], reponse: 1, n: 2, explication: "Futur dans le passé → conditionnel présent." },
+      { q: "« Je ___ un café, s'il vous plaît. » (politesse)", options: ["veux", "voudrais", "voudrai"], reponse: 1, n: 1, explication: "Formule de politesse → conditionnel." },
+    ],
+    "acc-genre-des-noms": [
+      { q: "___ échappatoire habile.", options: ["Un", "Une", "Des"], reponse: 1, n: 2, explication: "« échappatoire » est féminin." },
+      { q: "___ tentacule du poulpe.", options: ["La", "Le", "Les (pluriel seulement)"], reponse: 1, n: 2, explication: "« tentacule » est masculin malgré son -e final." },
+      { q: "___ oasis en plein désert.", options: ["Un", "Une", "Le"], reponse: 1, n: 2, explication: "« oasis » est féminin." },
     ],
   };
 })();

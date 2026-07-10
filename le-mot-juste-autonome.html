@@ -654,7 +654,7 @@ button { font-family: inherit; }
   LMJ.util = util;
   LMJ.store = store;
   LMJ.tts = tts;
-  LMJ.VERSION = "v17";
+  LMJ.VERSION = "v18";
 })();
 
 
@@ -968,6 +968,19 @@ button { font-family: inherit; }
       ],
       astuce: "Si le mot modifie le verbe (et non un nom), il reste invariable.",
     },
+    {
+      id: "acc-genre-des-noms",
+      titre: "Le genre des noms (pièges fréquents)",
+      resume: "Certains noms ont un genre trompeur, à connaître par cœur.",
+      explication:
+        "<p>Le genre d'un nom ne se devine pas toujours à sa terminaison. Quelques noms fréquemment mal genrés : <strong>une</strong> échappatoire, <strong>une</strong> oasis, <strong>une</strong> orbite, <strong>un</strong> pétale, <strong>un</strong> tentacule (malgré son -e final), <strong>un</strong> armistice, <strong>un</strong> exode, <strong>un</strong> astérisque.</p><p>Cas particulier : <em>amour, délice, orgue</em> sont <strong>masculins au singulier</strong> et s'emploient souvent au <strong>féminin au pluriel</strong> dans un registre littéraire (de grandes amours ; des délices infinies), mais restent couramment masculins au pluriel dans l'usage courant.</p>",
+      exemples: [
+        { ok: true, texte: "Une échappatoire habile ; une vaste oasis." },
+        { ok: true, texte: "Un pétale de rose ; les tentacules du poulpe." },
+        { ok: false, texte: "<em>Un</em> échappatoire", correction: "Une échappatoire" },
+      ],
+      astuce: "En cas de doute, un dictionnaire tranche vite : mieux vaut vérifier que de généraliser depuis la terminaison.",
+    },
   ];
 
   LMJ.data.conjugaisonRegles = [
@@ -1108,6 +1121,42 @@ button { font-family: inherit; }
         { ok: false, texte: "je <em>mangerais</em> demain", correction: "je mangerai demain (futur, sans s)" },
       ],
       astuce: "Attention à ne pas confondre avec le conditionnel (-rais).",
+    },
+    {
+      id: "conj-futur-proche-passe-recent",
+      titre: "Futur proche et passé récent",
+      resume: "Aller + infinitif (futur proche) ; venir de + infinitif (passé récent).",
+      explication:
+        "<p>Le <strong>futur proche</strong> se forme avec <em>aller</em> conjugué au présent + <strong>infinitif</strong> ; il exprime une action sur le point de se produire.</p><p>Le <strong>passé récent</strong> se forme avec <em>venir</em> conjugué au présent + <strong>de</strong> + <strong>infinitif</strong> ; il exprime une action qui vient tout juste de se produire.</p>",
+      exemples: [
+        { ok: true, texte: "Je <em>vais partir</em> dans cinq minutes. (futur proche)" },
+        { ok: true, texte: "Il <em>vient d'arriver</em>. (passé récent)" },
+      ],
+      astuce: "« aller » + infinitif regarde vers l'avenir ; « venir de » + infinitif regarde vers le passé immédiat.",
+    },
+    {
+      id: "conj-concordance-des-temps",
+      titre: "La concordance des temps",
+      resume: "Le temps de la subordonnée dépend du temps de la principale.",
+      explication:
+        "<p>Dans le discours indirect ou après certaines subordonnées, le temps du verbe subordonné dépend du temps de la principale : si la principale est au <strong>passé</strong>, le présent devient <strong>imparfait</strong>, le futur devient <strong>conditionnel présent</strong>, le passé composé devient <strong>plus-que-parfait</strong>.</p>",
+      exemples: [
+        { ok: true, texte: "Il dit qu'il <em>vient</em>. → Il a dit qu'il <em>venait</em>." },
+        { ok: true, texte: "Elle pense qu'il <em>viendra</em>. → Elle pensait qu'il <em>viendrait</em>." },
+      ],
+      astuce: "Principale au passé → on « recule » le temps de la subordonnée d'un cran.",
+    },
+    {
+      id: "conj-valeurs-conditionnel",
+      titre: "Les valeurs du conditionnel",
+      resume: "Hypothèse, futur du passé, information non confirmée, politesse.",
+      explication:
+        "<p>Le conditionnel présent exprime :</p><ul><li>une <strong>hypothèse</strong> soumise à condition : « Si j'avais le temps, je <em>viendrais</em>. »</li><li>le <strong>futur dans le passé</strong> : « Il m'a dit qu'il <em>viendrait</em>. »</li><li>une <strong>information non confirmée</strong> (style journalistique) : « Le suspect <em>serait</em> en fuite. »</li><li>la <strong>politesse</strong> ou l'atténuation : « Je <em>voudrais</em> un café. »</li></ul>",
+      exemples: [
+        { ok: true, texte: "Si tu venais, nous <em>serions</em> plus nombreux. (hypothèse)" },
+        { ok: true, texte: "Selon les témoins, l'incendie <em>aurait</em> démarré vers minuit. (info non confirmée)" },
+      ],
+      astuce: "Ne pas confondre avec le futur simple : le conditionnel dépend toujours d'une condition, réelle ou implicite.",
     },
   ];
 })();
@@ -1541,6 +1590,35 @@ button { font-family: inherit; }
       ],
       astuce: "« résonner » = un son (comme « sonner ») ; « raisonner » = la pensée (comme « raison »).",
     },
+    {
+      id: "conf-pause-pose",
+      titre: "pause / pose",
+      entrees: [
+        { mot: "pause", nature: "nom féminin", sens: "un arrêt, une interruption", exemple: "Faire une pause." },
+        { mot: "pose", nature: "nom féminin / verbe poser", sens: "position du corps ; ou « il pose »", exemple: "Garder la pose. Il pose sa valise." },
+      ],
+      astuce: "« pause » = arrêt (comme « faire une pause café ») ; « pose » vient de « poser ».",
+    },
+    {
+      id: "conf-sceau-seau-saut-sot",
+      titre: "sceau / seau / saut / sot",
+      entrees: [
+        { mot: "sceau", nature: "nom masculin", sens: "cachet officiel", exemple: "Le sceau de l'État." },
+        { mot: "seau", nature: "nom masculin", sens: "récipient à anse", exemple: "Un seau d'eau." },
+        { mot: "saut", nature: "nom masculin", sens: "bond, action de sauter", exemple: "Un saut en hauteur." },
+        { mot: "sot", nature: "adjectif / nom", sens: "stupide, sans esprit", exemple: "Une remarque sotte." },
+      ],
+      astuce: "« sceau » (cachet) contient « sc » comme dans « inscription » officielle.",
+    },
+    {
+      id: "conf-cygne-signe",
+      titre: "cygne / signe",
+      entrees: [
+        { mot: "cygne", nature: "nom masculin", sens: "l'oiseau blanc", exemple: "Un cygne glisse sur l'étang." },
+        { mot: "signe", nature: "nom masculin", sens: "marque, indice, geste", exemple: "Faire signe de la main." },
+      ],
+      astuce: "« cygne » (l'oiseau) partage son y avec « olympique » ; « signe » vient de « signaler ».",
+    },
   ];
 })();
 
@@ -1842,6 +1920,18 @@ button { font-family: inherit; }
         { ok: true, texte: "Au temps pour moi, je me suis trompé." },
       ],
       astuce: "Pour admettre une erreur, l'Académie recommande « au temps pour moi ».",
+    },
+    {
+      id: "mu-cela-dit-ceci-dit",
+      titre: "« ceci dit » / « cela dit »",
+      resume: "L'Académie française recommande « cela dit ».",
+      explication:
+        "<p>« Ceci » annonce ce qui va suivre ; « cela » reprend ce qui vient d'être dit. Comme l'expression renvoie à des propos déjà énoncés, l'<strong>Académie française</strong> recommande <strong>cela dit</strong>. « Ceci dit » est toutefois passé dans l'usage courant.</p>",
+      exemples: [
+        { ok: true, texte: "Cela dit, je reste prudent." },
+        { ok: false, texte: "Ceci dit, je reste prudent.", correction: "Cela dit, je reste prudent." },
+      ],
+      astuce: "« ceci » annonce, « cela » reprend : pour revenir sur ce qui précède, « cela dit ».",
     },
   ];
 })();
@@ -2501,6 +2591,17 @@ button { font-family: inherit; }
       ],
       astuce: "Le point-virgule relie deux idées complètes et liées, sans les subordonner l'une à l'autre.",
     },
+    {
+      id: "gr-niveaux-de-langue",
+      titre: "Les niveaux de langue",
+      resume: "Soutenu, courant, familier : trois registres à adapter selon la situation.",
+      explication:
+        "<p>Le <strong>niveau soutenu</strong> (ou littéraire) s'emploie à l'écrit formel, dans la littérature ; vocabulaire recherché, syntaxe travaillée.</p><p>Le <strong>niveau courant</strong> est neutre, celui de la communication quotidienne standard.</p><p>Le <strong>niveau familier</strong> s'utilise entre proches, à l'oral ; il tolère des raccourcis et un vocabulaire relâché, à éviter à l'écrit formel.</p>",
+      exemples: [
+        { ok: true, texte: "Je n'ai pas d'argent. (courant) — Je suis démuni. (soutenu) — J'ai pas un rond. (familier)" },
+      ],
+      astuce: "Un même mot rare peut appartenir au registre soutenu : c'est justement ce que travaille l'onglet « Mot du jour ».",
+    },
   ];
 })();
 
@@ -3095,6 +3196,26 @@ button { font-family: inherit; }
       pres: ["prédis", "prédis", "prédit", "prédisons", "prédisez", "prédisent"],
       futStem: "prédir", ps: ["préd", "i"], subj: ["prédis", "prédis"],
       ppr: "prédisant", pp: "prédit",
+    },
+    repentir: {
+      // N'existe qu'à la forme pronominale (se repentir) ; formes vérifiées.
+      g: 3, aux: "etre",
+      pres: ["repens", "repens", "repent", "repentons", "repentez", "repentent"],
+      futStem: "repentir", ps: ["repent", "i"], subj: ["repent", "repent"],
+      ppr: "repentant", pp: "repenti",
+    },
+    taire: {
+      g: 3, aux: "avoir",
+      pres: ["tais", "tais", "tait", "taisons", "taisez", "taisent"],
+      futStem: "tair", ps: ["t", "u"], subj: ["tais", "tais"],
+      ppr: "taisant", pp: "tu",
+    },
+    prévaloir: {
+      g: 3, aux: "avoir",
+      pres: ["prévaux", "prévaux", "prévaut", "prévalons", "prévalez", "prévalent"],
+      futStem: "prévaudr", ps: ["préval", "u"], subj: ["préval", "préval"],
+      // Exception vérifiée : subjonctif présent en -e (que je prévale), pas -ille comme « valoir ».
+      ppr: "prévalant", pp: "prévalu",
     },
     asseoir: {
       g: 3, aux: "avoir",
@@ -3896,6 +4017,19 @@ button { font-family: inherit; }
       { q: "Ses pas ___ dans le couloir.", options: ["raisonnaient", "résonnaient", "résonnait"], reponse: 1, n: 2, explication: "Le son qui se prolonge → « résonner »." },
       { q: "Il faut ___ avant d'agir.", options: ["résonner", "raisonner", "résonnez"], reponse: 1, n: 2, explication: "Penser logiquement → « raisonner »." },
     ],
+    "conf-pause-pose": [
+      { q: "Faire une ___ café.", options: ["pose", "pause", "posse"], reponse: 1, n: 1, explication: "Un arrêt → « pause »." },
+      { q: "Garder la ___ pour la photo.", options: ["pause", "pose", "posse"], reponse: 1, n: 2, explication: "Position du corps → « pose »." },
+    ],
+    "conf-sceau-seau-saut-sot": [
+      { q: "Un ___ d'eau pour arroser.", options: ["sceau", "seau", "saut"], reponse: 1, n: 1, explication: "Le récipient → « seau »." },
+      { q: "Le ___ de l'État sur le document.", options: ["seau", "sceau", "sot"], reponse: 1, n: 2, explication: "Le cachet officiel → « sceau »." },
+      { q: "Un ___ en hauteur.", options: ["sceau", "saut", "sot"], reponse: 1, n: 1, explication: "L'action de sauter → « saut »." },
+    ],
+    "conf-cygne-signe": [
+      { q: "Un ___ blanc glisse sur l'étang.", options: ["signe", "cygne", "cignes"], reponse: 1, n: 1, explication: "L'oiseau → « cygne »." },
+      { q: "Faire ___ de la main.", options: ["cygne", "signe", "cignes"], reponse: 1, n: 1, explication: "Un geste, un indice → « signe »." },
+    ],
 
     /* ---------- Grammaire : complément (vague 2) ---------- */
     "gr-nom": [
@@ -3923,6 +4057,10 @@ button { font-family: inherit; }
       { q: "Quel signe annonce une explication ou une énumération ?", options: ["la virgule", "les deux-points", "le point-virgule"], reponse: 1, n: 1, explication: "Les deux-points annoncent une explication/citation/énumération." },
       { q: "Le point-virgule sert à…", options: ["terminer une phrase", "relier deux idées proches", "séparer des chiffres"], reponse: 1, n: 2, explication: "Il relie deux propositions complètes et liées par le sens." },
     ],
+    "gr-niveaux-de-langue": [
+      { q: "« J'ai pas un rond » relève du registre…", options: ["soutenu", "familier", "courant"], reponse: 1, n: 1, explication: "Vocabulaire relâché, oral entre proches → familier." },
+      { q: "« Je suis démuni » relève du registre…", options: ["familier", "soutenu", "courant"], reponse: 1, n: 2, explication: "Vocabulaire recherché → soutenu." },
+    ],
 
     /* ---------- Mauvais usages : complément (vague 2) ---------- */
     "mu-infarctus": [
@@ -3936,6 +4074,9 @@ button { font-family: inherit; }
     ],
     "mu-au-temps-pour-moi": [
       { q: "Forme retenue par l'Académie française :", options: ["Autant pour moi.", "Au temps pour moi.", "Autant que pour moi."], reponse: 1, n: 3, explication: "Conforme à l'étymologie militaire (« au temps »)." },
+    ],
+    "mu-cela-dit-ceci-dit": [
+      { q: "Forme recommandée par l'Académie française :", options: ["Ceci dit,", "Cela dit,", "Cela dis,"], reponse: 1, n: 2, explication: "« cela » reprend ce qui précède → « cela dit »." },
     ],
 
     /* ---------- Nuances : complément (vague 3) ---------- */
@@ -3985,6 +4126,26 @@ button { font-family: inherit; }
     "nu-consommer-consumer": [
       { q: "___ de l'énergie.", options: ["Consumer", "Consommer", "Consumé"], reponse: 1, n: 1, explication: "Utiliser → « consommer »." },
       { q: "Le feu ___ toute la forêt.", options: ["consomma", "consuma", "consommait"], reponse: 1, n: 2, explication: "Détruire par le feu → « consuma »." },
+    ],
+
+    /* ---------- Ajouts (audit corpus) ---------- */
+    "conj-futur-proche-passe-recent": [
+      { q: "Je ___ partir dans cinq minutes.", options: ["viens de", "vais", "venais de"], reponse: 1, n: 1, explication: "Futur proche → « aller » + infinitif." },
+      { q: "Il ___ arriver à l'instant.", options: ["va", "vient d'", "allait"], reponse: 1, n: 1, explication: "Passé récent → « venir de » + infinitif." },
+    ],
+    "conj-concordance-des-temps": [
+      { q: "Il a dit qu'il ___ (venir, présent → passé).", options: ["vient", "venait", "viendra"], reponse: 1, n: 2, explication: "Principale au passé → présent devient imparfait." },
+      { q: "Elle pensait qu'il ___ (futur → passé).", options: ["viendra", "viendrait", "vient"], reponse: 1, n: 3, explication: "Principale au passé → futur devient conditionnel présent." },
+    ],
+    "conj-valeurs-conditionnel": [
+      { q: "« Le suspect ___ en fuite. » (information non confirmée)", options: ["est", "serait", "sera"], reponse: 1, n: 2, explication: "Information non confirmée → conditionnel." },
+      { q: "« Il m'a dit qu'il ___. » (futur du passé)", options: ["viendra", "viendrait", "vient"], reponse: 1, n: 2, explication: "Futur dans le passé → conditionnel présent." },
+      { q: "« Je ___ un café, s'il vous plaît. » (politesse)", options: ["veux", "voudrais", "voudrai"], reponse: 1, n: 1, explication: "Formule de politesse → conditionnel." },
+    ],
+    "acc-genre-des-noms": [
+      { q: "___ échappatoire habile.", options: ["Un", "Une", "Des"], reponse: 1, n: 2, explication: "« échappatoire » est féminin." },
+      { q: "___ tentacule du poulpe.", options: ["La", "Le", "Les (pluriel seulement)"], reponse: 1, n: 2, explication: "« tentacule » est masculin malgré son -e final." },
+      { q: "___ oasis en plein désert.", options: ["Un", "Une", "Le"], reponse: 1, n: 2, explication: "« oasis » est féminin." },
     ],
   };
 })();
@@ -4113,6 +4274,14 @@ button { font-family: inherit; }
       "<p>Il précise le sens d'un nom et est le plus souvent introduit par une préposition (de, à, en, pour, sans…). Il peut indiquer la matière (une bague <em>en or</em>), la possession (le livre <em>de Marie</em>), l'usage (une salle <em>de sport</em>) ou le contenu (une tasse <em>de thé</em>).</p>",
     "gr-degres-adjectif":
       "<p><strong>Comparatif</strong> : supériorité (plus… que), infériorité (moins… que), égalité (aussi… que). <strong>Superlatif</strong> : relatif (le / la / les plus…, le moins…) ou absolu (très, fort, extrêmement…).</p><p>Formes irrégulières : bon → meilleur / le meilleur ; mauvais → pire ; petit → moindre ; bien → mieux.</p>",
+    "conj-futur-proche-passe-recent":
+      "<p>Ces périphrases verbales sont très employées à l'oral et à l'écrit courant, en alternative aux temps simples.</p><p>Le futur proche insiste sur l'imminence (« le train va partir ») ; le passé récent insiste sur la fraîcheur de l'action (« il vient de partir »). On peut les combiner avec « être en train de » pour le présent progressif (« il est en train de partir »), une tournure similaire mais non temporelle.</p>",
+    "conj-concordance-des-temps":
+      "<p>Tableau de correspondance (principale au passé) : présent → imparfait ; passé composé → plus-que-parfait ; futur simple → conditionnel présent ; futur antérieur → conditionnel passé.</p><p>Si la principale est au présent ou au futur, aucun changement n'est nécessaire dans la subordonnée.</p>",
+    "conj-valeurs-conditionnel":
+      "<p>Le conditionnel n'est pas un temps du futur : c'est un mode à part entière, qui présente l'action comme dépendante d'une condition (réelle, hypothétique, ou seulement implicite comme dans la politesse).</p><p>On le trouve aussi dans l'expression du souhait ou du regret irréel : « J'aimerais tant le revoir » ; « On aurait dit qu'il pleuvait » (comparaison irréelle).</p>",
+    "acc-genre-des-noms":
+      "<p>D'autres noms au genre parfois hésitant : un exode, un obélisque, un ovule (masculin, souvent confondu), une steppe, une ecchymose, un incendie, un pétale, un hémisphère.</p><p>Pour les mots composés « amour, délice, orgue », l'usage littéraire (féminin pluriel) reste minoritaire aujourd'hui : le masculin pluriel est largement accepté dans la langue courante, y compris par l'Académie française qui n'y voit plus une faute.</p>",
   };
 })();
 
@@ -4391,7 +4560,9 @@ button { font-family: inherit; }
     sourire: "rire", déplaire: "plaire", complaire: "plaire",
     rasseoir: "asseoir", revoir: "voir", entrevoir: "voir",
     extraire: "traire", soustraire: "traire", distraire: "traire", abstraire: "traire",
-    circonvenir: "venir", contrevenir: "venir",
+    circonvenir: "venir", contrevenir: "venir", souvenir: "venir",
+    équivaloir: "valoir", revaloir: "valoir",
+    enfuir: "fuir", abstenir: "tenir",
   };
 
   // Verbes défectifs non couverts (formes trop limitées ou incertaines pour un
@@ -4416,11 +4587,83 @@ button { font-family: inherit; }
   }
 
   /* =====================================================================
+     Verbes pronominaux (se/s' + verbe)
+     Reconjugue le verbe de base avec le pronom réfléchi correct par
+     personne (élision devant voyelle) et l'auxiliaire être, obligatoire
+     pour tout verbe pronominal.
+     ===================================================================== */
+  const REFL = ["me", "te", "se", "nous", "vous", "se"];
+  const REFL_TONIQUE = ["toi", "nous", "vous"]; // pour l'impératif affirmatif (tu/nous/vous)
+
+  function elideRefl(pron, form) {
+    if (form == null) return null;
+    const voyelle = /^[aàâeéèêiîïoôuùûyh]/i.test(form);
+    if (voyelle && pron !== "nous" && pron !== "vous") return pron.charAt(0) + "'" + form;
+    return pron + " " + form;
+  }
+  function prependRefl(forms) {
+    if (!forms) return forms;
+    return forms.map((f, i) => elideRefl(REFL[i], f));
+  }
+
+  function buildPronominal(raw, baseConj) {
+    const pp = baseConj.participePasse;
+    const comp = compound("etre", pp);
+    const imper = baseConj.imperatif.present
+      ? baseConj.imperatif.present.map((f, i) => (f == null ? null : f + "-" + REFL_TONIQUE[i]))
+      : null;
+    return {
+      disponible: true,
+      infinitif: raw,
+      groupe: baseConj.groupe,
+      irregulier: baseConj.irregulier,
+      impersonnel: false,
+      pronominal: true,
+      aux: "etre",
+      participePresent: baseConj.participePresent ? "se " + baseConj.participePresent : null,
+      participePasse: pp,
+      indicatif: {
+        present: prependRefl(baseConj.indicatif.present),
+        imparfait: prependRefl(baseConj.indicatif.imparfait),
+        passeSimple: prependRefl(baseConj.indicatif.passeSimple),
+        futurSimple: prependRefl(baseConj.indicatif.futurSimple),
+        passeCompose: prependRefl(comp.passeCompose),
+        plusQueParfait: prependRefl(comp.plusQueParfait),
+        passeAnterieur: prependRefl(comp.passeAnterieur),
+        futurAnterieur: prependRefl(comp.futurAnterieur),
+      },
+      conditionnel: {
+        present: prependRefl(baseConj.conditionnel.present),
+        passe: prependRefl(comp.conditionnelPasse),
+      },
+      subjonctif: {
+        present: prependRefl(baseConj.subjonctif.present),
+        imparfait: prependRefl(baseConj.subjonctif.imparfait),
+        passe: prependRefl(comp.subjonctifPasse),
+        plusQueParfait: prependRefl(comp.subjonctifPlusQueParfait),
+      },
+      imperatif: { present: imper, passe: null },
+    };
+  }
+
+  /* =====================================================================
      Point d'entrée
      ===================================================================== */
   function conjugue(input) {
     if (!input) return { disponible: false, infinitif: "" };
     let inf = String(input).trim().toLowerCase();
+
+    // Verbe pronominal (se laver, s'apercevoir…) : on isole le verbe de base,
+    // on le conjugue normalement, puis on réapplique le bon pronom réfléchi
+    // par personne et l'auxiliaire être (obligatoire pour un pronominal).
+    const pronSpace = inf.match(/^se\s+(.+)$/);
+    const pronElide = !pronSpace && inf.match(/^s['’]\s*(.+)$/);
+    if (pronSpace || pronElide) {
+      const base = (pronSpace || pronElide)[1].trim();
+      const baseConj = conjugue(base);
+      if (!baseConj.disponible) return { disponible: false, infinitif: inf };
+      return buildPronominal(inf, baseConj);
+    }
 
     // Verbe irrégulier connu (avec ou sans accents saisis)
     let irr = V[inf];
@@ -4542,7 +4785,11 @@ button { font-family: inherit; }
     // Vague suivante (verbes en -oir et famille traire, vérifiés)
     "asseoir", "rasseoir", "pourvoir", "prévoir", "revoir", "entrevoir",
     "traire", "extraire", "soustraire", "distraire", "abstraire",
-    "circonvenir", "contrevenir",
+    "circonvenir", "contrevenir", "taire", "prévaloir", "équivaloir", "revaloir",
+    // Verbes pronominaux courants (le moteur reconjugue avec le bon pronom + être)
+    "se laver", "se lever", "s'habiller", "se promener", "se souvenir",
+    "s'apercevoir", "s'enfuir", "se méfier", "se moquer", "s'évanouir",
+    "se taire", "se prévaloir", "s'abstenir", "se repentir",
   ];
 
   LMJ.conjugue = conjugue;
@@ -4883,9 +5130,11 @@ button { font-family: inherit; }
         el("span", { class: "chip accent", text: grpLabel }),
         el("span", { class: "chip", text: "auxiliaire " + (c.aux === "etre" ? "être" : "avoir") }),
         c.irregulier ? el("span", { class: "chip gold", text: "irrégulier" }) : null,
+        c.pronominal ? el("span", { class: "chip gold", text: "pronominal" }) : null,
       ]),
       el("div", { class: "muted", style: { marginTop: "8px", fontSize: "14.5px" }, html: `Participe présent : <strong>${util.escape(c.participePresent || "—")}</strong> · Participe passé : <strong>${util.escape(c.participePasse)}</strong> · Gérondif : <strong>en ${util.escape(c.participePresent || "—")}</strong>` }),
-      c.aux === "etre" ? el("div", { class: "note", style: { marginTop: "10px" }, text: "Auxiliaire être : aux temps composés, le participe s'accorde avec le sujet." }) : null,
+      c.pronominal ? el("div", { class: "note", style: { marginTop: "10px" }, text: "Verbe pronominal : auxiliaire être obligatoire. L'accord du participe passé suit une règle particulière — voir la fiche « Participe passé des verbes pronominaux »." })
+        : c.aux === "etre" ? el("div", { class: "note", style: { marginTop: "10px" }, text: "Auxiliaire être : aux temps composés, le participe s'accorde avec le sujet." }) : null,
     ]));
     const modes = [
       { nom: "Indicatif", mode: "ind", temps: [["Présent", c.indicatif.present], ["Passé composé", c.indicatif.passeCompose], ["Imparfait", c.indicatif.imparfait], ["Plus-que-parfait", c.indicatif.plusQueParfait], ["Passé simple", c.indicatif.passeSimple], ["Passé antérieur", c.indicatif.passeAnterieur], ["Futur simple", c.indicatif.futurSimple], ["Futur antérieur", c.indicatif.futurAnterieur]] },

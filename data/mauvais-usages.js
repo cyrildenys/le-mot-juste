@@ -295,5 +295,17 @@
       ],
       astuce: "Pour admettre une erreur, l'Académie recommande « au temps pour moi ».",
     },
+    {
+      id: "mu-cela-dit-ceci-dit",
+      titre: "« ceci dit » / « cela dit »",
+      resume: "L'Académie française recommande « cela dit ».",
+      explication:
+        "<p>« Ceci » annonce ce qui va suivre ; « cela » reprend ce qui vient d'être dit. Comme l'expression renvoie à des propos déjà énoncés, l'<strong>Académie française</strong> recommande <strong>cela dit</strong>. « Ceci dit » est toutefois passé dans l'usage courant.</p>",
+      exemples: [
+        { ok: true, texte: "Cela dit, je reste prudent." },
+        { ok: false, texte: "Ceci dit, je reste prudent.", correction: "Cela dit, je reste prudent." },
+      ],
+      astuce: "« ceci » annonce, « cela » reprend : pour revenir sur ce qui précède, « cela dit ».",
+    },
   ];
 })();

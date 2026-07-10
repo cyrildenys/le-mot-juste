@@ -271,7 +271,9 @@
     sourire: "rire", déplaire: "plaire", complaire: "plaire",
     rasseoir: "asseoir", revoir: "voir", entrevoir: "voir",
     extraire: "traire", soustraire: "traire", distraire: "traire", abstraire: "traire",
-    circonvenir: "venir", contrevenir: "venir",
+    circonvenir: "venir", contrevenir: "venir", souvenir: "venir",
+    équivaloir: "valoir", revaloir: "valoir",
+    enfuir: "fuir", abstenir: "tenir",
   };
 
   // Verbes défectifs non couverts (formes trop limitées ou incertaines pour un
@@ -296,11 +298,83 @@
   }
 
   /* =====================================================================
+     Verbes pronominaux (se/s' + verbe)
+     Reconjugue le verbe de base avec le pronom réfléchi correct par
+     personne (élision devant voyelle) et l'auxiliaire être, obligatoire
+     pour tout verbe pronominal.
+     ===================================================================== */
+  const REFL = ["me", "te", "se", "nous", "vous", "se"];
+  const REFL_TONIQUE = ["toi", "nous", "vous"]; // pour l'impératif affirmatif (tu/nous/vous)
+
+  function elideRefl(pron, form) {
+    if (form == null) return null;
+    const voyelle = /^[aàâeéèêiîïoôuùûyh]/i.test(form);
+    if (voyelle && pron !== "nous" && pron !== "vous") return pron.charAt(0) + "'" + form;
+    return pron + " " + form;
+  }
+  function prependRefl(forms) {
+    if (!forms) return forms;
+    return forms.map((f, i) => elideRefl(REFL[i], f));
+  }
+
+  function buildPronominal(raw, baseConj) {
+    const pp = baseConj.participePasse;
+    const comp = compound("etre", pp);
+    const imper = baseConj.imperatif.present
+      ? baseConj.imperatif.present.map((f, i) => (f == null ? null : f + "-" + REFL_TONIQUE[i]))
+      : null;
+    return {
+      disponible: true,
+      infinitif: raw,
+      groupe: baseConj.groupe,
+      irregulier: baseConj.irregulier,
+      impersonnel: false,
+      pronominal: true,
+      aux: "etre",
+      participePresent: baseConj.participePresent ? "se " + baseConj.participePresent : null,
+      participePasse: pp,
+      indicatif: {
+        present: prependRefl(baseConj.indicatif.present),
+        imparfait: prependRefl(baseConj.indicatif.imparfait),
+        passeSimple: prependRefl(baseConj.indicatif.passeSimple),
+        futurSimple: prependRefl(baseConj.indicatif.futurSimple),
+        passeCompose: prependRefl(comp.passeCompose),
+        plusQueParfait: prependRefl(comp.plusQueParfait),
+        passeAnterieur: prependRefl(comp.passeAnterieur),
+        futurAnterieur: prependRefl(comp.futurAnterieur),
+      },
+      conditionnel: {
+        present: prependRefl(baseConj.conditionnel.present),
+        passe: prependRefl(comp.conditionnelPasse),
+      },
+      subjonctif: {
+        present: prependRefl(baseConj.subjonctif.present),
+        imparfait: prependRefl(baseConj.subjonctif.imparfait),
+        passe: prependRefl(comp.subjonctifPasse),
+        plusQueParfait: prependRefl(comp.subjonctifPlusQueParfait),
+      },
+      imperatif: { present: imper, passe: null },
+    };
+  }
+
+  /* =====================================================================
      Point d'entrée
      ===================================================================== */
   function conjugue(input) {
     if (!input) return { disponible: false, infinitif: "" };
     let inf = String(input).trim().toLowerCase();
+
+    // Verbe pronominal (se laver, s'apercevoir…) : on isole le verbe de base,
+    // on le conjugue normalement, puis on réapplique le bon pronom réfléchi
+    // par personne et l'auxiliaire être (obligatoire pour un pronominal).
+    const pronSpace = inf.match(/^se\s+(.+)$/);
+    const pronElide = !pronSpace && inf.match(/^s['’]\s*(.+)$/);
+    if (pronSpace || pronElide) {
+      const base = (pronSpace || pronElide)[1].trim();
+      const baseConj = conjugue(base);
+      if (!baseConj.disponible) return { disponible: false, infinitif: inf };
+      return buildPronominal(inf, baseConj);
+    }
 
     // Verbe irrégulier connu (avec ou sans accents saisis)
     let irr = V[inf];
@@ -422,7 +496,11 @@
     // Vague suivante (verbes en -oir et famille traire, vérifiés)
     "asseoir", "rasseoir", "pourvoir", "prévoir", "revoir", "entrevoir",
     "traire", "extraire", "soustraire", "distraire", "abstraire",
-    "circonvenir", "contrevenir",
+    "circonvenir", "contrevenir", "taire", "prévaloir", "équivaloir", "revaloir",
+    // Verbes pronominaux courants (le moteur reconjugue avec le bon pronom + être)
+    "se laver", "se lever", "s'habiller", "se promener", "se souvenir",
+    "s'apercevoir", "s'enfuir", "se méfier", "se moquer", "s'évanouir",
+    "se taire", "se prévaloir", "s'abstenir", "se repentir",
   ];
 
   LMJ.conjugue = conjugue;

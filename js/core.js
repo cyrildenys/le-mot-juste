@@ -191,5 +191,5 @@
   LMJ.util = util;
   LMJ.store = store;
   LMJ.tts = tts;
-  LMJ.VERSION = "v17";
+  LMJ.VERSION = "v18";
 })();

@@ -299,5 +299,16 @@
       ],
       astuce: "Le point-virgule relie deux idées complètes et liées, sans les subordonner l'une à l'autre.",
     },
+    {
+      id: "gr-niveaux-de-langue",
+      titre: "Les niveaux de langue",
+      resume: "Soutenu, courant, familier : trois registres à adapter selon la situation.",
+      explication:
+        "<p>Le <strong>niveau soutenu</strong> (ou littéraire) s'emploie à l'écrit formel, dans la littérature ; vocabulaire recherché, syntaxe travaillée.</p><p>Le <strong>niveau courant</strong> est neutre, celui de la communication quotidienne standard.</p><p>Le <strong>niveau familier</strong> s'utilise entre proches, à l'oral ; il tolère des raccourcis et un vocabulaire relâché, à éviter à l'écrit formel.</p>",
+      exemples: [
+        { ok: true, texte: "Je n'ai pas d'argent. (courant) — Je suis démuni. (soutenu) — J'ai pas un rond. (familier)" },
+      ],
+      astuce: "Un même mot rare peut appartenir au registre soutenu : c'est justement ce que travaille l'onglet « Mot du jour ».",
+    },
   ];
 })();
