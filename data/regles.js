@@ -103,7 +103,7 @@
     },
     {
       id: "acc-demi",
-      titre: "« demi », « nu », « ci-joint »",
+      titre: "« demi » et « nu »",
       resume: "Invariables placés avant le nom (trait d'union).",
       explication:
         "<p><em>Demi</em> et <em>nu</em> placés <strong>avant</strong> le nom sont invariables et liés par un trait d'union. Placés <strong>après</strong>, ils s'accordent (demi en genre seulement).</p>",
@@ -281,6 +281,31 @@
         { ok: false, texte: "<em>aucuns</em> élèves", correction: "aucun élève" },
       ],
       astuce: "Par défaut, singulier. Pluriel réservé aux noms toujours pluriels (frais, funérailles…).",
+    },
+    {
+      id: "acc-avoir-lair",
+      titre: "L'accord après « avoir l'air »",
+      resume: "En général, l'adjectif s'accorde avec le sujet.",
+      explication:
+        "<p>Le plus souvent, l'adjectif qui suit <strong>avoir l'air</strong> s'accorde avec le <strong>sujet</strong> (« avoir l'air » = sembler) : « Ces suggestions ont l'air <em>intéressantes</em>. »</p><p>Si le sujet est une <strong>personne</strong>, on peut aussi accorder avec <strong>« air »</strong> (masculin singulier) pour insister sur l'expression du visage : « Elle a l'air <em>gentille</em> » ou « Elle a l'air <em>gentil</em> », les deux sont admis.</p>",
+      exemples: [
+        { ok: true, texte: "La salade a l'air <em>bonne</em>. (sujet « salade »)" },
+        { ok: true, texte: "Elle a l'air <em>content</em> / <em>contente</em>. (les deux acceptés)" },
+      ],
+      astuce: "Pour une chose, accordez toujours avec le sujet. Pour une personne, les deux accords sont possibles.",
+    },
+    {
+      id: "acc-adj-adverbe",
+      titre: "Les adjectifs employés comme adverbes",
+      resume: "Invariables quand ils modifient un verbe (chanter faux, coûter cher).",
+      explication:
+        "<p>Certains adjectifs, placés juste après un verbe, jouent en réalité le rôle d'un <strong>adverbe</strong> : ils précisent alors le verbe et restent <strong>invariables</strong>.</p><p>Expressions figées courantes : <em>chanter faux, parler bas/haut, sentir bon/mauvais, coûter cher, peser lourd, voir clair, tenir bon, travailler dur, filer doux, voler bas/haut</em>.</p>",
+      exemples: [
+        { ok: true, texte: "Ces fleurs sentent <em>bon</em>. (invariable, modifie « sentent »)" },
+        { ok: true, texte: "Ce sont de <em>bonnes</em> fleurs. (ici, adjectif : accord normal)" },
+        { ok: true, texte: "Ces voitures coûtent <em>cher</em>. / Ces voitures sont <em>chères</em>." },
+      ],
+      astuce: "Si le mot modifie le verbe (et non un nom), il reste invariable.",
     },
   ];
 

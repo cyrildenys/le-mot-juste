@@ -654,7 +654,7 @@ button { font-family: inherit; }
   LMJ.util = util;
   LMJ.store = store;
   LMJ.tts = tts;
-  LMJ.VERSION = "v10";
+  LMJ.VERSION = "v11";
 })();
 
 
@@ -764,7 +764,7 @@ button { font-family: inherit; }
     },
     {
       id: "acc-demi",
-      titre: "« demi », « nu », « ci-joint »",
+      titre: "« demi » et « nu »",
       resume: "Invariables placés avant le nom (trait d'union).",
       explication:
         "<p><em>Demi</em> et <em>nu</em> placés <strong>avant</strong> le nom sont invariables et liés par un trait d'union. Placés <strong>après</strong>, ils s'accordent (demi en genre seulement).</p>",
@@ -942,6 +942,31 @@ button { font-family: inherit; }
         { ok: false, texte: "<em>aucuns</em> élèves", correction: "aucun élève" },
       ],
       astuce: "Par défaut, singulier. Pluriel réservé aux noms toujours pluriels (frais, funérailles…).",
+    },
+    {
+      id: "acc-avoir-lair",
+      titre: "L'accord après « avoir l'air »",
+      resume: "En général, l'adjectif s'accorde avec le sujet.",
+      explication:
+        "<p>Le plus souvent, l'adjectif qui suit <strong>avoir l'air</strong> s'accorde avec le <strong>sujet</strong> (« avoir l'air » = sembler) : « Ces suggestions ont l'air <em>intéressantes</em>. »</p><p>Si le sujet est une <strong>personne</strong>, on peut aussi accorder avec <strong>« air »</strong> (masculin singulier) pour insister sur l'expression du visage : « Elle a l'air <em>gentille</em> » ou « Elle a l'air <em>gentil</em> », les deux sont admis.</p>",
+      exemples: [
+        { ok: true, texte: "La salade a l'air <em>bonne</em>. (sujet « salade »)" },
+        { ok: true, texte: "Elle a l'air <em>content</em> / <em>contente</em>. (les deux acceptés)" },
+      ],
+      astuce: "Pour une chose, accordez toujours avec le sujet. Pour une personne, les deux accords sont possibles.",
+    },
+    {
+      id: "acc-adj-adverbe",
+      titre: "Les adjectifs employés comme adverbes",
+      resume: "Invariables quand ils modifient un verbe (chanter faux, coûter cher).",
+      explication:
+        "<p>Certains adjectifs, placés juste après un verbe, jouent en réalité le rôle d'un <strong>adverbe</strong> : ils précisent alors le verbe et restent <strong>invariables</strong>.</p><p>Expressions figées courantes : <em>chanter faux, parler bas/haut, sentir bon/mauvais, coûter cher, peser lourd, voir clair, tenir bon, travailler dur, filer doux, voler bas/haut</em>.</p>",
+      exemples: [
+        { ok: true, texte: "Ces fleurs sentent <em>bon</em>. (invariable, modifie « sentent »)" },
+        { ok: true, texte: "Ce sont de <em>bonnes</em> fleurs. (ici, adjectif : accord normal)" },
+        { ok: true, texte: "Ces voitures coûtent <em>cher</em>. / Ces voitures sont <em>chères</em>." },
+      ],
+      astuce: "Si le mot modifie le verbe (et non un nom), il reste invariable.",
     },
   ];
 
@@ -3405,6 +3430,16 @@ button { font-family: inherit; }
       { q: "___ élève n'était absent.", options: ["Aucuns", "Aucun", "Aucune"], reponse: 1, n: 1, explication: "Singulier par défaut → « aucun »." },
       { q: "Il n'a engagé ___ frais.", options: ["aucun", "aucuns", "aucune"], reponse: 1, n: 3, explication: "« frais » n'a pas de singulier → « aucuns »." },
     ],
+    "acc-avoir-lair": [
+      { q: "La salade a l'air ___.", options: ["bon", "bonne", "bons"], reponse: 1, n: 1, explication: "Sujet-chose → accord avec le sujet « salade »." },
+      { q: "Ces suggestions ont l'air ___.", options: ["intéressant", "intéressantes", "intéressants"], reponse: 1, n: 2, explication: "Accord avec le sujet « suggestions » (fém. pl.)." },
+      { q: "Elle avait l'air ___ et troublé. (complément sur « air »)", options: ["inquiète", "inquiet", "inquiets"], reponse: 1, n: 3, explication: "Adjectif + complément rattaché à « air » → accord obligatoire avec « air » (masc. sing.)." },
+    ],
+    "acc-adj-adverbe": [
+      { q: "Ces fleurs sentent ___.", options: ["bonnes", "bon", "bons"], reponse: 1, n: 1, explication: "Modifie le verbe « sentent » → adverbe invariable." },
+      { q: "Ces voitures sont ___.", options: ["cher", "chères", "chèrent"], reponse: 1, n: 2, explication: "« chères » est ici attribut du sujet (adjectif) → accord." },
+      { q: "Ces voitures ___ cher.", options: ["coûtent", "coûtes", "coûtons"], reponse: 0, n: 2, explication: "« cher » reste invariable, modifie le verbe « coûtent »." },
+    ],
   };
 })();
 
@@ -3466,6 +3501,10 @@ button { font-family: inherit; }
       "<p><strong>Test :</strong> mettez la forme au féminin. Si c'est possible, c'est un <strong>adjectif verbal</strong> (il s'accorde) ; sinon, c'est un <strong>participe présent</strong> (invariable). Le participe accepte souvent un complément ou la négation.</p><p><strong>Orthographes différentes</strong> (adjectif / participe) : fatigant / fatiguant, précédent / précédant, différent / différant, négligent / négligeant, convaincant / convainquant, provocant / provoquant, navigant / naviguant, adhérent / adhérant, influent / influant.</p>",
     "acc-aucun-nul":
       "<p><em>Aucun(e)</em> et <em>nul(le)</em> se mettent au <strong>pluriel</strong> uniquement devant un nom qui n'a pas de singulier : <em>aucuns frais, aucunes funérailles, nulles fiançailles</em>.</p><p>« Nul » est aussi un adjectif qualificatif variable au sens de « sans valeur » (des résultats <em>nuls</em>) et un pronom (« <em>nul</em> n'est parfait »).</p>",
+    "acc-avoir-lair":
+      "<p>Trois cas, selon les grammairiens (Le Robert, BDL) :</p><ul><li><strong>Sujet-chose</strong> : accord toujours avec le sujet — « la pièce a l'air <em>propre</em> ».</li><li><strong>Sujet-personne</strong> : accord au choix, avec le sujet ou avec « air » (masc. sing.) — « elle a l'air <em>sérieuse</em> » ou « elle a l'air <em>sérieux</em> ».</li><li><strong>Adjectif avec complément</strong> se rapportant à « air » : accord <strong>obligatoire</strong> avec « air » — « elle avait l'air <em>inquiet</em> et troublé des gens préoccupés ».</li></ul>",
+    "acc-adj-adverbe":
+      "<p>Le test : l'adjectif modifie-t-il le <strong>verbe</strong> (invariable, valeur d'adverbe) ou un <strong>nom</strong> (variable, vrai adjectif) ?</p><p>Comparez : « Ces voitures <em>coûtent cher</em> » (adverbe, invariable) vs « Ces voitures sont <em>chères</em> » (adjectif attribut, accordé). Autres cas : <em>haut</em> (parler haut / des personnalités haut placées), <em>bas</em> (voler bas), <em>dur</em> (travailler dur), <em>juste</em> (chanter juste).</p>",
 
     /* ---------- CONJUGAISON ---------- */
     "conj-er-ou-e":

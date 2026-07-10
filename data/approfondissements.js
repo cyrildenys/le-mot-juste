@@ -54,6 +54,10 @@
       "<p><strong>Test :</strong> mettez la forme au féminin. Si c'est possible, c'est un <strong>adjectif verbal</strong> (il s'accorde) ; sinon, c'est un <strong>participe présent</strong> (invariable). Le participe accepte souvent un complément ou la négation.</p><p><strong>Orthographes différentes</strong> (adjectif / participe) : fatigant / fatiguant, précédent / précédant, différent / différant, négligent / négligeant, convaincant / convainquant, provocant / provoquant, navigant / naviguant, adhérent / adhérant, influent / influant.</p>",
     "acc-aucun-nul":
       "<p><em>Aucun(e)</em> et <em>nul(le)</em> se mettent au <strong>pluriel</strong> uniquement devant un nom qui n'a pas de singulier : <em>aucuns frais, aucunes funérailles, nulles fiançailles</em>.</p><p>« Nul » est aussi un adjectif qualificatif variable au sens de « sans valeur » (des résultats <em>nuls</em>) et un pronom (« <em>nul</em> n'est parfait »).</p>",
+    "acc-avoir-lair":
+      "<p>Trois cas, selon les grammairiens (Le Robert, BDL) :</p><ul><li><strong>Sujet-chose</strong> : accord toujours avec le sujet — « la pièce a l'air <em>propre</em> ».</li><li><strong>Sujet-personne</strong> : accord au choix, avec le sujet ou avec « air » (masc. sing.) — « elle a l'air <em>sérieuse</em> » ou « elle a l'air <em>sérieux</em> ».</li><li><strong>Adjectif avec complément</strong> se rapportant à « air » : accord <strong>obligatoire</strong> avec « air » — « elle avait l'air <em>inquiet</em> et troublé des gens préoccupés ».</li></ul>",
+    "acc-adj-adverbe":
+      "<p>Le test : l'adjectif modifie-t-il le <strong>verbe</strong> (invariable, valeur d'adverbe) ou un <strong>nom</strong> (variable, vrai adjectif) ?</p><p>Comparez : « Ces voitures <em>coûtent cher</em> » (adverbe, invariable) vs « Ces voitures sont <em>chères</em> » (adjectif attribut, accordé). Autres cas : <em>haut</em> (parler haut / des personnalités haut placées), <em>bas</em> (voler bas), <em>dur</em> (travailler dur), <em>juste</em> (chanter juste).</p>",
 
     /* ---------- CONJUGAISON ---------- */
     "conj-er-ou-e":

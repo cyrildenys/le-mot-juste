@@ -546,5 +546,15 @@
       { q: "___ élève n'était absent.", options: ["Aucuns", "Aucun", "Aucune"], reponse: 1, n: 1, explication: "Singulier par défaut → « aucun »." },
       { q: "Il n'a engagé ___ frais.", options: ["aucun", "aucuns", "aucune"], reponse: 1, n: 3, explication: "« frais » n'a pas de singulier → « aucuns »." },
     ],
+    "acc-avoir-lair": [
+      { q: "La salade a l'air ___.", options: ["bon", "bonne", "bons"], reponse: 1, n: 1, explication: "Sujet-chose → accord avec le sujet « salade »." },
+      { q: "Ces suggestions ont l'air ___.", options: ["intéressant", "intéressantes", "intéressants"], reponse: 1, n: 2, explication: "Accord avec le sujet « suggestions » (fém. pl.)." },
+      { q: "Elle avait l'air ___ et troublé. (complément sur « air »)", options: ["inquiète", "inquiet", "inquiets"], reponse: 1, n: 3, explication: "Adjectif + complément rattaché à « air » → accord obligatoire avec « air » (masc. sing.)." },
+    ],
+    "acc-adj-adverbe": [
+      { q: "Ces fleurs sentent ___.", options: ["bonnes", "bon", "bons"], reponse: 1, n: 1, explication: "Modifie le verbe « sentent » → adverbe invariable." },
+      { q: "Ces voitures sont ___.", options: ["cher", "chères", "chèrent"], reponse: 1, n: 2, explication: "« chères » est ici attribut du sujet (adjectif) → accord." },
+      { q: "Ces voitures ___ cher.", options: ["coûtent", "coûtes", "coûtons"], reponse: 0, n: 2, explication: "« cher » reste invariable, modifie le verbe « coûtent »." },
+    ],
   };
 })();
