@@ -59,9 +59,15 @@
     t.futurSimple = map6(parts.futStem, FUT);
     t.conditionnelPresent = map6(parts.futStem, COND);
 
-    const [psStem, psType] = parts.ps;
-    t.passeSimple = map6(psStem, psEnds(psType));
-    t.subjonctifImparfait = map6(psStem, subjImpEnds(psType));
+    if (parts.ps) {
+      const [psStem, psType] = parts.ps;
+      t.passeSimple = map6(psStem, psEnds(psType));
+      t.subjonctifImparfait = map6(psStem, subjImpEnds(psType));
+    } else {
+      // Verbe défectif (ex. traire) : pas de passé simple ni de subjonctif imparfait.
+      t.passeSimple = [null, null, null, null, null, null];
+      t.subjonctifImparfait = [null, null, null, null, null, null];
+    }
 
     if (parts.subjForms) t.subjonctifPresent = parts.subjForms.slice();
     else {
@@ -263,12 +269,20 @@
     abattre: "battre", combattre: "battre", débattre: "battre", rabattre: "battre",
     refaire: "faire", défaire: "faire", satisfaire: "faire", contrefaire: "faire", parfaire: "faire", redire: "dire",
     sourire: "rire", déplaire: "plaire", complaire: "plaire",
+    rasseoir: "asseoir", revoir: "voir", entrevoir: "voir",
+    extraire: "traire", soustraire: "traire", distraire: "traire", abstraire: "traire",
+    circonvenir: "venir", contrevenir: "venir",
   };
+
+  // Verbes défectifs non couverts (formes trop limitées ou incertaines pour un
+  // tableau complet fiable) : mieux vaut ne rien afficher que d'inventer.
+  const DEFECTIFS = new Set(["gésir", "férir", "choir", "déchoir", "échoir", "seoir", "messeoir", "bruire"]);
 
   function prefixParts(prefix, modelKey) {
     const m = V[modelKey];
     const pre = (a) => a.map((x) => (x == null ? null : prefix + x));
-    const p = { pres: pre(m.pres), futStem: prefix + m.futStem, ps: [prefix + m.ps[0], m.ps[1]], ppr: prefix + m.ppr, pp: prefix + m.pp, impersonnel: m.impersonnel };
+    const p = { pres: pre(m.pres), futStem: prefix + m.futStem, ppr: prefix + m.ppr, pp: prefix + m.pp, impersonnel: m.impersonnel };
+    if (m.ps) p.ps = [prefix + m.ps[0], m.ps[1]];
     if (m.imp) p.imp = pre(m.imp);
     if (m.subjForms) p.subjForms = pre(m.subjForms);
     else if (m.subj) p.subj = [prefix + m.subj[0], prefix + m.subj[1]];
@@ -308,6 +322,9 @@
       const prefix = inf.slice(0, inf.length - model.length);
       return assembleParts(inf, 3, true, determineAux(inf), prefixParts(prefix, model));
     }
+    // Verbes défectifs (formes trop limitées/incertaines) : non disponible plutôt qu'inventé.
+    if (DEFECTIFS.has(inf)) return { disponible: false, infinitif: inf };
+
     // Familles régulières par terminaison (avant les groupes 1/2)
     if (/quérir$/.test(inf)) {
       const p = inf.slice(0, -6);
@@ -348,8 +365,9 @@
       const simple = group1Simple(inf);
       return assemble(inf, 1, false, determineAux(inf), simple, simple.participePasse, false);
     }
-    // 2e groupe (tout -ir non irrégulier, type finir)
-    if (/ir$/.test(inf)) {
+    // 2e groupe (tout -ir non irrégulier, type finir) — jamais les verbes en -oir,
+    // qui ne sont pas du 2e groupe malgré leurs deux dernières lettres.
+    if (/ir$/.test(inf) && !/oir$/.test(inf)) {
       const simple = group2Simple(inf);
       return assemble(inf, 2, false, determineAux(inf), simple, simple.participePasse, false);
     }
@@ -401,6 +419,10 @@
     "accourir", "concourir", "discourir", "recourir",
     "méconnaître", "comparaître", "réapparaître", "satisfaire", "contrefaire", "prédire", "interdire", "contredire",
     "revivre", "sourire", "déplaire", "requérir",
+    // Vague suivante (verbes en -oir et famille traire, vérifiés)
+    "asseoir", "rasseoir", "pourvoir", "prévoir", "revoir", "entrevoir",
+    "traire", "extraire", "soustraire", "distraire", "abstraire",
+    "circonvenir", "contrevenir",
   ];
 
   LMJ.conjugue = conjugue;

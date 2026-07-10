@@ -397,6 +397,31 @@
       futStem: "prédir", ps: ["préd", "i"], subj: ["prédis", "prédis"],
       ppr: "prédisant", pp: "prédit",
     },
+    asseoir: {
+      g: 3, aux: "avoir",
+      pres: ["assieds", "assieds", "assied", "asseyons", "asseyez", "asseyent"],
+      futStem: "assiér", ps: ["ass", "i"], subj: ["assey", "assey"],
+      ppr: "asseyant", pp: "assis",
+    },
+    pourvoir: {
+      g: 3, aux: "avoir",
+      pres: ["pourvois", "pourvois", "pourvoit", "pourvoyons", "pourvoyez", "pourvoient"],
+      futStem: "pourvoir", ps: ["pourv", "u"], subj: ["pourvoi", "pourvoy"],
+      ppr: "pourvoyant", pp: "pourvu",
+    },
+    prévoir: {
+      g: 3, aux: "avoir",
+      pres: ["prévois", "prévois", "prévoit", "prévoyons", "prévoyez", "prévoient"],
+      futStem: "prévoir", ps: ["prév", "i"], subj: ["prévoi", "prévoy"],
+      ppr: "prévoyant", pp: "prévu",
+    },
+    traire: {
+      g: 3, aux: "avoir",
+      pres: ["trais", "trais", "trait", "trayons", "trayez", "traient"],
+      futStem: "traire", subj: ["trai", "tray"],
+      ppr: "trayant", pp: "trait",
+      // Verbe défectif : pas de passé simple ni de subjonctif imparfait (pas de "ps").
+    },
     mouvoir: {
       g: 3, aux: "avoir",
       pres: ["meus", "meus", "meut", "mouvons", "mouvez", "meuvent"],

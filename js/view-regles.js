@@ -295,7 +295,7 @@
     return pro + " " + form;
   }
   function tenseBlock(label, forms, mode) {
-    if (!forms) return null;
+    if (!forms || !forms.some((f) => f != null)) return null;
     const box = el("div", { class: "card", style: { padding: "14px 16px" } });
     box.appendChild(el("div", { style: { fontSize: "11px", letterSpacing: ".1em", textTransform: "uppercase", color: "var(--accent)", fontWeight: "700", marginBottom: "8px" }, text: label }));
     const list = el("div", { style: { fontFamily: "var(--serif)", fontSize: "16px", lineHeight: "1.85" } });
