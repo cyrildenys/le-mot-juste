@@ -653,5 +653,54 @@
     "mu-au-temps-pour-moi": [
       { q: "Forme retenue par l'Académie française :", options: ["Autant pour moi.", "Au temps pour moi.", "Autant que pour moi."], reponse: 1, n: 3, explication: "Conforme à l'étymologie militaire (« au temps »)." },
     ],
+
+    /* ---------- Nuances : complément (vague 3) ---------- */
+    "nu-acception-acceptation": [
+      { q: "Dans son ___ courante, ce mot signifie autre chose.", options: ["acceptation", "acception", "accession"], reponse: 1, n: 2, explication: "Le sens d'un mot → « acception »." },
+      { q: "L'___ du contrat par les deux parties.", options: ["acception", "acceptation", "accession"], reponse: 1, n: 2, explication: "Le fait d'accepter → « acceptation »." },
+    ],
+    "nu-adherence-adhesion": [
+      { q: "L'___ des pneus à la route.", options: ["adhésion", "adhérence", "adhérance"], reponse: 1, n: 2, explication: "État de ce qui colle → « adhérence »." },
+      { q: "Son ___ au club se fit sans hésiter.", options: ["adhérence", "adhésion", "adhérance"], reponse: 1, n: 2, explication: "Acte volontaire de se rallier → « adhésion »." },
+    ],
+    "nu-eluder-elucider": [
+      { q: "Il a ___ la question gênante.", options: ["élucidé", "éludé", "élucider"], reponse: 1, n: 2, explication: "Éviter avec adresse → « éludé »." },
+      { q: "La police a fini par ___ l'affaire.", options: ["éluder", "élucider", "éludé"], reponse: 1, n: 2, explication: "Rendre clair → « élucider »." },
+    ],
+    "nu-precepteur-percepteur": [
+      { q: "Le ___ enseignait au jeune prince.", options: ["percepteur", "précepteur", "receveur"], reponse: 1, n: 2, explication: "Éducateur privé → « précepteur »." },
+      { q: "Payer ses impôts au ___.", options: ["précepteur", "percepteur", "recteur"], reponse: 1, n: 2, explication: "Fonctionnaire des impôts → « percepteur »." },
+    ],
+    "nu-decade-decennie": [
+      { q: "La dernière ___ a beaucoup changé (dix ans).", options: ["décade", "décennie", "décadence"], reponse: 1, n: 2, explication: "Dix ans → « décennie » (« décade » = dix jours au sens propre)." },
+    ],
+    "nu-amnistie-armistice": [
+      { q: "L'___ de 1918 mit fin aux combats.", options: ["amnistie", "armistice", "amnésie"], reponse: 1, n: 2, explication: "Arrêt des hostilités militaires → « armistice »." },
+      { q: "Une loi d'___ efface certaines infractions.", options: ["armistice", "amnistie", "amnésie"], reponse: 1, n: 2, explication: "Pardon juridique → « amnistie »." },
+    ],
+    "nu-avenement-evenement": [
+      { q: "L'___ d'un nouveau roi.", options: ["événement", "avènement", "avenant"], reponse: 1, n: 2, explication: "Arrivée au pouvoir → « avènement »." },
+      { q: "Un ___ inattendu bouleversa la soirée.", options: ["avènement", "événement", "avenant"], reponse: 1, n: 1, explication: "Un fait qui se produit → « événement »." },
+    ],
+    "nu-justesse-justice": [
+      { q: "La ___ de son raisonnement impressionna tous.", options: ["justice", "justesse", "justification"], reponse: 1, n: 2, explication: "Exactitude → « justesse »." },
+      { q: "Aller en ___ pour régler un litige.", options: ["justesse", "justice", "justification"], reponse: 1, n: 1, explication: "L'institution judiciaire → « justice »." },
+    ],
+    "nu-prolongation-prolongement": [
+      { q: "La ___ du match en prolongations.", options: ["prolongement", "prolongation", "prolongance"], reponse: 1, n: 2, explication: "Allongement d'une durée → « prolongation »." },
+      { q: "Le ___ de la route jusqu'au village.", options: ["prolongation", "prolongement", "prolongance"], reponse: 1, n: 2, explication: "Extension dans l'espace → « prolongement »." },
+    ],
+    "nu-lacune-lagune": [
+      { q: "Combler une ___ en grammaire.", options: ["lagune", "lacune", "lacuneuse"], reponse: 1, n: 1, explication: "Un manque, un vide → « lacune »." },
+      { q: "La ___ de Venise.", options: ["lacune", "lagune", "lacuneuse"], reponse: 1, n: 2, explication: "Étendue d'eau côtière → « lagune »." },
+    ],
+    "nu-opportun-importun": [
+      { q: "Une remarque ___, au bon moment.", options: ["importune", "opportune", "opportuniste"], reponse: 1, n: 1, explication: "Qui vient à propos → « opportune »." },
+      { q: "Un visiteur ___ qui dérange.", options: ["opportun", "importun", "opportuniste"], reponse: 1, n: 1, explication: "Qui dérange → « importun »." },
+    ],
+    "nu-consommer-consumer": [
+      { q: "___ de l'énergie.", options: ["Consumer", "Consommer", "Consumé"], reponse: 1, n: 1, explication: "Utiliser → « consommer »." },
+      { q: "Le feu ___ toute la forêt.", options: ["consomma", "consuma", "consommait"], reponse: 1, n: 2, explication: "Détruire par le feu → « consuma »." },
+    ],
   };
 })();

@@ -654,7 +654,7 @@ button { font-family: inherit; }
   LMJ.util = util;
   LMJ.store = store;
   LMJ.tts = tts;
-  LMJ.VERSION = "v15";
+  LMJ.VERSION = "v16";
 })();
 
 
@@ -2085,6 +2085,114 @@ button { font-family: inherit; }
       entrees: [
         { mot: "habileté", sens: "adresse, dextérité, savoir-faire", exemple: "L'habileté d'un artisan." },
         { mot: "habilité", sens: "capacité légale à agir (terme de droit)", exemple: "L'habilité d'un notaire à authentifier un acte." },
+      ],
+    },
+    {
+      id: "nu-acception-acceptation",
+      titre: "Acception · Acceptation",
+      cle: "Acception = sens d'un mot ; acceptation = fait d'accepter.",
+      entrees: [
+        { mot: "acception", sens: "le sens particulier d'un mot selon le contexte", exemple: "Dans son acception courante, ce mot signifie…" },
+        { mot: "acceptation", sens: "le fait d'accepter, de donner son accord", exemple: "L'acceptation du contrat." },
+      ],
+    },
+    {
+      id: "nu-adherence-adhesion",
+      titre: "Adhérence · Adhésion",
+      cle: "Adhérence = état (coller, passif) ; adhésion = acte volontaire d'adhérer.",
+      entrees: [
+        { mot: "adhérence", sens: "état de ce qui adhère, colle à autre chose", exemple: "L'adhérence des pneus à la route." },
+        { mot: "adhésion", sens: "action volontaire de se rallier, d'adhérer à une idée ou un groupe", exemple: "Son adhésion au parti." },
+      ],
+    },
+    {
+      id: "nu-eluder-elucider",
+      titre: "Éluder · Élucider",
+      cle: "Éluder = éviter avec adresse ; élucider = rendre clair, expliquer.",
+      entrees: [
+        { mot: "éluder", sens: "éviter par adresse, se dérober à", exemple: "Éluder une question gênante." },
+        { mot: "élucider", sens: "rendre clair ce qui était obscur", exemple: "Élucider une énigme." },
+      ],
+    },
+    {
+      id: "nu-precepteur-percepteur",
+      titre: "Précepteur · Percepteur",
+      cle: "Précepteur = enseignant privé ; percepteur = fonctionnaire des impôts.",
+      entrees: [
+        { mot: "précepteur", sens: "éducateur privé engagé par une famille", exemple: "Le précepteur du jeune prince." },
+        { mot: "percepteur", sens: "fonctionnaire chargé de recouvrer les impôts", exemple: "Payer ses impôts au percepteur." },
+      ],
+    },
+    {
+      id: "nu-decade-decennie",
+      titre: "Décade · Décennie",
+      cle: "Décade = dix jours (sens propre) ; décennie = dix ans.",
+      entrees: [
+        { mot: "décade", sens: "période de dix jours ; l'emploi pour dix ans est un anglicisme critiqué", exemple: "Une décade de la Révolution (dix jours)." },
+        { mot: "décennie", sens: "période de dix ans", exemple: "La dernière décennie a changé beaucoup de choses." },
+      ],
+    },
+    {
+      id: "nu-amnistie-armistice",
+      titre: "Amnistie · Armistice",
+      cle: "Amnistie = pardon juridique (droit pénal) ; armistice = arrêt des combats (militaire).",
+      entrees: [
+        { mot: "amnistie", sens: "mesure qui efface une infraction pénale", exemple: "Une loi d'amnistie." },
+        { mot: "armistice", sens: "accord qui arrête les hostilités militaires", exemple: "L'armistice de 1918." },
+      ],
+    },
+    {
+      id: "nu-avenement-evenement",
+      titre: "Avènement · Événement",
+      cle: "Avènement = arrivée solennelle (pouvoir, ère) ; événement = fait qui se produit.",
+      entrees: [
+        { mot: "avènement", sens: "arrivée au pouvoir, début solennel d'une ère", exemple: "L'avènement d'un roi." },
+        { mot: "événement", sens: "fait notable qui se produit", exemple: "Un événement inattendu." },
+      ],
+    },
+    {
+      id: "nu-justesse-justice",
+      titre: "Justesse · Justice",
+      cle: "Justesse = exactitude ; justice = équité, institution judiciaire.",
+      entrees: [
+        { mot: "justesse", sens: "qualité de ce qui est exact, précis", exemple: "La justesse d'un raisonnement." },
+        { mot: "justice", sens: "vertu d'équité ; institution qui rend le droit", exemple: "Rendre justice ; aller en justice." },
+      ],
+    },
+    {
+      id: "nu-prolongation-prolongement",
+      titre: "Prolongation · Prolongement",
+      cle: "Prolongation = dans le temps ; prolongement = dans l'espace (ou au figuré : suite).",
+      entrees: [
+        { mot: "prolongation", sens: "allongement d'une durée", exemple: "La prolongation d'un match." },
+        { mot: "prolongement", sens: "extension dans l'espace, ou suite d'une action", exemple: "Le prolongement d'une route ; dans le prolongement de ce projet." },
+      ],
+    },
+    {
+      id: "nu-lacune-lagune",
+      titre: "Lacune · Lagune",
+      cle: "Lacune = manque, vide (abstrait) ; lagune = étendue d'eau côtière.",
+      entrees: [
+        { mot: "lacune", sens: "manque, vide dans un texte ou des connaissances", exemple: "Combler une lacune en grammaire." },
+        { mot: "lagune", sens: "étendue d'eau salée séparée de la mer par un cordon de terre", exemple: "La lagune de Venise." },
+      ],
+    },
+    {
+      id: "nu-opportun-importun",
+      titre: "Opportun · Importun",
+      cle: "Opportun = qui vient au bon moment ; importun = qui dérange.",
+      entrees: [
+        { mot: "opportun", sens: "qui convient au moment, bienvenu", exemple: "Une remarque opportune." },
+        { mot: "importun", sens: "qui dérange, indésirable", exemple: "Un visiteur importun." },
+      ],
+    },
+    {
+      id: "nu-consommer-consumer",
+      titre: "Consommer · Consumer",
+      cle: "Consommer = utiliser, acheter ; consumer = détruire par le feu ou lentement.",
+      entrees: [
+        { mot: "consommer", sens: "utiliser, acheter, manger/boire", exemple: "Consommer de l'énergie." },
+        { mot: "consumer", sens: "détruire progressivement, notamment par le feu", exemple: "Le feu consuma la forêt." },
       ],
     },
   ];
@@ -3798,6 +3906,55 @@ button { font-family: inherit; }
     ],
     "mu-au-temps-pour-moi": [
       { q: "Forme retenue par l'Académie française :", options: ["Autant pour moi.", "Au temps pour moi.", "Autant que pour moi."], reponse: 1, n: 3, explication: "Conforme à l'étymologie militaire (« au temps »)." },
+    ],
+
+    /* ---------- Nuances : complément (vague 3) ---------- */
+    "nu-acception-acceptation": [
+      { q: "Dans son ___ courante, ce mot signifie autre chose.", options: ["acceptation", "acception", "accession"], reponse: 1, n: 2, explication: "Le sens d'un mot → « acception »." },
+      { q: "L'___ du contrat par les deux parties.", options: ["acception", "acceptation", "accession"], reponse: 1, n: 2, explication: "Le fait d'accepter → « acceptation »." },
+    ],
+    "nu-adherence-adhesion": [
+      { q: "L'___ des pneus à la route.", options: ["adhésion", "adhérence", "adhérance"], reponse: 1, n: 2, explication: "État de ce qui colle → « adhérence »." },
+      { q: "Son ___ au club se fit sans hésiter.", options: ["adhérence", "adhésion", "adhérance"], reponse: 1, n: 2, explication: "Acte volontaire de se rallier → « adhésion »." },
+    ],
+    "nu-eluder-elucider": [
+      { q: "Il a ___ la question gênante.", options: ["élucidé", "éludé", "élucider"], reponse: 1, n: 2, explication: "Éviter avec adresse → « éludé »." },
+      { q: "La police a fini par ___ l'affaire.", options: ["éluder", "élucider", "éludé"], reponse: 1, n: 2, explication: "Rendre clair → « élucider »." },
+    ],
+    "nu-precepteur-percepteur": [
+      { q: "Le ___ enseignait au jeune prince.", options: ["percepteur", "précepteur", "receveur"], reponse: 1, n: 2, explication: "Éducateur privé → « précepteur »." },
+      { q: "Payer ses impôts au ___.", options: ["précepteur", "percepteur", "recteur"], reponse: 1, n: 2, explication: "Fonctionnaire des impôts → « percepteur »." },
+    ],
+    "nu-decade-decennie": [
+      { q: "La dernière ___ a beaucoup changé (dix ans).", options: ["décade", "décennie", "décadence"], reponse: 1, n: 2, explication: "Dix ans → « décennie » (« décade » = dix jours au sens propre)." },
+    ],
+    "nu-amnistie-armistice": [
+      { q: "L'___ de 1918 mit fin aux combats.", options: ["amnistie", "armistice", "amnésie"], reponse: 1, n: 2, explication: "Arrêt des hostilités militaires → « armistice »." },
+      { q: "Une loi d'___ efface certaines infractions.", options: ["armistice", "amnistie", "amnésie"], reponse: 1, n: 2, explication: "Pardon juridique → « amnistie »." },
+    ],
+    "nu-avenement-evenement": [
+      { q: "L'___ d'un nouveau roi.", options: ["événement", "avènement", "avenant"], reponse: 1, n: 2, explication: "Arrivée au pouvoir → « avènement »." },
+      { q: "Un ___ inattendu bouleversa la soirée.", options: ["avènement", "événement", "avenant"], reponse: 1, n: 1, explication: "Un fait qui se produit → « événement »." },
+    ],
+    "nu-justesse-justice": [
+      { q: "La ___ de son raisonnement impressionna tous.", options: ["justice", "justesse", "justification"], reponse: 1, n: 2, explication: "Exactitude → « justesse »." },
+      { q: "Aller en ___ pour régler un litige.", options: ["justesse", "justice", "justification"], reponse: 1, n: 1, explication: "L'institution judiciaire → « justice »." },
+    ],
+    "nu-prolongation-prolongement": [
+      { q: "La ___ du match en prolongations.", options: ["prolongement", "prolongation", "prolongance"], reponse: 1, n: 2, explication: "Allongement d'une durée → « prolongation »." },
+      { q: "Le ___ de la route jusqu'au village.", options: ["prolongation", "prolongement", "prolongance"], reponse: 1, n: 2, explication: "Extension dans l'espace → « prolongement »." },
+    ],
+    "nu-lacune-lagune": [
+      { q: "Combler une ___ en grammaire.", options: ["lagune", "lacune", "lacuneuse"], reponse: 1, n: 1, explication: "Un manque, un vide → « lacune »." },
+      { q: "La ___ de Venise.", options: ["lacune", "lagune", "lacuneuse"], reponse: 1, n: 2, explication: "Étendue d'eau côtière → « lagune »." },
+    ],
+    "nu-opportun-importun": [
+      { q: "Une remarque ___, au bon moment.", options: ["importune", "opportune", "opportuniste"], reponse: 1, n: 1, explication: "Qui vient à propos → « opportune »." },
+      { q: "Un visiteur ___ qui dérange.", options: ["opportun", "importun", "opportuniste"], reponse: 1, n: 1, explication: "Qui dérange → « importun »." },
+    ],
+    "nu-consommer-consumer": [
+      { q: "___ de l'énergie.", options: ["Consumer", "Consommer", "Consumé"], reponse: 1, n: 1, explication: "Utiliser → « consommer »." },
+      { q: "Le feu ___ toute la forêt.", options: ["consomma", "consuma", "consommait"], reponse: 1, n: 2, explication: "Détruire par le feu → « consuma »." },
     ],
   };
 })();

@@ -237,5 +237,113 @@
         { mot: "habilité", sens: "capacité légale à agir (terme de droit)", exemple: "L'habilité d'un notaire à authentifier un acte." },
       ],
     },
+    {
+      id: "nu-acception-acceptation",
+      titre: "Acception · Acceptation",
+      cle: "Acception = sens d'un mot ; acceptation = fait d'accepter.",
+      entrees: [
+        { mot: "acception", sens: "le sens particulier d'un mot selon le contexte", exemple: "Dans son acception courante, ce mot signifie…" },
+        { mot: "acceptation", sens: "le fait d'accepter, de donner son accord", exemple: "L'acceptation du contrat." },
+      ],
+    },
+    {
+      id: "nu-adherence-adhesion",
+      titre: "Adhérence · Adhésion",
+      cle: "Adhérence = état (coller, passif) ; adhésion = acte volontaire d'adhérer.",
+      entrees: [
+        { mot: "adhérence", sens: "état de ce qui adhère, colle à autre chose", exemple: "L'adhérence des pneus à la route." },
+        { mot: "adhésion", sens: "action volontaire de se rallier, d'adhérer à une idée ou un groupe", exemple: "Son adhésion au parti." },
+      ],
+    },
+    {
+      id: "nu-eluder-elucider",
+      titre: "Éluder · Élucider",
+      cle: "Éluder = éviter avec adresse ; élucider = rendre clair, expliquer.",
+      entrees: [
+        { mot: "éluder", sens: "éviter par adresse, se dérober à", exemple: "Éluder une question gênante." },
+        { mot: "élucider", sens: "rendre clair ce qui était obscur", exemple: "Élucider une énigme." },
+      ],
+    },
+    {
+      id: "nu-precepteur-percepteur",
+      titre: "Précepteur · Percepteur",
+      cle: "Précepteur = enseignant privé ; percepteur = fonctionnaire des impôts.",
+      entrees: [
+        { mot: "précepteur", sens: "éducateur privé engagé par une famille", exemple: "Le précepteur du jeune prince." },
+        { mot: "percepteur", sens: "fonctionnaire chargé de recouvrer les impôts", exemple: "Payer ses impôts au percepteur." },
+      ],
+    },
+    {
+      id: "nu-decade-decennie",
+      titre: "Décade · Décennie",
+      cle: "Décade = dix jours (sens propre) ; décennie = dix ans.",
+      entrees: [
+        { mot: "décade", sens: "période de dix jours ; l'emploi pour dix ans est un anglicisme critiqué", exemple: "Une décade de la Révolution (dix jours)." },
+        { mot: "décennie", sens: "période de dix ans", exemple: "La dernière décennie a changé beaucoup de choses." },
+      ],
+    },
+    {
+      id: "nu-amnistie-armistice",
+      titre: "Amnistie · Armistice",
+      cle: "Amnistie = pardon juridique (droit pénal) ; armistice = arrêt des combats (militaire).",
+      entrees: [
+        { mot: "amnistie", sens: "mesure qui efface une infraction pénale", exemple: "Une loi d'amnistie." },
+        { mot: "armistice", sens: "accord qui arrête les hostilités militaires", exemple: "L'armistice de 1918." },
+      ],
+    },
+    {
+      id: "nu-avenement-evenement",
+      titre: "Avènement · Événement",
+      cle: "Avènement = arrivée solennelle (pouvoir, ère) ; événement = fait qui se produit.",
+      entrees: [
+        { mot: "avènement", sens: "arrivée au pouvoir, début solennel d'une ère", exemple: "L'avènement d'un roi." },
+        { mot: "événement", sens: "fait notable qui se produit", exemple: "Un événement inattendu." },
+      ],
+    },
+    {
+      id: "nu-justesse-justice",
+      titre: "Justesse · Justice",
+      cle: "Justesse = exactitude ; justice = équité, institution judiciaire.",
+      entrees: [
+        { mot: "justesse", sens: "qualité de ce qui est exact, précis", exemple: "La justesse d'un raisonnement." },
+        { mot: "justice", sens: "vertu d'équité ; institution qui rend le droit", exemple: "Rendre justice ; aller en justice." },
+      ],
+    },
+    {
+      id: "nu-prolongation-prolongement",
+      titre: "Prolongation · Prolongement",
+      cle: "Prolongation = dans le temps ; prolongement = dans l'espace (ou au figuré : suite).",
+      entrees: [
+        { mot: "prolongation", sens: "allongement d'une durée", exemple: "La prolongation d'un match." },
+        { mot: "prolongement", sens: "extension dans l'espace, ou suite d'une action", exemple: "Le prolongement d'une route ; dans le prolongement de ce projet." },
+      ],
+    },
+    {
+      id: "nu-lacune-lagune",
+      titre: "Lacune · Lagune",
+      cle: "Lacune = manque, vide (abstrait) ; lagune = étendue d'eau côtière.",
+      entrees: [
+        { mot: "lacune", sens: "manque, vide dans un texte ou des connaissances", exemple: "Combler une lacune en grammaire." },
+        { mot: "lagune", sens: "étendue d'eau salée séparée de la mer par un cordon de terre", exemple: "La lagune de Venise." },
+      ],
+    },
+    {
+      id: "nu-opportun-importun",
+      titre: "Opportun · Importun",
+      cle: "Opportun = qui vient au bon moment ; importun = qui dérange.",
+      entrees: [
+        { mot: "opportun", sens: "qui convient au moment, bienvenu", exemple: "Une remarque opportune." },
+        { mot: "importun", sens: "qui dérange, indésirable", exemple: "Un visiteur importun." },
+      ],
+    },
+    {
+      id: "nu-consommer-consumer",
+      titre: "Consommer · Consumer",
+      cle: "Consommer = utiliser, acheter ; consumer = détruire par le feu ou lentement.",
+      entrees: [
+        { mot: "consommer", sens: "utiliser, acheter, manger/boire", exemple: "Consommer de l'énergie." },
+        { mot: "consumer", sens: "détruire progressivement, notamment par le feu", exemple: "Le feu consuma la forêt." },
+      ],
+    },
   ];
 })();
